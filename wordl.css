@@ -1,0 +1,143 @@
+body, #correct, #wrong_spots, #exclude {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+:root {
+    --table-width: 600px
+}
+
+table { 
+    width: var(--table-width);
+    margin: 0px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+#exclude table {
+    border-bottom: none;
+}
+
+html {
+    font-size: 140%;
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+td { 
+    height: 2.5rem;
+    padding: 5px;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    caret-color: transparent;
+    border: none;
+}
+
+h2 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+#correct input {
+    background-color: #6AAA64;
+}
+
+#wrong_spots input {
+    background-color: #C9B458;
+}
+
+#exclude input {
+    background-color: #787C7E;
+    caret-color: white;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:focus:not(#exclude input) {
+    height: 120%;
+}
+
+/* 
+button {
+    float: left;
+} */
+
+textarea:focus {
+    outline: none;
+}
+
+/* 
+#word {
+    height: 100%;
+} */
+
+#words, #letters {
+    width: 100vw;
+    position: relative;
+    height: 500px;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+#words > h2, #letters > h2 {
+    position: absolute;
+    top: 0;
+}
+
+#list, #best {
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100%;
+    display: flex;
+}
+
+/* #list {
+    left: 0;
+    top: 1.5rem;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    column-gap: 20px;
+} */
+/* 
+#best, #list {
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: 100%;
+    column-gap: 20px;
+} */
+/* 
+li {
+    margin-right: 20px;
+} */
+
+/* #left {
+    width: 550px;
+    float: left;
+}
+
+#right {
+    margin-left: 600px;
+} */
