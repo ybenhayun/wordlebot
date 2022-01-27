@@ -88,6 +88,7 @@ function setLength() {
 }
 
 function filterList() {
+    let list_size = 40;
     var filtered = words.slice();
     filtered = filtered.map(function(x){ return x.toUpperCase(); })
 
@@ -98,11 +99,11 @@ function filterList() {
 
     document.getElementById("count").innerHTML = sorted.length + " possible " + word_length + " letter word" + (sorted.length != 1 ? "s" : "") + "."
     document.getElementById("list").innerHTML = "";
-    for (var i = 0; i < sorted.length && i < 100; i++) { 
-        document.getElementById("list").innerHTML += "<li>" + sorted[i].word + "</li>"; 
+    for (var i = 0; i < sorted.length && i < list_size; i++) { 
+        document.getElementById("list").innerHTML += "<li>" + sorted[i].word + ", </li>"; 
     }
 
-    if (sorted.length > 100) document.getElementById("list").innerHTML += "<li>...</li>"
+    if (sorted.length > list_size) document.getElementById("list").innerHTML += "<li>...</li>"
 }
 
 function sortList(list) {
