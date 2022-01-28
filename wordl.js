@@ -73,9 +73,7 @@ function makeTables() {
     document.getElementById("exclude").getElementsByClassName("table")[0].innerHTML = 
     "<table id = 'excl'><tr><td><input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' size = '1'></td></tr></table>";
 
-    document.getElementById("corr").style.width = word_length*3 + "rem";
-    document.getElementById("wrong").style.width = word_length*3 + "rem";
-    document.getElementById("excl").style.width = word_length*3 + "rem";
+    document.querySelectorAll("table").forEach(function(t) { t.style.width = word_length*3 + "rem"; });
 }
 
 function changeLength() {
@@ -88,7 +86,7 @@ function setLength() {
 }
 
 function filterList() {
-    let list_size = 40;
+    let list_size = 89;
     var filtered = words.slice();
     filtered = filtered.map(function(x){ return x.toUpperCase(); })
 
@@ -99,11 +97,22 @@ function filterList() {
 
     document.getElementById("count").innerHTML = sorted.length + " possible " + word_length + " letter word" + (sorted.length != 1 ? "s" : "") + "."
     document.getElementById("list").innerHTML = "";
+    
+    var best = sorted[0].rank;
+
     for (var i = 0; i < sorted.length && i < list_size; i++) { 
-        document.getElementById("list").innerHTML += "<li>" + sorted[i].word + ", </li>"; 
+        if (sorted[i].rank == best) document.getElementById("list").innerHTML += "<span class = 'best'>" + sorted[i].word + "</span>";
+        else break;
+        
+        if (i < sorted.length - 1) document.getElementById("list").innerHTML += ", ";
+    }
+    
+    for (var j = i; j < sorted.length && j < list_size; j++) {
+        document.getElementById("list").innerHTML += sorted[j].word; 
+        if (j < sorted.length - 1) document.getElementById("list").innerHTML += ", ";
     }
 
-    if (sorted.length > list_size) document.getElementById("list").innerHTML += "<li>...</li>"
+    if (sorted.length > list_size) document.getElementById("list").innerHTML += "..."
 }
 
 function sortList(list) {
@@ -146,7 +155,7 @@ function sortList(list) {
 
     checked = [];
 
-    if (sorted.length > 25) {
+    if (sorted.length > 25) {    
         for (var i = 0; i < sorted.length; i++) {
             for (var j = 0; j < word_length; j++) {
                 if (checked[i + " " + sorted[i].word.charAt(j)] == true) continue;  //no extra credit to letters with doubles
@@ -156,6 +165,7 @@ function sortList(list) {
             }
         }
     }
+        
 
     sorted.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
 

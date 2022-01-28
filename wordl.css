@@ -19,6 +19,7 @@ body {
     align-items: center;
     overflow: hidden;
     border: 2px solid gray;
+    flex-wrap: wrap;
 }
 
 #guesses {
@@ -33,12 +34,15 @@ body {
     border: solid 1px black;
 }
 
-#words ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 90%;
-    column-gap: 5px;
+#words p {
+    position: absolute;
+    left: 4%;
+    font-size: .85em;
+    top: 4%;
+}
+
+.best {
+    font-weight: bold;
 }
 
 #letters {
@@ -54,7 +58,16 @@ body {
     flex-direction: column;
     height: 90%;
     flex-wrap: wrap;
+    list-style: none;
+    margin: 2%;
 }
+
+h2 {
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+}
+
 :root {
     --table-width: 600px
 }
@@ -83,7 +96,7 @@ td {
 input {
     width: 100%;
     height: 100%;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -91,11 +104,6 @@ input {
     border: none;
 }
 
-h2 {
-    font-size: 1rem;
-    margin: 0;
-    text-align: center;
-}
 
 #correct input {
     background-color: #6AAA64;
@@ -122,10 +130,6 @@ textarea:focus {
     outline: none;
 }
 
-ul {
-    list-style: none;
-    margin: 2%;
-}
 
 
 
@@ -141,152 +145,3 @@ ul {
 
 
 
-
-
-
-
-/*
-#container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-}
-
-#container > div {
-    height: 100%;
-}
-
-#guesses {
-    position: absolute;
-}
-
-#words {
-    position: absolute;
-    left: 0;
-}
-
-#letters {
-    position: absolute;
-    right: 0;
-}
-
-#words ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 500px;
-    column-gap: 15px;
-    width: 400px;
-}
-
-#letters ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 200px;
-    column-gap: 15px;
-}
-
-/*
-#guesses {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* min-width: 30%; */
-/*}
-
-#answers {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-/*    flex-wrap: wrap;
-}
-
-#words {
-
-}
-
-#words ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 500px;
-    column-gap: 15px;
-}
-
-#letters ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 200px;
-    column-gap: 15px;
-}
-
-
-
-/*
-#words, #letters {
-    width: 100vw;
-    position: relative;
-    height: 500px;
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-}
-
-#words > h2, #letters > h2 {
-    position: absolute;
-    top: 0;
-}
-
-#list, #best {
-    flex-direction: column;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 100%;
-    display: flex;
-}
-
-/* #list {
-    left: 0;
-    top: 1.5rem;
-    position: absolute;
-    list-style: none;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100%;
-    column-gap: 20px;
-} */
-/* 
-#best, #list {
-    flex-direction: column;
-    flex-wrap: wrap;
-    position: absolute;
-    top: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    height: 100%;
-    column-gap: 20px;
-} */
-/* 
-li {
-    margin-right: 20px;
-} */
-
-/* #left {
-    width: 550px;
-    float: left;
-}
-
-#right {
-    margin-left: 600px;
-} */
