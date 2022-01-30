@@ -6,7 +6,7 @@ $(document).ready(function() {
     makeTables();
     filterList();
 
-    $("#clear").click(function() {
+    $("#reset").click(function() {
         $('input').not("#myRange").val('');
         filterList();
     });

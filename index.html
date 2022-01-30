@@ -11,23 +11,23 @@
 	<title>Wordl Calcl</title>
 </head>
 <body>
-    <!-- <div id = "containter">
-        <div id = "left"> -->
-            <!-- <input type = "range" min="4" max="11" value = "5" class="slider" id = "myRange">
-            <button id = "clear">Reset</button> -->
-            <!-- </div>
-                <div id = "right"> -->
-                    <!-- </div>
-                    </div> -->
     <div id = "container">
 
+        
+        <div id = "words"><h2><span id = "count"></span></h2><p id = "list"></p></div>
+        
         <div id="guesses">
+            <div id = "slider">
+                <input type = "range" min="4" max="11" value = "5" class="slider" id = "myRange">
+            </div>
+            
             <div id = "correct"><h2>CORRECT LETTERS</h2><span class = "table"></span></div>
             <div id = "wrong_spots"><h2>WRONG SPOTS</h2><span class = "table"></span></div>
             <div id = "exclude"><h2>WRONG LETTERS</h2><span class = "table"></span></div>
+            
+            <button id="reset">RESET</button>
         </div>
         
-        <div id = "words"><h2><span id = "count"></span></h2><p id = "list"></p></div>
         <div id = "letters"><h2>Most Common Letters</h2><ul id = "best"></ul></div>
 
     </div> 
