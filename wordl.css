@@ -1,3 +1,8 @@
+html {
+    font-size: 140%;
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
 html, body {
     height: 100%;
     width: 100%;
@@ -13,30 +18,27 @@ body {
 #container {
     position: relative;
     height: 90%;
-    width: clamp(1125px, 100%, 1500px);
+    width: clamp(1000px, 100%, 1500px);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    border: 2px solid gray;
+    /* border: 2px solid gray; */
     flex-wrap: wrap;
-    column-gap: 20px;
+    column-gap: 15px;
 }
 
 #guesses {
-    /* position: absolute; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: min(750px, 100%);
 }
 
 #words {
-    /* position: absolute; */
     position: relative;
-    /* left: 1%; */
     height: 56%;
-    width: 22%;
+    width: max(250px, 22%);
     border: solid 1px black;
     overflow: hidden;
 }
@@ -54,16 +56,16 @@ body {
 
 #letters {
     border: 1px solid black;
-    /* position: absolute; */
-    /* right: 4%; */
-    height: 56%;
-    width: 22%;
+    /* height: 56%; */
+    height: 18.5rem;
+    width: max(300px, 22%);
 }
 
 #letters ul {
     column-count: 2;
     column-gap: 5%;
     list-style: none;
+    font-size: .85em;
 }
 
 h2 {
@@ -86,14 +88,21 @@ table {
     border-bottom: none;
 }
 
-html {
-    font-size: 140%;
-    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-}
 
 td { 
     height: 2.5rem;
+    width: 2.5rem;
+    min-width: 18%;
+
     padding: 5px;
+}
+
+#exclude {
+    width: 100%;
+}
+
+#excl {
+    width: 100%;
 }
 
 input {
@@ -134,20 +143,48 @@ textarea:focus {
 }
 
 #reset {
-    position: absolute;
-    bottom: 5%;
     height: 50px;
     width: 100px;
     font-size: 1em;
 }
 
 #slider {
-    position: absolute;
-    top: 5%;
     width: min(100%, 250px);
+    height: 50px;
 }
 
+@media screen and (max-width: 1000px) {
+    #words {
+        position: absolute;
+        min-width: 75%;
+        top: calc(800px + 15%);
+        height: 30%;
+    }
 
+    #letters {
+        position: absolute;
+        height: 100%;
+        min-width: 75%;
+        top: 165%;
+        height: 25%;
+    }
+
+    #guesses {
+        margin-top: 10%;
+    }
+
+    #letters ul {
+        column-count: 6;
+        /* padding: 0; */
+        column-gap: 1%;
+    }
+
+    td {
+        height: 3.5rem;
+        width: 3.5rem;
+    }
+
+}
 
 
 
