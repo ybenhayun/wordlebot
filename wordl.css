@@ -1,3 +1,9 @@
+:root {
+    --correct-color: #6AAA64;
+    --wrong-spots-color: #C9B458;
+    --incorrect-color: #787C7E;
+}
+
 html {
     font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -92,7 +98,6 @@ table {
     border-bottom: none;
 }
 
-
 td { 
     height: 3.5rem;
     width: 3.5rem;
@@ -122,15 +127,15 @@ input {
 
 
 #correct input {
-    background-color: #6AAA64;
+    background-color: var(--correct-color);
 }
 
 #wrong_spots input {
-    background-color: #C9B458;
+    background-color: var(--wrong-spots-color);
 }
 
 #exclude input {
-    background-color: #787C7E;
+    background-color: var(--incorrect-color);
     caret-color: white;
 }
 
@@ -161,15 +166,16 @@ textarea:focus {
 @media screen and (max-width: 999px) {
     #container {
         position: absolute;
+        height: 45rem;
         width: 100%;
-        top: 1rem;
+        top: 0rem;
     }
 
     #words {
         position: absolute;
-        /* min-width: 75%; */
         width: 95%;
-        top: 98%;
+        top: 100%;
+        /* top: 47rem; */
         height: 30%;
     }
 
@@ -180,7 +186,7 @@ textarea:focus {
     #letters {
         position: absolute;
         width: 95%;
-        top: 130%;
+        top: 132%;
         height: 11rem;
     }
 
@@ -192,13 +198,7 @@ textarea:focus {
 
     #letters ul {
         column-count: 4;
-        /* padding: 0; */
         column-gap: 1%;
-    }
-
-    td {
-        /* height: 2.5rem;
-        width: 3rem; */
     }
 
 }

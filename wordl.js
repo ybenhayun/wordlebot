@@ -87,7 +87,7 @@ function setLength() {
 }
 
 function filterList() {
-    let list_size = 89;
+    let list_size = 150;
     var filtered = words.slice();
     filtered = filtered.map(function(x){ return x.toUpperCase(); })
 
