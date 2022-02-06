@@ -11,7 +11,7 @@ $(document).ready(function() {
         filterList();
     });
 
-    $("#myRange").click(function() {
+    $("#myRange").change(function() {
         changeLength();
         setLength();
         makeTables();
