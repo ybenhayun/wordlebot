@@ -43,7 +43,7 @@ body {
 
 #words {
     position: relative;
-    height: 56%;
+    height: 25rem;
     /* width: max(250px, 22%); */
     width: 22%;
     border: solid 1px black;
