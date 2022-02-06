@@ -10,7 +10,7 @@ html {
 
 html, body {
     height: 100%;
-    width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -61,7 +61,7 @@ body {
     padding-top: .75rem;
 }
 
-.best {
+.best_word {
     font-weight: bold;
 }
 
