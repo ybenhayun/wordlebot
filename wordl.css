@@ -47,14 +47,18 @@ body {
     /* width: max(250px, 22%); */
     width: 22%;
     border: solid 1px black;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 #words p {
     position: absolute;
     left: 4%;
     font-size: .9rem;
-    top: 1.5rem;
+    /* top: 1.5rem; */
+    top: .75rem;
+    overflow: scroll;
+    height: 25rem;
+    padding-top: .75rem;
 }
 
 .best {
