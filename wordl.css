@@ -47,7 +47,7 @@ body {
     /* width: max(250px, 22%); */
     width: 22%;
     border: solid 1px black;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 #words p {
