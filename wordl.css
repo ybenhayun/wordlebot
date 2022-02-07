@@ -37,14 +37,12 @@ body {
     align-items: center;
     flex-direction: column;
     height: min(750px, 100%);
-    /* max-width: 450px; */
     max-width: 50%;
 }
 
 #words {
     position: relative;
     height: 25rem;
-    /* width: max(250px, 22%); */
     width: 22%;
     border: solid 1px black;
     overflow: hidden;
@@ -54,7 +52,6 @@ body {
     position: absolute;
     left: 4%;
     font-size: .9rem;
-    /* top: 1.5rem; */
     top: .75rem;
     overflow: scroll;
     height: 25rem;
@@ -67,9 +64,7 @@ body {
 
 #letters {
     border: 1px solid black;
-    /* height: 56%; */
     height: 17rem;
-    /* width: max(250px, 22%); */
     width: 22%;
 }
 
@@ -96,25 +91,29 @@ table {
     margin: 0px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
+    border-spacing: .25rem;
 }
 
 #exclude table {
     border-bottom: none;
 }
 
-td { 
+td {     
     height: 3.5rem;
     width: 3.5rem;
     min-width: 18%;
-
-    padding: .25rem;
+    position: relative;
 }
 
-#exclude {
+#exclude td {
     width: 100%;
 }
 
-#excl {
+table {
+    width: 100%;
+}
+
+#exclude {
     width: 100%;
 }
 
@@ -129,6 +128,12 @@ input {
     border: none;
 }
 
+input:not(#num_letters) {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
 #correct input {
     background-color: var(--correct-color);
@@ -148,7 +153,8 @@ input:focus {
 }
 
 input:focus:not(#exclude input) {
-    height: 110%;
+    /* height: 110%; */
+    filter: brightness(85%);
 }
 
 textarea:focus {

@@ -57,7 +57,7 @@ function makeTables() {
     }
 
     correct_letters +=  '</tr></table>';
-    document.getElementById("correct").getElementsByClassName("table")[0].innerHTML = correct_letters;
+    document.getElementById("correct").getElementsByTagName("table")[0].innerHTML = correct_letters;
 
     var wrong_spots = "<table id = 'wrong'>";
 
@@ -70,9 +70,9 @@ function makeTables() {
     }
     wrong_spots += '</table>';
 
-    document.getElementById("wrong_spots").getElementsByClassName("table")[0].innerHTML = wrong_spots;
-    document.getElementById("exclude").getElementsByClassName("table")[0].innerHTML = 
-    "<table id = 'excl'><tr><td><input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' size = '1'></td></tr></table>";
+    document.getElementById("wrong_spots").getElementsByTagName("table")[0].innerHTML = wrong_spots;
+    document.getElementById("exclude").getElementsByTagName("table")[0].innerHTML = 
+    "<table><tr><td><input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' size = '1'></td></tr>";
 }
 
 function changeLength() {
@@ -151,7 +151,7 @@ function sortList(list) {
     letters_ranked.sort((a, b) => (a.score <= b.score) ? 1 : -1);
 
     for (var c = 0; c < 26; c++) {
-        document.getElementById('best').innerHTML += "<li>" + letters_ranked[c].letter + ":   " + parseFloat(letters_ranked[c].score/list.length*100).toFixed(2) + "%</li>";
+        document.getElementById('best').innerHTML += "<li>" + letters_ranked[c].letter + ":   " + parseFloat(letters_ranked[c].score/list.length*100).toFixed(1) + "%</li>";
     }
 
     checked = [];
@@ -202,7 +202,7 @@ function sortList(list) {
 }
 
 function wrongLetters(list) {
-    var letters = document.getElementById("excl").rows[0].cells[0].children[0].value;
+    var letters = document.getElementById("exclude").getElementsByTagName("table")[0].rows[0].cells[0].children[0].value;
     
     for (var i = 0; i < list.length; i++) {
         for (var j = 0; j < letters.length; j++) {
@@ -216,7 +216,7 @@ function wrongLetters(list) {
 }
 
 function wrongSpots(list) {
-    var table = document.getElementById("wrong");
+    var table = document.getElementById("wrong_spots").getElementsByTagName("table")[0];
     var letters = [];
 
     for (var i = 0; i < guesses; i++) {
@@ -246,7 +246,7 @@ function wrongSpots(list) {
 }
 
 function correctLetters(list) {
-    var table = document.getElementById('corr');
+    var table = document.getElementById("correct").getElementsByTagName("table")[0];
     var letters = [];
 
     for (var i = 0; i < word_length; i++) {
