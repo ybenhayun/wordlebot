@@ -2,6 +2,7 @@
     --correct-color: #6AAA64;
     --wrong-spots-color: #C9B458;
     --incorrect-color: #787C7E;
+    --input-color: white;
 }
 
 html {
@@ -42,20 +43,22 @@ body {
 
 #words {
     position: relative;
-    height: 25rem;
-    width: 22%;
+    /* height: 27rem; */
+    width: 25%;
     border: solid 1px black;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 }
 
 #words p {
-    position: absolute;
-    left: 4%;
+    margin-left: 4%;
+    margin-right: 4%;
     font-size: .9rem;
-    top: .75rem;
-    overflow: scroll;
-    height: 25rem;
-    padding-top: .75rem;
+}
+
+.bottom, .top {
+    margin-bottom: .25rem;
 }
 
 .best_word {
@@ -87,14 +90,19 @@ h2 {
     border-bottom: 1px solid gray;
 }
 
+#words h2 {
+    border-top: 1px solid gray;
+}
+
 table { 
+    width: 100%;
     margin: 0px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
     border-spacing: .25rem;
 }
 
-#exclude table {
+#incorrect table {
     border-bottom: none;
 }
 
@@ -105,15 +113,7 @@ td {
     position: relative;
 }
 
-#exclude td {
-    width: 100%;
-}
-
-table {
-    width: 100%;
-}
-
-#exclude {
+#incorrect td, #incorrect {
     width: 100%;
 }
 
@@ -122,9 +122,10 @@ input {
     height: 100%;
     font-size: 1.5rem;
     font-weight: bold;
-    color: white;
+    color: var(--input-color);
     text-align: center;
     caret-color: transparent;
+    border-radius: 0;
     border: none;
 }
 
@@ -143,7 +144,7 @@ input:not(#num_letters) {
     background-color: var(--wrong-spots-color);
 }
 
-#exclude input {
+#incorrect input {
     background-color: var(--incorrect-color);
     caret-color: white;
 }
@@ -152,8 +153,7 @@ input:focus {
     outline: none;
 }
 
-input:focus:not(#exclude input) {
-    /* height: 110%; */
+input:focus:not(#incorrect input) {
     filter: brightness(85%);
 }
 
@@ -184,9 +184,8 @@ textarea:focus {
     #words {
         position: absolute;
         width: 95%;
-        top: 100%;
-        /* top: 47rem; */
-        height: 30%;
+        top: 124%;
+        height: unset;
     }
 
     #words p {
@@ -196,7 +195,8 @@ textarea:focus {
     #letters {
         position: absolute;
         width: 95%;
-        top: 132%;
+        top: 95%;
+        margin-top: 2rem;
         height: 11rem;
     }
 
@@ -210,7 +210,6 @@ textarea:focus {
         column-count: 4;
         column-gap: 1%;
     }
-
 }
 
 

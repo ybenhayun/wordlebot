@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel = "stylesheet" type = "text/css" href = "wordl.css">
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
@@ -18,7 +18,14 @@
     <div id = "container">
 
         
-        <div id = "words"><h2><span id = "count"></span></h2><p id = "list"></p></div>
+        <div id = "words">
+            <h2><span id = "count"></span></h2>
+            <p class = "top"> all possible words, based on your input, sorted by likelihood. the best ones are <span class="best_word">bolded</span></p>
+            <p id = "list"></p>
+            <h2>Best Elminators</h2>
+            <p class = "bottom">these are the words most likely to give you additional information, ignoring your input. the best ones are <span class="best_word">bolded</span></p>
+            <p id = "newlist"></p>
+        </div>
         
         <div id="guesses">
             <div id = "slider">
@@ -27,7 +34,7 @@
             
             <div id = "correct"><h2>CORRECT LETTERS</h2><table></table></div>
             <div id = "wrong_spots"><h2>WRONG SPOTS</h2><table></table></div>
-            <div id = "exclude"><h2>WRONG LETTERS</h2><table></table></div>
+            <div id = "incorrect"><h2>WRONG LETTERS</h2><table></table></div>
             
             <button id="reset">RESET</button>
         </div>

@@ -50,7 +50,7 @@ $(document).ready(function() {
 });
 
 function makeTables() {
-    var correct_letters = "<table id = 'corr'><tr>";
+    var correct_letters = "<table><tr>";
 
     for(var i = 0; i < word_length; i++){
         correct_letters += "<td><input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' maxlength = '1 size = '1'></td>";
@@ -59,7 +59,7 @@ function makeTables() {
     correct_letters +=  '</tr></table>';
     document.getElementById("correct").getElementsByTagName("table")[0].innerHTML = correct_letters;
 
-    var wrong_spots = "<table id = 'wrong'>";
+    var wrong_spots = "<table>";
 
     for (var i = 0; i < guesses; i++) {
         wrong_spots += '<tr>';
@@ -71,7 +71,7 @@ function makeTables() {
     wrong_spots += '</table>';
 
     document.getElementById("wrong_spots").getElementsByTagName("table")[0].innerHTML = wrong_spots;
-    document.getElementById("exclude").getElementsByTagName("table")[0].innerHTML = 
+    document.getElementById("incorrect").getElementsByTagName("table")[0].innerHTML = 
     "<table><tr><td><input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' size = '1'></td></tr>";
 }
 
@@ -79,13 +79,14 @@ function changeLength() {
     word_length = document.getElementById("num_letters").value;
 }
 
+
 function setLength() {
     words = big_list.filter((element) => {return element.length == word_length; });
     words = words.filter((v, i, a) => a.indexOf(v) === i);
 }
 
 function filterList() {
-    let list_size = 500;
+    let list_size = 25;
     var filtered = words.slice();
     filtered = filtered.map(function(x){ return x.toUpperCase(); })
 
@@ -144,6 +145,8 @@ function sortList(list) {
         sorted.push({word:list[i], rank:0});
     }
 
+
+
     for (var i = 0; i < 26; i++) {
         letters_ranked.push({letter:String.fromCharCode(i+65), score:alphabet[String.fromCharCode(i+65)][word_length]});
     }
@@ -156,7 +159,7 @@ function sortList(list) {
 
     checked = [];
 
-    if (sorted.length > 25) {    
+    if (sorted.length > 10) {    
         for (var i = 0; i < sorted.length; i++) {
             for (var j = 0; j < word_length; j++) {
                 if (checked[i + " " + sorted[i].word.charAt(j)] == true) continue;  //no extra credit to letters with doubles
@@ -167,7 +170,6 @@ function sortList(list) {
         }
     }
         
-
     sorted.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
 
     var sub_list = [];
@@ -198,11 +200,59 @@ function sortList(list) {
         }
     }
 
+    bestGuess(alphabet, sorted);
+
     return sorted;
 }
 
+function bestGuess(alphabet, sorted) {
+    if (sorted.length == words.length) return document.getElementById("newlist").innerHTML = "";
+    if (sorted.length <= 2) return document.getElementById("newlist").innerHTML = "all words equally likely"
+
+    var newlist = words.slice();
+    newlist.sort((a, b) => a >= b ? 1 : -1);
+
+    newranks = [];
+
+    newlist.forEach(function(w) {
+        newranks.push({word: w.toUpperCase(), rank: 0});
+    });
+
+    var checked = [];
+
+    newranks.forEach(function(w) {
+        for (var j = 0; j < word_length; j++) {
+            if (alphabet[w.word.charAt(j)][word_length] == sorted.length) continue;
+            if (checked[w.word + " " + w.word.charAt(j)] == true) {
+                continue;  //no extra credit to letters with doubles
+            }
+            w.rank += alphabet[w.word.charAt(j)][word_length];
+            checked[w.word + " " + w.word.charAt(j)] = true;
+        }
+    });
+
+    newranks.sort((a, b) => (a.rank <= b.rank) ? 1 : -1)
+
+    var best_word = newranks[0].rank;
+
+    document.getElementById("newlist").innerHTML = "";
+    for (var i = 0; i < newranks.length && i < 20; i++) { 
+        if (newranks[i].rank == best_word) document.getElementById("newlist").innerHTML += "<span class = 'best_word'>" + newranks[i].word + "</span>";
+        else break;
+        
+        if (i < newranks.length - 1) document.getElementById("newlist").innerHTML += ", ";
+    }
+    
+    for (var j = i; j < newranks.length && j < 20; j++) {
+        document.getElementById("newlist").innerHTML += newranks[j].word; 
+        if (j < newranks.length - 1) document.getElementById("newlist").innerHTML += ", ";
+    }
+
+    if (newranks.length > 20) document.getElementById("newlist").innerHTML += "..."
+}
+
 function wrongLetters(list) {
-    var letters = document.getElementById("exclude").getElementsByTagName("table")[0].rows[0].cells[0].children[0].value;
+    var letters = document.getElementById("incorrect").getElementsByTagName("table")[0].rows[0].cells[0].children[0].value;
     
     for (var i = 0; i < list.length; i++) {
         for (var j = 0; j < letters.length; j++) {
