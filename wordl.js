@@ -81,14 +81,15 @@ function changeLength() {
 
 
 function setLength() {
+    common = common_words.filter((element) => {return element.length == word_length});
+
     words = big_list.filter((element) => {return element.length == word_length; });
-    words = words.filter((v, i, a) => a.indexOf(v) === i);
 }
 
 function filterList() {
     let list_size = 25;
-    var filtered = words.slice();
-    filtered = filtered.map(function(x){ return x.toUpperCase(); })
+    var filtered = common.slice();
+    filtered = filtered.map(function(x){ return x; })
 
     wrongSpots(filtered);
     correctLetters(filtered);
@@ -136,10 +137,13 @@ function sortList(list) {
     for (var i = 0; i < list.length; i++) {
         checked = [];
         for (var j = 0; j < word_length; j++) {
-            alphabet[list[i].charAt(j)][j]++;
+            c = list[i].charAt(j);
+            if (c == "") continue;
 
-            if (checked[list[i].charAt(j)] != true) alphabet[list[i].charAt(j)][word_length]++;  // only counts letters once per word
-            checked[list[i].charAt(j)] = true;
+            alphabet[c][j]++;
+
+            if (checked[c] != true) alphabet[c][word_length]++;  // only counts letters once per word
+            checked[c] = true;
         }
 
         sorted.push({word:list[i], rank:0});
@@ -206,8 +210,7 @@ function sortList(list) {
 }
 
 function bestGuess(alphabet, sorted) {
-    if (sorted.length == words.length) return document.getElementById("newlist").innerHTML = "";
-    if (sorted.length <= 2) return document.getElementById("newlist").innerHTML = "all words equally likely"
+    if (sorted.length <= 2) return document.getElementById("newlist").innerHTML = "enter a word from the list of words left."
 
     var newlist = words.slice();
     newlist.sort((a, b) => a >= b ? 1 : -1);
@@ -215,7 +218,7 @@ function bestGuess(alphabet, sorted) {
     newranks = [];
 
     newlist.forEach(function(w) {
-        newranks.push({word: w.toUpperCase(), rank: 0});
+        newranks.push({word: w, rank: 0});
     });
 
     var checked = [];
@@ -233,7 +236,42 @@ function bestGuess(alphabet, sorted) {
 
     newranks.sort((a, b) => (a.rank <= b.rank) ? 1 : -1)
 
+    var sub_list = [];
+    var place = 0;
+    var current = newranks[place].rank;
+
+    for (var i = 0; i < newranks.length; i++) {
+        if (newranks[i].rank == current && i < newranks.length - 1) { 
+            sub_list.push(newranks[i]);
+        } else {
+            if (i == newranks.length - 1) sub_list.push(newranks[i]);
+            for (var j = 0; j < sub_list.length; j++) {
+                for (var k = 0; k < word_length; k++) {
+                    if (alphabet[sub_list[j].word.charAt(k)][k] == sorted.length) continue;
+                    sub_list[j].rank += alphabet[sub_list[j].word.charAt(k)][k];
+                }
+            } 
+
+            sub_list.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
+
+            for (var j = 0; j < sub_list.length; j++) {
+                newranks[j+place] = sub_list[j];
+            }
+
+            current = newranks[i].rank;
+            place = i;
+            sub_list = [];
+            sub_list.push(newranks[i]);
+        }
+    }
+
     var best_word = newranks[0].rank;
+
+    var pos = 0;
+    while (newranks[pos].rank == best_word) {
+        if (sorted.includes(newranks[pos])) console.log(newranks[pos]);
+        pos++;
+    }
 
     document.getElementById("newlist").innerHTML = "";
     for (var i = 0; i < newranks.length && i < 20; i++) { 
