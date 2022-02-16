@@ -209,8 +209,38 @@ function sortList(list) {
     return sorted;
 }
 
+function useTop(sorted) {
+    if (sorted.length <= 2) return true;
+
+    var end = false;
+    var differences = [];
+    var compare = sorted[0].word;
+
+    for (let i = 1; i < sorted.length; i++) {
+        var diff = "";
+        for (let j = 0; j < word_length; j++) {
+            if (compare.charAt(j) == sorted[i].word.charAt(j)) {
+                diff += "G";
+            } else if (compare.includes(sorted[i].word.charAt(j))) {
+                diff += "Y";
+            } else {
+                diff += "B";
+            }
+        }
+
+        if (differences[diff] != null) {
+            if (end) return false;
+            end = true;
+        } else {
+            differences[diff] = sorted[i].word;
+        }
+    }
+
+    return true;
+}
+
 function bestGuess(alphabet, sorted) {
-    if (sorted.length <= 2) return document.getElementById("newlist").innerHTML = "enter a word from the list of words left."
+    if (useTop(sorted)) return document.getElementById("newlist").innerHTML = "time to guess a word on the list above!";
 
     var newlist = words.slice();
     newlist.sort((a, b) => a >= b ? 1 : -1);
@@ -265,14 +295,68 @@ function bestGuess(alphabet, sorted) {
         }
     }
 
-    var best_word = newranks[0].rank;
+    // NEW STRAT BELOW
+    // console.log("");
+    // console.log("");
+    // console.log("");
 
-    var pos = 0;
-    while (newranks[pos].rank == best_word) {
-        if (sorted.includes(newranks[pos])) console.log(newranks[pos]);
-        pos++;
+    var compare = sorted[0].word;
+    var letters = [];
+
+    for (let i = 0; i < word_length; i++) {
+        if (sorted.length < 2) break;
+        if (compare.includes(sorted[i].word.charAt(i))) {
+            letters.push(compare.charAt(i));
+        }
     }
 
+    for (let i = 1; i < sorted.length; i++) {
+        if (!letters.length) break;
+
+        for (let j = 0; j < letters.length; j++) {
+            if (!sorted[i].word.includes(letters[j])) {
+                letters.splice(j, 1);
+                j--;
+            }
+        }
+    }
+
+    var first_count;
+    var new_bests = [];
+    
+    for (let i = 0; i < 250; i++) {
+        var count = 0;
+        var a = newranks[i].word;
+        for (let j = 0; j < sorted.length; j++) {
+            var b = sorted[j].word;
+            for (let k = 0; k < word_length; k++) {
+                if (b.includes(a.charAt(k)) && !letters.includes(a.charAt(k))) {
+                    count++;
+                    break;
+                }
+            }
+        }
+
+        if (i == 0) {
+            first_count = count;
+            // console.log(newranks[0].word + ": " + first_count);
+        }
+
+        if (count > first_count) {
+            // console.log(newranks[i].word + ": " + count);
+            newranks[i].rank = count;
+
+            new_bests.push(newranks[i]);
+            newranks.splice(i, 1);
+        }
+    }
+
+    new_bests.sort((a, b) => a.rank <= b.rank ? 1 : -1);
+    // console.log(new_bests);
+    newranks = new_bests.concat(newranks);
+    // NEW STRAT ABOVE TO FIND WORD THAT HITS MOST OTHER WORDS
+
+    var best_word = newranks[0].rank;
     document.getElementById("newlist").innerHTML = "";
     for (var i = 0; i < newranks.length && i < 20; i++) { 
         if (newranks[i].rank == best_word) document.getElementById("newlist").innerHTML += "<span class = 'best_word'>" + newranks[i].word + "</span>";
