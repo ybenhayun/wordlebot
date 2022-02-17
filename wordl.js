@@ -228,43 +228,16 @@ function sortList(list, alphabet, sorted_list) {
         
     newranks.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
 
-    // var sub_list = [];
-    // var place = 0;
-    // var current = newranks[place].rank;
-
-    // for (var i = 0; i < newranks.length; i++) {
-    //     if (newranks[i].rank == current && i < newranks.length - 1) { 
-    //         sub_list.push(newranks[i]);
-    //     } else {
-    //         if (i == newranks.length - 1) sub_list.push(newranks[i]);
-    //         for (var j = 0; j < sub_list.length; j++) {
-    //             for (var k = 0; k < word_length; k++) {
-    //                 sub_list[j].rank += alphabet[sub_list[j].word.charAt(k)][k];
-    //             }
-    //         } 
-
-    //         sub_list.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
-
-    //         for (var j = 0; j < sub_list.length; j++) {
-    //             newranks[j+place] = sub_list[j];
-    //         }
-
-    //         current = newranks[i].rank;
-    //         place = i;
-    //         sub_list = [];
-    //         sub_list.push(newranks[i]);
-    //     }
-    // }
-
     return newranks;
 }
 
 function useTop(sorted, full_list) {
     if (sorted.length <= 2) return sorted;
+    var list_size = sorted.length;
 
     var check_list = sorted.slice(0, 250);
     check_list = check_list.concat(full_list.slice(0, check_list.length));
-
+    
     var checked = [];
     for (let i = 0; i < check_list.length; i++) {
         if (checked[check_list[i].word]) {
@@ -280,7 +253,7 @@ function useTop(sorted, full_list) {
     for (let pos = 0; pos < check_list.length; pos++) {
         var differences = [];
         var compare = check_list[pos].word;
-
+        var max = 0;
         for (let i = 0; i < sorted.length; i++) {
             var diff = "";
             for (let j = 0; j < word_length; j++) {
@@ -310,14 +283,16 @@ function useTop(sorted, full_list) {
         }
 
         var weighted = 0;
-        var list_size = sorted.length;
 
         Object.keys(differences).forEach(function (key) { 
             let probability = (differences[key]/list_size)*differences[key];
             weighted += probability;
+
+            // max = Math.max(differences[key], max);
         });
 
         best_words.push({word: check_list[pos].word, rank: weighted});
+        // best_words.push({word: check_list[pos].word, rank: max});
     }
 
     best_words.sort((a, b) => a.rank >= b.rank ? 1 : -1);
@@ -326,28 +301,24 @@ function useTop(sorted, full_list) {
 
     return best_words;
 }
+
 // pos is the position in the word the character is (ie: pos is 2 for 'a' and trap)
 // place = is the spot in the indicies list that position is (ie: place = 1 for 'a' and 'aroma', a_list = [0, 4], and pos == 4)
 function compareDoubles(a, b, char, pos) {
     var a_list = getSpots(a, char);
     var b_list = getSpots(b, char);
 
-    // var place = a_list.findIndex(pos);
-
-    var colors = [];
-
     for (let i = 0; i < a_list.length; i++) {
-        for (let j = 0; j < b_list.lenght; j++) {
-            if (a_list[i] == b_list[j]) {
-                a_list.splice(i, 1);
-                b_list.splice(j, 1);
-                i--;
-                j--;
-            }
+        if (b_list.includes(a_list[i])) {
+            a_list.splice(i, 1);
+            i--;
 
-            if (b_list.length == 0) {
-                return "B";
-            }
+            let index = b_list.indexOf(a_list[i]);
+            b_list.splice(index, 1);
+        }
+
+        if (b_list.length == 0) {
+            return "B";
         }
     }
 
