@@ -82,12 +82,11 @@ function changeLength() {
 
 function setLength() {
     common = common_words.filter((element) => {return element.length == word_length});
-
     words = big_list.filter((element) => {return element.length == word_length; });
 }
 
 function filterList() {
-    let list_size = 25;
+    // let list_size = 25;
     var filtered = common.slice();
     filtered = filtered.map(function(x){ return x; })
 
@@ -95,10 +94,31 @@ function filterList() {
     correctLetters(filtered);
     wrongLetters(filtered);
 
-    var sorted = sortList(filtered);
+    var alphabet = bestLetters(filtered);
+
+    var sorted = sortList(filtered, alphabet);
+    var newlist = words.slice();
+    var full_list = sortList(newlist, alphabet, sorted);
+
+    full_list = useTop(sorted, full_list);
+
+    updateLists(sorted, full_list);
+}
+
+function updateLists(sorted, full_list) {
+    var list_size = 25;
 
     document.getElementById("count").innerHTML = sorted.length + " possible word" + (sorted.length != 1 ? "s" : "") + "."
     document.getElementById("list").innerHTML = "";
+
+    var fully_sorted = [];
+    for (let i = 0; i < full_list.length; i++) {
+        if (sorted.filter(e => e.word == full_list[i].word).length > 0) {
+            fully_sorted.push(full_list[i]);
+        }
+    }
+
+    sorted = fully_sorted;
     
     var best_word = sorted[0].rank;
 
@@ -115,14 +135,30 @@ function filterList() {
     }
 
     if (sorted.length > list_size) document.getElementById("list").innerHTML += "..."
+
+    var best_word = full_list[0].rank;
+
+    document.getElementById("newlist").innerHTML = "";
+    for (var i = 0; i < full_list.length && i < 20; i++) { 
+        if (full_list[i].rank == best_word) document.getElementById("newlist").innerHTML += "<span class = 'best_word'>" + full_list[i].word + "</span>";
+        else break;
+        
+        if (i < full_list.length - 1) document.getElementById("newlist").innerHTML += ", ";
+    }
+    
+    for (var j = i; j < full_list.length && j < 20; j++) {
+        document.getElementById("newlist").innerHTML += full_list[j].word; 
+        if (j < full_list.length - 1) document.getElementById("newlist").innerHTML += ", ";
+    }
+
+    if (full_list.length > 20) document.getElementById("newlist").innerHTML += "..."
 }
 
-function sortList(list) {
-    document.getElementById('best').innerHTML = "";
+function bestLetters(list) {
     if (!list.length) return [];
 
     var alphabet = [];
-    var sorted = [];
+    // var sorted = [];
     var letters_ranked = [];
 
     for (var c = 65; c <= 90; c++) {
@@ -145,126 +181,47 @@ function sortList(list) {
             if (checked[c] != true) alphabet[c][word_length]++;  // only counts letters once per word
             checked[c] = true;
         }
-
-        sorted.push({word:list[i], rank:0});
     }
-
-
 
     for (var i = 0; i < 26; i++) {
         letters_ranked.push({letter:String.fromCharCode(i+65), score:alphabet[String.fromCharCode(i+65)][word_length]});
     }
 
     letters_ranked.sort((a, b) => (a.score <= b.score) ? 1 : -1);
-
+    document.getElementById('best').innerHTML = "";
     for (var c = 0; c < 26; c++) {
         document.getElementById('best').innerHTML += "<li>" + letters_ranked[c].letter + ":   " + parseFloat(letters_ranked[c].score/list.length*100).toFixed(1) + "%</li>";
     }
 
-    checked = [];
-
-    if (sorted.length > 10) {    
-        for (var i = 0; i < sorted.length; i++) {
-            for (var j = 0; j < word_length; j++) {
-                if (checked[i + " " + sorted[i].word.charAt(j)] == true) continue;  //no extra credit to letters with doubles
-                sorted[i].rank += alphabet[sorted[i].word.charAt(j)][word_length];
-                // sorted[i].rank += alphabet[sorted[i].word.charAt(j)][j];    // makes TARES top word
-                checked[i + " " + sorted[i].word.charAt(j)] = true;
-            }
-        }
-    }
-        
-    sorted.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
-
-    var sub_list = [];
-    var place = 0;
-    var current = sorted[place].rank;
-
-    for (var i = 0; i < sorted.length; i++) {
-        if (sorted[i].rank == current && i < sorted.length - 1) { 
-            sub_list.push(sorted[i]);
-        } else {
-            if (i == sorted.length - 1) sub_list.push(sorted[i]);
-            for (var j = 0; j < sub_list.length; j++) {
-                for (var k = 0; k < word_length; k++) {
-                    sub_list[j].rank += alphabet[sub_list[j].word.charAt(k)][k];
-                }
-            } 
-
-            sub_list.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
-
-            for (var j = 0; j < sub_list.length; j++) {
-                sorted[j+place] = sub_list[j];
-            }
-
-            current = sorted[i].rank;
-            place = i;
-            sub_list = [];
-            sub_list.push(sorted[i]);
-        }
-    }
-
-    bestGuess(alphabet, sorted);
-
-    return sorted;
+    return alphabet;
 }
 
-function useTop(sorted) {
-    if (sorted.length <= 2) return true;
-
-    var end = false;
-    var differences = [];
-    var compare = sorted[0].word;
-
-    for (let i = 1; i < sorted.length; i++) {
-        var diff = "";
-        for (let j = 0; j < word_length; j++) {
-            if (compare.charAt(j) == sorted[i].word.charAt(j)) {
-                diff += "G";
-            } else if (compare.includes(sorted[i].word.charAt(j))) {
-                diff += "Y";
-            } else {
-                diff += "B";
-            }
-        }
-
-        if (differences[diff] != null) {
-            if (end) return false;
-            end = true;
-        } else {
-            differences[diff] = sorted[i].word;
-        }
-    }
-
-    return true;
-}
-
-function bestGuess(alphabet, sorted) {
-    if (useTop(sorted)) return document.getElementById("newlist").innerHTML = "time to guess a word on the list above!";
-
-    var newlist = words.slice();
-    newlist.sort((a, b) => a >= b ? 1 : -1);
+function sortList(list, alphabet, sorted_list) {
+    if (!list.length) return [];
 
     newranks = [];
 
-    newlist.forEach(function(w) {
+    list.forEach(function(w) {
         newranks.push({word: w, rank: 0});
     });
 
-    var checked = [];
 
-    newranks.forEach(function(w) {
+    checked = [];
+
+    for (var i = 0; i < newranks.length; i++) {
         for (var j = 0; j < word_length; j++) {
-            if (alphabet[w.word.charAt(j)][word_length] == sorted.length) continue;
-            if (checked[w.word + " " + w.word.charAt(j)] == true) {
-                continue;  //no extra credit to letters with doubles
+            if (sorted_list != null) {
+                if (alphabet[newranks[i].word.charAt(j)][word_length] == sorted_list.length) continue;
             }
-            w.rank += alphabet[w.word.charAt(j)][word_length];
-            checked[w.word + " " + w.word.charAt(j)] = true;
-        }
-    });
 
-    newranks.sort((a, b) => (a.rank <= b.rank) ? 1 : -1)
+            if (checked[i + " " + newranks[i].word.charAt(j)] == true) continue;  //no extra credit to letters with doubles
+            newranks[i].rank += alphabet[newranks[i].word.charAt(j)][word_length];
+            // newranks[i].rank += alphabet[newranks[i].word.charAt(j)][j];    // makes TARES top word
+            checked[i + " " + newranks[i].word.charAt(j)] = true;
+        }
+    }
+        
+    newranks.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
 
     var sub_list = [];
     var place = 0;
@@ -277,7 +234,6 @@ function bestGuess(alphabet, sorted) {
             if (i == newranks.length - 1) sub_list.push(newranks[i]);
             for (var j = 0; j < sub_list.length; j++) {
                 for (var k = 0; k < word_length; k++) {
-                    if (alphabet[sub_list[j].word.charAt(k)][k] == sorted.length) continue;
                     sub_list[j].rank += alphabet[sub_list[j].word.charAt(k)][k];
                 }
             } 
@@ -295,82 +251,144 @@ function bestGuess(alphabet, sorted) {
         }
     }
 
-    // NEW STRAT BELOW
-    // console.log("");
-    // console.log("");
-    // console.log("");
+    return newranks;
+}
 
-    var compare = sorted[0].word;
-    var letters = [];
+function useTop(sorted, full_list) {
+    if (sorted.length <= 2) return sorted;
 
-    for (let i = 0; i < word_length; i++) {
-        if (sorted.length < 2) break;
-        if (compare.includes(sorted[i].word.charAt(i))) {
-            letters.push(compare.charAt(i));
+    var check_list = sorted.slice(0, 250);
+    check_list = check_list.concat(full_list.slice(0, 250));
+
+    var checked = [];
+    for (let i = 0; i < check_list.length; i++) {
+        if (checked[check_list[i].word]) {
+            check_list.splice(i, 1);
+            i--;
+        } else {
+            checked[check_list[i].word] = true;
         }
     }
 
-    for (let i = 1; i < sorted.length; i++) {
-        if (!letters.length) break;
+    var best_words = [];
 
-        for (let j = 0; j < letters.length; j++) {
-            if (!sorted[i].word.includes(letters[j])) {
-                letters.splice(j, 1);
-                j--;
-            }
-        }
-    }
+    for (let pos = 0; pos < check_list.length; pos++) {
+        var differences = [];
+        var compare = check_list[pos].word;
 
-    var first_count;
-    var new_bests = [];
-    
-    for (let i = 0; i < 250; i++) {
-        var count = 0;
-        var a = newranks[i].word;
-        for (let j = 0; j < sorted.length; j++) {
-            var b = sorted[j].word;
-            for (let k = 0; k < word_length; k++) {
-                if (b.includes(a.charAt(k)) && !letters.includes(a.charAt(k))) {
-                    count++;
-                    break;
+        for (let i = 0; i < sorted.length; i++) {
+            var diff = "";
+            for (let j = 0; j < word_length; j++) {
+                if (compare.charAt(j) == sorted[i].word.charAt(j)) {
+                    diff += "G";
+                } else if (!sorted[i].word.includes(compare.charAt(j))) {
+                    diff += "B";
+                } else {
+                    var c = compare.charAt(j);
+                    var w = sorted[i].word;
+
+                    if (count(compare, c) == 1) {
+                        diff += "Y";
+                    } else if (count(compare, c) <= count(w, c)) {
+                        diff += "Y";
+                    } else {
+                        // var places = getSpots(compare, c);
+                        // var x = places.indexOf(j);
+
+                        // // places.splice(x, 1);
+
+                        // if (j > places[0]) {
+                        //     diff += "B";
+                        // } else if (compare.charAt(places[0]) == w.charAt(places[0])) {
+                        //     diff += "B";
+                        // } else {
+                        //     diff += "Y";
+                        // }
+                        diff += compareDoubles(compare, w, c, j);
+                    }
                 }
             }
+
+            if (differences[diff] != null) {
+                differences[diff]++;
+            } else {
+                differences[diff] = 1;
+            }
         }
 
-        if (i == 0) {
-            first_count = count;
-            // console.log(newranks[0].word + ": " + first_count);
-        }
+        var weighted = 0;
+        var list_size = sorted.length;
 
-        if (count > first_count) {
-            // console.log(newranks[i].word + ": " + count);
-            newranks[i].rank = count;
+        Object.keys(differences).forEach(function (key) { 
+            let probability = (differences[key]/list_size)*differences[key];
+            weighted += probability;
+        });
 
-            new_bests.push(newranks[i]);
-            newranks.splice(i, 1);
+        best_words.push({word: check_list[pos].word, rank: weighted});
+    }
+
+    best_words.sort((a, b) => a.rank >= b.rank ? 1 : -1);
+
+    return best_words;
+}
+// pos is the position in the word the character is (ie: pos is 2 for 'a' and trap)
+// place = is the spot in the indicies list that position is (ie: place = 1 for 'a' and 'aroma', a_list = [0, 4], and pos == 4)
+function compareDoubles(a, b, char, pos) {
+    var a_list = getSpots(a, char);
+    var b_list = getSpots(b, char);
+
+    // var place = a_list.findIndex(pos);
+
+    var colors = [];
+
+    for (let i = 0; i < a_list.length; i++) {
+        for (let j = 0; j < b_list.lenght; j++) {
+            if (a_list[i] == b_list[j]) {
+                a_list.splice(i, 1);
+                b_list.splice(j, 1);
+                i--;
+                j--;
+            }
+
+            if (b_list.length == 0) {
+                return "B";
+            }
         }
     }
 
-    new_bests.sort((a, b) => a.rank <= b.rank ? 1 : -1);
-    // console.log(new_bests);
-    newranks = new_bests.concat(newranks);
-    // NEW STRAT ABOVE TO FIND WORD THAT HITS MOST OTHER WORDS
+    for (let i = 0; i < a_list.length; i++) {
+        if (pos == a_list[i])  {
+            return "Y";
+        }
 
-    var best_word = newranks[0].rank;
-    document.getElementById("newlist").innerHTML = "";
-    for (var i = 0; i < newranks.length && i < 20; i++) { 
-        if (newranks[i].rank == best_word) document.getElementById("newlist").innerHTML += "<span class = 'best_word'>" + newranks[i].word + "</span>";
-        else break;
-        
-        if (i < newranks.length - 1) document.getElementById("newlist").innerHTML += ", ";
+        a_list.splice(i, 1);
+        b_list.splice(i, 1);
+        i--;
+
+        if (b_list.length == 0) break;
     }
+
+    return "B";
+}
+
+function getSpots(string, char) {
+    indicies = [];
     
-    for (var j = i; j < newranks.length && j < 20; j++) {
-        document.getElementById("newlist").innerHTML += newranks[j].word; 
-        if (j < newranks.length - 1) document.getElementById("newlist").innerHTML += ", ";
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] == char) indicies.push(i);
     }
 
-    if (newranks.length > 20) document.getElementById("newlist").innerHTML += "..."
+    return indicies;
+}
+
+function count(string, char) {
+    var count = 0;
+
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] == char) count++;
+    }
+
+    return count;
 }
 
 function wrongLetters(list) {
