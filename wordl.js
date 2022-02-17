@@ -164,7 +164,6 @@ function bestLetters(list) {
     if (!list.length) return [];
 
     var alphabet = [];
-    // var sorted = [];
     var letters_ranked = [];
 
     for (var c = 65; c <= 90; c++) {
@@ -229,33 +228,33 @@ function sortList(list, alphabet, sorted_list) {
         
     newranks.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
 
-    var sub_list = [];
-    var place = 0;
-    var current = newranks[place].rank;
+    // var sub_list = [];
+    // var place = 0;
+    // var current = newranks[place].rank;
 
-    for (var i = 0; i < newranks.length; i++) {
-        if (newranks[i].rank == current && i < newranks.length - 1) { 
-            sub_list.push(newranks[i]);
-        } else {
-            if (i == newranks.length - 1) sub_list.push(newranks[i]);
-            for (var j = 0; j < sub_list.length; j++) {
-                for (var k = 0; k < word_length; k++) {
-                    sub_list[j].rank += alphabet[sub_list[j].word.charAt(k)][k];
-                }
-            } 
+    // for (var i = 0; i < newranks.length; i++) {
+    //     if (newranks[i].rank == current && i < newranks.length - 1) { 
+    //         sub_list.push(newranks[i]);
+    //     } else {
+    //         if (i == newranks.length - 1) sub_list.push(newranks[i]);
+    //         for (var j = 0; j < sub_list.length; j++) {
+    //             for (var k = 0; k < word_length; k++) {
+    //                 sub_list[j].rank += alphabet[sub_list[j].word.charAt(k)][k];
+    //             }
+    //         } 
 
-            sub_list.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
+    //         sub_list.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
 
-            for (var j = 0; j < sub_list.length; j++) {
-                newranks[j+place] = sub_list[j];
-            }
+    //         for (var j = 0; j < sub_list.length; j++) {
+    //             newranks[j+place] = sub_list[j];
+    //         }
 
-            current = newranks[i].rank;
-            place = i;
-            sub_list = [];
-            sub_list.push(newranks[i]);
-        }
-    }
+    //         current = newranks[i].rank;
+    //         place = i;
+    //         sub_list = [];
+    //         sub_list.push(newranks[i]);
+    //     }
+    // }
 
     return newranks;
 }
@@ -264,7 +263,7 @@ function useTop(sorted, full_list) {
     if (sorted.length <= 2) return sorted;
 
     var check_list = sorted.slice(0, 250);
-    check_list = check_list.concat(full_list.slice(0, 250));
+    check_list = check_list.concat(full_list.slice(0, check_list.length));
 
     var checked = [];
     for (let i = 0; i < check_list.length; i++) {
@@ -298,18 +297,6 @@ function useTop(sorted, full_list) {
                     } else if (count(compare, c) <= count(w, c)) {
                         diff += "Y";
                     } else {
-                        // var places = getSpots(compare, c);
-                        // var x = places.indexOf(j);
-
-                        // // places.splice(x, 1);
-
-                        // if (j > places[0]) {
-                        //     diff += "B";
-                        // } else if (compare.charAt(places[0]) == w.charAt(places[0])) {
-                        //     diff += "B";
-                        // } else {
-                        //     diff += "Y";
-                        // }
                         diff += compareDoubles(compare, w, c, j);
                     }
                 }
@@ -334,6 +321,8 @@ function useTop(sorted, full_list) {
     }
 
     best_words.sort((a, b) => a.rank >= b.rank ? 1 : -1);
+
+    console.log(best_words);
 
     return best_words;
 }
