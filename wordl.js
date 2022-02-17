@@ -94,15 +94,21 @@ function filterList() {
     correctLetters(filtered);
     wrongLetters(filtered);
 
-    var alphabet = bestLetters(filtered);
+    if (filtered.length) {
 
-    var sorted = sortList(filtered, alphabet);
-    var newlist = words.slice();
-    var full_list = sortList(newlist, alphabet, sorted);
+        var alphabet = bestLetters(filtered);
 
-    full_list = useTop(sorted, full_list);
+        var sorted = sortList(filtered, alphabet);
+        var newlist = words.slice();
+        var full_list = sortList(newlist, alphabet, sorted);
 
-    updateLists(sorted, full_list);
+        full_list = useTop(sorted, full_list);
+        
+        updateLists(sorted, full_list);
+    } else {
+            document.getElementById("list").innerHTML = "whatever word this is, we don't have it.";
+            document.getElementById("newlist").innerHTML = "whatever word this is, we don't have it.";
+    }
 }
 
 function updateLists(sorted, full_list) {
