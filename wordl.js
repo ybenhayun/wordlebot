@@ -12,7 +12,7 @@ $(document).ready(function() {
     makeTables();
     filterList();
 
-    $("#reset").click(function() {
+    $("#refresh").click(function() {
         $(".guess").remove();
         $(".guess-buttons").remove();
         filterList();
@@ -22,7 +22,10 @@ $(document).ready(function() {
         setLength();
         makeTables();
         filterList();
+    });
 
+    $("#enter-guesses").submit(function(e) {
+        e.preventDefault();
     });
     
     $("#enter-guesses").on('input', function(e) {
@@ -133,6 +136,8 @@ function filterList() {
 
             document.getElementById("words").appendChild(no_words);
     }
+
+    document.getElementById("guess-word").focus();
 }
 
 function updateLists(sorted, full_list) {
@@ -186,7 +191,7 @@ function bestLetters(list) {
         checked = [];
         for (var j = 0; j < word_length; j++) {
             c = list[i].charAt(j);
-            if (c == "") continue;
+            // console.log(c);
 
             alphabet[c][j]++;
 

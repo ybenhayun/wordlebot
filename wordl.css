@@ -131,6 +131,12 @@ form {
     text-align: center;
 }
 
+#refresh {
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+}
+
 #guess-word:focus {
     outline: none;
 }
