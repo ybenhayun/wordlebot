@@ -59,6 +59,8 @@ $(document).ready(function() {
         if ($(".guess").length == 0) {
             $(".guess-buttons").remove();
         }
+
+        filterList();
     })
 });
 
@@ -100,6 +102,10 @@ function setLength() {
 }
 
 function filterList() {
+    if (document.getElementById("no-words") != null) {
+        document.getElementById("no-words").remove();
+    }
+
     var letters = document.getElementsByClassName("guess-letter");
     var filtered = common.slice();
 
@@ -119,7 +125,13 @@ function filterList() {
         
         updateLists(sorted, full_list);
     } else {
-            document.getElementById("words").innerHTML = "whatever word this is, we don't have it.";
+            // document.getElementsByClassName("word-list")[0].innerHTML = "whatever word this is, we don't have it.";
+            var no_words = document.createElement("div");
+            no_words.setAttribute("id", "no-words");
+
+            no_words.innerHTML = "whatever word this is, we don't have it."
+
+            document.getElementById("words").appendChild(no_words);
     }
 }
 
