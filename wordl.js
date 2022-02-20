@@ -1,10 +1,10 @@
 var word_length = 5;
 var guesses = 6;
 
-const correct_color = "rgb(106, 170, 100)";
-const wrong_spots_color = "rgb(201, 180, 88)";
-const incorrect_color = "rgb(120, 124, 126)"
-const ignore_color = "";
+const correct_color = "rgb(83, 141, 78)";
+const wrong_spots_color = "rgb(181, 159, 59)";
+const incorrect_color = "rgb(58, 58, 60)"
+const ignore_color = "rgb(255, 255, 255)";
 const colors = [correct_color, wrong_spots_color, incorrect_color, ignore_color];
 
 $(document).ready(function() {
@@ -44,12 +44,17 @@ $(document).ready(function() {
         let color = $(this).css("background-color");
         let new_color;
 
+        console.log(colors[3])
+        console.log($(this).css("background-color"))
+        $(this).css("color", "white");
 
-        if (color == colors[0]) new_color = colors[1];
+        if (color == colors[3]) new_color = colors[0];
+        else if (color == colors[0]) new_color = colors[1];
         else if (color == colors[1]) new_color = colors[2];
-        else if (color == colors[2]) new_color = colors[3];
-        else new_color = colors[0];
-
+        else {
+            new_color = colors[3];
+            $(this).css("color", "black");
+        }
         $(this).css("background-color", new_color);
     });
 

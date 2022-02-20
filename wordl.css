@@ -146,6 +146,8 @@ form {
     border-radius: 0;
     border: 1px solid gray;
     touch-action: manipulation;
+    color: black;
+    background-color: white;
 }
 
 
