@@ -61,7 +61,6 @@ $(document).ready(function() {
 
     $(document).on('click', 'button.filter', function() {
         filterList();
-        $("#guess-word").focus();
     });
 
     $(document).on('click', '.remove', function() {
@@ -72,7 +71,6 @@ $(document).ready(function() {
         }
 
         filterList();
-        $("#guess-word").focus();
     });
 });
 
