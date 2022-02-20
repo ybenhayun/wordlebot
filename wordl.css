@@ -38,7 +38,6 @@ body {
 }
 
 #patterns {
-    /* width: min(630px, 100%); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,8 +68,6 @@ button:not(.guess-letter) {
 }
 
 #num_letters {
-    /* position: absolute; */
-    /* left: 1rem; */
     width: 15rem;
 }
 
@@ -97,7 +94,6 @@ button:not(.guess-letter) {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* width: min(400px, 100%); */
 }
 
 .guess {
@@ -182,10 +178,11 @@ form {
     text-align: center;
     font-size: 1.25rem;
     top: 0;
-    width: 100%;
+    width: 95%;
     margin: 0;
     height: 3.5rem;
     border-bottom: solid 1px black;
+    margin: auto;
 }
 
 #no-words {
@@ -203,7 +200,6 @@ form {
     display: inline;
     left: 1rem;
     position: absolute;
-    /* text-decoration: underline; */
     font-weight: bold;
 }
 
