@@ -18,12 +18,14 @@ $(document).ready(function() {
         $(".guess").remove();
         $(".guess-buttons").remove();
         filterList();
+        $("#guess-word").focus();
     });
 
     $("#num_letters").on('input', function() {
         setLength();
         makeTables();
         filterList();
+        $("#guess-word").focus();
     });
 
     $("#enter-guesses").submit(function(e) {
@@ -69,6 +71,7 @@ $(document).ready(function() {
         }
 
         filterList();
+        $("#guess-word").focus();
     });
 });
 
