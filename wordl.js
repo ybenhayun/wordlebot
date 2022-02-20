@@ -34,7 +34,7 @@ $(document).ready(function() {
         e.preventDefault();
         var val = $("#guess-word").val();
         makeTables(val);
-        // $(".guess-letter").css('background-color', incorrect_color);
+        if (val.length == word_length) $("#guess-word").blur();
 
         if (word_length == 11) {
             $(".guess-letter").css('font-size', '1rem');
