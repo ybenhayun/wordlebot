@@ -1,8 +1,8 @@
 :root {
     --correct-color: #6AAA64;
     --wrong-spots-color: #C9B458;
-    --incorrect-color: #787C7E;
-    --input-color: white;
+    --incorrect-color: rgb(58, 58, 60);
+    --input-color: gray;
 }
 
 html {
@@ -117,7 +117,7 @@ form {
 }
 
 #guess-word {
-    background-color: var(--incorrect-color);
+    background-color: var(--input-color);
     caret-color: white;
     border: solid 1px black;
     position: absolute;
@@ -148,8 +148,8 @@ form {
     border-radius: 0;
     border: 1px solid gray;
     touch-action: manipulation;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: rgb(58, 58, 60);
 }
 
 

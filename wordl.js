@@ -5,7 +5,7 @@ const correct_color = "rgb(83, 141, 78)";
 const wrong_spots_color = "rgb(181, 159, 59)";
 const incorrect_color = "rgb(58, 58, 60)"
 const ignore_color = "rgb(255, 255, 255)";
-const colors = [correct_color, wrong_spots_color, incorrect_color, ignore_color];
+const colors = [incorrect_color, correct_color, wrong_spots_color, ignore_color];
 
 $(document).ready(function() {
     setLength();
@@ -34,6 +34,7 @@ $(document).ready(function() {
         e.preventDefault();
         var val = $("#guess-word").val();
         makeTables(val);
+        // $(".guess-letter").css('background-color', incorrect_color);
 
         if (word_length == 11) {
             $(".guess-letter").css('font-size', '1rem');
@@ -44,8 +45,6 @@ $(document).ready(function() {
         let color = $(this).css("background-color");
         let new_color;
 
-        console.log(colors[3])
-        console.log($(this).css("background-color"))
         $(this).css("color", "white");
 
         if (color == colors[3]) new_color = colors[0];
@@ -95,13 +94,18 @@ function makeTables(val) {
     }
 
     document.getElementById("guess-word").value = "";
+
+
+    var letters = document.getElementsByClassName("guess-letter");
+    for (let i = Math.max(0, letters.length - word_length); i < letters.length; i++) {
+        document.getElementsByClassName("guess-letter")[i].style.backgroundColor = incorrect_color;
+    }
 }
 
 function setLength() {
     word_length = document.getElementById("num_letters").value;
 
     document.getElementById('guess-word').setAttribute('maxlength', word_length); 
-    // document.getElementById('guess-word').setAttribute('minlength', word_length); 
     document.getElementById('guess-word').value = "";
     document.getElementById('patterns').innerHTML = "";
 
@@ -135,7 +139,6 @@ function filterList() {
         
         updateLists(sorted, full_list);
     } else {
-            // document.getElementsByClassName("word-list")[0].innerHTML = "whatever word this is, we don't have it.";
             var no_words = document.createElement("div");
             no_words.setAttribute("id", "no-words");
 
@@ -196,7 +199,6 @@ function bestLetters(list) {
         checked = [];
         for (var j = 0; j < word_length; j++) {
             c = list[i].charAt(j);
-            // console.log(c);
 
             alphabet[c][j]++;
 
@@ -266,7 +268,6 @@ function sortList(list, alphabet, sorted_list) {
 }
 
 function useTop(sorted, full_list) {
-    // if (sorted.length <= 2) return sorted;
     var list_size = sorted.length;
 
     var check_list = sorted.slice(0, 250);
@@ -335,7 +336,6 @@ function useTop(sorted, full_list) {
     }
 
     best_words.sort((a, b) => a.rank >= b.rank ? 1 : -1);
-    // console.log(best_words);
 
     return best_words;
 }
@@ -411,7 +411,7 @@ function wrongLetters(list, all_letters) {
             }
         }
     }
-
+    
     for (let i = 0; i < all_letters.length; i++) {
         var hash = parseInt(i/word_length) + " " + all_letters[i].innerHTML;
 
