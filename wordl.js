@@ -18,21 +18,20 @@ $(document).ready(function() {
         filterList();
     });
 
-    $("#num_letters").change(function() {
+    $("#num_letters").on('input', function() {
         setLength();
         makeTables();
         filterList();
 
     });
     
-    $("#enter-guesses").submit(function(e) {
+    $("#enter-guesses").on('input', function(e) {
         e.preventDefault();
         var val = $("#guess-word").val();
         makeTables(val);
 
         if (word_length == 11) {
             $(".guess-letter").css('font-size', '1rem');
-            console.log($(".guess-letter").css("font-size"));
         }
     });
 
@@ -65,33 +64,34 @@ $(document).ready(function() {
 });
 
 function makeTables(val) {
-    document.getElementById("guess-word").value = "";
-
+    
     if (!words.includes(val)) return;
-
+    
     let buttons = document.getElementsByClassName("guess-buttons");
     if (buttons.length > 0) buttons[0].remove();
-
+    
     if (val) {
         var guess = "<div class = guess>"
-
+        
         for (let i = 0; i < word_length; i++) {
             guess += "<button class = guess-letter>" + val[i] + "</button>"
         }
-
+        
         guess += "</div><div class = 'guess-buttons'><button class = 'filter'>Filter list</button>"
         guess += "<button class = 'remove'>Go Back</button>"
-
+        
         guess += "</div>"
         document.getElementById("patterns").innerHTML += guess;
     }
+
+    document.getElementById("guess-word").value = "";
 }
 
 function setLength() {
     word_length = document.getElementById("num_letters").value;
 
     document.getElementById('guess-word').setAttribute('maxlength', word_length); 
-    document.getElementById('guess-word').setAttribute('minlength', word_length); 
+    // document.getElementById('guess-word').setAttribute('minlength', word_length); 
     document.getElementById('guess-word').value = "";
     document.getElementById('patterns').innerHTML = "";
 
@@ -208,19 +208,15 @@ function bestLetters(list) {
         let letter = "<div class = 'letter-ranking'><div class = 'letter'>" + letters_ranked[c].letter + "</div>";
         let score = "<div class = 'frequency'>" + freq + "%</div></div>";
 
-        document.getElementsByClassName('best-letters')[0].innerHTML += "<li>" + letter + score + "</li>";
-
+        if (freq == 0) {
+            break;
+        } else document.getElementsByClassName('best-letters')[0].innerHTML += "<li>" + letter + score + "</li>";
+        
         if (freq != 100) {
-            if (letters_ranked[most_frequent].score != 0) {
-                var red = 0 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
-                var green = 0 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
-                var blue = 200 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
-            } else {
-                var red = 0;
-                var green = 0;
-                var blue = 0;
-            }
-
+            var red = 0 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
+            var green = 0 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
+            var blue = 200 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
+            
             document.getElementsByClassName('letter-ranking')[c].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
         } else {
             most_frequent++;
@@ -264,8 +260,13 @@ function useTop(sorted, full_list) {
     var list_size = sorted.length;
 
     var check_list = sorted.slice(0, 250);
-    check_list = check_list.concat(full_list.slice(0, check_list.length));
-    
+
+    if (list_size <= 250) {
+        check_list = check_list.concat(full_list);
+    } else {
+        check_list = check_list.concat(full_list.slice(0, 250));
+    }
+
     var checked = [];
     for (let i = 0; i < check_list.length; i++) {
         if (checked[check_list[i].word]) {
