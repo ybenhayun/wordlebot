@@ -1,98 +1,111 @@
 var word_length = 5;
 var guesses = 6;
 
+const correct_color = "rgb(106, 170, 100)";
+const wrong_spots_color = "rgb(201, 180, 88)";
+const incorrect_color = "rgb(120, 124, 126)"
+const ignore_color = "";
+const colors = [correct_color, wrong_spots_color, incorrect_color, ignore_color];
+
 $(document).ready(function() {
     setLength();
     makeTables();
     filterList();
 
     $("#reset").click(function() {
-        $('input').not("#myRange").val('');
+        $(".guess").remove();
+        $(".guess-buttons").remove();
         filterList();
     });
 
     $("#num_letters").change(function() {
-        changeLength();
         setLength();
         makeTables();
         filterList();
+
+    });
+    
+    $("#enter-guesses").submit(function(e) {
+        e.preventDefault();
+        var val = $("#guess-word").val();
+        makeTables(val);
+
+        if (word_length == 11) {
+            $(".guess-letter").css('font-size', '1rem');
+            console.log($(".guess-letter").css("font-size"));
+        }
     });
 
-    $(document).on('keyup', 'input', function(e) {
-        if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) return; 
-        if (this.value.length == this.maxLength) {   //entered input
-            $(this).parent().next("td").find("input").focus();      
-        }
+    $(document).on('click', 'button.guess-letter', function() {
+        let color = $(this).css("background-color");
+        let new_color;
 
+
+        if (color == colors[0]) new_color = colors[1];
+        else if (color == colors[1]) new_color = colors[2];
+        else if (color == colors[2]) new_color = colors[3];
+        else new_color = colors[0];
+
+        $(this).css("background-color", new_color);
+    });
+
+    $(document).on('click', 'button.filter', function() {
         filterList();
     });
 
-    $(document).on('keydown', 'input', function(e) {
-        if (e.which == 8) {   //backspace
-            if (this.value.length == 0) $(this).parent().prev("td").find("input").focus();
-            else { 
-                if (this.value.length == this.maxLength) this.value = '';
-                filterList();
-            }
-        } else if (e.which == 39) {   //right
-            $(this).parent().next("td").find("input").focus();      
-        } else if (e.which == 37) {   //left
-            $(this).parent().prev("td").find("input").focus();      
-        } else if (e.which == 38) {   //up
-            var col = $(this).parent().index();
-            $(this).parent().parent().prev("tr").children().eq(col).find("input").focus();      
-        } else if (e.which == 40) {   //down
-            var col = $(this).parent().index();
-            $(this).parent().parent().next("tr").children().eq(col).find("input").focus();      
-        } 
-    });
+    $(document).on('click', '.remove', function() {
+        $(".guess:last").remove();
 
+        if ($(".guess").length == 0) {
+            $(".guess-buttons").remove();
+        }
+    })
 });
 
-function makeTables() {
-    var correct_letters = "<table><tr>";
+function makeTables(val) {
+    document.getElementById("guess-word").value = "";
 
-    for(var i = 0; i < word_length; i++){
-        correct_letters += "<td><input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' maxlength = '1 size = '1'></td>";
-    }
+    if (!words.includes(val)) return;
 
-    correct_letters +=  '</tr></table>';
-    document.getElementById("correct").getElementsByTagName("table")[0].innerHTML = correct_letters;
+    let buttons = document.getElementsByClassName("guess-buttons");
+    if (buttons.length > 0) buttons[0].remove();
 
-    var wrong_spots = "<table>";
+    if (val) {
+        var guess = "<div class = guess>"
 
-    for (var i = 0; i < guesses; i++) {
-        wrong_spots += '<tr>';
-        for (var j = 0; j < word_length; j++) {
-            wrong_spots += "<td><input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' maxlength = '1 size = '1'></td>";
+        for (let i = 0; i < word_length; i++) {
+            guess += "<button class = guess-letter>" + val[i] + "</button>"
         }
-        wrong_spots += '</tr>';
+
+        guess += "</div><div class = 'guess-buttons'><button class = 'filter'>Filter list</button>"
+        guess += "<button class = 'remove'>Go Back</button>"
+
+        guess += "</div>"
+        document.getElementById("patterns").innerHTML += guess;
     }
-    wrong_spots += '</table>';
-
-    document.getElementById("wrong_spots").getElementsByTagName("table")[0].innerHTML = wrong_spots;
-    document.getElementById("incorrect").getElementsByTagName("table")[0].innerHTML = 
-    "<table><tr><td><input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' size = '1'></td></tr>";
 }
-
-function changeLength() {
-    word_length = document.getElementById("num_letters").value;
-}
-
 
 function setLength() {
+    word_length = document.getElementById("num_letters").value;
+
+    document.getElementById('guess-word').setAttribute('maxlength', word_length); 
+    document.getElementById('guess-word').setAttribute('minlength', word_length); 
+    document.getElementById('guess-word').value = "";
+    document.getElementById('patterns').innerHTML = "";
+
     common = common_words.filter((element) => {return element.length == word_length});
     words = big_list.filter((element) => {return element.length == word_length; });
+
+    document.getElementById('word-length').innerHTML = "currently solving " + word_length + " letter words.";
 }
 
 function filterList() {
-    // let list_size = 25;
+    var letters = document.getElementsByClassName("guess-letter");
     var filtered = common.slice();
-    filtered = filtered.map(function(x){ return x; })
 
-    wrongSpots(filtered);
-    correctLetters(filtered);
-    wrongLetters(filtered);
+    correctLetters(filtered, letters);
+    wrongSpots(filtered, letters);
+    wrongLetters(filtered, letters);
 
     if (filtered.length) {
 
@@ -106,58 +119,40 @@ function filterList() {
         
         updateLists(sorted, full_list);
     } else {
-            document.getElementById("list").innerHTML = "whatever word this is, we don't have it.";
-            document.getElementById("newlist").innerHTML = "whatever word this is, we don't have it.";
+            document.getElementById("words").innerHTML = "whatever word this is, we don't have it.";
     }
 }
 
 function updateLists(sorted, full_list) {
-    var list_size = 25;
+    var list_size = 10;
 
-    document.getElementById("count").innerHTML = sorted.length + " possible word" + (sorted.length != 1 ? "s" : "") + "."
-    document.getElementById("list").innerHTML = "";
-
+    document.getElementById("words-left").getElementsByTagName("h2")[0].innerHTML = sorted.length + " possible word" + (sorted.length != 1 ? "s" : "");
+    
     var fully_sorted = [];
     for (let i = 0; i < full_list.length; i++) {
         if (sorted.filter(e => e.word == full_list[i].word).length > 0) {
             fully_sorted.push(full_list[i]);
         }
     }
-
+    
     sorted = fully_sorted;
     
-    var best_word = sorted[0].rank;
-
-    for (var i = 0; i < sorted.length && i < list_size; i++) { 
-        if (sorted[i].rank == best_word) document.getElementById("list").innerHTML += "<span class = 'best_word'>" + sorted[i].word + "</span>";
-        else break;
-        
-        if (i < sorted.length - 1) document.getElementById("list").innerHTML += ", ";
-    }
-    
-    for (var j = i; j < sorted.length && j < list_size; j++) {
-        document.getElementById("list").innerHTML += sorted[j].word; 
-        if (j < sorted.length - 1) document.getElementById("list").innerHTML += ", ";
+    var best_guesses = "";
+    for (let i = 0; i < sorted.length && i < list_size; i++) {
+        let word = "<div class = 'suggestion'>" + full_list[i].word + ": </div>";
+        let score = "<div class = 'score'>" + full_list[i].rank.toFixed(2) + "</div>";
+        best_guesses += "<li>" + word + score + "</li>";
     }
 
-    if (sorted.length > list_size) document.getElementById("list").innerHTML += "..."
-
-    var best_word = full_list[0].rank;
-
-    document.getElementById("newlist").innerHTML = "";
-    for (var i = 0; i < full_list.length && i < 20; i++) { 
-        if (full_list[i].rank == best_word) document.getElementById("newlist").innerHTML += "<span class = 'best_word'>" + full_list[i].word + "</span>";
-        else break;
-        
-        if (i < full_list.length - 1) document.getElementById("newlist").innerHTML += ", ";
-    }
-    
-    for (var j = i; j < full_list.length && j < 20; j++) {
-        document.getElementById("newlist").innerHTML += full_list[j].word; 
-        if (j < full_list.length - 1) document.getElementById("newlist").innerHTML += ", ";
+    var words_left = "";
+    for (let i = 0; i < sorted.length && i < list_size; i++) {
+        let word = "<div class = 'suggestion'>" + sorted[i].word + ": </div>";
+        let score = "<div class = 'score'>" + sorted[i].rank.toFixed(2) + "</div>";
+        words_left += "<li>" + word + score + "</li>";
     }
 
-    if (full_list.length > 20) document.getElementById("newlist").innerHTML += "..."
+    document.getElementById("best-guesses").getElementsByTagName("ul")[0].innerHTML = best_guesses;
+    document.getElementById("words-left").getElementsByTagName("ul")[0].innerHTML = words_left;
 }
 
 function bestLetters(list) {
@@ -193,9 +188,31 @@ function bestLetters(list) {
     }
 
     letters_ranked.sort((a, b) => (a.score <= b.score) ? 1 : -1);
-    document.getElementById('best').innerHTML = "";
+    document.getElementsByClassName('best-letters')[0].innerHTML = "";
+    var most_frequent = 0;
+
     for (var c = 0; c < 26; c++) {
-        document.getElementById('best').innerHTML += "<li>" + letters_ranked[c].letter + ":   " + parseFloat(letters_ranked[c].score/list.length*100).toFixed(1) + "%</li>";
+        let freq = parseFloat(letters_ranked[c].score/list.length*100).toFixed(2);
+        let letter = "<div class = 'letter-ranking'><div class = 'letter'>" + letters_ranked[c].letter + "</div>";
+        let score = "<div class = 'frequency'>" + freq + "%</div></div>";
+
+        document.getElementsByClassName('best-letters')[0].innerHTML += "<li>" + letter + score + "</li>";
+
+        if (freq != 100) {
+            if (letters_ranked[most_frequent].score != 0) {
+                var red = 0 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
+                var green = 0 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
+                var blue = 200 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
+            } else {
+                var red = 0;
+                var green = 0;
+                var blue = 0;
+            }
+
+            document.getElementsByClassName('letter-ranking')[c].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+        } else {
+            most_frequent++;
+        }        
     }
 
     return alphabet;
@@ -204,12 +221,11 @@ function bestLetters(list) {
 function sortList(list, alphabet, sorted_list) {
     if (!list.length) return [];
 
-    newranks = [];
+    var newranks = [];
 
     list.forEach(function(w) {
         newranks.push({word: w, rank: 0});
     });
-
 
     checked = [];
 
@@ -232,7 +248,7 @@ function sortList(list, alphabet, sorted_list) {
 }
 
 function useTop(sorted, full_list) {
-    if (sorted.length <= 2) return sorted;
+    // if (sorted.length <= 2) return sorted;
     var list_size = sorted.length;
 
     var check_list = sorted.slice(0, 250);
@@ -296,8 +312,7 @@ function useTop(sorted, full_list) {
     }
 
     best_words.sort((a, b) => a.rank >= b.rank ? 1 : -1);
-
-    console.log(best_words);
+    // console.log(best_words);
 
     return best_words;
 }
@@ -357,12 +372,95 @@ function count(string, char) {
     return count;
 }
 
-function wrongLetters(list) {
-    var letters = document.getElementById("incorrect").getElementsByTagName("table")[0].rows[0].cells[0].children[0].value;
-    
-    for (var i = 0; i < list.length; i++) {
-        for (var j = 0; j < letters.length; j++) {
-            if (list[i].includes(letters.charAt(j))) {
+function wrongLetters(list, all_letters) {
+    var wrong_letters = [];
+    var doubles = [];
+    var wrong_spots = [];
+
+    for (let i = 0; i < all_letters.length; i++) {
+        var hash = parseInt(i/word_length) + " " + all_letters[i].innerHTML;
+        
+        if (all_letters[i].style.backgroundColor == wrong_spots_color || all_letters[i].style.backgroundColor == correct_color) {
+            if (doubles[hash] == null) {
+                doubles[hash] = 1;
+            } else {
+                doubles[hash]++;
+            }
+        }
+    }
+
+    for (let i = 0; i < all_letters.length; i++) {
+        var hash = parseInt(i/word_length) + " " + all_letters[i].innerHTML;
+
+        if (all_letters[i].style.backgroundColor == incorrect_color) {
+            if (doubles[hash] != null) {
+                wrong_spots.push({char: all_letters[i].innerHTML, index: i%word_length, count: doubles[hash]});
+            } else {   
+                wrong_letters.push(all_letters[i].innerHTML);
+            }
+        }
+    }
+
+    outer:
+    for (let i = 0; i < list.length; i++) {
+        for (let j = 0; j < wrong_spots.length; j++) {
+            let pos = wrong_spots[j].index;
+            let c = wrong_spots[j].char;
+
+            if (list[i].charAt(pos) == c || count(list[i], c) > wrong_spots[j].count) {
+                list.splice(i, 1);
+                i--;
+                continue outer;
+            }
+        }
+
+        if (wrong_letters.some(r => list[i].includes(r))) {
+            list.splice(i, 1);
+            i--;
+        }
+    }
+}
+
+function wrongSpots(list, all_letters) {
+    var wrong_spots = [];
+    var char_repeating = [];
+
+    for (let i = 0; i < all_letters.length; i++) {
+        if (i % word_length == 0) var repeated = [];
+
+        if (all_letters[i].style.backgroundColor == wrong_spots_color) {
+            wrong_spots.push({char: all_letters[i].innerHTML, index: i%word_length});
+
+            if (repeated[all_letters[i].innerHTML]) {
+                char_repeating[all_letters[i].innerHTML]++;
+            } else {
+                char_repeating[all_letters[i].innerHTML] = 1;
+                repeated[all_letters[i].innerHTML] = true;
+            }      
+        }
+
+        else if (all_letters[i].style.backgroundColor == correct_color) {
+            if (repeated[all_letters[i].innerHTML]) {
+                char_repeating[all_letters[i].innerHTML]++;
+            } else {
+                char_repeating[all_letters[i].innerHTML] = 1;
+                repeated[all_letters[i].innerHTML] = true;
+            }
+        }
+    }    
+
+    for (let i = 0; i < list.length; i++) {
+        for (let j = 0; j < wrong_spots.length; j++) {
+            let pos = wrong_spots[j].index;
+            let c = wrong_spots[j].char;
+
+            if (count(list[i], c) < char_repeating[c]) {
+                list.splice(i, 1);
+                i--;
+                break;
+            }
+
+            if (list[i].charAt(pos) == c) {
                 list.splice(i, 1);
                 i--;
                 break;
@@ -371,54 +469,24 @@ function wrongLetters(list) {
     }
 }
 
-function wrongSpots(list) {
-    var table = document.getElementById("wrong_spots").getElementsByTagName("table")[0];
-    var letters = [];
+function correctLetters(list, all_letters) {
+    var correct_letters = [];
 
-    for (var i = 0; i < guesses; i++) {
-        for (var j = 0; j < word_length; j++) {
-            var char = table.rows[i].cells[j].children[0].value;
-            if (char != '') letters.push({letter:char, place:j});
+    for (let i = 0; i < all_letters.length; i++) {
+        if (all_letters[i].style.backgroundColor == correct_color) {
+            correct_letters.push({char: all_letters[i].innerHTML, index: i%word_length});
         }
-    }
+    }    
 
-    if (letters.length) {
-        for (var i = 0; i < list.length; i++) {
-            for (var j = 0; j < letters.length; j++) {
-                if (!list[i].includes(letters[j].letter)) {
-                    list.splice(i, 1);
-                    i--;
-                    break;
-                }
+    for (let i = 0; i < list.length; i++) {
+        for (let j = 0; j < correct_letters.length; j++) {
+            let pos = correct_letters[j].index;
+            let c = correct_letters[j].char;
 
-                if (list[i].charAt(letters[j].place) == letters[j].letter) {
-                    list.splice(i, 1);
-                    i--;
-                    break;
-                }
-            }        
-        }
-    }
-}
-
-function correctLetters(list) {
-    var table = document.getElementById("correct").getElementsByTagName("table")[0];
-    var letters = [];
-
-    for (var i = 0; i < word_length; i++) {
-        letters.push(table.rows[0].cells[i].children[0].value); //first column
-    }
-
-    if (letters.some(element => element != '')) {
-        for (var i = 0; i < list.length; i++) {
-            for (var j = 0; j < word_length; j++) {
-                if (letters[j] != '') {
-                    if (letters[j] != list[i].charAt(j)) { 
-                        list.splice(i, 1);
-                        i--;
-                        break;
-                    }
-                }
+            if (list[i].charAt(pos) != c) {
+                list.splice(i, 1);
+                i--;
+                break;
             }
         }
     }

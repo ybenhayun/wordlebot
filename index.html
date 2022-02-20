@@ -17,31 +17,43 @@
 </head>
 <body>
     <div id = "container">
-
-        
-        <div id = "words">
-            <h2><span id = "count"></span></h2>
-            <p class = "top"> all possible words, based on your input, sorted by likelihood. the best ones are <span class="best_word">bolded</span></p>
-            <p id = "list"></p>
-            <h2>Best Words to Guess</h2>
-            <p class = "bottom">these are the words most likely to give you additional information, ignoring your input. the best ones are <span class="best_word">bolded</span></p>
-            <p id = "newlist"></p>
+        <div id="header">
+            <h1>Wordle Calcle</h1>
+            <h3 id="word-length">hello</h3>
         </div>
         
-        <div id="guesses">
+        <div id = "guesses">
             <div id = "slider">
                 <input type = "range" min="4" max="11" value = "5" class="slider" id = "num_letters">
+                
+                <button id="reset">Reset</button>
             </div>
             
-            <div id = "correct"><h2>CORRECT LETTERS</h2><table></table></div>
-            <div id = "wrong_spots"><h2>WRONG SPOTS</h2><table></table></div>
-            <div id = "incorrect"><h2>WRONG LETTERS</h2><table></table></div>
-            
-            <button id="reset">RESET</button>
+            <form id = "enter-guesses">
+                <input type="text" value = "guess" autocomplete="off" id="guess-word" name="guess-word" 
+                input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
+                <input type="submit" value="Enter Guess">
+            </form> 
+            <div id = "patterns"></div>
         </div>
-        
-        <div id = "letters"><h2>Most Common Letters</h2><ul id = "best"></ul></div>
 
+        <div id = "words">
+            <div id = 'best-guesses'>
+                <h2 class = 'title'>Best Words<br> to Guess</h2>
+                <ul class ='word-list'></ul>
+            </div>
+
+            <div id = 'words-left'>
+                <h2 class = 'title'></h2>
+                <ul class = "word-list"></ul>
+            </div>
+
+        </div>
+
+        <div id = "letters">
+            <h2>Most Common Letters</h2>
+            <ul class = "best-letters"></ul>
+        </div>
     </div> 
 </body>
 </html>
