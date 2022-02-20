@@ -33,7 +33,7 @@
             </div>
             
             <form id = "enter-guesses">
-                <input type="text" autofocus value = "guess" autocomplete="off" id="guess-word" name="guess-word" 
+                <input type="text" value = "guess" autocomplete="off" id="guess-word" name="guess-word" 
                 input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
                 <!-- <input type="submit" value="Enter Guess"> -->
             </form> 

@@ -11,6 +11,8 @@ $(document).ready(function() {
     setLength();
     makeTables();
     filterList();
+    $("#guess-word").focus();
+
 
     $("#refresh").click(function() {
         $(".guess").remove();
@@ -63,7 +65,7 @@ $(document).ready(function() {
         }
 
         filterList();
-    })
+    });
 });
 
 function makeTables(val) {
@@ -136,8 +138,6 @@ function filterList() {
 
             document.getElementById("words").appendChild(no_words);
     }
-
-    document.getElementById("guess-word").focus();
 }
 
 function updateLists(sorted, full_list) {
