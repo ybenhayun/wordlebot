@@ -27,7 +27,7 @@ body {
     top: -2.5rem;
     position: relative;
     height: 90%;
-    width: min(900px, 100%);
+    width: min(675px, 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,8 +69,8 @@ button:not(.guess-letter), input {
 }
 
 #num_letters {
-    position: absolute;
-    left: 1rem;
+    /* position: absolute; */
+    /* left: 1rem; */
     width: 15rem;
 }
 
@@ -97,7 +97,7 @@ button:not(.guess-letter), input {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: min(630px, 100%);
+    width: min(400px, 100%);
 }
 
 .guess {
