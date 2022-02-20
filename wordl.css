@@ -24,14 +24,13 @@ body {
 }
 
 #container {
-    top: 0;
+    top: -2.5rem;
     position: relative;
     height: 90%;
     width: min(900px, 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    /* flex-direction: column; */
     flex-wrap: wrap;
     column-gap: 15px;
     margin: 0;
@@ -107,7 +106,6 @@ button:not(.guess-letter), input {
     align-items: center;
     width: min(630px, 100%);
     flex-wrap: wrap;
-    /* column-gap: .5rem; */
     margin-bottom: .5rem;
 }
 
@@ -149,7 +147,7 @@ form {
     margin-top: .5rem;
     display: flex;
     border: solid 1px black;
-    width: min(630px, 100%);
+    width: min(630px, 95%);
     margin: 0;
     position: relative;
 }
