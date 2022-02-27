@@ -91,7 +91,7 @@ button:not(.tile) {
     justify-content: center;
     align-items: center;
     width: min(630px, 100%);
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     /* margin-bottom: .5rem; */
 }
 
@@ -135,6 +135,13 @@ form {
     touch-action: manipulation;
     color: white;
     background-color: rgb(58, 58, 60);
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .normal {

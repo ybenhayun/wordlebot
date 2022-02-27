@@ -28,6 +28,7 @@ $(document).ready(function() {
 
     $("#num_letters").on('input', function() {
         setLength();
+        removeTest();
         makeTables();
         update(true);
         $("#guess-word").focus();
