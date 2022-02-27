@@ -181,7 +181,7 @@ function runBot(guess, hard_mode, remembers_words) {
         let n = wordleBot(guess, common[i], hard_mode, remembers_words);
         if (n == 7) {
             console.log(common[i]);
-            if (!hard_mode) clearInterval(iv);
+            // if (!hard_mode) clearInterval(iv);
         }
 
         sum += n;
