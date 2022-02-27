@@ -8,10 +8,11 @@ const ignore_color = "rgb(255, 255, 255)";
 const colors = [incorrect_color, correct_color, wrong_spots_color, ignore_color];
 const clr = {"G": correct_color, "Y": wrong_spots_color, "B": incorrect_color };
 
-var pairings = [];
+// var pairings = [];
 
 $(document).ready(function() {
     localStorage.clear();
+    pairings = [];
 
     setLength();
     makeTables();
@@ -165,12 +166,14 @@ function setupTest(word) {
         document.getElementById("test-settings").remove();
 
         runBot(word, hard_mode, remembers_words);
+        pairings = [];
     });
 }
 
 function runBot(guess, hard_mode, remembers_words) {
     const startTime = performance.now();
     const test_size = common.length - 1;
+    // const test_size = 200;
     const increment = 1;
     var sum = 0;
     var i = 0;
