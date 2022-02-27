@@ -6,44 +6,48 @@ const wrong_spots_color = "rgb(181, 159, 59)";
 const incorrect_color = "rgb(58, 58, 60)"
 const ignore_color = "rgb(255, 255, 255)";
 const colors = [incorrect_color, correct_color, wrong_spots_color, ignore_color];
+const clr = {"G": correct_color, "Y": wrong_spots_color, "B": incorrect_color };
+
+var pairings = [];
 
 $(document).ready(function() {
+    localStorage.clear();
+
     setLength();
     makeTables();
-    filterList();
+    update(true);
     $("#guess-word").focus();
 
-
     $("#refresh").click(function() {
-        $(".guess").remove();
-        $(".guess-buttons").remove();
-        filterList();
-        $("#guess-word").focus();
+        $("#patterns").html("");
+        removeTest();
+        update(true);
+        $(".submission").focus();
+        // precomputeDifferences();
     });
 
     $("#num_letters").on('input', function() {
         setLength();
         makeTables();
-        filterList();
+        update(true);
         $("#guess-word").focus();
     });
-
-    $("#enter-guesses").submit(function(e) {
-        e.preventDefault();
-    });
     
-    $("#enter-guesses").on('input', function(e) {
-        e.preventDefault();
+    $("#guess-word").on('input', function(e) {
         var val = $("#guess-word").val();
-        makeTables(val);
-        if (val.length == word_length) $("#guess-word").blur();
-
-        if (word_length == 11) {
-            $(".guess-letter").css('font-size', '1rem');
-        }
+        if (words.includes(val)) {
+            $("#guess-word").blur();
+            
+            removeTest();
+            makeTables(val);
+            
+            if (word_length == 11) {
+                $(".tile").css('font-size', '1rem');
+            }
+        } 
     });
 
-    $(document).on('click', 'button.guess-letter', function() {
+    $(document).on('click', 'button.tile', function() {
         let color = $(this).css("background-color");
         let new_color;
 
@@ -60,21 +64,282 @@ $(document).ready(function() {
     });
 
     $(document).on('click', 'button.filter', function() {
-        filterList();
+        update();
     });
 
     $(document).on('click', '.remove', function() {
         $(".guess:last").remove();
 
-        if ($(".guess").length == 0) {
+        var initial = false;
+        if (!$(".tile").length) {
             $(".guess-buttons").remove();
+            initial = true;
         }
 
-        filterList();
+        update(initial);
     });
+
+    $(document).on('click', 'button.test', function() {
+        var val = getWord();
+        setupTest(val);
+    });
+
+
 });
 
-function makeTables(val) {
+function getWord() {
+    let tiles = document.getElementsByClassName("tile");
+    var guess = "";
+
+    for (let i = 0; i < word_length; i++) {
+        guess += tiles[i].innerHTML;
+    }
+
+    return guess;
+}
+
+function precomputeDifferences() {
+    for (let i = 0; i < common_words.length; i++) {
+        if (!big_list.includes(common_words[i])) {
+            console.log(common_words[i]);
+            common_words.splice(i, 1);
+            i--;
+        }
+    }
+
+    console.log(common_words);
+}
+
+function removeTest() {
+    document.getElementById("results").classList.remove("testing");
+    document.getElementById("words").classList.remove("testing");
+    document.getElementById("words-left").classList.remove("testing");
+    document.getElementById("best-guesses").classList.remove("testing");
+    if (document.getElementById("summary")) document.getElementById("summary").remove();    
+}
+
+function setupTest(word) {
+    document.getElementById("results").classList.add("testing");
+    document.getElementById("words").classList.add("testing");
+    document.getElementById("words-left").classList.add("testing");
+    document.getElementById("best-guesses").classList.add("testing");
+
+    let guess_letters = document.getElementsByClassName("tile");
+
+    document.getElementsByClassName("current")[0].appendChild(
+        document.getElementById("patterns")
+    );
+
+    document.getElementsByClassName("guess-buttons")[0].remove();
+
+    var count = document.getElementsByClassName("count");
+    for (let i = 0; i < count.length; i++) {
+        count[i].innerHTML = "0";
+        document.getElementsByClassName("bar")[i].style.height = "1rem";
+    }
+
+    var tiles = document.getElementsByClassName("tile");
+    for (let i = 0; i < tiles.length; i++) {
+        tiles[i].classList.add("testing");
+    }
+
+    let new_form = document.createElement("div");
+    new_form.setAttribute("id", "test-settings");
+
+    var remembers = "<div><input type='checkbox' id='remembers' name='remembers'>"
+    remembers += "<label for='remembers'>Bot remembers previous answers</label><br>"
+    var hard = "<input type='checkbox' id='hard-mode' name='hard-mode'>"
+    hard += "<label for='hard-mode'>Bot plays hard mode</label></div>"
+    var submit_button = "<button class = 'bot'>Start WordleBot</button>"
+
+    new_form.innerHTML = remembers + hard + submit_button;
+
+    document.getElementById("results").appendChild(new_form);
+
+    document.getElementsByClassName("bot")[0].addEventListener("click", function() {
+
+        hard_mode = document.getElementById("hard-mode").checked;
+        remembers_words = document.getElementById("remembers").checked;
+
+        document.getElementById("test-settings").remove();
+
+        runBot(word, hard_mode, remembers_words);
+    });
+}
+
+function runBot(guess, hard_mode, remembers_words) {
+    const startTime = performance.now();
+    const test_size = common.length - 1;
+    const increment = 1;
+    var sum = 0;
+    var i = 0;
+    var count = 0;
+    var scores = new Array(7).fill(0);
+
+    var iv = setInterval(function() {
+        document.getElementById("patterns").innerHTML = "";
+        let n = wordleBot(guess, common[i], hard_mode, remembers_words);
+        if (n == 7) {
+            console.log(common[i]);
+            if (!hard_mode) clearInterval(iv);
+        }
+
+        sum += n;
+        scores[n-1] += 1;
+
+        let max = Math.max(...scores);
+
+        let points = document.getElementsByClassName("count");
+        let bars = document.getElementsByClassName("bar");
+        points[n-1].innerHTML = scores[n-1];
+        
+        for (let x = 0; x < bars.length; x++) {
+            bars[x].style.height = "calc(1rem + " + ((scores[x]/max)*100)*.33 + "%)";
+        }
+
+        document.getElementsByClassName("average")[0].innerHTML = "Average: " + parseFloat(sum/(count+1)).toFixed(3) + " guesses.";
+
+        if (!remembers_words) i += increment;
+        count++;
+
+        if (count > test_size) {
+            const endTime = performance.now();   
+            console.log((endTime - startTime)/1000 + " seconds");
+
+            document.getElementById("guesses").appendChild(
+                document.getElementById("patterns")
+            );
+            document.getElementById("patterns").innerHTML = "";
+
+            var average = parseFloat(sum/count).toFixed(3);
+            document.getElementsByClassName("average")[0].innerHTML = "";
+
+            var summary = guess + " solved all " + (test_size + 1) + " words with an average of " + average + " guesses per solve.";
+
+            document.getElementsByClassName("current")[0].innerHTML = "<div id = 'summary'>" + summary + "</div>";
+            clearInterval(iv);
+        }
+    }, 0);
+
+    let average = sum/test_size;
+
+    return average;
+}
+
+function wordleBot(guess, answer, hard_mode, remembers_words) {
+    var attempts = 1;
+    
+    while (attempts <= 6) {
+        makeTables(guess, "testing");
+        if (document.getElementsByClassName("guess-buttons").length) {
+            document.getElementsByClassName("guess-buttons")[0].remove();
+        }
+
+        var diff = getDifference(guess, answer);
+        var letters = document.getElementsByClassName("tile");
+        var pos = 0;
+        
+        for (let i = Math.max(0, letters.length - word_length); i < letters.length; i++) {
+            document.getElementsByClassName("tile")[i].style.backgroundColor = clr[diff[pos]];;
+            pos++;
+        }
+        
+        if (guess == answer || attempts == 6) {
+            if (remembers_words) common.splice(common.indexOf(answer), 1); // removes answer from list of possiblities
+            if (guess != answer) attempts++;
+            break;
+        }
+        
+        attempts++;
+        
+        var letters = document.getElementsByClassName("tile");
+        var list  = filterList(common.slice(), letters);
+        var full_list = words.slice();
+
+        if (hard_mode) {
+            full_list = filterList(full_list, letters);
+        } 
+        else {
+            if (list.length > 5) { 
+                var wrong_letters = getWrongLetters(letters);
+                full_list = removeWorthless(full_list, wrong_letters);
+            } 
+        }
+
+        const max_size = 300000
+        if (list.length * full_list.length > max_size) {
+            let small_size = max_size/full_list.length;
+            let big_size = max_size/list.length;
+
+            var alphabet = bestLetters(list);
+            
+            list = sortList(list, alphabet);
+            list = list.slice(0, small_size);
+            list = list.map(a => a.word);
+            
+            full_list = sortList(full_list, alphabet, list);
+            full_list = full_list.slice(0, big_size);
+            full_list = full_list.map(a => a.word);
+        }
+
+        full_list = useTop(list, full_list);
+
+        guess = full_list[0].word;    
+    }
+
+    return attempts;
+}
+
+function removeWorthless(list, wrong_letters) {
+    if (!list.length) return [];
+
+    outer:
+    for (let i = 0; i < list.length; i++) {
+        var word = list[i];
+
+        for (let j = 0; j < wrong_letters.length; j++) {
+            if (list[i].includes(wrong_letters[j])) {
+                list.splice(i, 1);
+                i--;
+                continue outer;
+            }
+        }
+    }
+
+    return list;
+}
+
+function getWrongLetters(all_letters) {
+    var wrong_letters = [];
+    var doubles = [];
+
+    for (let i = 0; i < all_letters.length; i++) {
+        var hash = parseInt(i/word_length) + " " + all_letters[i].innerHTML;
+        
+        if (all_letters[i].style.backgroundColor == wrong_spots_color || all_letters[i].style.backgroundColor == correct_color) {
+            if (doubles[hash] == null) {
+                doubles[hash] = 1;
+            } else {
+                doubles[hash]++;
+            }
+        }
+    }
+    
+    for (let i = 0; i < all_letters.length; i++) {
+        var hash = parseInt(i/word_length) + " " + all_letters[i].innerHTML;
+
+        if (all_letters[i].style.backgroundColor == incorrect_color) {
+            if (doubles[hash] == null) {
+                wrong_letters.push(all_letters[i].innerHTML);
+            }
+        }
+    }
+
+    return wrong_letters;
+}
+
+function makeTables(val, c) {
+    if (c == null) c = "normal";
     
     if (!words.includes(val)) return;
     
@@ -85,11 +350,12 @@ function makeTables(val) {
         var guess = "<div class = guess>"
         
         for (let i = 0; i < word_length; i++) {
-            guess += "<button class = guess-letter>" + val[i] + "</button>"
+            guess += "<button class = 'tile " + c + "'>" + val[i] + "</button>"
         }
         
         guess += "</div><div class = 'guess-buttons'><button class = 'filter'>Filter list</button>"
         guess += "<button class = 'remove'>Go Back</button>"
+        guess += "<button class = 'test'>Test</button>"
         
         guess += "</div>"
         document.getElementById("patterns").innerHTML += guess;
@@ -98,9 +364,9 @@ function makeTables(val) {
     document.getElementById("guess-word").value = "";
 
 
-    var letters = document.getElementsByClassName("guess-letter");
+    var letters = document.getElementsByClassName("tile");
     for (let i = Math.max(0, letters.length - word_length); i < letters.length; i++) {
-        document.getElementsByClassName("guess-letter")[i].style.backgroundColor = incorrect_color;
+        document.getElementsByClassName("tile")[i].style.backgroundColor = incorrect_color;
     }
 }
 
@@ -113,31 +379,27 @@ function setLength() {
 
     common = common_words.filter((element) => {return element.length == word_length});
     words = big_list.filter((element) => {return element.length == word_length; });
-
-    document.getElementById('word-length').innerHTML = "currently solving " + word_length + " letter words.";
 }
 
-function filterList() {
+function update(initial) {
     if (document.getElementById("no-words") != null) {
         document.getElementById("no-words").remove();
     }
 
-    var letters = document.getElementsByClassName("guess-letter");
-    var filtered = common.slice();
+    var letters = document.getElementsByClassName("tile");
+    var list = common.slice();
 
-    correctLetters(filtered, letters);
-    wrongSpots(filtered, letters);
-    wrongLetters(filtered, letters);
+    list = filterList(list, letters);
 
-    if (filtered.length) {
+    if (list.length) {
+        var alphabet = bestLetters(list);
+        updateLetterList(alphabet, list.length);
 
-        var alphabet = bestLetters(filtered);
-
-        var sorted = sortList(filtered, alphabet);
+        var sorted = sortList(list, alphabet);
         var newlist = words.slice();
         var full_list = sortList(newlist, alphabet, sorted);
 
-        full_list = useTop(sorted, full_list);
+        full_list = useTop(sorted.map(a => a.word), full_list.map(a => a.word), initial);
         
         updateLists(sorted, full_list);
     } else {
@@ -148,6 +410,16 @@ function filterList() {
 
             document.getElementById("words").appendChild(no_words);
     }
+
+    return full_list;
+}
+
+function filterList(list, letters) {
+    correctLetters(list, letters);
+    wrongSpots(list, letters);
+    wrongLetters(list, letters);
+
+    return list;
 }
 
 function updateLists(sorted, full_list) {
@@ -186,7 +458,6 @@ function bestLetters(list) {
     if (!list.length) return [];
 
     var alphabet = [];
-    var letters_ranked = [];
 
     for (var c = 65; c <= 90; c++) {
         alphabet[String.fromCharCode(c)] = [];
@@ -209,16 +480,23 @@ function bestLetters(list) {
         }
     }
 
+    return alphabet;
+}
+
+function updateLetterList(alphabet, list_size) {
+    var letters_ranked = [];
+
     for (var i = 0; i < 26; i++) {
         letters_ranked.push({letter:String.fromCharCode(i+65), score:alphabet[String.fromCharCode(i+65)][word_length]});
     }
 
     letters_ranked.sort((a, b) => (a.score <= b.score) ? 1 : -1);
+
     document.getElementsByClassName('best-letters')[0].innerHTML = "";
     var most_frequent = 0;
 
     for (var c = 0; c < 26; c++) {
-        let freq = parseFloat(letters_ranked[c].score/list.length*100).toFixed(2);
+        let freq = parseFloat(letters_ranked[c].score/list_size*100).toFixed(2);
         let letter = "<div class = 'letter-ranking'><div class = 'letter'>" + letters_ranked[c].letter + "</div>";
         let score = "<div class = 'frequency'>" + freq + "%</div></div>";
 
@@ -227,17 +505,15 @@ function bestLetters(list) {
         } else document.getElementsByClassName('best-letters')[0].innerHTML += "<li>" + letter + score + "</li>";
         
         if (freq != 100) {
-            var red = 0 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
-            var green = 0 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
-            var blue = 200 * (freq/100 / (letters_ranked[most_frequent].score/list.length));
+            var red = 0 * (freq/100 / (letters_ranked[most_frequent].score/list_size));
+            var green = 0 * (freq/100 / (letters_ranked[most_frequent].score/list_size));
+            var blue = 200 * (freq/100 / (letters_ranked[most_frequent].score/list_size));
             
             document.getElementsByClassName('letter-ranking')[c].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
         } else {
             most_frequent++;
         }        
     }
-
-    return alphabet;
 }
 
 function sortList(list, alphabet, sorted_list) {
@@ -259,7 +535,6 @@ function sortList(list, alphabet, sorted_list) {
 
             if (checked[i + " " + newranks[i].word.charAt(j)] == true) continue;  //no extra credit to letters with doubles
             newranks[i].rank += alphabet[newranks[i].word.charAt(j)][word_length];
-            // newranks[i].rank += alphabet[newranks[i].word.charAt(j)][j];    // makes TARES top word
             checked[i + " " + newranks[i].word.charAt(j)] = true;
         }
     }
@@ -269,77 +544,87 @@ function sortList(list, alphabet, sorted_list) {
     return newranks;
 }
 
-function useTop(sorted, full_list) {
-    var list_size = sorted.length;
+function useTop(filtered, full_list, initial) {
+    var list_size = filtered.length;
 
-    var check_list = sorted.slice(0, 250);
-
-    if (list_size <= 250) {
-        check_list = check_list.concat(full_list);
-    } else {
+    if (initial) {
+        var check_list = filtered.slice(0, 250);
         check_list = check_list.concat(full_list.slice(0, 250));
-    }
-
-    var checked = [];
-    for (let i = 0; i < check_list.length; i++) {
-        if (checked[check_list[i].word]) {
-            check_list.splice(i, 1);
-            i--;
-        } else {
-            checked[check_list[i].word] = true;
-        }
+    } else { 
+        var check_list = filtered;
+        check_list = check_list.concat(full_list);
     }
 
     var best_words = [];
+    var min = filtered.length;
 
+    outer:
     for (let pos = 0; pos < check_list.length; pos++) {
         var differences = [];
-        var compare = check_list[pos].word;
-        var max = 0;
-        for (let i = 0; i < sorted.length; i++) {
-            var diff = "";
-            for (let j = 0; j < word_length; j++) {
-                if (compare.charAt(j) == sorted[i].word.charAt(j)) {
-                    diff += "G";
-                } else if (!sorted[i].word.includes(compare.charAt(j))) {
-                    diff += "B";
-                } else {
-                    var c = compare.charAt(j);
-                    var w = sorted[i].word;
+        var compare = check_list[pos];
+        var weighted = 0;
 
-                    if (count(compare, c) == 1) {
-                        diff += "Y";
-                    } else if (count(compare, c) <= count(w, c)) {
-                        diff += "Y";
-                    } else {
-                        diff += compareDoubles(compare, w, c, j);
-                    }
-                }
-            }
+        for (let i = 0; i < filtered.length; i++) {
+            var s = filtered[i];
+            var diff = getDifference(compare, s);
 
             if (differences[diff] != null) {
                 differences[diff]++;
             } else {
                 differences[diff] = 1;
             }
+            let freq = differences[diff];
+            weighted += (freq/list_size)*freq - ((freq-1)/list_size)*(freq-1);
+            if (weighted > min) continue outer;
         }
 
-        var weighted = 0;
+        min = Math.min(weighted, min);
 
-        Object.keys(differences).forEach(function (key) { 
-            let probability = (differences[key]/list_size)*differences[key];
-            weighted += probability;
-
-            // max = Math.max(differences[key], max);
-        });
-
-        best_words.push({word: check_list[pos].word, rank: weighted});
-        // best_words.push({word: check_list[pos].word, rank: max});
+        best_words.push({word: compare, rank: weighted});
+        
+        if (weighted == 1) {
+            if (best_words.length >= filtered.length) break;
+        }
     }
 
     best_words.sort((a, b) => a.rank >= b.rank ? 1 : -1);
 
     return best_words;
+}
+
+function getDifference(word1, word2) {
+    if (pairings[word1] != null) {
+        if (pairings[word1][word2] != null) {
+            return pairings[word1][word2];
+        }
+    }
+
+    let diff = ""
+
+    for (let j = 0; j < word_length; j++) {
+        if (word1.charAt(j) == word2.charAt(j)) {
+            diff += "G";
+        } else if (!word2.includes(word1.charAt(j))) {
+            diff += "B";
+        } else {
+            let c = word1.charAt(j);
+
+            if (count(word1, c) <= count(word2, c)) {
+                diff += "Y";
+            } else {
+                diff += compareDoubles(word1, word2, c, j);
+            }
+        }
+    }
+
+    if (pairings[word1] != null) {
+        pairings[word1][word2] = diff;
+    } else {
+        pairings[word1] = [];
+        pairings[word1][word2] = diff;
+    }
+
+    return diff;
 }
 
 // pos is the position in the word the character is (ie: pos is 2 for 'a' and trap)
@@ -350,11 +635,11 @@ function compareDoubles(a, b, char, pos) {
 
     for (let i = 0; i < a_list.length; i++) {
         if (b_list.includes(a_list[i])) {
-            a_list.splice(i, 1);
-            i--;
-
             let index = b_list.indexOf(a_list[i]);
             b_list.splice(index, 1);
+
+            a_list.splice(i, 1);
+            i--;
         }
 
         if (b_list.length == 0) {
@@ -371,7 +656,7 @@ function compareDoubles(a, b, char, pos) {
         b_list.splice(i, 1);
         i--;
 
-        if (b_list.length == 0) break;
+        if (b_list.length == 0) return "B";
     }
 
     return "B";
@@ -444,35 +729,43 @@ function wrongLetters(list, all_letters) {
             i--;
         }
     }
+
+    return wrong_letters;
 }
 
 function wrongSpots(list, all_letters) {
     var wrong_spots = [];
     var char_repeating = [];
+    var repeated = [];
 
     for (let i = 0; i < all_letters.length; i++) {
-        if (i % word_length == 0) var repeated = [];
-
         if (all_letters[i].style.backgroundColor == wrong_spots_color) {
             wrong_spots.push({char: all_letters[i].innerHTML, index: i%word_length});
 
             if (repeated[all_letters[i].innerHTML]) {
-                char_repeating[all_letters[i].innerHTML]++;
+                repeated[all_letters[i].innerHTML]++;
             } else {
-                char_repeating[all_letters[i].innerHTML] = 1;
-                repeated[all_letters[i].innerHTML] = true;
+                repeated[all_letters[i].innerHTML] = 1;
             }      
         }
 
         else if (all_letters[i].style.backgroundColor == correct_color) {
             if (repeated[all_letters[i].innerHTML]) {
-                char_repeating[all_letters[i].innerHTML]++;
+                repeated[all_letters[i].innerHTML]++;
             } else {
-                char_repeating[all_letters[i].innerHTML] = 1;
-                repeated[all_letters[i].innerHTML] = true;
+                repeated[all_letters[i].innerHTML] = 1;
             }
         }
-    }    
+
+        if (i % word_length == word_length - 1) {
+            Object.keys(repeated).forEach(function(r) {
+                if (repeated[r] > char_repeating[r] || char_repeating[r] == null) {
+                    char_repeating[r] = repeated[r];
+                }
+            });
+            repeated = [];
+        }
+    }
 
     for (let i = 0; i < list.length; i++) {
         for (let j = 0; j < wrong_spots.length; j++) {
@@ -492,9 +785,11 @@ function wrongSpots(list, all_letters) {
             }
         }
     }
+
+    return list;
 }
 
-function correctLetters(list, all_letters) {
+function getCorrectLetters(all_letters) {
     var correct_letters = [];
 
     for (let i = 0; i < all_letters.length; i++) {
@@ -502,6 +797,12 @@ function correctLetters(list, all_letters) {
             correct_letters.push({char: all_letters[i].innerHTML, index: i%word_length});
         }
     }    
+
+    return correct_letters;
+}
+
+function correctLetters(list, all_letters) {
+    var correct_letters = getCorrectLetters(all_letters);
 
     for (let i = 0; i < list.length; i++) {
         for (let j = 0; j < correct_letters.length; j++) {
@@ -515,4 +816,6 @@ function correctLetters(list, all_letters) {
             }
         }
     }
+
+    return list;
 }

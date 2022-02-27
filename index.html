@@ -11,9 +11,10 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-  	<script type = "text/javascript" src = "wordl.js"></script>
-  	<script type = "text/javascript" src = "commonwords.js"></script>
+    <script type = "text/javascript" src = "wordl.js"></script>
     <script type = "text/javascript" src = "words.js"></script>
+    <script type = "text/javascript" src = "commonwords.js"></script>
+    <!-- <script type = "text/javascript" src = "officialanswers.js"></script> -->
 	<title>Wordl Calcl</title>
 </head>
 <body>
@@ -22,38 +23,55 @@
 
         <div id="header">
             <h1>Wordle Calcle</h1>
-            <h3 id="word-length">hello</h3>
+            <h3 id="word-length">
+                currently solving 
+                <select name="num_letters" id="num_letters">
+                    <option value="4">4</option>
+                    <option value="5" selected = "selected">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+                letter words
+            </h3>
         </div>
         
         <div id = "guesses">
-            <div id = "slider">
-                <input type = "range" min="4" max="11" value = "5" class="slider" id = "num_letters">
-                
-                <!-- <button id="reset">Reset</button> -->
-            </div>
-            
-            <form id = "enter-guesses">
-                <input type="text" value = "guess" autocomplete="off" id="guess-word" name="guess-word" 
-                input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
-                <!-- <input type="submit" value="Enter Guess"> -->
-            </form> 
+            <div class = "guess submission">
+                <input type="text" autocomplete="off" id="guess-word" name="guess-word" 
+                    input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
+            </div> 
             <div id = "patterns"></div>
         </div>
-
+            
         <div id = "words">
             <div id = 'best-guesses'>
                 <h2 class = 'title'>Best Words<br> to Guess</h2>
                 <ul class ='word-list'></ul>
             </div>
-
+                
             <div id = 'words-left'>
                 <h2 class = 'title'></h2>
                 <ul class = "word-list"></ul>
             </div>
+            <div id = "results">
+                <div class = "average"></div>
+                <div class = "current"></div>
 
+                <div class = "bar one"><span class = "num-guesses">1/6</span><span class = "count"></span></div>
+                <div class = "bar two"><span class = "num-guesses">2/6</span><span class = "count"></span></div>
+                <div class = "bar three"><span class = "num-guesses">3/6</span><span class = "count"></span></div>
+                <div class = "bar four"><span class = "num-guesses">4/6</span><span class = "count"></span></div>
+                <div class = "bar five"><span class = "num-guesses">5/6</span><span class = "count"></span></div>
+                <div class = "bar sixe"><span class = "num-guesses">6/6</span><span class = "count"></span></div>
+                <div class = "bar x"><span class = "num-guesses">X/6</span><span class = "count"></span></div> 
+            </div>
         </div>
 
-        <div id = "letters">
+        <div id = "letter-info">
             <h2>Most Common Letters</h2>
             <ul class = "best-letters"></ul>
         </div>
