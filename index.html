@@ -14,6 +14,7 @@
     <script type = "text/javascript" src = "wordl.js"></script>
     <script type = "text/javascript" src = "words.js"></script>
     <script type = "text/javascript" src = "commonwords.js"></script>
+    <script type = "text/javascript" src = "rankings.js"></script>
     <!-- <script type = "text/javascript" src = "officialanswers.js"></script> -->
 	<title>Wordl Calcl</title>
 </head>
@@ -26,14 +27,14 @@
             <h3 id="word-length">
                 currently solving 
                 <select name="num_letters" id="num_letters">
-                    <option value="4">4</option>
+                    <!-- <option value="4">4</option> -->
                     <option value="5" selected = "selected">5</option>
-                    <option value="6">6</option>
+                    <!-- <option value="6">6</option>
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
                     <option value="10">10</option>
-                    <option value="11">11</option>
+                    <option value="11">11</option> -->
                 </select>
                 letter words
             </h3>
@@ -48,15 +49,27 @@
         </div>
             
         <div id = "words">
-            <div id = 'best-guesses'>
-                <h2 class = 'title'>Best Words<br> to Guess</h2>
-                <ul class ='word-list'></ul>
+            <h2 class = 'title'></h2>
+            <h3 class = 'words-left'></h3> 
+            <select name="mode" id="mode">
+                <option value="normal" selected = "selected">Normal Mode</option>
+                <option value="hard">Hard Mode</option>
+            </select>
+            <div id = "answers">
+                <div class = 'best-guesses normal front'>
+                    <h3></h3>
+                    <ul class = 'word-list'></ul>
+                </div>
+
+                <div class = "best-guesses hard back">
+                    <!-- <h3>by lowest average score</h3>
+                    <ul class = 'word-list by-average'></ul>
+                    
+                    <h3>by fewest misses</h3>
+                    <ul class = 'word-list by-wrong'></ul> -->
+                </div>
             </div>
-                
-            <div id = 'words-left'>
-                <h2 class = 'title'></h2>
-                <ul class = "word-list"></ul>
-            </div>
+
             <div id = "results">
                 <div class = "average"></div>
                 <div class = "current"></div>

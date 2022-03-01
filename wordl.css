@@ -27,7 +27,7 @@ body {
     top: -2.5rem;
     position: relative;
     height: 90%;
-    width: min(675px, 100%);
+    width: min(450px, 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,8 +143,8 @@ form {
     justify-content: center;
     align-items: center;
 }
-
-.normal {
+ 
+.tile.normal {
     max-width: 3.5rem;
 }
 
@@ -153,30 +153,100 @@ form {
     max-width: 2rem;
 }
 
-
+/* 
 #words {
     margin-top: .5rem;
     display: flex;
     border: solid 1px black;
     width: min(630px, 95%);
+    height: 400px;
     margin: 0;
     position: relative;
     justify-content: center;
-}
+} */
 
 #words.testing {
-    height: 400px;
+    min-height: 400px;
 }
 
-#best-guesses, #words-left {
+/* #best-guesses, #words-left {
     position: relative;
     width: 50%;
+} */
+
+#mode {
+    position: absolute;
+    top: 1rem;
+    text-align: center;
 }
 
-#best-guesses {
+/* #best-guesses {
+    position: relative;
     background-color: lightblue;
+    width: max(100%, 40rem);
+} */
+
+.title {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: #fafafa;
+    width: 100%;
 }
 
+.words-left {
+    background: purple;
+    color: #fafafa;
+    text-align: center;
+    font-size: .75rem;
+}
+
+.best-guesses {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#answers {
+    position: relative;
+}
+
+.best-guesses.normal {
+    background: lightblue;
+    position: absolute;
+}
+
+.best-guesses.hard {
+    top: 0;
+    background: pink;
+}
+
+/* .best-guesses.testing {
+    background: black;
+    z-index: -1;
+} */
+
+.back {
+    z-index: -1;
+}
+
+.front {
+    z-index: 99;
+}
+
+#words {
+    margin-top: .5rem;
+    /* display: flex; */
+    border: solid 1px black;
+    width: min(630px, 95%);
+    margin: 0;
+    position: relative;
+    /* justify-content: center; */
+}
+
+
+/* 
 #words-left {
     background-color: pink;
 }
@@ -187,7 +257,7 @@ form {
 
 #best-guesses.testing {
     background-color: black;
-}
+} */
 
 #words h2 {
     display: flex;
@@ -196,7 +266,7 @@ form {
     text-align: center;
     font-size: 1.25rem;
     top: 0;
-    width: 95%;
+    width: 100%;
     margin: 0;
     height: 3.5rem;
     border-bottom: solid 1px black;
@@ -241,7 +311,10 @@ form {
     margin-top: 2rem;
 }
 
-select {
+#mode {
+    position: absolute;
+    top: 0;
+    margin: auto;
 }
 
 .average {
@@ -314,6 +387,7 @@ input[type=submit] {
 }
 
 ul {
+    margin: 0;
     padding: 0;
     list-style: none;
     margin-bottom: 0;
