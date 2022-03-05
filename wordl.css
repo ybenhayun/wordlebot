@@ -45,7 +45,6 @@ body {
     width: 95%;
 }
 
-
 button:not(.tile) {
     border: none;
     border-radius: 0;
@@ -109,7 +108,6 @@ form {
     font-size: 1.2rem;
     width: min(95%, 10rem);
     text-align: center;
-    margin-bottom: 1.5rem;
 }
 
 #refresh {
@@ -121,8 +119,6 @@ form {
 #guess-word:focus {
     outline: none;
 }
-
-
 
 .tile {
     flex: 1 1 0px;
@@ -153,38 +149,15 @@ form {
     max-width: 2rem;
 }
 
-/* 
-#words {
-    margin-top: .5rem;
-    display: flex;
-    border: solid 1px black;
-    width: min(630px, 95%);
-    height: 400px;
-    margin: 0;
-    position: relative;
-    justify-content: center;
-} */
-
 #words.testing {
     min-height: 400px;
 }
 
-/* #best-guesses, #words-left {
-    position: relative;
-    width: 50%;
-} */
-
-#mode {
-    position: absolute;
-    top: 1rem;
+.best {
+    font-size: .875rem;
     text-align: center;
+    margin-bottom: .25rem;
 }
-
-/* #best-guesses {
-    position: relative;
-    background-color: lightblue;
-    width: max(100%, 40rem);
-} */
 
 .title {
     margin: 0;
@@ -194,18 +167,15 @@ form {
     width: 100%;
 }
 
-.words-left {
-    background: purple;
-    color: #fafafa;
-    text-align: center;
-    font-size: .75rem;
-}
-
 .best-guesses {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #answers {
@@ -221,11 +191,6 @@ form {
     top: 0;
     background: pink;
 }
-
-/* .best-guesses.testing {
-    background: black;
-    z-index: -1;
-} */
 
 .back {
     z-index: -1;
@@ -243,23 +208,20 @@ form {
     margin: 0;
     position: relative;
     /* justify-content: center; */
+    overflow: hidden;
 }
 
-
-/* 
-#words-left {
-    background-color: pink;
+.words-left {
+    text-align: center;
+    margin: 0.5rem;
+    margin-bottom: 0;
 }
 
-#words-left.testing {
-    background-color: black;
+.final {
+    font-weight: bold;
 }
 
-#best-guesses.testing {
-    background-color: black;
-} */
-
-#words h2 {
+/* #words h2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -271,13 +233,18 @@ form {
     height: 3.5rem;
     border-bottom: solid 1px black;
     margin: auto;
+} */
+
+.likelihood {
+    font-size: .75rem;
+    text-align: center;
 }
 
 #results {
+    background: white;
     margin: auto;
     position: absolute;
     z-index: -1;
-    background: white;
     height: 100%;
     width: min(100%, 450px);
     color: white;
@@ -311,15 +278,20 @@ form {
     margin-top: 2rem;
 }
 
-#mode {
-    position: absolute;
-    top: 0;
-    margin: auto;
+#difficulty {
+    text-align: center;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 }
 
 .average {
     position: absolute;
-    bottom: 100%;
+    top: 14rem;
+}
+
+.info {
+    padding: .5rem;
+    text-align: center;
 }
 
 .num-guesses {
@@ -394,8 +366,19 @@ ul {
 }
 
 ul:not(.best-letters) li {
-    width: 100%;
-    height: 2rem;
+    max-width: 100%;
+    min-height: 2rem;
+}
+
+.others {
+    height: unset;
+    text-align: center;
+    padding: .5rem;
+}
+
+.likely {
+    padding: .5rem;
+    text-align: center;
 }
 
 .score {
@@ -468,6 +451,7 @@ div.letter-ranking {
 #header h1, h3 {
     margin: 0;
     padding: 0;
+    min-height: 1rem;
 }
 
 #word-length {

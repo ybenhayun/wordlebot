@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <script type = "text/javascript" src = "wordl.js"></script>
+    <script type = "text/javascript" src = "bot.js"></script>
     <script type = "text/javascript" src = "words.js"></script>
     <script type = "text/javascript" src = "commonwords.js"></script>
     <script type = "text/javascript" src = "rankings.js"></script>
@@ -27,14 +28,14 @@
             <h3 id="word-length">
                 currently solving 
                 <select name="num_letters" id="num_letters">
-                    <!-- <option value="4">4</option> -->
+                    <option value="4">4</option>
                     <option value="5" selected = "selected">5</option>
-                    <!-- <option value="6">6</option>
+                    <option value="6">6</option>
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
                     <option value="10">10</option>
-                    <option value="11">11</option> -->
+                    <option value="11">11</option>
                 </select>
                 letter words
             </h3>
@@ -49,38 +50,25 @@
         </div>
             
         <div id = "words">
-            <h2 class = 'title'></h2>
-            <h3 class = 'words-left'></h3> 
+            <h2 class = 'words-left'></h2>
+            <h3 class = 'likelihood'></h3> 
+
+            <div id = "difficulty">
             <select name="mode" id="mode">
                 <option value="normal" selected = "selected">Normal Mode</option>
                 <option value="hard">Hard Mode</option>
             </select>
+            </div>
+
+            <h3 class = 'best'></h3>
+            
+
             <div id = "answers">
                 <div class = 'best-guesses normal front'>
-                    <h3></h3>
                     <ul class = 'word-list'></ul>
                 </div>
 
-                <div class = "best-guesses hard back">
-                    <!-- <h3>by lowest average score</h3>
-                    <ul class = 'word-list by-average'></ul>
-                    
-                    <h3>by fewest misses</h3>
-                    <ul class = 'word-list by-wrong'></ul> -->
-                </div>
-            </div>
-
-            <div id = "results">
-                <div class = "average"></div>
-                <div class = "current"></div>
-
-                <div class = "bar one"><span class = "num-guesses">1/6</span><span class = "count"></span></div>
-                <div class = "bar two"><span class = "num-guesses">2/6</span><span class = "count"></span></div>
-                <div class = "bar three"><span class = "num-guesses">3/6</span><span class = "count"></span></div>
-                <div class = "bar four"><span class = "num-guesses">4/6</span><span class = "count"></span></div>
-                <div class = "bar five"><span class = "num-guesses">5/6</span><span class = "count"></span></div>
-                <div class = "bar sixe"><span class = "num-guesses">6/6</span><span class = "count"></span></div>
-                <div class = "bar x"><span class = "num-guesses">X/6</span><span class = "count"></span></div> 
+                <div class = "best-guesses hard back"></div>
             </div>
         </div>
 

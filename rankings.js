@@ -2,6 +2,1271 @@ const hard =
 
 [
     {
+        word: "COASTLINE",
+        average: 2.619,
+        wrong: 0
+    },
+    {
+        word: "PATRONISE",
+        average: 2.620,
+        wrong: 0
+    },
+    {
+        word: "SAPROLITE",
+        average: 2.622,
+        wrong: 0
+    },
+    {
+        word: "LARCENIST",
+        average: 2.628,
+        wrong: 0
+    },
+    {
+        word: "COURANTES",
+        average: 2.646,
+        wrong: 0
+    },
+    {
+        word: "SOLEPRINT",
+        average: 2.648,
+        wrong: 0
+    },
+    {
+        word: "SERIATION",
+        average: 2.661,
+        wrong: 0
+    },
+    {
+        word: "REACTIONS",
+        average: 2.664,
+        wrong: 0
+    },
+    {
+        word: "ELATERINS",
+        average: 2.664,
+        wrong: 0
+    },
+    {
+        word: "TENSORIAL",
+        average: 2.666,
+        wrong: 0
+    },
+    {
+        word: "CENTROIDS",
+        average: 2.667,
+        wrong: 0
+    },
+    {
+        word: "RELATIONS",
+        average: 2.671,
+        wrong: 0
+    },
+    {
+        word: "LACERTIDS",
+        average: 2.676,
+        wrong: 0
+    },
+    {
+        word: "DELATIONS",
+        average: 2.677,
+        wrong: 0
+    },
+    {
+        word: "CERATINS",
+        average: 2.854,
+        wrong: 1
+    },
+    {
+        word: "SODALITE",
+        average: 2.872,
+        wrong: 2
+    },
+    {
+        word: "AUNTLIER",
+        average: 2.873,
+        wrong: 1
+    },
+    {
+        word: "NOTARIES",
+        average: 2.883,
+        wrong: 2
+    },
+    {
+        word: "SCARLET",
+        average: 3.111,
+        wrong: 7
+    },
+    {
+        word: "PLASTER",
+        average: 3.120,
+        wrong: 4
+    },
+    {
+        word: "STAPLER",
+        average: 3.132,
+        wrong: 6
+    },
+    {
+        word: "SLANTED",
+        average: 3.134,
+        wrong: 13
+    },
+    {
+        word: "PSALTER",
+        average: 3.135,
+        wrong: 5
+    },
+    {
+        word: "PLANTER",
+        average: 3.140,
+        wrong: 8
+    },
+    {
+        word: "SMARTEN",
+        average: 3.148,
+        wrong: 10
+    },
+    {
+        word: "SNORTED",
+        average: 3.149,
+        wrong: 11
+    },
+    {
+        word: "SALTERN",
+        average: 3.151,
+        wrong: 14
+    },
+    {
+        word: "RENTALS",
+        average: 3.158,
+        wrong: 16
+    },
+    {
+        word: "SNARLED",
+        average: 3.164,
+        wrong: 16
+    },
+    {
+        word: "SLANDER",
+        average: 3.173,
+        wrong: 12
+    },
+    {
+        word: "STANDER",
+        average: 3.176,
+        wrong: 12
+    },
+    {
+        word: "DARNELS",
+        average: 3.183,
+        wrong: 15
+    },
+    {
+        word: "CLANS",
+        average: 3.715,
+        wrong: 20
+    },
+    {
+        word: "CRITS",
+        average: 3.732,
+        wrong: 27
+    },
+    {
+        word: "STOLN",
+        average: 3.737,
+        wrong: 21
+    },
+    {
+        word: "SCENT",
+        average: 3.756,
+        wrong: 27
+    },
+    {
+        word: "FARTS",
+        average: 3.757,
+        wrong: 17
+    },
+    {
+        word: "SHORL",
+        average: 3.766,
+        wrong: 20
+    },
+    {
+        word: "WARTS",
+        average: 3.767,
+        wrong: 17
+    },
+    {
+        word: "RANGS",
+        average: 3.769,
+        wrong: 26
+    },
+    {
+        word: "RINDS",
+        average: 3.771,
+        wrong: 32
+    },
+    {
+        word: "SHAND",
+        average: 3.777,
+        wrong: 32
+    },
+    {
+        word: "BRADS",
+        average: 3.788,
+        wrong: 33
+    },
+    {
+        word: "GRAND",
+        average: 3.789,
+        wrong: 42
+    },
+    {
+        word: "SCREW",
+        average: 3.828,
+        wrong: 22
+    },
+    {
+        word: "SPRINT",
+        average: 3.430,
+        wrong: 26
+    },
+    {
+        word: "STRAND",
+        average: 3.459,
+        wrong: 32
+    },
+    {
+        word: "PLANTS",
+        average: 3.466,
+        wrong: 24
+    },
+    {
+        word: "SPRENT",
+        average: 3.474,
+        wrong: 22
+    },
+    {
+        word: "BRANTS",
+        average: 3.479,
+        wrong: 17
+    },
+    {
+        word: "GRANTS",
+        average: 3.489,
+        wrong: 26
+    },
+    {
+        word: "STRANG",
+        average: 3.506,
+        wrong: 37
+    },
+    {
+        word: "GNARLS",
+        average: 3.512,
+        wrong: 30
+    },
+    {
+        word: "BRANDS",
+        average: 3.518,
+        wrong: 23
+    },
+    {
+        word: "GRANDS",
+        average: 3.525,
+        wrong: 35
+    },
+    {
+        word: "DRAWLS",
+        average: 3.533,
+        wrong: 24
+    },
+    {
+        word: "TRENDS",
+        average: 3.551,
+        wrong: 34
+    },
+    {
+        word: "CANTER",
+        average: 3.439,
+        wrong: 32
+    },
+    {
+        word: "SALTED",
+        average: 3.440,
+        wrong: 36
+    },
+    {
+        word: "STALER",
+        average: 3.461,
+        wrong: 35
+    },
+    {
+        word: "MATIER",
+        average: 3.468,
+        wrong: 28
+    },
+    {
+        word: "PALIER",
+        average: 3.473,
+        wrong: 31
+    },
+    {
+        word: "TAILED",
+        average: 3.480,
+        wrong: 41
+    },
+    {
+        word: "DARNEL",
+        average: 3.480,
+        wrong: 37
+    },
+    {
+        word: "LACIER",
+        average: 3.481,
+        wrong: 36
+    },
+    {
+        word: "SANDER",
+        average: 3.486,
+        wrong: 42
+    },
+    {
+        word: "RAILED",
+        average: 3.501,
+        wrong: 37
+    },
+    {
+        word: "ALINER",
+        average: 3.506,
+        wrong: 47
+    },
+    {
+        word: "DIALER",
+        average: 3.511,
+        wrong: 44
+    },
+    {
+        word: "LAIRED",
+        average: 3.514,
+        wrong: 45
+    },
+    {
+        word: "CENTRALISE",
+        average: 2.422,
+        wrong: 0
+    },
+    {
+        word: "PORCELAINS",
+        average: 2.445,
+        wrong: 0
+    },
+    {
+        word: "CENTRALISM",
+        average: 2.450,
+        wrong: 0
+    },
+    {
+        word: "MERCANTILE",
+        average: 2.459,
+        wrong: 0
+    },
+    {
+        word: "RECOUNTALS",
+        average: 2.466,
+        wrong: 0
+    },
+    {
+        word: "LACUSTRINE",
+        average: 2.466,
+        wrong: 0
+    },
+    {
+        word: "CENTRALIST",
+        average: 2.473,
+        wrong: 0
+    },
+    {
+        word: "NEUTRALISE",
+        average: 2.474,
+        wrong: 0
+    },
+    {
+        word: "CATEGORISE",
+        average: 2.483,
+        wrong: 0
+    },
+    {
+        word: "NEOREALIST",
+        average: 2.483,
+        wrong: 0
+    },
+    {
+        word: "CONTRAILS",
+        average: 2.625,
+        wrong: 0
+    },
+    {
+        word: "SECTORIAL",
+        average: 2.633,
+        wrong: 0
+    },
+    {
+        word: "ANORETICS",
+        average: 2.645,
+        wrong: 0
+    },
+    {
+        word: "SECRETION",
+        average: 2.654,
+        wrong: 0
+    },
+    {
+        word: "COSTLIER",
+        average: 2.842,
+        wrong: 0
+    },
+    {
+        word: "SCANTIER",
+        average: 2.865,
+        wrong: 0
+    },
+    {
+        word: "CALORIES",
+        average: 2.867,
+        wrong: 0
+    },
+    {
+        word: "SALTIER",
+        average: 3.103,
+        wrong: 16
+    },
+    {
+        word: "SLATIER",
+        average: 3.107,
+        wrong: 14
+    },
+    {
+        word: "SALTIRE",
+        average: 3.108,
+        wrong: 15
+    },
+    {
+        word: "NASTIER",
+        average: 3.158,
+        wrong: 17
+    },
+    {
+        word: "SALTER",
+        average: 3.422,
+        wrong: 36
+    },
+    {
+        word: "LASTER",
+        average: 3.431,
+        wrong: 33
+    },
+    {
+        word: "SLATER",
+        average: 3.435,
+        wrong: 36
+    },
+    {
+        word: "TAILER",
+        average: 3.451,
+        wrong: 32
+    },
+    {
+        word: "DARTLE",
+        average: 3.453,
+        wrong: 37
+    },
+    {
+        word: "SAILER",
+        average: 3.455,
+        wrong: 40
+    },
+    {
+        word: "RANTED",
+        average: 3.474,
+        wrong: 44
+    },
+    {
+        word: "ANTLER",
+        average: 3.478,
+        wrong: 38
+    },
+    {
+        word: "AIRTED",
+        average: 3.493,
+        wrong: 49
+    },
+    {
+        word: "LOANER",
+        average: 3.501,
+        wrong: 46
+    },
+    {
+        word: "NAILER",
+        average: 3.503,
+        wrong: 48
+    },
+    {
+        word: "TELA",
+        average: 4.513,
+        wrong: 180
+    },
+    {
+        word: "TEAL",
+        average: 4.516,
+        wrong: 177
+    },
+    {
+        word: "TAEL",
+        average: 4.522,
+        wrong: 176
+    },
+    {
+        word: "LADE",
+        average: 4.522,
+        wrong: 170
+    },
+    {
+        word: "TALE",
+        average: 4.523,
+        wrong: 179
+    },
+    {
+        word: "DALE",
+        average: 4.523,
+        wrong: 177
+    },
+    {
+        word: "LATE",
+        average: 4.525,
+        wrong: 178
+    },
+    {
+        word: "PALE",
+        average: 4.525,
+        wrong: 177
+    },
+    {
+        word: "LAME",
+        average: 4.525,
+        wrong: 171
+    },
+    {
+        word: "TOLE",
+        average: 4.535,
+        wrong: 174
+    },
+    {
+        word: "LEAR",
+        average: 4.536,
+        wrong: 188
+    },
+    {
+        word: "MALE",
+        average: 4.536,
+        wrong: 177
+    },
+    {
+        word: "REAL",
+        average: 4.539,
+        wrong: 189
+    },
+    {
+        word: "TORE",
+        average: 4.539,
+        wrong: 184
+    },
+    {
+        word: "TARE",
+        average: 4.540,
+        wrong: 185
+    },
+    {
+        word: "RATE",
+        average: 4.545,
+        wrong: 187
+    },
+    {
+        word: "EARL",
+        average: 4.545,
+        wrong: 178
+    },
+    {
+        word: "RALE",
+        average: 4.546,
+        wrong: 191
+    },
+    {
+        word: "TEAR",
+        average: 4.550,
+        wrong: 184
+    },
+    {
+        word: "SEAL",
+        average: 4.555,
+        wrong: 191
+    },
+    {
+        word: "LEAN",
+        average: 4.558,
+        wrong: 200
+    },
+    {
+        word: "SOLE",
+        average: 4.558,
+        wrong: 179
+    },
+    {
+        word: "LEAS",
+        average: 4.560,
+        wrong: 193
+    },
+    {
+        word: "NEAT",
+        average: 4.560,
+        wrong: 199
+    },
+    {
+        word: "SLOE",
+        average: 4.562,
+        wrong: 185
+    },
+    {
+        word: "SALE",
+        average: 4.563,
+        wrong: 192
+    },
+    {
+        word: "LASE",
+        average: 4.566,
+        wrong: 189
+    },
+    {
+        word: "SATE",
+        average: 4.568,
+        wrong: 182
+    },
+    {
+        word: "SEAT",
+        average: 4.569,
+        wrong: 192
+    },
+    {
+        word: "LANE",
+        average: 4.573,
+        wrong: 198
+    },
+    {
+        word: "ORLE",
+        average: 4.573,
+        wrong: 190
+    },
+    {
+        word: "SEAR",
+        average: 4.573,
+        wrong: 185
+    },
+    {
+        word: "ROLE",
+        average: 4.575,
+        wrong: 195
+    },
+    {
+        word: "TEAS",
+        average: 4.575,
+        wrong: 187
+    },
+    {
+        word: "ALES",
+        average: 4.576,
+        wrong: 197
+    },
+    {
+        word: "LOSE",
+        average: 4.577,
+        wrong: 181
+    },
+    {
+        word: "HALE",
+        average: 4.580,
+        wrong: 192
+    },
+    {
+        word: "ARSE",
+        average: 4.589,
+        wrong: 188
+    },
+    {
+        word: "RASE",
+        average: 4.591,
+        wrong: 185
+    },
+    {
+        word: "LORE",
+        average: 4.591,
+        wrong: 197
+    },
+    {
+        word: "SERA",
+        average: 4.592,
+        wrong: 187
+    },
+    {
+        word: "SANE",
+        average: 4.597,
+        wrong: 200
+    },
+    {
+        word: "NEAR",
+        average: 4.600,
+        wrong: 202
+    },
+    {
+        word: "AERO",
+        average: 4.611,
+        wrong: 217
+    },
+    {
+        word: "TOEA",
+        average: 4.644,
+        wrong: 231
+    },
+    {
+        word: "ILEA",
+        average: 4.648,
+        wrong: 226
+    },
+    {
+        word: "ALOE",
+        average: 4.654,
+        wrong: 236
+    },
+    {
+        word: "OLEA",
+        average: 4.662,
+        wrong: 234
+    },
+    {
+        word: "AEON",
+        average: 4.700,
+        wrong: 256
+    },
+    {
+        word: "LEST",
+        average: 4.457,
+        wrong: 148
+    },
+    {
+        word: "LEPT",
+        average: 4.460,
+        wrong: 126
+    },
+    {
+        word: "PELT",
+        average: 4.462,
+        wrong: 131
+    },
+    {
+        word: "LETS",
+        average: 4.468,
+        wrong: 146
+    },
+    {
+        word: "MELT",
+        average: 4.477,
+        wrong: 140
+    },
+    {
+        word: "TELS",
+        average: 4.479,
+        wrong: 152
+    },
+    {
+        word: "DELT",
+        average: 4.481,
+        wrong: 145
+    },
+    {
+        word: "DART",
+        average: 4.481,
+        wrong: 150
+    },
+    {
+        word: "DRAT",
+        average: 4.482,
+        wrong: 153
+    },
+    {
+        word: "MELS",
+        average: 4.483,
+        wrong: 140
+    },
+    {
+        word: "MALT",
+        average: 4.499,
+        wrong: 154
+    },
+    {
+        word: "MARL",
+        average: 4.502,
+        wrong: 154
+    },
+    {
+        word: "SALT",
+        average: 4.503,
+        wrong: 159
+    },
+    {
+        word: "LAST",
+        average: 4.503,
+        wrong: 159
+    },
+    {
+        word: "LATS",
+        average: 4.506,
+        wrong: 157
+    },
+    {
+        word: "TERN",
+        average: 4.507,
+        wrong: 164
+    },
+    {
+        word: "SLAT",
+        average: 4.508,
+        wrong: 161
+    },
+    {
+        word: "MERL",
+        average: 4.511,
+        wrong: 153
+    },
+    {
+        word: "LARD",
+        average: 4.511,
+        wrong: 155
+    },
+    {
+        word: "LENT",
+        average: 4.514,
+        wrong: 165
+    },
+    {
+        word: "DELS",
+        average: 4.514,
+        wrong: 158
+    },
+    {
+        word: "DALS",
+        average: 4.516,
+        wrong: 159
+    },
+    {
+        word: "TARS",
+        average: 4.517,
+        wrong: 157
+    },
+    {
+        word: "RATS",
+        average: 4.525,
+        wrong: 161
+    },
+    {
+        word: "LAND",
+        average: 4.526,
+        wrong: 162
+    },
+    {
+        word: "RENT",
+        average: 4.528,
+        wrong: 176
+    },
+    {
+        word: "REST",
+        average: 4.528,
+        wrong: 161
+    },
+    {
+        word: "CELT",
+        average: 4.528,
+        wrong: 155
+    },
+    {
+        word: "TARN",
+        average: 4.530,
+        wrong: 175
+    },
+    {
+        word: "RANT",
+        average: 4.531,
+        wrong: 177
+    },
+    {
+        word: "TRES",
+        average: 4.531,
+        wrong: 169
+    },
+    {
+        word: "LARS",
+        average: 4.533,
+        wrong: 170
+    },
+    {
+        word: "ROTL",
+        average: 4.534,
+        wrong: 164
+    },
+    {
+        word: "RETS",
+        average: 4.536,
+        wrong: 161
+    },
+    {
+        word: "LEND",
+        average: 4.542,
+        wrong: 170
+    },
+    {
+        word: "SENT",
+        average: 4.547,
+        wrong: 174
+    },
+    {
+        word: "LENS",
+        average: 4.566,
+        wrong: 174
+    },
+    {
+        word: "LEHR",
+        average: 4.567,
+        wrong: 152
+    },
+    {
+        word: "HARL",
+        average: 4.569,
+        wrong: 164
+    },
+    {
+        word: "HERL",
+        average: 4.570,
+        wrong: 162
+    },
+    {
+        word: "LORN",
+        average: 4.580,
+        wrong: 169
+    },
+    {
+        word: "KELT",
+        average: 4.589,
+        wrong: 170
+    },
+    {
+        word: "DESECRATION",
+        average: 2.292,
+        wrong: 0
+    },
+    {
+        word: "CUSTOMARILY",
+        average: 2.304,
+        wrong: 0
+    },
+    {
+        word: "DEPRECATION",
+        average: 2.308,
+        wrong: 0
+    },
+    {
+        word: "PERSECUTION",
+        average: 2.309,
+        wrong: 0
+    },
+    {
+        word: "DESCRIPTION",
+        average: 2.311,
+        wrong: 0
+    },
+    {
+        word: "PERCOLATING",
+        average: 2.312,
+        wrong: 0
+    },
+    {
+        word: "DESECRATING",
+        average: 2.312,
+        wrong: 0
+    },
+    {
+        word: "ROMANTICISE",
+        average: 2.313,
+        wrong: 0
+    },
+    {
+        word: "DESPERATION",
+        average: 2.316,
+        wrong: 0
+    },
+    {
+        word: "UNCLARITIES",
+        average: 2.319,
+        wrong: 0
+    },
+    {
+        word: "PATRIMONIES",
+        average: 2.321,
+        wrong: 0
+    },
+    {
+        word: "PASTURELAND",
+        average: 2.323,
+        wrong: 0
+    },
+    {
+        word: "DECLARATION",
+        average: 2.325,
+        wrong: 0
+    },
+    {
+        word: "RATIONALISE",
+        average: 2.325,
+        wrong: 0
+    },
+    {
+        word: "REPLICATION",
+        average: 2.327,
+        wrong: 0
+    },
+    {
+        word: "IMPORTANCES",
+        average: 2.327,
+        wrong: 0
+    },
+    {
+        word: "NORMALITIES",
+        average: 2.327,
+        wrong: 0
+    },
+    {
+        word: "DESTRUCTION",
+        average: 2.332,
+        wrong: 0
+    },
+    {
+        word: "PERSECUTING",
+        average: 2.333,
+        wrong: 0
+    },
+    {
+        word: "CELEBRATION",
+        average: 2.333,
+        wrong: 0
+    },
+    {
+        word: "DEPRECATING",
+        average: 2.333,
+        wrong: 0
+    },
+    {
+        word: "DECLINATION",
+        average: 2.334,
+        wrong: 0
+    },
+    {
+        word: "SUPERNATION",
+        average: 2.334,
+        wrong: 0
+    },
+    {
+        word: "SECONDARILY",
+        average: 2.335,
+        wrong: 0
+    },
+    {
+        word: "MENSURATION",
+        average: 2.335,
+        wrong: 0
+    },
+    {
+        word: "AERONAUTICS",
+        average: 2.336,
+        wrong: 0
+    },
+    {
+        word: "DELECTATION",
+        average: 2.336,
+        wrong: 0
+    },
+    {
+        word: "DEMARCATION",
+        average: 2.337,
+        wrong: 0
+    },
+    {
+        word: "METRICATION",
+        average: 2.337,
+        wrong: 0
+    },
+    {
+        word: "CARTELISING",
+        average: 2.337,
+        wrong: 0
+    },
+    {
+        word: "DETRACTIONS",
+        average: 2.339,
+        wrong: 0
+    },
+    {
+        word: "MISCREATION",
+        average: 2.339,
+        wrong: 0
+    },
+    {
+        word: "DISRELATION",
+        average: 2.341,
+        wrong: 0
+    },
+    {
+        word: "REEDUCATION",
+        average: 2.342,
+        wrong: 0
+    },
+    {
+        word: "PERSONALITY",
+        average: 2.342,
+        wrong: 0
+    },
+    {
+        word: "REPLICATING",
+        average: 2.343,
+        wrong: 0
+    },
+    {
+        word: "RECONSULTED",
+        average: 2.343,
+        wrong: 0
+    },
+    {
+        word: "CREATIONISM",
+        average: 2.344,
+        wrong: 0
+    },
+    {
+        word: "PERCOLATION",
+        average: 2.345,
+        wrong: 0
+    },
+    {
+        word: "DELINEATORS",
+        average: 2.345,
+        wrong: 0
+    },
+    {
+        word: "PERSONATING",
+        average: 2.346,
+        wrong: 0
+    },
+    {
+        word: "CERATOPSIAN",
+        average: 2.347,
+        wrong: 0
+    },
+    {
+        word: "CELEBRATING",
+        average: 2.347,
+        wrong: 0
+    },
+    {
+        word: "ULCERATIONS",
+        average: 2.347,
+        wrong: 0
+    },
+    {
+        word: "ORIENTALISM",
+        average: 2.348,
+        wrong: 0
+    },
+    {
+        word: "PATERNALISM",
+        average: 2.348,
+        wrong: 0
+    },
+    {
+        word: "REGIONALIST",
+        average: 2.349,
+        wrong: 0
+    },
+    {
+        word: "CRENULATION",
+        average: 2.349,
+        wrong: 0
+    },
+    {
+        word: "PERMUTATION",
+        average: 2.350,
+        wrong: 0
+    },
+    {
+        word: "RELUCTATION",
+        average: 2.351,
+        wrong: 0
+    },
+    {
+        word: "REPUDIATION",
+        average: 2.352,
+        wrong: 0
+    },
+    {
+        word: "PREDICATION",
+        average: 2.353,
+        wrong: 0
+    },
+    {
+        word: "SPORULATIVE",
+        average: 2.354,
+        wrong: 0
+    },
+    {
+        word: "CREATIONIST",
+        average: 2.354,
+        wrong: 0
+    },
+    {
+        word: "RESCULPTING",
+        average: 2.356,
+        wrong: 0
+    },
+    {
+        word: "MERCURATION",
+        average: 2.356,
+        wrong: 0
+    },
+    {
+        word: "INTERCOSTAL",
+        average: 2.356,
+        wrong: 0
+    },
+    {
+        word: "ELUCIDATORS",
+        average: 2.361,
+        wrong: 0
+    },
+    {
+        word: "DEMARCATING",
+        average: 2.362,
+        wrong: 0
+    },
+    {
+        word: "DISLOCATING",
+        average: 2.364,
+        wrong: 0
+    },
+    {
         word: "SALET",
         average: 3.686,
         wrong: 33
@@ -1684,1273 +2949,2931 @@ const hard =
 ]
 
 const easy = 
+
 [
     {
+        word: "CANISTER",
+        average: 2.835,
+        wrong: 0
+    },
+    {
+        word: "AUNTLIER",
+        average: 2.847,
+        wrong: 0
+    },
+    {
+        word: "SODALITE",
+        average: 2.850,
+        wrong: 0
+    },
+    {
+        word: "DETRAINS",
+        average: 2.850,
+        wrong: 0
+    },
+    {
+        word: "SENORITA",
+        average: 2.852,
+        wrong: 0
+    },
+    {
+        word: "SORTIED",
+        average: 3.055,
+        wrong: 0
+    },
+    {
+        word: "PASTIER",
+        average: 3.061,
+        wrong: 0
+    },
+    {
+        word: "PLATIER",
+        average: 3.063,
+        wrong: 0
+    },
+    {
+        word: "REALIST",
+        average: 3.063,
+        wrong: 0
+    },
+    {
+        word: "SAUNTER",
+        average: 3.070,
+        wrong: 0
+    },
+    {
+        word: "MALTIER",
+        average: 3.075,
+        wrong: 0
+    },
+    {
+        word: "COALIER",
+        average: 3.076,
+        wrong: 0
+    },
+    {
+        word: "CLARIES",
+        average: 3.079,
+        wrong: 0
+    },
+    {
+        word: "TARDIES",
+        average: 3.081,
+        wrong: 0
+    },
+    {
+        word: "SALTED",
+        average: 3.304,
+        wrong: 0
+    },
+    {
+        word: "RANTED",
+        average: 3.311,
+        wrong: 0
+    },
+    {
+        word: "DARTLE",
+        average: 3.314,
+        wrong: 0
+    },
+    {
+        word: "DARNEL",
+        average: 3.324,
+        wrong: 0
+    },
+    {
+        word: "MATIER",
+        average: 3.328,
+        wrong: 0
+    },
+    {
+        word: "STALER",
+        average: 3.331,
+        wrong: 0
+    },
+    {
+        word: "TAILED",
+        average: 3.338,
+        wrong: 0
+    },
+    {
+        word: "RAILED",
+        average: 3.338,
+        wrong: 0
+    },
+    {
+        word: "SAPROLITE",
+        average: 2.620,
+        wrong: 0
+    },
+    {
+        word: "AUTOCRINE",
+        average: 2.636,
+        wrong: 0
+    },
+    {
+        word: "SOLEPRINT",
+        average: 2.641,
+        wrong: 0
+    },
+    {
+        word: "COURANTES",
+        average: 2.642,
+        wrong: 0
+    },
+    {
+        word: "COUNTRIES",
+        average: 2.643,
+        wrong: 0
+    },
+    {
+        word: "SATURNINE",
+        average: 2.644,
+        wrong: 0
+    },
+    {
+        word: "SERIATION",
+        average: 2.658,
+        wrong: 0
+    },
+    {
+        word: "ELATERINS",
+        average: 2.659,
+        wrong: 0
+    },
+    {
+        word: "CENTROIDS",
+        average: 2.662,
+        wrong: 0
+    },
+    {
+        word: "TENSORIAL",
+        average: 2.662,
+        wrong: 0
+    },
+    {
+        word: "RELATIONS",
+        average: 2.666,
+        wrong: 0
+    },
+    {
+        word: "DESERTION",
+        average: 2.670,
+        wrong: 0
+    },
+    {
+        word: "DETRUSION",
+        average: 2.671,
+        wrong: 0
+    },
+    {
+        word: "NEUROTICS",
+        average: 2.671,
+        wrong: 0
+    },
+    {
+        word: "LACERTIDS",
+        average: 2.673,
+        wrong: 0
+    },
+    {
+        word: "DELATIONS",
+        average: 2.673,
+        wrong: 0
+    },
+    {
+        word: "CATENOIDS",
+        average: 2.677,
+        wrong: 0
+    },
+    {
+        word: "ESTUARINE",
+        average: 2.677,
+        wrong: 0
+    },
+    {
+        word: "OUTLEARNS",
+        average: 2.689,
+        wrong: 0
+    },
+    {
+        word: "CENTRALISE",
+        average: 2.422,
+        wrong: 0
+    },
+    {
+        word: "PORCELAINS",
+        average: 2.445,
+        wrong: 0
+    },
+    {
+        word: "CENTRALISM",
+        average: 2.449,
+        wrong: 0
+    },
+    {
+        word: "MERCANTILE",
+        average: 2.458,
+        wrong: 0
+    },
+    {
+        word: "RECOUNTALS",
+        average: 2.465,
+        wrong: 0
+    },
+    {
+        word: "LACUSTRINE",
+        average: 2.466,
+        wrong: 0
+    },
+    {
+        word: "CONTRARIES",
+        average: 2.469,
+        wrong: 0
+    },
+    {
+        word: "CENTRALIST",
+        average: 2.473,
+        wrong: 0
+    },
+    {
+        word: "NEUTRALISE",
+        average: 2.474,
+        wrong: 0
+    },
+    {
+        word: "TOURMALINE",
+        average: 2.476,
+        wrong: 0
+    },
+    {
+        word: "PROLACTINS",
+        average: 2.480,
+        wrong: 0
+    },
+    {
+        word: "NEOREALIST",
+        average: 2.481,
+        wrong: 0
+    },
+    {
+        word: "CATEGORISE",
+        average: 2.483,
+        wrong: 0
+    },
+    {
+        word: "STREAMLINE",
+        average: 2.487,
+        wrong: 0
+    },
+    {
+        word: "REDACTIONS",
+        average: 2.491,
+        wrong: 0
+    },
+    {
+        word: "DEPILATORS",
+        average: 2.493,
+        wrong: 0
+    },
+    {
+        word: "RECAUTIONS",
+        average: 2.494,
+        wrong: 0
+    },
+    {
+        word: "DECORATING",
+        average: 2.494,
+        wrong: 0
+    },
+    {
+        word: "SENATORIAL",
+        average: 2.510,
+        wrong: 0
+    },
+    {
+        word: "REDISCOUNT",
+        average: 2.513,
+        wrong: 0
+    },
+    {
+        word: "DETRACTION",
+        average: 2.514,
+        wrong: 0
+    },
+    {
+        word: "DISCRETION",
+        average: 2.521,
+        wrong: 0
+    },
+    {
+        word: "COASTLINE",
+        average: 2.613,
+        wrong: 0
+    },
+    {
+        word: "PATRONISE",
+        average: 2.615,
+        wrong: 0
+    },
+    {
+        word: "CONTRAILS",
+        average: 2.621,
+        wrong: 0
+    },
+    {
+        word: "LARCENIST",
+        average: 2.623,
+        wrong: 0
+    },
+    {
+        word: "SECTORIAL",
+        average: 2.630,
+        wrong: 0
+    },
+    {
+        word: "ANORETICS",
+        average: 2.639,
+        wrong: 0
+    },
+    {
+        word: "SECRETION",
+        average: 2.650,
+        wrong: 0
+    },
+    {
+        word: "REACTIONS",
+        average: 2.659,
+        wrong: 0
+    },
+    {
+        word: "COSTLIER",
+        average: 2.821,
+        wrong: 0
+    },
+    {
+        word: "CERATINS",
+        average: 2.830,
+        wrong: 0
+    },
+    {
+        word: "SCANTIER",
+        average: 2.840,
+        wrong: 0
+    },
+    {
+        word: "CALORIES",
+        average: 2.842,
+        wrong: 0
+    },
+    {
+        word: "NOTARIES",
+        average: 2.857,
+        wrong: 0
+    },
+    {
+        word: "SALTIER",
+        average: 3.042,
+        wrong: 0
+    },
+    {
+        word: "SLATIER",
+        average: 3.047,
+        wrong: 0
+    },
+    {
+        word: "SALTIRE",
+        average: 3.051,
+        wrong: 0
+    },
+    {
+        word: "NASTIER",
+        average: 3.073,
+        wrong: 0
+    },
+    {
+        word: "SCALIER",
+        average: 3.078,
+        wrong: 0
+    },
+    {
+        word: "ANTSIER",
+        average: 3.079,
+        wrong: 0
+    },
+    {
+        word: "SALTER",
+        average: 3.287,
+        wrong: 0
+    },
+    {
+        word: "LASTER",
+        average: 3.306,
+        wrong: 0
+    },
+    {
+        word: "SLATER",
+        average: 3.314,
+        wrong: 0
+    },
+    {
+        word: "TAILER",
+        average: 3.322,
+        wrong: 0
+    },
+    {
+        word: "SAILER",
+        average: 3.331,
+        wrong: 0
+    },
+    {
+        word: "AIRTED",
+        average: 3.333,
+        wrong: 0
+    },
+    {
+        word: "ANTLER",
+        average: 3.342,
+        wrong: 0
+    },
+    {
+        word: "NAILER",
+        average: 3.353,
+        wrong: 0
+    },
+    {
+        word: "LOANER",
+        average: 3.359,
+        wrong: 0
+    },
+    {
+        word: "LEST",
+        average: 4.146,
+        wrong: 0
+    },
+    {
+        word: "SALT",
+        average: 4.146,
+        wrong: 2
+    },
+    {
+        word: "LAST",
+        average: 4.151,
+        wrong: 2
+    },
+    {
+        word: "LENT",
+        average: 4.158,
+        wrong: 0
+    },
+    {
+        word: "TERN",
+        average: 4.158,
+        wrong: 0
+    },
+    {
+        word: "PELT",
+        average: 4.158,
+        wrong: 0
+    },
+    {
+        word: "RANT",
+        average: 4.163,
+        wrong: 1
+    },
+    {
+        word: "LARD",
+        average: 4.165,
+        wrong: 1
+    },
+    {
+        word: "MELT",
+        average: 4.167,
+        wrong: 2
+    },
+    {
+        word: "SLAT",
+        average: 4.169,
+        wrong: 2
+    },
+    {
+        word: "TARN",
+        average: 4.172,
+        wrong: 1
+    },
+    {
+        word: "LEPT",
+        average: 4.173,
+        wrong: 0
+    },
+    {
+        word: "RENT",
+        average: 4.174,
+        wrong: 0
+    },
+    {
+        word: "TELS",
+        average: 4.176,
+        wrong: 0
+    },
+    {
+        word: "DELT",
+        average: 4.179,
+        wrong: 2
+    },
+    {
+        word: "MERL",
+        average: 4.187,
+        wrong: 2
+    },
+    {
+        word: "LARS",
+        average: 4.192,
+        wrong: 1
+    },
+    {
+        word: "LETS",
+        average: 4.192,
+        wrong: 1
+    },
+    {
+        word: "LATS",
+        average: 4.193,
+        wrong: 1
+    },
+    {
+        word: "REST",
+        average: 4.204,
+        wrong: 1
+    },
+    {
+        word: "LENS",
+        average: 4.217,
+        wrong: 0
+    },
+    {
+        word: "HERL",
+        average: 4.233,
+        wrong: 1
+    },
+    {
+        word: "RETS",
+        average: 4.241,
+        wrong: 1
+    },
+    {
+        word: "TALE",
+        average: 4.145,
+        wrong: 0
+    },
+    {
+        word: "LATE",
+        average: 4.161,
+        wrong: 2
+    },
+    {
+        word: "RALE",
+        average: 4.163,
+        wrong: 2
+    },
+    {
+        word: "TOLE",
+        average: 4.170,
+        wrong: 0
+    },
+    {
+        word: "TARE",
+        average: 4.178,
+        wrong: 2
+    },
+    {
+        word: "TEAL",
+        average: 4.183,
+        wrong: 0
+    },
+    {
+        word: "EARL",
+        average: 4.187,
+        wrong: 1
+    },
+    {
+        word: "SALE",
+        average: 4.190,
+        wrong: 2
+    },
+    {
+        word: "TAEL",
+        average: 4.192,
+        wrong: 0
+    },
+    {
+        word: "RATE",
+        average: 4.192,
+        wrong: 2
+    },
+    {
+        word: "TELA",
+        average: 4.193,
+        wrong: 0
+    },
+    {
+        word: "LEAN",
+        average: 4.194,
+        wrong: 0
+    },
+    {
+        word: "LANE",
+        average: 4.195,
+        wrong: 3
+    },
+    {
+        word: "ROLE",
+        average: 4.195,
+        wrong: 3
+    },
+    {
+        word: "REAL",
+        average: 4.200,
+        wrong: 2
+    },
+    {
+        word: "LORE",
+        average: 4.200,
+        wrong: 2
+    },
+    {
+        word: "LASE",
+        average: 4.203,
+        wrong: 1
+    },
+    {
+        word: "TEAR",
+        average: 4.206,
+        wrong: 2
+    },
+    {
+        word: "LEAR",
+        average: 4.207,
+        wrong: 2
+    },
+    {
+        word: "SEAL",
+        average: 4.215,
+        wrong: 5
+    },
+    {
+        word: "SANE",
+        average: 4.216,
+        wrong: 2
+    },
+    {
+        word: "LEAS",
+        average: 4.219,
+        wrong: 4
+    },
+    {
+        word: "SATE",
+        average: 4.219,
+        wrong: 4
+    },
+    {
+        word: "RASE",
+        average: 4.221,
+        wrong: 3
+    },
+    {
+        word: "ORLE",
+        average: 4.227,
+        wrong: 3
+    },
+    {
+        word: "ALOE",
+        average: 4.280,
+        wrong: 5
+    },
+    {
+        word: "TOEA",
+        average: 4.293,
+        wrong: 5
+    },
+    {
+        word: "AERO",
+        average: 4.297,
+        wrong: 8
+    },
+    {
+        word: "AEON",
+        average: 4.319,
+        wrong: 5
+    },
+    {
+        word: "OLEA",
+        average: 4.320,
+        wrong: 7
+    },
+    {
+        word: "DESECRATION",
+        average: 2.292,
+        wrong: 0
+    },
+    {
+        word: "CUSTOMARILY",
+        average: 2.304,
+        wrong: 0
+    },
+    {
+        word: "DEPRECATION",
+        average: 2.308,
+        wrong: 0
+    },
+    {
+        word: "PERSECUTION",
+        average: 2.309,
+        wrong: 0
+    },
+    {
+        word: "DESCRIPTION",
+        average: 2.311,
+        wrong: 0
+    },
+    {
+        word: "PERCOLATING",
+        average: 2.312,
+        wrong: 0
+    },
+    {
+        word: "ROMANTICISE",
+        average: 2.312,
+        wrong: 0
+    },
+    {
+        word: "DESECRATING",
+        average: 2.312,
+        wrong: 0
+    },
+    {
+        word: "DESPERATION",
+        average: 2.316,
+        wrong: 0
+    },
+    {
+        word: "UNCLARITIES",
+        average: 2.319,
+        wrong: 0
+    },
+    {
+        word: "PATRIMONIES",
+        average: 2.321,
+        wrong: 0
+    },
+    {
+        word: "PASTURELAND",
+        average: 2.323,
+        wrong: 0
+    },
+    {
+        word: "DECLARATION",
+        average: 2.325,
+        wrong: 0
+    },
+    {
+        word: "RATIONALISE",
+        average: 2.325,
+        wrong: 0
+    },
+    {
+        word: "REPLICATION",
+        average: 2.327,
+        wrong: 0
+    },
+    {
+        word: "IMPORTANCES",
+        average: 2.327,
+        wrong: 0
+    },
+    {
+        word: "NORMALITIES",
+        average: 2.327,
+        wrong: 0
+    },
+    {
+        word: "DESTRUCTION",
+        average: 2.332,
+        wrong: 0
+    },
+    {
+        word: "PERSECUTING",
+        average: 2.333,
+        wrong: 0
+    },
+    {
+        word: "CELEBRATION",
+        average: 2.333,
+        wrong: 0
+    },
+    {
+        word: "DEPRECATING",
+        average: 2.333,
+        wrong: 0
+    },
+    {
+        word: "DECLINATION",
+        average: 2.334,
+        wrong: 0
+    },
+    {
+        word: "SUPERNATION",
+        average: 2.334,
+        wrong: 0
+    },
+    {
+        word: "SECONDARILY",
+        average: 2.335,
+        wrong: 0
+    },
+    {
+        word: "MENSURATION",
+        average: 2.335,
+        wrong: 0
+    },
+    {
+        word: "AERONAUTICS",
+        average: 2.336,
+        wrong: 0
+    },
+    {
+        word: "DELECTATION",
+        average: 2.336,
+        wrong: 0
+    },
+    {
+        word: "DOCTRINAIRE",
+        average: 2.336,
+        wrong: 0
+    },
+    {
+        word: "DEMARCATION",
+        average: 2.337,
+        wrong: 0
+    },
+    {
+        word: "METRICATION",
+        average: 2.337,
+        wrong: 0
+    },
+    {
+        word: "CARTELISING",
+        average: 2.337,
+        wrong: 0
+    },
+    {
+        word: "DETRACTIONS",
+        average: 2.339,
+        wrong: 0
+    },
+    {
+        word: "MISCREATION",
+        average: 2.339,
+        wrong: 0
+    },
+    {
+        word: "DISRELATION",
+        average: 2.341,
+        wrong: 0
+    },
+    {
+        word: "CEREMONIALS",
+        average: 2.341,
+        wrong: 0
+    },
+    {
+        word: "REEDUCATION",
+        average: 2.342,
+        wrong: 0
+    },
+    {
+        word: "PERSONALITY",
+        average: 2.342,
+        wrong: 0
+    },
+    {
+        word: "REPLICATING",
+        average: 2.343,
+        wrong: 0
+    },
+    {
+        word: "RECONSULTED",
+        average: 2.343,
+        wrong: 0
+    },
+    {
+        word: "CREATIONISM",
+        average: 2.344,
+        wrong: 0
+    },
+    {
+        word: "RADIOLUCENT",
+        average: 2.344,
+        wrong: 0
+    },
+    {
+        word: "PERCOLATION",
+        average: 2.345,
+        wrong: 0
+    },
+    {
+        word: "DELINEATORS",
+        average: 2.345,
+        wrong: 0
+    },
+    {
+        word: "PERSONALIST",
+        average: 2.345,
+        wrong: 0
+    },
+    {
+        word: "PRATINCOLES",
+        average: 2.345,
+        wrong: 0
+    },
+    {
+        word: "PERSONATING",
+        average: 2.346,
+        wrong: 0
+    },
+    {
+        word: "CERATOPSIAN",
+        average: 2.347,
+        wrong: 0
+    },
+    {
+        word: "CELEBRATING",
+        average: 2.347,
+        wrong: 0
+    },
+    {
+        word: "ULCERATIONS",
+        average: 2.347,
+        wrong: 0
+    },
+    {
+        word: "PECULATIONS",
+        average: 2.347,
+        wrong: 0
+    },
+    {
+        word: "ORIENTALISM",
+        average: 2.348,
+        wrong: 0
+    },
+    {
+        word: "PATERNALISM",
+        average: 2.348,
+        wrong: 0
+    },
+    {
+        word: "REGIONALIST",
+        average: 2.349,
+        wrong: 0
+    },
+    {
+        word: "CRENULATION",
+        average: 2.349,
+        wrong: 0
+    },
+    {
+        word: "PERMUTATION",
+        average: 2.350,
+        wrong: 0
+    },
+    {
+        word: "RELUCTATION",
+        average: 2.351,
+        wrong: 0
+    },
+    {
+        word: "REPUDIATION",
+        average: 2.352,
+        wrong: 0
+    },
+    {
+        word: "CONSIDERATE",
+        average: 2.352,
+        wrong: 0
+    },
+    {
+        word: "SPORULATIVE",
+        average: 2.353,
+        wrong: 0
+    },
+    {
+        word: "PREDICATION",
+        average: 2.353,
+        wrong: 0
+    },
+    {
+        word: "SPORULATING",
+        average: 2.353,
+        wrong: 0
+    },
+    {
+        word: "CREATIONIST",
+        average: 2.354,
+        wrong: 0
+    },
+    {
+        word: "RESPIRATION",
+        average: 2.354,
+        wrong: 0
+    },
+    {
+        word: "SPECULATION",
+        average: 2.355,
+        wrong: 0
+    },
+    {
+        word: "MELIORATING",
+        average: 2.355,
+        wrong: 0
+    },
+    {
+        word: "RESCULPTING",
+        average: 2.356,
+        wrong: 0
+    },
+    {
+        word: "MERCURATION",
+        average: 2.356,
+        wrong: 0
+    },
+    {
+        word: "INTERCOSTAL",
+        average: 2.356,
+        wrong: 0
+    },
+    {
+        word: "DECLAMATION",
+        average: 2.357,
+        wrong: 0
+    },
+    {
+        word: "UNREALISTIC",
+        average: 2.358,
+        wrong: 0
+    },
+    {
+        word: "VOLUNTARIES",
+        average: 2.358,
+        wrong: 0
+    },
+    {
+        word: "PELARGONIUM",
+        average: 2.360,
+        wrong: 0
+    },
+    {
+        word: "ELUCIDATORS",
+        average: 2.361,
+        wrong: 0
+    },
+    {
+        word: "PREDICAMENT",
+        average: 2.361,
+        wrong: 0
+    },
+    {
+        word: "DEMARCATING",
+        average: 2.362,
+        wrong: 0
+    },
+    {
+        word: "RECLAMATION",
+        average: 2.362,
+        wrong: 0
+    },
+    {
+        word: "PROSECUTING",
+        average: 2.362,
+        wrong: 0
+    },
+    {
+        word: "CORRELATING",
+        average: 2.362,
+        wrong: 0
+    },
+    {
+        word: "DISLOCATING",
+        average: 2.363,
+        wrong: 0
+    },
+    {
+        word: "PRELOCATING",
+        average: 2.363,
+        wrong: 0
+    },
+    {
+        word: "REGIMENTALS",
+        average: 2.364,
+        wrong: 0
+    },
+    {
+        word: "MODERNISTIC",
+        average: 2.365,
+        wrong: 0
+    },
+    {
+        word: "DESALINATOR",
+        average: 2.365,
+        wrong: 0
+    },
+    {
+        word: "CONSTRAINED",
+        average: 2.366,
+        wrong: 0
+    },
+    {
+        word: "PATERNALIST",
+        average: 2.366,
+        wrong: 0
+    },
+    {
+        word: "REGIONALISM",
+        average: 2.366,
+        wrong: 0
+    },
+    {
+        word: "REPUDIATING",
+        average: 2.366,
+        wrong: 0
+    },
+    {
+        word: "MACERATIONS",
+        average: 2.367,
+        wrong: 0
+    },
+    {
+        word: "CLOISTERING",
+        average: 2.368,
+        wrong: 0
+    },
+    {
+        word: "REPUBLICANS",
+        average: 2.368,
+        wrong: 0
+    },
+    {
+        word: "RELUCTATING",
+        average: 2.369,
+        wrong: 0
+    },
+    {
+        word: "ROUNDTABLES",
+        average: 2.370,
+        wrong: 0
+    },
+    {
+        word: "ANCESTORING",
+        average: 2.370,
+        wrong: 0
+    },
+    {
+        word: "IMPRECATION",
+        average: 2.371,
+        wrong: 0
+    },
+    {
+        word: "ERADICATION",
+        average: 2.373,
+        wrong: 0
+    },
+    {
+        word: "GLUCOSAMINE",
+        average: 2.373,
+        wrong: 0
+    },
+    {
+        word: "PREDICATING",
+        average: 2.373,
+        wrong: 0
+    },
+    {
+        word: "DEPORTATION",
+        average: 2.373,
+        wrong: 0
+    },
+    {
+        word: "LACERATIONS",
+        average: 2.374,
+        wrong: 0
+    },
+    {
+        word: "RESIDENTIAL",
+        average: 2.374,
+        wrong: 0
+    },
+    {
+        word: "CONTRACTILE",
+        average: 2.374,
+        wrong: 0
+    },
+    {
+        word: "SPECULATING",
+        average: 2.375,
+        wrong: 0
+    },
+    {
+        word: "DEPRIVATION",
+        average: 2.375,
+        wrong: 0
+    },
+    {
+        word: "INTERLACING",
+        average: 2.375,
+        wrong: 0
+    },
+    {
+        word: "CONTRASTIVE",
+        average: 2.376,
+        wrong: 0
+    },
+    {
+        word: "MISRELATING",
+        average: 2.376,
+        wrong: 0
+    },
+    {
+        word: "DECORATIONS",
+        average: 2.376,
+        wrong: 0
+    },
+    {
+        word: "ALTERCATION",
+        average: 2.377,
+        wrong: 0
+    },
+    {
+        word: "NEUTROPHILS",
+        average: 2.377,
+        wrong: 0
+    },
+    {
+        word: "ELUCIDATION",
+        average: 2.378,
+        wrong: 0
+    },
+    {
+        word: "INTERCAMPUS",
+        average: 2.378,
+        wrong: 0
+    },
+    {
+        word: "TELESCOPING",
+        average: 2.381,
+        wrong: 0
+    },
+    {
+        word: "COPARENTING",
+        average: 2.381,
+        wrong: 0
+    },
+    {
+        word: "MEROBLASTIC",
+        average: 2.382,
+        wrong: 0
+    },
+    {
+        word: "OBSECRATING",
+        average: 2.384,
+        wrong: 0
+    },
+    {
+        word: "LUBRICATION",
+        average: 2.385,
+        wrong: 0
+    },
+    {
+        word: "COLINEARITY",
+        average: 2.387,
+        wrong: 0
+    },
+    {
+        word: "ENUMERATION",
+        average: 2.390,
+        wrong: 0
+    },
+    {
+        word: "INOCULATORS",
+        average: 2.391,
+        wrong: 0
+    },
+    {
+        word: "ENUNCIATORS",
+        average: 2.393,
+        wrong: 0
+    },
+    {
+        word: "INTRICATELY",
+        average: 2.395,
+        wrong: 0
+    },
+    {
+        word: "ELUCIDATING",
+        average: 2.402,
+        wrong: 0
+    },
+    {
+        word: "TRANSECTION",
+        average: 2.405,
+        wrong: 0
+    },
+    {
+        word: "VENTILATORS",
+        average: 2.407,
+        wrong: 0
+    },
+    {
         word: "SALET",
-        average: 3.552
+        average: 3.552,
+        wrong: 0
     },
     {
         word: "CARTE",
-        average: 3.558
+        average: 3.558,
+        wrong: 0
     },
     {
         word: "CARLE",
-        average: 3.563
+        average: 3.563,
+        wrong: 0
     },
     {
         word: "TRACE",
-        average: 3.564
+        average: 3.564,
+        wrong: 0
     },
     {
         word: "REAST",
-        average: 3.565
+        average: 3.565,
+        wrong: 0
     },
     {
         word: "CARET",
-        average: 3.566
+        average: 3.566,
+        wrong: 0
     },
     {
         word: "SANER",
-        average: 3.567
+        average: 3.567,
+        wrong: 0
     },
     {
         word: "TARED",
-        average: 3.568
+        average: 3.568,
+        wrong: 0
     },
     {
         word: "CRATE",
-        average: 3.568
+        average: 3.568,
+        wrong: 0
     },
     {
         word: "SLATE",
-        average: 3.568
+        average: 3.568,
+        wrong: 0
     },
     {
         word: "CARSE",
-        average: 3.570
+        average: 3.570,
+        wrong: 0
     },
     {
         word: "TORSE",
-        average: 3.571
+        average: 3.571,
+        wrong: 0
     },
     {
         word: "TARES",
-        average: 3.574
+        average: 3.574,
+        wrong: 0
     },
     {
         word: "EARST",
-        average: 3.578
+        average: 3.578,
+        wrong: 0
     },
     {
         word: "TALER",
-        average: 3.579
+        average: 3.579,
+        wrong: 0
     },
     {
         word: "SARED",
-        average: 3.580
+        average: 3.580,
+        wrong: 0
     },
     {
         word: "TASER",
-        average: 3.581
+        average: 3.581,
+        wrong: 0
     },
     {
         word: "SNARE",
-        average: 3.582
+        average: 3.582,
+        wrong: 0
     },
     {
         word: "STARE",
-        average: 3.582
+        average: 3.582,
+        wrong: 0
     },
     {
         word: "CRANE",
-        average: 3.582
+        average: 3.582,
+        wrong: 0
     },
     {
         word: "LEAST",
-        average: 3.582
+        average: 3.582,
+        wrong: 0
     },
     {
         word: "SOREL",
-        average: 3.583
+        average: 3.583,
+        wrong: 0
     },
     {
         word: "RATED",
-        average: 3.583
+        average: 3.583,
+        wrong: 0
     },
     {
         word: "ROSET",
-        average: 3.583
+        average: 3.583,
+        wrong: 0
     },
     {
         word: "PARSE",
-        average: 3.583
+        average: 3.583,
+        wrong: 0
     },
     {
         word: "TRADE",
-        average: 3.584
+        average: 3.584,
+        wrong: 0
     },
     {
         word: "DENAR",
-        average: 3.584
+        average: 3.584,
+        wrong: 0
     },
     {
         word: "ALTER",
-        average: 3.585
+        average: 3.585,
+        wrong: 0
     },
     {
         word: "DATER",
-        average: 3.585
+        average: 3.585,
+        wrong: 0
     },
     {
         word: "ARTEL",
-        average: 3.586
+        average: 3.586,
+        wrong: 0
     },
     {
         word: "CATER",
-        average: 3.586
+        average: 3.586,
+        wrong: 0
     },
     {
         word: "TRAPE",
-        average: 3.586
+        average: 3.586,
+        wrong: 0
     },
     {
         word: "STRAE",
-        average: 3.587
+        average: 3.587,
+        wrong: 0
     },
     {
         word: "PRATE",
-        average: 3.587
+        average: 3.587,
+        wrong: 0
     },
     {
         word: "RANCE",
-        average: 3.587
+        average: 3.587,
+        wrong: 0
     },
     {
         word: "DEARN",
-        average: 3.587
+        average: 3.587,
+        wrong: 0
     },
     {
         word: "PARLE",
-        average: 3.589
+        average: 3.589,
+        wrong: 0
     },
     {
         word: "RATEL",
-        average: 3.590
+        average: 3.590,
+        wrong: 0
     },
     {
         word: "REACT",
-        average: 3.590
+        average: 3.590,
+        wrong: 0
     },
     {
         word: "SIREN",
-        average: 3.591
+        average: 3.591,
+        wrong: 0
     },
     {
         word: "TORES",
-        average: 3.592
+        average: 3.592,
+        wrong: 0
     },
     {
         word: "RESAT",
-        average: 3.593
+        average: 3.593,
+        wrong: 0
     },
     {
         word: "TONER",
-        average: 3.593
+        average: 3.593,
+        wrong: 0
     },
     {
         word: "STALE",
-        average: 3.593
+        average: 3.593,
+        wrong: 0
     },
     {
         word: "LATER",
-        average: 3.594
+        average: 3.594,
+        wrong: 0
     },
     {
         word: "ANTRE",
-        average: 3.594
+        average: 3.594,
+        wrong: 0
     },
     {
         word: "CARES",
-        average: 3.594
+        average: 3.594,
+        wrong: 0
     },
     {
         word: "DEALT",
-        average: 3.594
+        average: 3.594,
+        wrong: 0
     },
     {
         word: "LEANT",
-        average: 3.594
+        average: 3.594,
+        wrong: 0
     },
     {
         word: "LATEN",
-        average: 3.595
+        average: 3.595,
+        wrong: 0
     },
     {
         word: "TEARS",
-        average: 3.595
+        average: 3.595,
+        wrong: 0
     },
     {
         word: "ARLED",
-        average: 3.595
+        average: 3.595,
+        wrong: 0
     },
     {
         word: "CANER",
-        average: 3.595
+        average: 3.595,
+        wrong: 0
     },
     {
         word: "RATES",
-        average: 3.596
+        average: 3.596,
+        wrong: 0
     },
     {
         word: "SOLER",
-        average: 3.596
+        average: 3.596,
+        wrong: 0
     },
     {
         word: "TALES",
-        average: 3.596
+        average: 3.596,
+        wrong: 0
     },
     {
         word: "ALIEN",
-        average: 3.597
+        average: 3.597,
+        wrong: 0
     },
     {
         word: "LITRE",
-        average: 3.597
+        average: 3.597,
+        wrong: 0
     },
     {
         word: "TIRES",
-        average: 3.597
+        average: 3.597,
+        wrong: 0
     },
     {
         word: "ALERT",
-        average: 3.598
+        average: 3.598,
+        wrong: 0
     },
     {
         word: "TERAS",
-        average: 3.598
+        average: 3.598,
+        wrong: 0
     },
     {
         word: "SATED",
-        average: 3.598
+        average: 3.598,
+        wrong: 0
     },
     {
         word: "DERAT",
-        average: 3.598
+        average: 3.598,
+        wrong: 0
     },
     {
         word: "SOARE",
-        average: 3.599
+        average: 3.599,
+        wrong: 0
     },
     {
         word: "RAILE",
-        average: 3.600
+        average: 3.600,
+        wrong: 0
     },
     {
         word: "RAINE",
-        average: 3.600
+        average: 3.600,
+        wrong: 0
     },
     {
         word: "RALES",
-        average: 3.601
+        average: 3.601,
+        wrong: 0
     },
     {
         word: "ALDER",
-        average: 3.601
+        average: 3.601,
+        wrong: 0
     },
     {
         word: "SERAL",
-        average: 3.602
+        average: 3.602,
+        wrong: 0
     },
     {
         word: "TILER",
-        average: 3.602
+        average: 3.602,
+        wrong: 0
     },
     {
         word: "TRIES",
-        average: 3.602
+        average: 3.602,
+        wrong: 0
     },
     {
         word: "SCARE",
-        average: 3.602
+        average: 3.602,
+        wrong: 0
     },
     {
         word: "TAPER",
-        average: 3.603
+        average: 3.603,
+        wrong: 0
     },
     {
         word: "SIRED",
-        average: 3.603
+        average: 3.603,
+        wrong: 0
     },
     {
         word: "STIRE",
-        average: 3.603
+        average: 3.603,
+        wrong: 0
     },
     {
         word: "DARES",
-        average: 3.604
+        average: 3.604,
+        wrong: 0
     },
     {
         word: "ARSED",
-        average: 3.604
+        average: 3.604,
+        wrong: 0
     },
     {
         word: "RASED",
-        average: 3.604
+        average: 3.604,
+        wrong: 0
     },
     {
         word: "PATER",
-        average: 3.604
+        average: 3.604,
+        wrong: 0
     },
     {
         word: "TREAD",
-        average: 3.604
+        average: 3.604,
+        wrong: 0
     },
     {
         word: "RAISE",
-        average: 3.605
+        average: 3.605,
+        wrong: 0
     },
     {
         word: "NARES",
-        average: 3.605
+        average: 3.605,
+        wrong: 0
     },
     {
         word: "PAIRE",
-        average: 3.605
+        average: 3.605,
+        wrong: 0
     },
     {
         word: "EARNT",
-        average: 3.605
+        average: 3.605,
+        wrong: 0
     },
     {
         word: "ALONE",
-        average: 3.605
+        average: 3.605,
+        wrong: 0
     },
     {
         word: "LASER",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "AISLE",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "LONER",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "SCRAE",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "PARES",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "TEALS",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "STORE",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "SNORE",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "LARES",
-        average: 3.607
+        average: 3.607,
+        wrong: 0
     },
     {
         word: "SAINE",
-        average: 3.607
+        average: 3.607,
+        wrong: 0
     },
     {
         word: "ROTES",
-        average: 3.608
+        average: 3.608,
+        wrong: 0
     },
     {
         word: "AIRED",
-        average: 3.609
+        average: 3.609,
+        wrong: 0
     },
     {
         word: "NACRE",
-        average: 3.609
+        average: 3.609,
+        wrong: 0
     },
     {
         word: "ROATE",
-        average: 3.610
+        average: 3.610,
+        wrong: 0
     },
     {
         word: "LACER",
-        average: 3.610
+        average: 3.610,
+        wrong: 0
     },
     {
         word: "ALINE",
-        average: 3.610
+        average: 3.610,
+        wrong: 0
     },
     {
         word: "SERAC",
-        average: 3.610
+        average: 3.610,
+        wrong: 0
     },
     {
         word: "LEARN",
-        average: 3.611
+        average: 3.611,
+        wrong: 0
     },
     {
         word: "TRAIL",
-        average: 3.613
+        average: 3.613,
+        wrong: 0
     },
     {
         word: "LADER",
-        average: 3.614
+        average: 3.614,
+        wrong: 0
     },
     {
         word: "TAMER",
-        average: 3.614
+        average: 3.614,
+        wrong: 0
     },
     {
         word: "LIANE",
-        average: 3.615
+        average: 3.615,
+        wrong: 0
     },
     {
         word: "REANS",
-        average: 3.615
+        average: 3.615,
+        wrong: 0
     },
     {
         word: "ANOLE",
-        average: 3.615
+        average: 3.615,
+        wrong: 0
     },
     {
         word: "DEAIR",
-        average: 3.616
+        average: 3.616,
+        wrong: 0
     },
     {
         word: "AIDER",
-        average: 3.616
+        average: 3.616,
+        wrong: 0
     },
     {
         word: "PALER",
-        average: 3.616
+        average: 3.616,
+        wrong: 0
     },
     {
         word: "ANILE",
-        average: 3.617
+        average: 3.617,
+        wrong: 0
     },
     {
         word: "ARETS",
-        average: 3.617
+        average: 3.617,
+        wrong: 0
     },
     {
         word: "IRATE",
-        average: 3.618
+        average: 3.618,
+        wrong: 0
     },
     {
         word: "RACES",
-        average: 3.618
+        average: 3.618,
+        wrong: 0
     },
     {
         word: "RITES",
-        average: 3.618
+        average: 3.618,
+        wrong: 0
     },
     {
         word: "ARIEL",
-        average: 3.619
+        average: 3.619,
+        wrong: 0
     },
     {
         word: "ARISE",
-        average: 3.620
+        average: 3.620,
+        wrong: 0
     },
     {
         word: "LITER",
-        average: 3.620
+        average: 3.620,
+        wrong: 0
     },
     {
         word: "RENAL",
-        average: 3.620
+        average: 3.620,
+        wrong: 0
     },
     {
         word: "STEAR",
-        average: 3.620
+        average: 3.620,
+        wrong: 0
     },
     {
         word: "RATHE",
-        average: 3.620
+        average: 3.620,
+        wrong: 0
     },
     {
         word: "OATEN",
-        average: 3.621
+        average: 3.621,
+        wrong: 0
     },
     {
         word: "ATONE",
-        average: 3.621
+        average: 3.621,
+        wrong: 0
     },
     {
         word: "ROLES",
-        average: 3.622
+        average: 3.622,
+        wrong: 0
     },
     {
         word: "THRAE",
-        average: 3.622
+        average: 3.622,
+        wrong: 0
     },
     {
         word: "OATER",
-        average: 3.623
+        average: 3.623,
+        wrong: 0
     },
     {
         word: "ORATE",
-        average: 3.623
+        average: 3.623,
+        wrong: 0
     },
     {
         word: "REALS",
-        average: 3.623
+        average: 3.623,
+        wrong: 0
     },
     {
         word: "ARLES",
-        average: 3.624
+        average: 3.624,
+        wrong: 0
     },
     {
         word: "EARNS",
-        average: 3.624
+        average: 3.624,
+        wrong: 0
     },
     {
         word: "RISEN",
-        average: 3.624
+        average: 3.624,
+        wrong: 0
     },
     {
         word: "AROSE",
-        average: 3.625
+        average: 3.625,
+        wrong: 0
     },
     {
         word: "SAYER",
-        average: 3.625
+        average: 3.625,
+        wrong: 0
     },
     {
         word: "LORES",
-        average: 3.625
+        average: 3.625,
+        wrong: 0
     },
     {
         word: "TINEA",
-        average: 3.625
+        average: 3.625,
+        wrong: 0
     },
     {
         word: "MATER",
-        average: 3.626
+        average: 3.626,
+        wrong: 0
     },
     {
         word: "LEARS",
-        average: 3.627
+        average: 3.627,
+        wrong: 0
     },
     {
         word: "LOSER",
-        average: 3.627
+        average: 3.627,
+        wrong: 0
     },
     {
         word: "OARED",
-        average: 3.628
+        average: 3.628,
+        wrong: 0
     },
     {
         word: "PORAE",
-        average: 3.628
+        average: 3.628,
+        wrong: 0
     },
     {
         word: "LINER",
-        average: 3.628
+        average: 3.628,
+        wrong: 0
     },
     {
         word: "RELIT",
-        average: 3.629
+        average: 3.629,
+        wrong: 0
     },
     {
         word: "ASTER",
-        average: 3.630
+        average: 3.630,
+        wrong: 0
     },
     {
         word: "DEARS",
-        average: 3.630
+        average: 3.630,
+        wrong: 0
     },
     {
         word: "ALOED",
-        average: 3.630
+        average: 3.630,
+        wrong: 0
     },
     {
         word: "MAIRE",
-        average: 3.631
+        average: 3.631,
+        wrong: 0
     },
     {
         word: "NEARS",
-        average: 3.632
+        average: 3.632,
+        wrong: 0
     },
     {
         word: "HATER",
-        average: 3.632
+        average: 3.632,
+        wrong: 0
     },
     {
         word: "HALER",
-        average: 3.633
+        average: 3.633,
+        wrong: 0
     },
     {
         word: "ACRES",
-        average: 3.633
+        average: 3.633,
+        wrong: 0
     },
     {
         word: "NERAL",
-        average: 3.635
+        average: 3.635,
+        wrong: 0
     },
     {
         word: "URATE",
-        average: 3.636
+        average: 3.636,
+        wrong: 0
     },
     {
         word: "EARLS",
-        average: 3.636
+        average: 3.636,
+        wrong: 0
     },
     {
         word: "PAREO",
-        average: 3.637
+        average: 3.637,
+        wrong: 0
     },
     {
         word: "AESIR",
-        average: 3.638
+        average: 3.638,
+        wrong: 0
     },
     {
         word: "LAERS",
-        average: 3.638
+        average: 3.638,
+        wrong: 0
     },
     {
         word: "ORIEL",
-        average: 3.639
+        average: 3.639,
+        wrong: 0
     },
     {
         word: "ALOES",
-        average: 3.639
+        average: 3.639,
+        wrong: 0
     },
     {
         word: "STOAE",
-        average: 3.639
+        average: 3.639,
+        wrong: 0
     },
     {
         word: "ALURE",
-        average: 3.640
+        average: 3.640,
+        wrong: 0
     },
     {
         word: "TERAI",
-        average: 3.641
+        average: 3.641,
+        wrong: 0
     },
     {
         word: "RAYNE",
-        average: 3.642
+        average: 3.642,
+        wrong: 0
     },
     {
         word: "ORLES",
-        average: 3.643
+        average: 3.643,
+        wrong: 0
     },
     {
         word: "ANISE",
-        average: 3.643
+        average: 3.643,
+        wrong: 0
     },
     {
         word: "REALO",
-        average: 3.644
+        average: 3.644,
+        wrong: 0
     },
     {
         word: "ADORE",
-        average: 3.644
+        average: 3.644,
+        wrong: 0
     },
     {
         word: "TELIA",
-        average: 3.646
+        average: 3.646,
+        wrong: 0
     },
     {
         word: "ARSEY",
-        average: 3.648
+        average: 3.648,
+        wrong: 0
     },
     {
         word: "RETIA",
-        average: 3.649
+        average: 3.649,
+        wrong: 0
     },
     {
         word: "IRONE",
-        average: 3.649
+        average: 3.649,
+        wrong: 0
     },
     {
         word: "AIMER",
-        average: 3.649
+        average: 3.649,
+        wrong: 0
     },
     {
         word: "SERAI",
-        average: 3.650
+        average: 3.650,
+        wrong: 0
     },
     {
         word: "AURES",
-        average: 3.650
+        average: 3.650,
+        wrong: 0
     },
     {
         word: "READS",
-        average: 3.650
+        average: 3.650,
+        wrong: 0
     },
     {
         word: "RAYLE",
-        average: 3.652
+        average: 3.652,
+        wrong: 0
     },
     {
         word: "REOIL",
-        average: 3.654
+        average: 3.654,
+        wrong: 0
     },
     {
         word: "RAMIE",
-        average: 3.654
+        average: 3.654,
+        wrong: 0
     },
     {
         word: "MORAE",
-        average: 3.654
+        average: 3.654,
+        wrong: 0
     },
     {
         word: "AIDES",
-        average: 3.654
+        average: 3.654,
+        wrong: 0
     },
     {
         word: "OILER",
-        average: 3.656
+        average: 3.656,
+        wrong: 0
     },
     {
         word: "REAIS",
-        average: 3.657
+        average: 3.657,
+        wrong: 0
     },
     {
         word: "IRADE",
-        average: 3.661
+        average: 3.661,
+        wrong: 0
     },
     {
         word: "LAYER",
-        average: 3.662
+        average: 3.662,
+        wrong: 0
     },
     {
         word: "RIMAE",
-        average: 3.662
+        average: 3.662,
+        wrong: 0
     },
     {
         word: "AEROS",
-        average: 3.670
+        average: 3.670,
+        wrong: 0
     },
     {
         word: "AYRES",
-        average: 3.670
+        average: 3.670,
+        wrong: 0
     },
     {
         word: "OCREA",
-        average: 3.670
+        average: 3.670,
+        wrong: 0
     },
     {
         word: "URASE",
-        average: 3.672
+        average: 3.672,
+        wrong: 0
     },
     {
         word: "OSIER",
-        average: 3.679
+        average: 3.679,
+        wrong: 0
     },
     {
         word: "URSAE",
-        average: 3.679
+        average: 3.679,
+        wrong: 0
     },
     {
         word: "AYRIE",
-        average: 3.696
+        average: 3.696,
+        wrong: 0
     },
     {
         word: "AUREI",
-        average: 3.706
+        average: 3.706,
+        wrong: 0
     },
     {
         word: "URAEI",
-        average: 3.734
+        average: 3.734,
+        wrong: 0
     },
     {
         word: "SLANE",
-        average: 3.578
+        average: 3.578,
+        wrong: 0
     },
     {
         word: "SANED",
-        average: 3.580
+        average: 3.580,
+        wrong: 0
     },
     {
         word: "TRINE",
-        average: 3.589
+        average: 3.589,
+        wrong: 0
     },
     {
         word: "PALET",
-        average: 3.589
+        average: 3.589,
+        wrong: 0
     },
     {
         word: "DROLE",
-        average: 3.591
+        average: 3.591,
+        wrong: 0
     },
     {
         word: "PAREN",
-        average: 3.593
+        average: 3.593,
+        wrong: 0
     },
     {
         word: "TOILE",
-        average: 3.594
+        average: 3.594,
+        wrong: 0
     },
     {
         word: "STANE",
-        average: 3.594
+        average: 3.594,
+        wrong: 0
     },
     {
         word: "LANES",
-        average: 3.597
+        average: 3.597,
+        wrong: 0
     },
     {
         word: "TRONE",
-        average: 3.597
+        average: 3.597,
+        wrong: 0
     },
     {
         word: "RINSE",
-        average: 3.599
+        average: 3.599,
+        wrong: 0
     },
     {
         word: "LACET",
-        average: 3.600
+        average: 3.600,
+        wrong: 0
     },
     {
         word: "SLIER",
-        average: 3.602
+        average: 3.602,
+        wrong: 0
     },
     {
         word: "RONTE",
-        average: 3.602
+        average: 3.602,
+        wrong: 0
     },
     {
         word: "MARSE",
-        average: 3.604
+        average: 3.604,
+        wrong: 0
     },
     {
         word: "ARMET",
-        average: 3.605
+        average: 3.605,
+        wrong: 0
     },
     {
         word: "SILER",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "SLADE",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "SPAER",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "TARGE",
-        average: 3.606
+        average: 3.606,
+        wrong: 0
     },
     {
         word: "MARLE",
-        average: 3.607
+        average: 3.607,
+        wrong: 0
     },
     {
         word: "LATED",
-        average: 3.607
+        average: 3.607,
+        wrong: 0
     },
     {
         word: "DALES",
-        average: 3.607
+        average: 3.607,
+        wrong: 0
     },
     {
         word: "TOLES",
-        average: 3.608
+        average: 3.608,
+        wrong: 0
     },
     {
         word: "RONES",
-        average: 3.609
+        average: 3.609,
+        wrong: 0
     },
     {
         word: "LASED",
-        average: 3.610
+        average: 3.610,
+        wrong: 0
     },
     {
         word: "RAMET",
-        average: 3.611
+        average: 3.611,
+        wrong: 0
     },
     {
         word: "DIANE",
-        average: 3.611
+        average: 3.611,
+        wrong: 0
     },
     {
         word: "NOTER",
-        average: 3.612
+        average: 3.612,
+        wrong: 0
     },
     {
         word: "TASED",
-        average: 3.613
+        average: 3.613,
+        wrong: 0
     },
     {
         word: "DAINE",
-        average: 3.613
+        average: 3.613,
+        wrong: 0
     },
     {
         word: "SAICE",
-        average: 3.616
+        average: 3.616,
+        wrong: 0
     },
     {
         word: "SABER",
-        average: 3.617
+        average: 3.617,
+        wrong: 0
     },
     {
         word: "LIART",
-        average: 3.618
+        average: 3.618,
+        wrong: 0
     },
     {
         word: "NATES",
-        average: 3.621
+        average: 3.621,
+        wrong: 0
     },
     {
         word: "DATES",
-        average: 3.621
+        average: 3.621,
+        wrong: 0
     },
     {
         word: "COATE",
-        average: 3.622
+        average: 3.622,
+        wrong: 0
     },
     {
         word: "LADES",
-        average: 3.622
+        average: 3.622,
+        wrong: 0
     },
     {
         word: "NITER",
-        average: 3.623
+        average: 3.623,
+        wrong: 0
     },
     {
         word: "ANTES",
-        average: 3.624
+        average: 3.624,
+        wrong: 0
     },
     {
         word: "TOISE",
-        average: 3.624
+        average: 3.624,
+        wrong: 0
     },
     {
         word: "MASER",
-        average: 3.624
+        average: 3.624,
+        wrong: 0
     },
     {
         word: "MARES",
-        average: 3.625
+        average: 3.625,
+        wrong: 0
     },
     {
         word: "RAPES",
-        average: 3.625
+        average: 3.625,
+        wrong: 0
     },
     {
         word: "NOSER",
-        average: 3.626
+        average: 3.626,
+        wrong: 0
     },
     {
         word: "RINES",
-        average: 3.626
+        average: 3.626,
+        wrong: 0
     },
     {
         word: "APTER",
-        average: 3.626
+        average: 3.626,
+        wrong: 0
     },
     {
         word: "SENOR",
-        average: 3.629
+        average: 3.629,
+        wrong: 0
     },
     {
         word: "RILES",
-        average: 3.630
+        average: 3.630,
+        wrong: 0
     },
     {
         word: "SAGER",
-        average: 3.630
+        average: 3.630,
+        wrong: 0
     },
     {
         word: "HARES",
-        average: 3.635
+        average: 3.635,
+        wrong: 0
     },
     {
         word: "GATER",
-        average: 3.638
+        average: 3.638,
+        wrong: 0
     },
     {
         word: "LEIRS",
-        average: 3.641
+        average: 3.641,
+        wrong: 0
     },
     {
         word: "SOLEI",
-        average: 3.647
+        average: 3.647,
+        wrong: 0
     },
     {
         word: "REDIA",
-        average: 3.651
+        average: 3.651,
+        wrong: 0
     },
     {
         word: "AEONS",
-        average: 3.652
+        average: 3.652,
+        wrong: 0
     },
     {
         word: "HAOLE",
-        average: 3.655
+        average: 3.655,
+        wrong: 0
     },
     {
         word: "CERIA",
-        average: 3.659
+        average: 3.659,
+        wrong: 0
     },
     {
         word: "SLART",
         average: 3.573,
+        wrong: 0
     },
     {
         word: "SLANT",
         average: 3.573,
+        wrong: 0
     },
     {
         word: "TARNS",
         average: 3.579,
+        wrong: 0
     },
     {
         word: "TRANS",
         average: 3.588,
+        wrong: 0
     },
     {
         word: "DRANT",
         average: 3.593,
+        wrong: 0
     },
     {
         word: "LARNT",
         average: 3.594,
+        wrong: 0
     },
     {
         word: "STARN",
         average: 3.594,
+        wrong: 0
     },
     {
         word: "PERST",
         average: 3.597,
+        wrong: 0
     },
     {
         word: "TIRLS",
         average: 3.599,
+        wrong: 0
     },
     {
         word: "CLART",
         average: 3.602,
+        wrong: 0
     },
     {
         word: "RANTS",
         average: 3.603,
+        wrong: 0
     },
     {
         word: "CARNS",
         average: 3.605,
+        wrong: 0
     },
     {
         word: "SCART",
         average: 3.605,
+        wrong: 0
     },
     {
         word: "TERNS",
         average: 3.606,
+        wrong: 0
     },
     {
         word: "CARLS",
         average: 3.606,
+        wrong: 0
     },
     {
         word: "CARTS",
         average: 3.607,
+        wrong: 0
     },
     {
         word: "DARTS",
         average: 3.611,
+        wrong: 0
     },
     {
         word: "TREND",
         average: 3.611,
+        wrong: 0
     },
     {
         word: "TRILD",
         average: 3.613,
+        wrong: 0
     },
     {
         word: "DARNS",
         average: 3.616,
+        wrong: 0
     },
     {
         word: "DRENT",
         average: 3.616,
+        wrong: 0
     },
     {
         word: "RENTS",
         average: 3.617,
+        wrong: 0
     },
     {
         word: "SCRAT",
         average: 3.617,
+        wrong: 0
     },
     {
         word: "SNARL",
         average: 3.619,
+        wrong: 0
     },
     {
         word: "DRATS",
         average: 3.620,
+        wrong: 0
     },
     {
         word: "DREST",
         average: 3.620,
+        wrong: 0
     },
     {
         word: "STREP",
         average: 3.620,
+        wrong: 0
     },
     {
         word: "CREST",
         average: 3.623,
+        wrong: 0
     },
     {
         word: "STRAD",
         average: 3.625,
+        wrong: 0
     },
     {
         word: "LANTS",
         average: 3.627,
+        wrong: 0
     },
     {
         word: "STAND",
         average: 3.627,
+        wrong: 0
     },
     {
         word: "SPRED",
         average: 3.630,
+        wrong: 0
     },
     {
         word: "NERTS",
         average: 3.631,
+        wrong: 0
     },
     {
         word: "TRADS",
         average: 3.631,
+        wrong: 0
     },
     {
         word: "ROTLS",
         average: 3.631,
+        wrong: 0
     },
     {
         word: "DERNS",
         average: 3.632,
+        wrong: 0
     },
     {
         word: "STERN",
         average: 3.632,
+        wrong: 0
     },
     {
         word: "LARNS",
         average: 3.633,
+        wrong: 0
     },
     {
         word: "PRENT",
         average: 3.633,
+        wrong: 0
     },
     {
         word: "DENTS",
         average: 3.635,
+        wrong: 0
     },
     {
         word: "PERTS",
         average: 3.635,
+        wrong: 0
     },
     {
         word: "CERTS",
         average: 3.636,
+        wrong: 0
     },
     {
         word: "RANDS",
         average: 3.638,
+        wrong: 0
     },
     {
         word: "DIRLS",
         average: 3.639,
+        wrong: 0
     },
     {
         word: "LARDS",
         average: 3.641,
+        wrong: 0
     },
     {
         word: "NARDS",
         average: 3.643,
+        wrong: 0
     },
     {
         word: "DALTS",
         average: 3.643,
+        wrong: 0
     },
     {
         word: "PERNS",
         average: 3.644,
+        wrong: 0
     },
     {
         word: "DANTS",
         average: 3.644,
+        wrong: 0
     },
     {
         word: "DELTS",
         average: 3.646,
+        wrong: 0
     },
     {
         word: "CARDS",
         average: 3.648,
+        wrong: 0
     },
     {
         word: "MERLS",
         average: 3.649,
+        wrong: 0
     },
     {
         word: "SHRED",
         average: 3.650,
+        wrong: 0
     },
     {
         word: "TENDS",
         average: 3.652,
+        wrong: 0
     },
     {
         word: "HARLS",
         average: 3.656,
+        wrong: 0
     },
     {
         word: "RENDS",
         average: 3.657,
+        wrong: 0
     },
     {
         word: "TERMS",
         average: 3.657,
+        wrong: 0
     },
     {
         word: "HERNS",
         average: 3.658,
+        wrong: 0
     },
     {
         word: "HERLS",
         average: 3.660,
+        wrong: 0
     },
     {
         word: "LERPS",
         average: 3.662,
+        wrong: 0
     },
     {
         word: "SHARD",
         average: 3.663,
+        wrong: 0
     },
     {
         word: "NERDS",
         average: 3.665,
+        wrong: 0
     },
     {
         word: "LENDS",
         average: 3.670,
+        wrong: 0
     },
     {
         word: "LEHRS",
         average: 3.700,
+        wrong: 0
     }
 ]
