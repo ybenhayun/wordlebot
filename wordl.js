@@ -199,6 +199,7 @@ function update(initial) {
     var full_list = sortList(newlist, alphabet, sorted);
 
     full_list = useTop(sorted.map(a => a.word), full_list.map(a => a.word), initial, false);
+    // full_list = useTop(sorted.map(a => a.word), reduceList(full_list.map(a => a.word)), initial, false);
 
     full_list = full_list.filter((value, index, self) =>
         index === self.findIndex((t) => (
@@ -343,7 +344,7 @@ function finalOptions(sorted, less_likely) {
     }
 
     if (less_likely.length) {
-        let extra = "<li class = 'others'>Otherwise, it might be ";
+        let extra = "<li class = 'others'>Unlikely, but it might be ";
 
         for (let i = 0; i < less_likely.length; i++) {
             extra += "<span class = 'final'>" + less_likely[i].word + "</span>";

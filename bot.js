@@ -1,13 +1,37 @@
 
 var averages = [];
 
-function onlySingleVowels(list) {
+function reduceList(list) {
     for (let i = 0; i < list.length; i++) {
         var vowels = count(list[i], "A") + count(list[i], "E") + count(list[i], "I") + count(list[i], "O") + count(list[i], "U") + count(list[i], "Y");
-        if (vowels > 2) {
+        if (vowels > 1) {
             list.splice(i, 1);
             i--;
+            continue;
         } 
+
+        var cons = count(list[i], "C");
+        
+        if (cons < 1) {
+            list.splice(i, 1);
+            i--;
+            continue;
+        }
+
+        cons = count(list[i], "R");
+        
+        if (cons < 1) {
+            list.splice(i, 1);
+            i--;
+            continue;
+        }        
+
+        cons = count(list[i], "B");
+        
+        if (cons < 1) {
+            list.splice(i, 1);
+            i--;
+        }
     }
     return list;
 }
@@ -17,10 +41,13 @@ function testStartingWords() {
     var check_list = update(true);
     check_list = check_list.map(a => a.word);
     
+    // check_list = reduceList(check_list);
+    console.log(check_list);
+
+
     var hard_mode = true;
     // var hard_mode = false;
     
-    // check_list = onlySingleVowels(check_list);
 
     var i = 0;
     var count = 0;
@@ -48,6 +75,7 @@ function testStartingWords() {
                     }
                 }
             }
+
             makeTables(check_list[i]);
             setupTest(check_list[i]);
 
@@ -193,7 +221,7 @@ function runBot(guess, hard_mode, remembers_words) {
             bars[x].style.height = "calc(1rem + " + ((scores[x]/max)*100)*.33 + "%)";
         }
 
-        document.getElementsByClassName("average")[0].innerHTML = "Average: " + parseFloat(sum/(count+1)).toFixed(3) + " guesses.";
+        document.getElementsByClassName("average")[0].innerHTML = "Average: " + parseFloat(sum/(count+1)).toFixed(3);
 
         count++;
 

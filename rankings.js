@@ -2,6 +2,641 @@ const hard =
 
 [
     {
+        word: "BRACTS",
+        average: 3.484,
+        wrong: 14
+    },
+    {
+        word: "BRONCS",
+        average: 3.495,
+        wrong: 12
+    },
+    {
+        word: "BIRTHS",
+        average: 3.504,
+        wrong: 17
+    },
+    {
+        word: "BRUNTS",
+        average: 3.509,
+        wrong: 19
+    },
+    {
+        word: "BRENTS",
+        average: 3.528,
+        wrong: 22
+    },
+    {
+        word: "BERTHS",
+        average: 3.531,
+        wrong: 19
+    },
+    {
+        word: "BRAWNS",
+        average: 3.554,
+        wrong: 12
+    },
+    {
+        word: "CRUMP",
+        average: 3.816,
+        wrong: 13
+    },
+    {
+        word: "CRUMB",
+        average: 3.867,
+        wrong: 23
+    },
+    {
+        word: "CALMS",
+        average: 3.746,
+        wrong: 16
+    },
+    {
+        word: "CLAMS",
+        average: 3.752,
+        wrong: 21
+    },
+    {
+        word: "CRAMP",
+        average: 3.766,
+        wrong: 13
+    },
+    {
+        word: "CORMS",
+        average: 3.773,
+        wrong: 9
+    },
+    {
+        word: "CRIMP",
+        average: 3.773,
+        wrong: 12
+    },
+    {
+        word: "CLAMP",
+        average: 3.773,
+        wrong: 14
+    },
+    {
+        word: "SCRIM",
+        average: 3.774,
+        wrong: 12
+    },
+    {
+        word: "SCLIM",
+        average: 3.774,
+        wrong: 18
+    },
+    {
+        word: "CRIMS",
+        average: 3.775,
+        wrong: 18
+    },
+    {
+        word: "CLEMS",
+        average: 3.780,
+        wrong: 23
+    },
+    {
+        word: "CAMPS",
+        average: 3.787,
+        wrong: 13
+    },
+    {
+        word: "MULCT",
+        average: 3.791,
+        wrong: 20
+    },
+    {
+        word: "SCAMP",
+        average: 3.795,
+        wrong: 12
+    },
+    {
+        word: "MATCH",
+        average: 3.800,
+        wrong: 18
+    },
+    {
+        word: "CROMB",
+        average: 3.807,
+        wrong: 12
+    },
+    {
+        word: "MARCH",
+        average: 3.811,
+        wrong: 18
+    },
+    {
+        word: "CHARM",
+        average: 3.812,
+        wrong: 19
+    },
+    {
+        word: "SCRUM",
+        average: 3.813,
+        wrong: 19
+    },
+    {
+        word: "CHIRM",
+        average: 3.816,
+        wrong: 13
+    },
+    {
+        word: "CHASM",
+        average: 3.816,
+        wrong: 15
+    },
+    {
+        word: "MERCH",
+        average: 3.835,
+        wrong: 24
+    },
+    {
+        word: "MACHS",
+        average: 3.840,
+        wrong: 25
+    },
+    {
+        word: "MECHS",
+        average: 3.865,
+        wrong: 35
+    },
+    {
+        word: "CHEMS",
+        average: 3.875,
+        wrong: 36
+    },
+    {
+        word: "MECKS",
+        average: 3.905,
+        wrong: 38
+    },
+    {
+        word: "SMALT",
+        average: 3.716,
+        wrong: 20
+    },
+    {
+        word: "MALTS",
+        average: 3.726,
+        wrong: 22
+    },
+    {
+        word: "TRAMP",
+        average: 3.730,
+        wrong: 16
+    },
+    {
+        word: "MORTS",
+        average: 3.739,
+        wrong: 20
+    },
+    {
+        word: "MARCS",
+        average: 3.743,
+        wrong: 14
+    },
+    {
+        word: "CRAMS",
+        average: 3.747,
+        wrong: 18
+    },
+    {
+        word: "TRIMS",
+        average: 3.756,
+        wrong: 22
+    },
+    {
+        word: "SCRAM",
+        average: 3.762,
+        wrong: 17
+    },
+    {
+        word: "SLORM",
+        average: 3.771,
+        wrong: 15
+    },
+    {
+        word: "MORNS",
+        average: 3.773,
+        wrong: 18
+    },
+    {
+        word: "MARSH",
+        average: 3.776,
+        wrong: 17
+    },
+    {
+        word: "CREMS",
+        average: 3.777,
+        wrong: 18
+    },
+    {
+        word: "PERMS",
+        average: 3.800,
+        wrong: 28
+    },
+    {
+        word: "MENDS",
+        average: 3.821,
+        wrong: 39
+    },
+    {
+        word: "MELDS",
+        average: 3.822,
+        wrong: 42
+    },
+    {
+        word: "HERMS",
+        average: 3.825,
+        wrong: 41
+    },
+    {
+        word: "GERMS",
+        average: 3.829,
+        wrong: 22
+    },
+    {
+        word: "SPELT",
+        average: 3.736,
+        wrong: 23
+    },
+    {
+        word: "SLEPT",
+        average: 3.739,
+        wrong: 23
+    },
+    {
+        word: "PENTS",
+        average: 3.751,
+        wrong: 24
+    },
+    {
+        word: "SMELT",
+        average: 3.762,
+        wrong: 25
+    },
+    {
+        word: "KARTS",
+        average: 3.785,
+        wrong: 23
+    },
+    {
+        word: "SPELD",
+        average: 3.787,
+        wrong: 40
+    },
+    {
+        word: "WREST",
+        average: 3.797,
+        wrong: 29
+    },
+    {
+        word: "VERTS",
+        average: 3.832,
+        wrong: 28
+    },
+    {
+        word: "NERKS",
+        average: 3.857,
+        wrong: 42
+    },
+    {
+        word: "SPRAWLS",
+        average: 3.316,
+        wrong: 8
+    },
+    {
+        word: "SCRAWLS",
+        average: 3.318,
+        wrong: 13
+    },
+    {
+        word: "SWARTHS",
+        average: 3.330,
+        wrong: 4
+    },
+    {
+        word: "THWACKS",
+        average: 3.346,
+        wrong: 4
+    },
+    {
+        word: "DROWNDS",
+        average: 3.348,
+        wrong: 8
+    },
+    {
+        word: "TROWTHS",
+        average: 3.348,
+        wrong: 12
+    },
+    {
+        word: "THWARTS",
+        average: 3.352,
+        wrong: 5
+    },
+    {
+        word: "FROWSTS",
+        average: 3.365,
+        wrong: 6
+    },
+    {
+        word: "WAISTER",
+        average: 3.185,
+        wrong: 9
+    },
+    {
+        word: "TAWNIER",
+        average: 3.204,
+        wrong: 11
+    },
+    {
+        word: "TAWNIES",
+        average: 3.209,
+        wrong: 16
+    },
+    {
+        word: "WASPIER",
+        average: 3.213,
+        wrong: 14
+    },
+    {
+        word: "DAWTIES",
+        average: 3.214,
+        wrong: 8
+    },
+    {
+        word: "CENTRALS",
+        average: 2.866,
+        wrong: 0
+    },
+    {
+        word: "CALDRONS",
+        average: 2.883,
+        wrong: 0
+    },
+    {
+        word: "TENDRILS",
+        average: 2.894,
+        wrong: 1
+    },
+    {
+        word: "WARSTLE",
+        average: 3.174,
+        wrong: 4
+    },
+    {
+        word: "WRASTLE",
+        average: 3.179,
+        wrong: 3
+    },
+    {
+        word: "WASTREL",
+        average: 3.180,
+        wrong: 6
+    },
+    {
+        word: "WINTLES",
+        average: 3.199,
+        wrong: 14
+    },
+    {
+        word: "TRAWLED",
+        average: 3.202,
+        wrong: 5
+    },
+    {
+        word: "WARSLED",
+        average: 3.204,
+        wrong: 7
+    },
+    {
+        word: "WETLAND",
+        average: 3.221,
+        wrong: 9
+    },
+    {
+        word: "SWIRLED",
+        average: 3.223,
+        wrong: 10
+    },
+    {
+        word: "STRAWED",
+        average: 3.231,
+        wrong: 6
+    },
+    {
+        word: "CANTLES",
+        average: 3.116,
+        wrong: 12
+    },
+    {
+        word: "SCANTER",
+        average: 3.127,
+        wrong: 11
+    },
+    {
+        word: "DARTLES",
+        average: 3.131,
+        wrong: 4
+    },
+    {
+        word: "TRANCES",
+        average: 3.141,
+        wrong: 11
+    },
+    {
+        word: "HARSLET",
+        average: 3.144,
+        wrong: 8
+    },
+    {
+        word: "RATLINS",
+        average: 3.146,
+        wrong: 12
+    },
+    {
+        word: "LAMSTER",
+        average: 3.146,
+        wrong: 7
+    },
+    {
+        word: "SLATHER",
+        average: 3.148,
+        wrong: 8
+    },
+    {
+        word: "DENTALS",
+        average: 3.153,
+        wrong: 17
+    },
+    {
+        word: "TANGLER",
+        average: 3.179,
+        wrong: 14
+    },
+    {
+        word: "GLISTER",
+        average: 3.190,
+        wrong: 16
+    },
+    {
+        word: "GROWTHS",
+        average: 3.287,
+        wrong: 5
+    },
+    {
+        word: "SPRANGS",
+        average: 3.325,
+        wrong: 25
+    },
+    {
+        word: "FLIGHTS",
+        average: 3.285,
+        wrong: 9
+    },
+    {
+        word: "SPLOTCH",
+        average: 3.205,
+        wrong: 7
+    },
+    {
+        word: "BORSCHT",
+        average: 3.212,
+        wrong: 2
+    },
+    {
+        word: "DRACHMS",
+        average: 3.213,
+        wrong: 4
+    },
+    {
+        word: "PLINTHS",
+        average: 3.219,
+        wrong: 14
+    },
+    {
+        word: "PSCHENT",
+        average: 3.242,
+        wrong: 11
+    },
+    {
+        word: "LENGTHS",
+        average: 3.249,
+        wrong: 17
+    },
+    {
+        word: "THRONGS",
+        average: 3.250,
+        wrong: 13
+    },
+    {
+        word: "SPRIGHT",
+        average: 3.255,
+        wrong: 9
+    },
+    {
+        word: "PLIGHTS",
+        average: 3.257,
+        wrong: 12
+    },
+    {
+        word: "WARMTHS",
+        average: 3.257,
+        wrong: 6
+    },
+    {
+        word: "DIRNDLS",
+        average: 3.266,
+        wrong: 17
+    },
+    {
+        word: "THRALLS",
+        average: 3.269,
+        wrong: 9
+    },
+    {
+        word: "BLIGHTS",
+        average: 3.274,
+        wrong: 8
+    },
+    {
+        word: "BRIGHTS",
+        average: 3.283,
+        wrong: 6
+    },
+    {
+        word: "THRILLS",
+        average: 3.285,
+        wrong: 12
+    },
+    {
+        word: "SCRIPTS",
+        average: 3.285,
+        wrong: 12
+    },
+    {
+        word: "FRIGHTS",
+        average: 3.291,
+        wrong: 13
+    },
+    {
+        word: "SPLINTS",
+        average: 3.295,
+        wrong: 19
+    },
+    {
+        word: "SPRINTS",
+        average: 3.296,
+        wrong: 17
+    },
+    {
+        word: "STRANDS",
+        average: 3.297,
+        wrong: 20
+    },
+    {
+        word: "SPLENTS",
+        average: 3.304,
+        wrong: 7
+    },
+    {
+        word: "WRIGHTS",
+        average: 3.311,
+        wrong: 10
+    },
+    {
+        word: "STRINGS",
+        average: 3.354,
+        wrong: 35
+    },
+    {
+        word: "STRETCH",
+        average: 3.296,
+        wrong: 6
+    },
+    {
+        word: "STRANDS",
+        average: 3.297,
+        wrong: 20
+    },
+    {
+        word: "SCHMALZ",
+        average: 3.329,
+        wrong: 7
+    },
+    {
+        word: "TWELFTH",
+        average: 3.413,
+        wrong: 3
+    },
+    {
+        word: "SCRATCH",
+        average: 3.275,
+        wrong: 6
+    },
+    {
         word: "COASTLINE",
         average: 2.619,
         wrong: 0
