@@ -1,6 +1,6 @@
 :root {
-    --correct-color: #6AAA64;
-    --wrong-spots-color: #C9B458;
+    --correct-color: #538D4E;
+    --wrong-spots-color: #B59F3B;
     --incorrect-color: rgb(58, 58, 60);
     --input-color: gray;
 }
@@ -37,46 +37,10 @@ body {
     padding: 0;
 }
 
-#patterns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 95%;
-}
 
-button:not(.tile) {
-    border: none;
-    border-radius: 0;
-    height: 2rem;
-    font-size: 1rem;
-    border: solid 1px gray;
-}
 
-#reset {
-    position: absolute;
-    right: 1rem;
-}
-
-.guess-buttons {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
-    display: flex;
-    justify-content: center;
-    column-gap: 1rem;
-}
-
-.submission {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 2rem;
-    width: min(100%, 630px);
-}
-
+/* GUESS AND ALL SUB DIVS */
+/* CONATINS ALL INFO ON WORDS ENTERED & PATTERNS */
 #guesses {
     display: flex;
     justify-content: center;
@@ -85,39 +49,19 @@ button:not(.tile) {
     width: 100%;
 }
 
-.guess {
+#grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 95%;
+}
+
+.row {
     display: flex;
     justify-content: center;
     align-items: center;
     width: min(630px, 100%);
-    /* flex-wrap: wrap; */
-    /* margin-bottom: .5rem; */
-}
-
-form {
-    position: relative;
-}
-
-#guess-word {
-    background-color: var(--input-color);
-    caret-color: white;
-    border: solid 1px black;
-    position: absolute;
-    color: white;
-    height: 2rem;
-    font-size: 1.2rem;
-    width: min(95%, 10rem);
-    text-align: center;
-}
-
-#refresh {
-    position: absolute;
-    top: .5rem;
-    left: .5rem;
-}
-
-#guess-word:focus {
-    outline: none;
 }
 
 .tile {
@@ -131,10 +75,8 @@ form {
     touch-action: manipulation;
     color: white;
     background-color: rgb(58, 58, 60);
-
     margin: 0;
     padding: 0;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,22 +91,80 @@ form {
     max-width: 2rem;
 }
 
-#words.testing {
+.buttons {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+}
+
+button:not(.tile) {
+    border: none;
+    border-radius: 0;
+    height: 2rem;
+    font-size: 1rem;
+    border: solid 1px gray;
+}
+
+button:not(.tile):hover, select:hover {
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
+#word_entered {
+    background-color: var(--input-color);
+    caret-color: white;
+    border: solid 1px black;
+    position: absolute;
+    color: white;
+    height: 2rem;
+    font-size: 1.2rem;
+    width: min(95%, 10rem);
+    text-align: center;
+}
+
+.submission {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 2rem;
+    width: min(100%, 630px);
+}
+
+#header {
+    margin: 1rem;
+    text-align: center;
+    flex-basis: 100%;
+}
+
+#header h1, h3 {
+    margin: 0;
+    padding: 0;
+    min-height: 1rem;
+}
+
+#refresh {
+    position: absolute;
+    top: .25rem;
+    left: .25rem;
+}
+
+*:focus {
+    outline: none;
+}
+
+#suggestions.testing {
     min-height: 400px;
 }
 
-.best {
+h3.best_options {
     font-size: .875rem;
     text-align: center;
     margin-bottom: .25rem;
-}
-
-.title {
-    margin: 0;
-    padding: 0;
-    background: black;
-    color: #fafafa;
-    width: 100%;
 }
 
 .best-guesses {
@@ -176,20 +176,44 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #2b2b2b;
 }
 
 #answers {
     position: relative;
+    border-top: dashed 2px black;
 }
 
 .best-guesses.normal {
-    background: lightblue;
     position: absolute;
+    /* color: #402238;
+    background: #0094C6; */
+    color: #FCF7F8;
+    background: #005E7C;
+}
+
+.normal .word-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .best-guesses.hard {
     top: 0;
-    background: pink;
+    color: #FCF7F8;
+    background: #005E7C;
+}
+
+.hard > h3 {
+    border-bottom: solid 1px #FCF7F8;
+    width: 90%;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.hard > h3:first-child {
+    margin-top: .5rem;
 }
 
 .back {
@@ -200,42 +224,34 @@ form {
     z-index: 99;
 }
 
-#words {
+#suggestions {
     margin-top: .5rem;
-    /* display: flex; */
     border: solid 1px black;
     width: min(630px, 95%);
     margin: 0;
     position: relative;
-    /* justify-content: center; */
     overflow: hidden;
+    text-align: center;
+    background: #FCF7F8;
+    color: #402238;
+    border: solid 2px black;
 }
 
-.words-left {
+h2.num_options {
     text-align: center;
-    margin: 0.5rem;
-    margin-bottom: 0;
+    margin: 0;
+    margin-top: .5rem;
+}
+
+#mode {
+    margin: .75rem;
 }
 
 .final {
     font-weight: bold;
 }
 
-/* #words h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 1.25rem;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    height: 3.5rem;
-    border-bottom: solid 1px black;
-    margin: auto;
-} */
-
-.likelihood {
+h3.by_likelihood {
     font-size: .75rem;
     text-align: center;
 }
@@ -276,12 +292,6 @@ form {
     text-align: center;
     width: 85%;
     margin-top: 2rem;
-}
-
-#difficulty {
-    text-align: center;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
 }
 
 .average {
@@ -368,6 +378,11 @@ ul {
 ul:not(.best-letters) li {
     max-width: 100%;
     min-height: 2rem;
+
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .others {
@@ -397,8 +412,8 @@ ul:not(.best-letters) li {
 }
 
 #letter-info h2 {
-    height: .75rem;
     text-align: center;
+    margin: 0.75rem;
 }
 
 #letter-info {
@@ -440,29 +455,4 @@ div.letter-ranking {
 .frequency {
     font-size: .9rem;
     font-style: italic;
-}
-
-#header {
-    margin: 1rem;
-    text-align: center;
-    flex-basis: 100%;
-}
-
-#header h1, h3 {
-    margin: 0;
-    padding: 0;
-    min-height: 1rem;
-}
-
-#word-length {
-    font-weight: normal;
-}
-
-#slider {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-    width: min(630px, 100%);
 }

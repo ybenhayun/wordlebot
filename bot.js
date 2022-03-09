@@ -134,15 +134,15 @@ function setupTest(word) {
     test_center.innerHTML += "<div class = 'bar sixe'><span class = 'num-guesses'>6/6</span><span class = 'count'></span></div>";
     test_center.innerHTML += "<div class = 'bar x'><span class = 'num-guesses'>X/6</span><span class = 'count'></span></div>";
 
-    document.getElementById("words").appendChild(test_center);
+    document.getElementById("suggestions").appendChild(test_center);
 
     let guess_letters = document.getElementsByClassName("tile");
 
     document.getElementsByClassName("current")[0].appendChild(
-        document.getElementById("patterns")
+        document.getElementById("grid")
     );
 
-    document.getElementsByClassName("guess-buttons")[0].remove();
+    document.getElementsByClassName("buttons")[0].remove();
 
     var count = document.getElementsByClassName("count");
     for (let i = 0; i < count.length; i++) {
@@ -200,7 +200,7 @@ function runBot(guess, hard_mode, remembers_words) {
     }
 
     var iv = setInterval(function() {
-        document.getElementById("patterns").innerHTML = "";
+        document.getElementById("grid").innerHTML = "";
 
         let n = wordleBot(guess, sample[count], hard_mode, remembers_words);
         if (n == 7) {
@@ -230,17 +230,17 @@ function runBot(guess, hard_mode, remembers_words) {
             
             pairings = [];
             document.getElementById("guesses").appendChild(
-                document.getElementById("patterns")
+                document.getElementById("grid")
             );
             removeTest();
         });
 
         if (count >= test_size) {
             document.getElementById("guesses").appendChild(
-                document.getElementById("patterns")
+                document.getElementById("grid")
             );
 
-            document.getElementById("patterns").innerHTML = "";
+            document.getElementById("grid").innerHTML = "";
 
             var average = parseFloat(sum/count).toFixed(3);
             document.getElementsByClassName("average")[0].innerHTML = "";
@@ -275,8 +275,8 @@ function wordleBot(guess, answer, hard_mode, remembers_words) {
     
     while (attempts <= 6) {
         makeTables(guess, "testing");
-        if (document.getElementsByClassName("guess-buttons").length) {
-            document.getElementsByClassName("guess-buttons")[0].remove();
+        if (document.getElementsByClassName("buttons").length) {
+            document.getElementsByClassName("buttons")[0].remove();
         }
 
         var diff = getDifference(guess, answer);

@@ -21,14 +21,13 @@
 </head>
 <body>
     <div id = "container">
-        <button id="refresh"><i class="fa fa-refresh"></i></button>
-
+        
         <div id="header">
             <h1>Wordle Calcle</h1>
-            <h3 id="word-length">
+            <h3>
                 currently solving 
-                <select name="num_letters" id="num_letters">
-                    <option value="4">4</option>
+                <select name="num_letters" id = "num_letters">
+                    <option value="4">4</option> 
                     <option value="5" selected = "selected">5</option>
                     <option value="6">6</option>
                     <option value="7">7</option>
@@ -42,26 +41,25 @@
         </div>
         
         <div id = "guesses">
-            <div class = "guess submission">
-                <input type="text" autocomplete="off" id="guess-word" name="guess-word" 
-                    input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
+            <div class = "submission">
+                <input type="text" autocomplete="off" id="word_entered" name="word_entered" 
+                input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
             </div> 
-            <div id = "patterns"></div>
+            <div id = "grid"></div>
         </div>
+        
+        <div id = "suggestions">
+            <button id="refresh"><i class="fa fa-refresh"></i></button>
+        
+            <h2 class = 'num_options'></h2>
+            <h3 class = 'by_likelihood'></h3> 
             
-        <div id = "words">
-            <h2 class = 'words-left'></h2>
-            <h3 class = 'likelihood'></h3> 
-
-            <div id = "difficulty">
             <select name="mode" id="mode">
                 <option value="normal" selected = "selected">Normal Mode</option>
                 <option value="hard">Hard Mode</option>
             </select>
-            </div>
-
-            <h3 class = 'best'></h3>
             
+            <h3 class = 'best_options'></h3>
 
             <div id = "answers">
                 <div class = 'best-guesses normal front'>
