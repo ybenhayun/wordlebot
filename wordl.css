@@ -107,7 +107,7 @@ button:not(.tile) {
     border: solid 1px gray;
 }
 
-button:not(.tile):hover, select:hover {
+button:hover, select:hover {
     filter: brightness(80%);
     cursor: pointer;
 }
