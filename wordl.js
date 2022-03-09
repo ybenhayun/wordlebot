@@ -324,7 +324,7 @@ function updateLists(sorted, full_list) {
 
 function finalOptions(sorted, less_likely) {
     if (sorted.length) {
-        let final_words = "<li class = 'likely'>the word is almost certainly ";
+        let final_words = "<li class = 'likely'>the word is almost certainly";
 
         if (sorted.length == 2) {
             final_words += "<span class = 'final'>" + sorted[0].word + "</span> or <span class = 'final'>" + sorted[1].word + "<span></li>";
