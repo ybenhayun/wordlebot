@@ -147,7 +147,7 @@ function setupTest(word) {
     var count = document.getElementsByClassName("count");
     for (let i = 0; i < count.length; i++) {
         count[i].innerHTML = "0";
-        document.getElementsByClassName("bar")[i].style.height = "1rem";
+        document.getElementsByClassName("bar")[i].style.height = "1.125rem";
     }
 
     var tiles = document.getElementsByClassName("tile");
@@ -158,26 +158,28 @@ function setupTest(word) {
     let new_form = document.createElement("div");
     new_form.setAttribute("id", "test-settings");
 
-    var remembers = "<div><input type='checkbox' id='remembers' name='remembers'>";
-    remembers += "<label for='remembers'>Bot remembers previous answers</label><br>";
-    var hard = "<input type='checkbox' id='hard-mode' name='hard-mode'>";
+    // var remembers = "<div><input type='checkbox' id='remembers' name='remembers'>";
+    // remembers += "<label for='remembers'>Bot remembers previous answers</label><br>";
+    var hard = "<div><input type='checkbox' id='hard-mode' name='hard-mode'>";
     hard += "<label for='hard-mode'>Bot plays hard mode</label></div>";
     var submit_button = "<button class = 'bot'>Start WordleBot</button>";
 
     var info = "<div class = 'info'> The Wordle Bot will test " + word + " against 300 randomly selected answers.</div>";
 
-    new_form.innerHTML = remembers + hard + info + submit_button;
+    // new_form.innerHTML = remembers + hard + info + submit_button;
+    new_form.innerHTML = hard + info + submit_button;
 
     test_center.appendChild(new_form);
 
     document.getElementsByClassName("bot")[0].addEventListener("click", function() {
 
         hard_mode = document.getElementById("hard-mode").checked;
-        remembers_words = document.getElementById("remembers").checked;
+        // remembers_words = document.getElementById("remembers").checked;
 
         document.getElementById("test-settings").remove();
 
-        runBot(word, hard_mode, remembers_words);
+        // runBot(word, hard_mode, remembers_words);
+        runBot(word, hard_mode);
     });
 }
 
@@ -218,7 +220,7 @@ function runBot(guess, hard_mode, remembers_words) {
         points[n-1].innerHTML = scores[n-1];
         
         for (let x = 0; x < bars.length; x++) {
-            bars[x].style.height = "calc(1rem + " + ((scores[x]/max)*100)*.33 + "%)";
+            bars[x].style.height = "calc(1.125rem + " + ((scores[x]/max)*100)*.4 + "%)";
         }
 
         document.getElementsByClassName("average")[0].innerHTML = "Average: " + parseFloat(sum/(count+1)).toFixed(3);

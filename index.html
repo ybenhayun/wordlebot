@@ -41,10 +41,9 @@
         </div>
         
         <div id = "guesses">
-            <div class = "submission">
-                <input type="text" autocomplete="off" id="word_entered" name="word_entered" 
-                input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
-            </div> 
+            <input type="text" autocomplete="off" id="word_entered" name="word_entered" 
+            input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
+            
             <div id = "grid"></div>
         </div>
         
@@ -54,10 +53,8 @@
             <h2 class = 'num_options'></h2>
             <h3 class = 'by_likelihood'></h3> 
             
-            <select name="mode" id="mode">
-                <option value="normal" selected = "selected">Normal Mode</option>
-                <option value="hard">Hard Mode</option>
-            </select>
+            <input type="checkbox" id="mode" name="mode">
+            <label for="mode">Hard Mode</label>
             
             <h3 class = 'best_options'></h3>
 

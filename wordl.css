@@ -1,7 +1,11 @@
 :root {
-    --correct-color: #538D4E;
-    --wrong-spots-color: #B59F3B;
-    --incorrect-color: rgb(58, 58, 60);
+    --correct-color:rgb(83, 141, 78);
+    /* --correct-color:#538D4E; */
+    --wrong-spots-color:rgb(181, 159, 59);
+    /* --wrong-spots-color:#B59F3B; */
+    --incorrect-color:rgb(58, 58, 60);
+    /* --incorrect-color:#3A3A3C; */
+    --ignore-color:rgb(245, 245, 245);
     --input-color: gray;
 }
 
@@ -28,16 +32,13 @@ body {
     position: relative;
     height: 90%;
     width: min(450px, 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    column-gap: 15px;
     margin: 0;
     padding: 0;
 }
 
-
+#container > div {
+    flex-grow: 0;
+}
 
 /* GUESS AND ALL SUB DIVS */
 /* CONATINS ALL INFO ON WORDS ENTERED & PATTERNS */
@@ -71,10 +72,10 @@ body {
     font-weight: bold;
     text-align: center;
     border-radius: 0;
-    border: 1px solid gray;
+    border: none;
     touch-action: manipulation;
     color: white;
-    background-color: rgb(58, 58, 60);
+    background-color: var(--incorrect-color);
     margin: 0;
     padding: 0;
     display: flex;
@@ -84,11 +85,13 @@ body {
  
 .tile.normal {
     max-width: 3.5rem;
+    /* margin: 1px; */
 }
 
 .tile.testing {
     font-size: 1rem;
     max-width: 2rem;
+    margin: 0;
 }
 
 .buttons {
@@ -107,8 +110,11 @@ button:not(.tile) {
     border: solid 1px gray;
 }
 
-button:hover, select:hover {
+button:not(.tile):hover, select:hover {
     filter: brightness(90%);
+}
+
+button:hover {
     cursor: pointer;
 }
 
@@ -116,25 +122,20 @@ button:hover, select:hover {
     background-color: var(--input-color);
     caret-color: white;
     border: solid 1px black;
-    position: absolute;
     color: white;
     height: 2rem;
     font-size: 1.2rem;
     width: min(95%, 10rem);
     text-align: center;
+    margin: .5rem;
 }
 
-.submission {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 2rem;
-    width: min(100%, 630px);
+*:focus {
+    outline: none;
 }
 
+/* HEADING & TITLE */
+/* INCLUDES TITLE @ TOP OF PAGE AND LETTER COUNT SELECTOR */
 #header {
     margin: 1rem;
     text-align: center;
@@ -147,24 +148,54 @@ button:hover, select:hover {
     min-height: 1rem;
 }
 
+
+/* ANSWERS */
+/* CONTAINS ALL INFO SHOWN IN SUGGESTION BOX */
+/* LIST OF BEST ANSWERS, NUMBER OF WORDS LEFT, REFRESH BUTTON */
+#suggestions {
+    margin-top: .5rem;
+    border: solid 1px black;
+    width: min(630px, 95%);
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background: #FCF7F8;
+    color: #402238;
+    border: solid 2px black;
+}
+
 #refresh {
     position: absolute;
     top: .25rem;
     left: .25rem;
+    z-index: 100;
 }
 
-*:focus {
-    outline: none;
+h2.num_options {
+    text-align: center;
+    margin: 0;
+    margin-top: .5rem;
 }
 
-#suggestions.testing {
-    min-height: 400px;
+h3.by_likelihood {
+    font-size: .75rem;
+    text-align: center;
+}
+
+#mode {
+    margin: .75rem;
 }
 
 h3.best_options {
     font-size: .875rem;
     text-align: center;
     margin-bottom: .25rem;
+}
+
+#answers {
+    position: relative;
+    border-top: dashed 2px black;
 }
 
 .best-guesses {
@@ -179,15 +210,16 @@ h3.best_options {
     background: #2b2b2b;
 }
 
-#answers {
-    position: relative;
-    border-top: dashed 2px black;
+.back {
+    z-index: -1;
+}
+
+.front {
+    z-index: 99;
 }
 
 .best-guesses.normal {
     position: absolute;
-    /* color: #402238;
-    background: #0094C6; */
     color: #FCF7F8;
     background: #005E7C;
 }
@@ -216,51 +248,69 @@ h3.best_options {
     margin-top: .5rem;
 }
 
-.back {
-    z-index: -1;
+
+
+ul {
+    margin: 0;   
+    padding: 0;
+    list-style: none;
+    margin-bottom: 0;
 }
 
-.front {
-    z-index: 99;
+ul:not(.best-letters) li:not(.others) {
+    max-width: 100%;
+    min-height: 2rem;
+    flex: 1;
 }
 
-#suggestions {
-    margin-top: .5rem;
-    border: solid 1px black;
-    width: min(630px, 95%);
-    margin: 0;
-    position: relative;
-    overflow: hidden;
+li:not(.likely, .others) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: pre-wrap;
+}
+
+.others {
+    height: unset;
     text-align: center;
-    background: #FCF7F8;
-    color: #402238;
-    border: solid 2px black;
+    padding: .5rem;
 }
 
-h2.num_options {
+.likely {
+    padding: .5rem;
     text-align: center;
-    margin: 0;
-    margin-top: .5rem;
+    padding-bottom: 0;
 }
 
-#mode {
-    margin: .75rem;
+.others, .likely {
+    display: block;
+}
+
+.suggestion {
+    display: inline;
+    left: 1rem;
+    position: absolute;
+    font-weight: bold;
+}
+
+.score {
+    display: inline;
+    position: absolute;
+    right: 1rem;
+    font-style: italic;
 }
 
 .final {
     font-weight: bold;
 }
 
-h3.by_likelihood {
-    font-size: .75rem;
-    text-align: center;
-}
-
+/* BOT */
+/* CONTAINS ALL INFO DISPLAYED IN WORDLE BOT */
+/* BAR GRAPHS, AVERAGE, SUMMARY MESSAGE, & TEST SETTINGS */
 #results {
     background: white;
     margin: auto;
     position: absolute;
-    z-index: -1;
     height: 100%;
     width: min(100%, 450px);
     color: white;
@@ -268,14 +318,47 @@ h3.by_likelihood {
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
+    column-gap: 2px;
     bottom: 0;
     justify-content: center;
+    z-index: -1;
 }
 
 #results.testing {
     z-index: 99;
     color: black;
 }
+
+#suggestions.testing {
+    min-height: 400px;
+}
+
+#test-settings {
+    position: absolute;
+    bottom: 7rem;
+    width: max(280px, 75%);
+    height: 50%;
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 1.5rem;
+}
+
+.info {
+    padding: .5rem;
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+}
+
+input[type=checkbox] {
+    display: inline-block;
+}
+
 
 .current {
     margin: auto;
@@ -286,22 +369,20 @@ h3.by_likelihood {
     top: 0;
 }
 
-#summary {
-    font-size: 1.25rem;
-    position: absolute;
-    text-align: center;
-    width: 85%;
-    margin-top: 2rem;
-}
-
 .average {
     position: absolute;
     top: 14rem;
 }
 
-.info {
-    padding: .5rem;
+.bar {
+    position: relative;
+    background: yellow;
+    box-shadow: 0 0 0 2px black;
+    border-bottom: none;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex: 1;
 }
 
 .num-guesses {
@@ -314,95 +395,17 @@ h3.by_likelihood {
     top: -1.2rem;
 }
 
-#test-settings {
+#summary {
+    font-size: 1.25rem;
     position: absolute;
-    bottom: 5rem;
-    width: max(280px, 75%);
-    height: 50%;
-    border: solid 1px black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    row-gap: 1.5rem;
-}
-
-label {
-    display: inline-block;
-}
-
-input[type=checkbox] {
-    display: inline-block;
-}
-
-input[type=submit] {
-}
-
-.bar {
-    position: relative;
-    background: yellow;
-    border: solid 1px black;
-    border-bottom: none;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    height: 1rem;
+    width: 85%;
+    margin-top: 2rem;
 }
 
-#no-words {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.suggestion {
-    display: inline;
-    left: 1rem;
-    position: absolute;
-    font-weight: bold;
-}
-
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    margin-bottom: 0;
-}
-
-ul:not(.best-letters) li {
-    max-width: 100%;
-    min-height: 2rem;
-
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.others {
-    height: unset;
-    text-align: center;
-    padding: .5rem;
-}
-
-.likely {
-    padding: .5rem;
-    text-align: center;
-}
-
-.score {
-    display: inline;
-    position: absolute;
-    right: 1rem;
-    font-style: italic;
-}
-
+/* BEST LETTERS */
+/* ALL DIVS FOR INFO BY LETTER */
 #letters-info {
     display: flex;
     justify-content: center;
@@ -414,21 +417,6 @@ ul:not(.best-letters) li {
 #letter-info h2 {
     text-align: center;
     margin: 0.75rem;
-}
-
-#letter-info {
-    height: 500px;
-}
-
-div.letter-ranking {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    aspect-ratio: 1;
-    height: 4rem;
-    color: white;
-    background: var(--correct-color);
 }
 
 .best-letters {
@@ -445,6 +433,17 @@ div.letter-ranking {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.letter-ranking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    aspect-ratio: 1;
+    height: 4rem;
+    color: white;
+    background: var(--correct-color);
 }
 
 .letter {

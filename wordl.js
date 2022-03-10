@@ -1,10 +1,13 @@
 var word_length = 5;
 var guesses = 6;
 
-const correct_color = "rgb(83, 141, 78)";
-const wrong_spots_color = "rgb(181, 159, 59)";
-const incorrect_color = "rgb(58, 58, 60)"
-const ignore_color = "rgb(255, 255, 255)";
+var style = window.getComputedStyle(document.documentElement);
+
+const correct_color = style.getPropertyValue('--correct-color');
+const wrong_spots_color = style.getPropertyValue('--wrong-spots-color');
+const incorrect_color = style.getPropertyValue('--incorrect-color');
+const ignore_color = style.getPropertyValue('--ignore-color');
+
 const colors = [incorrect_color, correct_color, wrong_spots_color, ignore_color];
 const clr = {"G": correct_color, "Y": wrong_spots_color, "B": incorrect_color };
 
@@ -17,33 +20,19 @@ $(document).ready(function() {
     }
 
     if (localStorage.getItem("difficulty")) {
-        $("#mode").val(localStorage.getItem("difficulty"));        
-        
-        if ($("#mode").val() == "hard") {
-            $(".best-guesses.hard").addClass("front");
-            $(".best-guesses.hard").removeClass("back");
-            
-            $(".best-guesses.normal").removeClass("front");
-            $(".best-guesses.normal").addClass("back");
+        $("#mode").prop('checked', true);
 
-        } else {
-            $(".best-guesses.normal").addClass("front");
-            $(".best-guesses.normal").removeClass("back");
+        $(".best-guesses.hard").addClass("front");
+        $(".best-guesses.hard").removeClass("back");
             
-            $(".best-guesses.hard").removeClass("front");
-            $(".best-guesses.hard").addClass("back");
-        }
+        $(".best-guesses.normal").removeClass("front");
+        $(".best-guesses.normal").addClass("back");
     }
     
     setLength();
     makeTables();
     initialList();
     $("#word_entered").focus();
-
-
-    if (localStorage.getItem("difficulty")) {
-
-    }
 
     $("#refresh").click(function() {
         // testStartingWords();
@@ -63,22 +52,22 @@ $(document).ready(function() {
     });
 
     $("#mode").on('input', function() {
-        if ($(this).val() == "hard") {
+        if ($(this).is(':checked')) {
             $(".best-guesses.hard").addClass("front");
             $(".best-guesses.hard").removeClass("back");
             
             $(".best-guesses.normal").removeClass("front");
             $(".best-guesses.normal").addClass("back");
-
+            localStorage.setItem("difficulty", true);
         } else {
             $(".best-guesses.normal").addClass("front");
             $(".best-guesses.normal").removeClass("back");
             
             $(".best-guesses.hard").removeClass("front");
             $(".best-guesses.hard").addClass("back");
+            localStorage.removeItem("difficulty");
         }
 
-        localStorage.setItem("difficulty", $(this).val());
     });
     
     $("#word_entered").on('input', function(e) {
@@ -101,13 +90,22 @@ $(document).ready(function() {
 
         $(this).css("color", "white");
 
-        if (color == colors[3]) new_color = colors[0];
-        else if (color == colors[0]) new_color = colors[1];
-        else if (color == colors[1]) new_color = colors[2];
+        // if (color == colors[3]) new_color = colors[0];
+        // else if (color == colors[0]) new_color = colors[1];
+        // else if (color == colors[1]) new_color = colors[2];
+        // else {
+        //     new_color = colors[3];
+        //     $(this).css("color", "black");
+        // }
+
+        if (color == incorrect_color) new_color = correct_color;
+        else if (color == correct_color) new_color = wrong_spots_color;
+        else if (color == ignore_color) new_color = incorrect_color;
         else {
-            new_color = colors[3];
+            new_color = ignore_color;
             $(this).css("color", "black");
         }
+
         $(this).css("background-color", new_color);
     });
 
@@ -324,7 +322,7 @@ function updateLists(sorted, full_list) {
 
 function finalOptions(sorted, less_likely) {
     if (sorted.length) {
-        let final_words = "<li class = 'likely'>the word is almost certainly";
+        let final_words = "<li class = 'likely'>the word is almost certainly ";
 
         if (sorted.length == 2) {
             final_words += "<span class = 'final'>" + sorted[0].word + "</span> or <span class = 'final'>" + sorted[1].word + "<span></li>";
@@ -469,7 +467,7 @@ function useTop(filtered, full_list, initial, isBot) {
         var differences = [];
         var compare = check_list[pos];
         var weighted = 0;
-
+        
         for (let i = 0; i < filtered.length; i++) {
             var s = filtered[i];
             var diff = getDifference(compare, s);
