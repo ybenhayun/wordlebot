@@ -247,16 +247,18 @@ function runBot(guess, hard_mode, remembers_words) {
             var average = parseFloat(sum/count).toFixed(3);
             document.getElementsByClassName("average")[0].innerHTML = "";
 
-            var summary = guess + " solved " + (test_size - wrong) + "/" + test_size + " words with an average of " + average + " guesses per solve.<br><br>";
+            var summary = guess + " solved " + (test_size - wrong) + "/" + test_size + " words with an average of " + average + " guesses per solve.";
 
             if (missed.length) {
-                summary += "Missed words: ";
+                summary += "<div id = 'wrongs'>Missed words: ";
                 for (let i = 0; i < missed.length; i++) {
                     summary += missed[i];
                     if (i < missed.length - 1) {
                         summary += ", ";
                     }
                 }
+
+                summary += "</div>"
             }
             document.getElementsByClassName("current")[0].innerHTML = "<div id = 'summary'>" + summary + "</div>";
             clearInterval(iv);

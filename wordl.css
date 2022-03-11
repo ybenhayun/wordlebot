@@ -1,12 +1,12 @@
 :root {
     --correct-color:rgb(83, 141, 78);
-    /* --correct-color:#538D4E; */
     --wrong-spots-color:rgb(181, 159, 59);
-    /* --wrong-spots-color:#B59F3B; */
     --incorrect-color:rgb(58, 58, 60);
-    /* --incorrect-color:#3A3A3C; */
     --ignore-color:rgb(245, 245, 245);
     --input-color: gray;
+    --off-white: #FCF7F8;
+    --background: #D0F4EA;
+    --bar-color: #3891A6;
 }
 
 html {
@@ -25,6 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: var(--background);
 }
 
 #container {
@@ -104,10 +105,12 @@ body {
 
 button:not(.tile) {
     border: none;
-    border-radius: 0;
     height: 2rem;
     font-size: 1rem;
-    border: solid 1px gray;
+    border-radius: .5rem;
+    background: var(--incorrect-color);
+    color: var(--off-white);
+    /* border: solid 1px var(--background); */
 }
 
 button:not(.tile):hover, select:hover {
@@ -160,9 +163,9 @@ button:hover {
     position: relative;
     overflow: hidden;
     text-align: center;
-    background: #FCF7F8;
-    color: #402238;
-    border: solid 2px black;
+    background: #FFC2B4;
+    border: solid 3px black;
+    border-radius: .75rem;
 }
 
 #refresh {
@@ -170,6 +173,8 @@ button:hover {
     top: .25rem;
     left: .25rem;
     z-index: 100;
+    background: var(--background);
+    color: rgb(19, 19, 18);
 }
 
 h2.num_options {
@@ -195,7 +200,6 @@ h3.best_options {
 
 #answers {
     position: relative;
-    border-top: dashed 2px black;
 }
 
 .best-guesses {
@@ -207,7 +211,8 @@ h3.best_options {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #2b2b2b;
+    background: var(--incorrect-color);
+    color: var(--off-white);
 }
 
 .back {
@@ -220,8 +225,6 @@ h3.best_options {
 
 .best-guesses.normal {
     position: absolute;
-    color: #FCF7F8;
-    background: #005E7C;
 }
 
 .normal .word-list {
@@ -232,8 +235,6 @@ h3.best_options {
 
 .best-guesses.hard {
     top: 0;
-    color: #FCF7F8;
-    background: #005E7C;
 }
 
 .hard > h3 {
@@ -308,7 +309,7 @@ li:not(.likely, .others) {
 /* CONTAINS ALL INFO DISPLAYED IN WORDLE BOT */
 /* BAR GRAPHS, AVERAGE, SUMMARY MESSAGE, & TEST SETTINGS */
 #results {
-    background: white;
+    background: rgb(18, 18, 19);
     margin: auto;
     position: absolute;
     height: 100%;
@@ -344,6 +345,7 @@ li:not(.likely, .others) {
     align-items: center;
     flex-direction: column;
     row-gap: 1.5rem;
+    background: var(--background);
 }
 
 .info {
@@ -372,11 +374,13 @@ input[type=checkbox] {
 .average {
     position: absolute;
     top: 14rem;
+    color: var(--off-white);
 }
 
 .bar {
     position: relative;
-    background: yellow;
+    background: var(--bar-color);
+    color: var(--off-white);
     box-shadow: 0 0 0 2px black;
     border-bottom: none;
     text-align: center;
@@ -400,7 +404,13 @@ input[type=checkbox] {
     position: absolute;
     text-align: center;
     width: 85%;
-    margin-top: 2rem;
+    margin-top: 4rem;
+    color: var(--off-white);
+}
+
+#wrongs {
+    font-size: 1rem;
+    margin: 1rem;
 }
 
 
@@ -442,7 +452,7 @@ input[type=checkbox] {
     flex-direction: column;
     aspect-ratio: 1;
     height: 4rem;
-    color: white;
+    color: var(--off-white);
     background: var(--correct-color);
 }
 
