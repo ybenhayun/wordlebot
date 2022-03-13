@@ -1,6 +1,5 @@
-
 var averages = [];
-
+// test
 function reduceList(list) {
     for (let i = 0; i < list.length; i++) {
         var vowels = count(list[i], "A") + count(list[i], "E") + count(list[i], "I") + count(list[i], "O") + count(list[i], "U") + count(list[i], "Y");
