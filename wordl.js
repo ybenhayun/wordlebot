@@ -1,3 +1,4 @@
+
 var word_length = 5;
 var guesses = 6;
 
@@ -475,10 +476,18 @@ function useTop(filtered, full_list, initial, isBot) {
             if (differences[diff] != null) {
                 differences[diff]++;
             } else {
-                differences[diff] = 1;
+                if (diff == "GGGGG") {
+                    differences[diff] = 0;
+                }
+                
+                else differences[diff] = 1;
             }
             let freq = differences[diff];
-            weighted += (freq/list_size)*freq - ((freq-1)/list_size)*(freq-1);
+            
+            if (freq > 0) {
+                weighted += (freq/list_size)*freq - ((freq-1)/list_size)*(freq-1);
+            }
+            
             if (weighted > min && isBot) continue outer;
         }
 
