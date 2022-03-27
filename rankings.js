@@ -1,6514 +1,6595 @@
-const hard = 
-
-[
-    {
-        word: "BRACTS",
-        average: 3.484,
-        wrong: 14
-    },
-    {
-        word: "BRONCS",
-        average: 3.495,
-        wrong: 12
-    },
-    {
-        word: "BIRTHS",
-        average: 3.504,
-        wrong: 17
-    },
-    {
-        word: "BRUNTS",
-        average: 3.509,
-        wrong: 19
-    },
-    {
-        word: "BRENTS",
-        average: 3.528,
-        wrong: 22
-    },
-    {
-        word: "BERTHS",
-        average: 3.531,
-        wrong: 19
-    },
-    {
-        word: "BRAWNS",
-        average: 3.554,
-        wrong: 12
-    },
-    {
-        word: "CRUMP",
-        average: 3.816,
-        wrong: 13
-    },
-    {
-        word: "CRUMB",
-        average: 3.867,
-        wrong: 23
-    },
-    {
-        word: "CALMS",
-        average: 3.746,
-        wrong: 16
-    },
-    {
-        word: "CLAMS",
-        average: 3.752,
-        wrong: 21
-    },
-    {
-        word: "CRAMP",
-        average: 3.766,
-        wrong: 13
-    },
-    {
-        word: "CORMS",
-        average: 3.773,
-        wrong: 9
-    },
-    {
-        word: "CRIMP",
-        average: 3.773,
-        wrong: 12
-    },
-    {
-        word: "CLAMP",
-        average: 3.773,
-        wrong: 14
-    },
-    {
-        word: "SCRIM",
-        average: 3.774,
-        wrong: 12
-    },
-    {
-        word: "SCLIM",
-        average: 3.774,
-        wrong: 18
-    },
-    {
-        word: "CRIMS",
-        average: 3.775,
-        wrong: 18
-    },
-    {
-        word: "CLEMS",
-        average: 3.780,
-        wrong: 23
-    },
-    {
-        word: "CAMPS",
-        average: 3.787,
-        wrong: 13
-    },
-    {
-        word: "MULCT",
-        average: 3.791,
-        wrong: 20
-    },
-    {
-        word: "SCAMP",
-        average: 3.795,
-        wrong: 12
-    },
-    {
-        word: "MATCH",
-        average: 3.800,
-        wrong: 18
-    },
-    {
-        word: "CROMB",
-        average: 3.807,
-        wrong: 12
-    },
-    {
-        word: "MARCH",
-        average: 3.811,
-        wrong: 18
-    },
-    {
-        word: "CHARM",
-        average: 3.812,
-        wrong: 19
-    },
-    {
-        word: "SCRUM",
-        average: 3.813,
-        wrong: 19
-    },
-    {
-        word: "CHIRM",
-        average: 3.816,
-        wrong: 13
-    },
-    {
-        word: "CHASM",
-        average: 3.816,
-        wrong: 15
-    },
-    {
-        word: "MERCH",
-        average: 3.835,
-        wrong: 24
-    },
-    {
-        word: "MACHS",
-        average: 3.840,
-        wrong: 25
-    },
-    {
-        word: "MECHS",
-        average: 3.865,
-        wrong: 35
-    },
-    {
-        word: "CHEMS",
-        average: 3.875,
-        wrong: 36
-    },
-    {
-        word: "MECKS",
-        average: 3.905,
-        wrong: 38
-    },
-    {
-        word: "SMALT",
-        average: 3.716,
-        wrong: 20
-    },
-    {
-        word: "MALTS",
-        average: 3.726,
-        wrong: 22
-    },
-    {
-        word: "TRAMP",
-        average: 3.730,
-        wrong: 16
-    },
-    {
-        word: "MORTS",
-        average: 3.739,
-        wrong: 20
-    },
-    {
-        word: "MARCS",
-        average: 3.743,
-        wrong: 14
-    },
-    {
-        word: "CRAMS",
-        average: 3.747,
-        wrong: 18
-    },
-    {
-        word: "TRIMS",
-        average: 3.756,
-        wrong: 22
-    },
-    {
-        word: "SCRAM",
-        average: 3.762,
-        wrong: 17
-    },
-    {
-        word: "SLORM",
-        average: 3.771,
-        wrong: 15
-    },
-    {
-        word: "MORNS",
-        average: 3.773,
-        wrong: 18
-    },
-    {
-        word: "MARSH",
-        average: 3.776,
-        wrong: 17
-    },
-    {
-        word: "CREMS",
-        average: 3.777,
-        wrong: 18
-    },
-    {
-        word: "PERMS",
-        average: 3.800,
-        wrong: 28
-    },
-    {
-        word: "MENDS",
-        average: 3.821,
-        wrong: 39
-    },
-    {
-        word: "MELDS",
-        average: 3.822,
-        wrong: 42
-    },
-    {
-        word: "HERMS",
-        average: 3.825,
-        wrong: 41
-    },
-    {
-        word: "GERMS",
-        average: 3.829,
-        wrong: 22
-    },
-    {
-        word: "SPELT",
-        average: 3.736,
-        wrong: 23
-    },
-    {
-        word: "SLEPT",
-        average: 3.739,
-        wrong: 23
-    },
-    {
-        word: "PENTS",
-        average: 3.751,
-        wrong: 24
-    },
-    {
-        word: "SMELT",
-        average: 3.762,
-        wrong: 25
-    },
-    {
-        word: "KARTS",
-        average: 3.785,
-        wrong: 23
-    },
-    {
-        word: "SPELD",
-        average: 3.787,
-        wrong: 40
-    },
-    {
-        word: "WREST",
-        average: 3.797,
-        wrong: 29
-    },
-    {
-        word: "VERTS",
-        average: 3.832,
-        wrong: 28
-    },
-    {
-        word: "NERKS",
-        average: 3.857,
-        wrong: 42
-    },
-    {
-        word: "SPRAWLS",
-        average: 3.316,
-        wrong: 8
-    },
-    {
-        word: "SCRAWLS",
-        average: 3.318,
-        wrong: 13
-    },
-    {
-        word: "SWARTHS",
-        average: 3.330,
-        wrong: 4
-    },
-    {
-        word: "THWACKS",
-        average: 3.346,
-        wrong: 4
-    },
-    {
-        word: "DROWNDS",
-        average: 3.348,
-        wrong: 8
-    },
-    {
-        word: "TROWTHS",
-        average: 3.348,
-        wrong: 12
-    },
-    {
-        word: "THWARTS",
-        average: 3.352,
-        wrong: 5
-    },
-    {
-        word: "FROWSTS",
-        average: 3.365,
-        wrong: 6
-    },
-    {
-        word: "WAISTER",
-        average: 3.185,
-        wrong: 9
-    },
-    {
-        word: "TAWNIER",
-        average: 3.204,
-        wrong: 11
-    },
-    {
-        word: "TAWNIES",
-        average: 3.209,
-        wrong: 16
-    },
-    {
-        word: "WASPIER",
-        average: 3.213,
-        wrong: 14
-    },
-    {
-        word: "DAWTIES",
-        average: 3.214,
-        wrong: 8
-    },
-    {
-        word: "CENTRALS",
-        average: 2.866,
-        wrong: 0
-    },
-    {
-        word: "CALDRONS",
-        average: 2.883,
-        wrong: 0
-    },
-    {
-        word: "TENDRILS",
-        average: 2.894,
-        wrong: 1
-    },
-    {
-        word: "WARSTLE",
-        average: 3.174,
-        wrong: 4
-    },
-    {
-        word: "WRASTLE",
-        average: 3.179,
-        wrong: 3
-    },
-    {
-        word: "WASTREL",
-        average: 3.180,
-        wrong: 6
-    },
-    {
-        word: "WINTLES",
-        average: 3.199,
-        wrong: 14
-    },
-    {
-        word: "TRAWLED",
-        average: 3.202,
-        wrong: 5
-    },
-    {
-        word: "WARSLED",
-        average: 3.204,
-        wrong: 7
-    },
-    {
-        word: "WETLAND",
-        average: 3.221,
-        wrong: 9
-    },
-    {
-        word: "SWIRLED",
-        average: 3.223,
-        wrong: 10
-    },
-    {
-        word: "STRAWED",
-        average: 3.231,
-        wrong: 6
-    },
-    {
-        word: "CANTLES",
-        average: 3.116,
-        wrong: 12
-    },
-    {
-        word: "SCANTER",
-        average: 3.127,
-        wrong: 11
-    },
-    {
-        word: "DARTLES",
-        average: 3.131,
-        wrong: 4
-    },
-    {
-        word: "TRANCES",
-        average: 3.141,
-        wrong: 11
-    },
-    {
-        word: "HARSLET",
-        average: 3.144,
-        wrong: 8
-    },
-    {
-        word: "RATLINS",
-        average: 3.146,
-        wrong: 12
-    },
-    {
-        word: "LAMSTER",
-        average: 3.146,
-        wrong: 7
-    },
-    {
-        word: "SLATHER",
-        average: 3.148,
-        wrong: 8
-    },
-    {
-        word: "DENTALS",
-        average: 3.153,
-        wrong: 17
-    },
-    {
-        word: "TANGLER",
-        average: 3.179,
-        wrong: 14
-    },
-    {
-        word: "GLISTER",
-        average: 3.190,
-        wrong: 16
-    },
-    {
-        word: "GROWTHS",
-        average: 3.287,
-        wrong: 5
-    },
-    {
-        word: "SPRANGS",
-        average: 3.325,
-        wrong: 25
-    },
-    {
-        word: "FLIGHTS",
-        average: 3.285,
-        wrong: 9
-    },
-    {
-        word: "SPLOTCH",
-        average: 3.205,
-        wrong: 7
-    },
-    {
-        word: "BORSCHT",
-        average: 3.212,
-        wrong: 2
-    },
-    {
-        word: "DRACHMS",
-        average: 3.213,
-        wrong: 4
-    },
-    {
-        word: "PLINTHS",
-        average: 3.219,
-        wrong: 14
-    },
-    {
-        word: "PSCHENT",
-        average: 3.242,
-        wrong: 11
-    },
-    {
-        word: "LENGTHS",
-        average: 3.249,
-        wrong: 17
-    },
-    {
-        word: "THRONGS",
-        average: 3.250,
-        wrong: 13
-    },
-    {
-        word: "SPRIGHT",
-        average: 3.255,
-        wrong: 9
-    },
-    {
-        word: "PLIGHTS",
-        average: 3.257,
-        wrong: 12
-    },
-    {
-        word: "WARMTHS",
-        average: 3.257,
-        wrong: 6
-    },
-    {
-        word: "DIRNDLS",
-        average: 3.266,
-        wrong: 17
-    },
-    {
-        word: "THRALLS",
-        average: 3.269,
-        wrong: 9
-    },
-    {
-        word: "BLIGHTS",
-        average: 3.274,
-        wrong: 8
-    },
-    {
-        word: "BRIGHTS",
-        average: 3.283,
-        wrong: 6
-    },
-    {
-        word: "THRILLS",
-        average: 3.285,
-        wrong: 12
-    },
-    {
-        word: "SCRIPTS",
-        average: 3.285,
-        wrong: 12
-    },
-    {
-        word: "FRIGHTS",
-        average: 3.291,
-        wrong: 13
-    },
-    {
-        word: "SPLINTS",
-        average: 3.295,
-        wrong: 19
-    },
-    {
-        word: "SPRINTS",
-        average: 3.296,
-        wrong: 17
-    },
-    {
-        word: "STRANDS",
-        average: 3.297,
-        wrong: 20
-    },
-    {
-        word: "SPLENTS",
-        average: 3.304,
-        wrong: 7
-    },
-    {
-        word: "WRIGHTS",
-        average: 3.311,
-        wrong: 10
-    },
-    {
-        word: "STRINGS",
-        average: 3.354,
-        wrong: 35
-    },
-    {
-        word: "STRETCH",
-        average: 3.296,
-        wrong: 6
-    },
-    {
-        word: "STRANDS",
-        average: 3.297,
-        wrong: 20
-    },
-    {
-        word: "SCHMALZ",
-        average: 3.329,
-        wrong: 7
-    },
-    {
-        word: "TWELFTH",
-        average: 3.413,
-        wrong: 3
-    },
-    {
-        word: "SCRATCH",
-        average: 3.275,
-        wrong: 6
-    },
-    {
-        word: "COASTLINE",
-        average: 2.619,
-        wrong: 0
-    },
-    {
-        word: "PATRONISE",
-        average: 2.620,
-        wrong: 0
-    },
-    {
-        word: "SAPROLITE",
-        average: 2.622,
-        wrong: 0
-    },
-    {
-        word: "LARCENIST",
-        average: 2.628,
-        wrong: 0
-    },
-    {
-        word: "COURANTES",
-        average: 2.646,
-        wrong: 0
-    },
-    {
-        word: "SOLEPRINT",
-        average: 2.648,
-        wrong: 0
-    },
-    {
-        word: "SERIATION",
-        average: 2.661,
-        wrong: 0
-    },
-    {
-        word: "REACTIONS",
-        average: 2.664,
-        wrong: 0
-    },
-    {
-        word: "ELATERINS",
-        average: 2.664,
-        wrong: 0
-    },
-    {
-        word: "TENSORIAL",
-        average: 2.666,
-        wrong: 0
-    },
-    {
-        word: "CENTROIDS",
-        average: 2.667,
-        wrong: 0
-    },
-    {
-        word: "RELATIONS",
-        average: 2.671,
-        wrong: 0
-    },
-    {
-        word: "LACERTIDS",
-        average: 2.676,
-        wrong: 0
-    },
-    {
-        word: "DELATIONS",
-        average: 2.677,
-        wrong: 0
-    },
-    {
-        word: "CERATINS",
-        average: 2.854,
-        wrong: 1
-    },
-    {
-        word: "SODALITE",
-        average: 2.872,
-        wrong: 2
-    },
-    {
-        word: "AUNTLIER",
-        average: 2.873,
-        wrong: 1
-    },
-    {
-        word: "NOTARIES",
-        average: 2.883,
-        wrong: 2
-    },
-    {
-        word: "SCARLET",
-        average: 3.111,
-        wrong: 7
-    },
-    {
-        word: "PLASTER",
-        average: 3.120,
-        wrong: 4
-    },
-    {
-        word: "STAPLER",
-        average: 3.132,
-        wrong: 6
-    },
-    {
-        word: "SLANTED",
-        average: 3.134,
-        wrong: 13
-    },
-    {
-        word: "PSALTER",
-        average: 3.135,
-        wrong: 5
-    },
-    {
-        word: "PLANTER",
-        average: 3.140,
-        wrong: 8
-    },
-    {
-        word: "SMARTEN",
-        average: 3.148,
-        wrong: 10
-    },
-    {
-        word: "SNORTED",
-        average: 3.149,
-        wrong: 11
-    },
-    {
-        word: "SALTERN",
-        average: 3.151,
-        wrong: 14
-    },
-    {
-        word: "RENTALS",
-        average: 3.158,
-        wrong: 16
-    },
-    {
-        word: "SNARLED",
-        average: 3.164,
-        wrong: 16
-    },
-    {
-        word: "SLANDER",
-        average: 3.173,
-        wrong: 12
-    },
-    {
-        word: "STANDER",
-        average: 3.176,
-        wrong: 12
-    },
-    {
-        word: "DARNELS",
-        average: 3.183,
-        wrong: 15
-    },
-    {
-        word: "CLANS",
-        average: 3.715,
-        wrong: 20
-    },
-    {
-        word: "CRITS",
-        average: 3.732,
-        wrong: 27
-    },
-    {
-        word: "STOLN",
-        average: 3.737,
-        wrong: 21
-    },
-    {
-        word: "SCENT",
-        average: 3.756,
-        wrong: 27
-    },
-    {
-        word: "FARTS",
-        average: 3.757,
-        wrong: 17
-    },
-    {
-        word: "SHORL",
-        average: 3.766,
-        wrong: 20
-    },
-    {
-        word: "WARTS",
-        average: 3.767,
-        wrong: 17
-    },
-    {
-        word: "RANGS",
-        average: 3.769,
-        wrong: 26
-    },
-    {
-        word: "RINDS",
-        average: 3.771,
-        wrong: 32
-    },
-    {
-        word: "SHAND",
-        average: 3.777,
-        wrong: 32
-    },
-    {
-        word: "BRADS",
-        average: 3.788,
-        wrong: 33
-    },
-    {
-        word: "GRAND",
-        average: 3.789,
-        wrong: 42
-    },
-    {
-        word: "SCREW",
-        average: 3.828,
-        wrong: 22
-    },
-    {
-        word: "SPRINT",
-        average: 3.430,
-        wrong: 26
-    },
-    {
-        word: "STRAND",
-        average: 3.459,
-        wrong: 32
-    },
-    {
-        word: "PLANTS",
-        average: 3.466,
-        wrong: 24
-    },
-    {
-        word: "SPRENT",
-        average: 3.474,
-        wrong: 22
-    },
-    {
-        word: "BRANTS",
-        average: 3.479,
-        wrong: 17
-    },
-    {
-        word: "GRANTS",
-        average: 3.489,
-        wrong: 26
-    },
-    {
-        word: "STRANG",
-        average: 3.506,
-        wrong: 37
-    },
-    {
-        word: "GNARLS",
-        average: 3.512,
-        wrong: 30
-    },
-    {
-        word: "BRANDS",
-        average: 3.518,
-        wrong: 23
-    },
-    {
-        word: "GRANDS",
-        average: 3.525,
-        wrong: 35
-    },
-    {
-        word: "DRAWLS",
-        average: 3.533,
-        wrong: 24
-    },
-    {
-        word: "TRENDS",
-        average: 3.551,
-        wrong: 34
-    },
-    {
-        word: "CANTER",
-        average: 3.439,
-        wrong: 32
-    },
-    {
-        word: "SALTED",
-        average: 3.440,
-        wrong: 36
-    },
-    {
-        word: "STALER",
-        average: 3.461,
-        wrong: 35
-    },
-    {
-        word: "MATIER",
-        average: 3.468,
-        wrong: 28
-    },
-    {
-        word: "PALIER",
-        average: 3.473,
-        wrong: 31
-    },
-    {
-        word: "TAILED",
-        average: 3.480,
-        wrong: 41
-    },
-    {
-        word: "DARNEL",
-        average: 3.480,
-        wrong: 37
-    },
-    {
-        word: "LACIER",
-        average: 3.481,
-        wrong: 36
-    },
-    {
-        word: "SANDER",
-        average: 3.486,
-        wrong: 42
-    },
-    {
-        word: "RAILED",
-        average: 3.501,
-        wrong: 37
-    },
-    {
-        word: "ALINER",
-        average: 3.506,
-        wrong: 47
-    },
-    {
-        word: "DIALER",
-        average: 3.511,
-        wrong: 44
-    },
-    {
-        word: "LAIRED",
-        average: 3.514,
-        wrong: 45
-    },
-    {
-        word: "CENTRALISE",
-        average: 2.422,
-        wrong: 0
-    },
-    {
-        word: "PORCELAINS",
-        average: 2.445,
-        wrong: 0
-    },
-    {
-        word: "CENTRALISM",
-        average: 2.450,
-        wrong: 0
-    },
-    {
-        word: "MERCANTILE",
-        average: 2.459,
-        wrong: 0
-    },
-    {
-        word: "RECOUNTALS",
-        average: 2.466,
-        wrong: 0
-    },
-    {
-        word: "LACUSTRINE",
-        average: 2.466,
-        wrong: 0
-    },
-    {
-        word: "CENTRALIST",
-        average: 2.473,
-        wrong: 0
-    },
-    {
-        word: "NEUTRALISE",
-        average: 2.474,
-        wrong: 0
-    },
-    {
-        word: "CATEGORISE",
-        average: 2.483,
-        wrong: 0
-    },
-    {
-        word: "NEOREALIST",
-        average: 2.483,
-        wrong: 0
-    },
-    {
-        word: "CONTRAILS",
-        average: 2.625,
-        wrong: 0
-    },
-    {
-        word: "SECTORIAL",
-        average: 2.633,
-        wrong: 0
-    },
-    {
-        word: "ANORETICS",
-        average: 2.645,
-        wrong: 0
-    },
-    {
-        word: "SECRETION",
-        average: 2.654,
-        wrong: 0
-    },
-    {
-        word: "COSTLIER",
-        average: 2.842,
-        wrong: 0
-    },
-    {
-        word: "SCANTIER",
-        average: 2.865,
-        wrong: 0
-    },
-    {
-        word: "CALORIES",
-        average: 2.867,
-        wrong: 0
-    },
-    {
-        word: "SALTIER",
-        average: 3.103,
-        wrong: 16
-    },
-    {
-        word: "SLATIER",
-        average: 3.107,
-        wrong: 14
-    },
-    {
-        word: "SALTIRE",
-        average: 3.108,
-        wrong: 15
-    },
-    {
-        word: "NASTIER",
-        average: 3.158,
-        wrong: 17
-    },
-    {
-        word: "SALTER",
-        average: 3.422,
-        wrong: 36
-    },
-    {
-        word: "LASTER",
-        average: 3.431,
-        wrong: 33
-    },
-    {
-        word: "SLATER",
-        average: 3.435,
-        wrong: 36
-    },
-    {
-        word: "TAILER",
-        average: 3.451,
-        wrong: 32
-    },
-    {
-        word: "DARTLE",
-        average: 3.453,
-        wrong: 37
-    },
-    {
-        word: "SAILER",
-        average: 3.455,
-        wrong: 40
-    },
-    {
-        word: "RANTED",
-        average: 3.474,
-        wrong: 44
-    },
-    {
-        word: "ANTLER",
-        average: 3.478,
-        wrong: 38
-    },
-    {
-        word: "AIRTED",
-        average: 3.493,
-        wrong: 49
-    },
-    {
-        word: "LOANER",
-        average: 3.501,
-        wrong: 46
-    },
-    {
-        word: "NAILER",
-        average: 3.503,
-        wrong: 48
-    },
-    {
-        word: "TELA",
-        average: 4.513,
-        wrong: 180
-    },
-    {
-        word: "TEAL",
-        average: 4.516,
-        wrong: 177
-    },
-    {
-        word: "TAEL",
-        average: 4.522,
-        wrong: 176
-    },
-    {
-        word: "LADE",
-        average: 4.522,
-        wrong: 170
-    },
-    {
-        word: "TALE",
-        average: 4.523,
-        wrong: 179
-    },
-    {
-        word: "DALE",
-        average: 4.523,
-        wrong: 177
-    },
-    {
-        word: "LATE",
-        average: 4.525,
-        wrong: 178
-    },
-    {
-        word: "PALE",
-        average: 4.525,
-        wrong: 177
-    },
-    {
-        word: "LAME",
-        average: 4.525,
-        wrong: 171
-    },
-    {
-        word: "TOLE",
-        average: 4.535,
-        wrong: 174
-    },
-    {
-        word: "LEAR",
-        average: 4.536,
-        wrong: 188
-    },
-    {
-        word: "MALE",
-        average: 4.536,
-        wrong: 177
-    },
-    {
-        word: "REAL",
-        average: 4.539,
-        wrong: 189
-    },
-    {
-        word: "TORE",
-        average: 4.539,
-        wrong: 184
-    },
-    {
-        word: "TARE",
-        average: 4.540,
-        wrong: 185
-    },
-    {
-        word: "RATE",
-        average: 4.545,
-        wrong: 187
-    },
-    {
-        word: "EARL",
-        average: 4.545,
-        wrong: 178
-    },
-    {
-        word: "RALE",
-        average: 4.546,
-        wrong: 191
-    },
-    {
-        word: "TEAR",
-        average: 4.550,
-        wrong: 184
-    },
-    {
-        word: "SEAL",
-        average: 4.555,
-        wrong: 191
-    },
-    {
-        word: "LEAN",
-        average: 4.558,
-        wrong: 200
-    },
-    {
-        word: "SOLE",
-        average: 4.558,
-        wrong: 179
-    },
-    {
-        word: "LEAS",
-        average: 4.560,
-        wrong: 193
-    },
-    {
-        word: "NEAT",
-        average: 4.560,
-        wrong: 199
-    },
-    {
-        word: "SLOE",
-        average: 4.562,
-        wrong: 185
-    },
-    {
-        word: "SALE",
-        average: 4.563,
-        wrong: 192
-    },
-    {
-        word: "LASE",
-        average: 4.566,
-        wrong: 189
-    },
-    {
-        word: "SATE",
-        average: 4.568,
-        wrong: 182
-    },
-    {
-        word: "SEAT",
-        average: 4.569,
-        wrong: 192
-    },
-    {
-        word: "LANE",
-        average: 4.573,
-        wrong: 198
-    },
-    {
-        word: "ORLE",
-        average: 4.573,
-        wrong: 190
-    },
-    {
-        word: "SEAR",
-        average: 4.573,
-        wrong: 185
-    },
-    {
-        word: "ROLE",
-        average: 4.575,
-        wrong: 195
-    },
-    {
-        word: "TEAS",
-        average: 4.575,
-        wrong: 187
-    },
-    {
-        word: "ALES",
-        average: 4.576,
-        wrong: 197
-    },
-    {
-        word: "LOSE",
-        average: 4.577,
-        wrong: 181
-    },
-    {
-        word: "HALE",
-        average: 4.580,
-        wrong: 192
-    },
-    {
-        word: "ARSE",
-        average: 4.589,
-        wrong: 188
-    },
-    {
-        word: "RASE",
-        average: 4.591,
-        wrong: 185
-    },
-    {
-        word: "LORE",
-        average: 4.591,
-        wrong: 197
-    },
-    {
-        word: "SERA",
-        average: 4.592,
-        wrong: 187
-    },
-    {
-        word: "SANE",
-        average: 4.597,
-        wrong: 200
-    },
-    {
-        word: "NEAR",
-        average: 4.600,
-        wrong: 202
-    },
-    {
-        word: "AERO",
-        average: 4.611,
-        wrong: 217
-    },
-    {
-        word: "TOEA",
-        average: 4.644,
-        wrong: 231
-    },
-    {
-        word: "ILEA",
-        average: 4.648,
-        wrong: 226
-    },
-    {
-        word: "ALOE",
-        average: 4.654,
-        wrong: 236
-    },
-    {
-        word: "OLEA",
-        average: 4.662,
-        wrong: 234
-    },
-    {
-        word: "AEON",
-        average: 4.700,
-        wrong: 256
-    },
-    {
-        word: "LEST",
-        average: 4.457,
-        wrong: 148
-    },
-    {
-        word: "LEPT",
-        average: 4.460,
-        wrong: 126
-    },
-    {
-        word: "PELT",
-        average: 4.462,
-        wrong: 131
-    },
-    {
-        word: "LETS",
-        average: 4.468,
-        wrong: 146
-    },
-    {
-        word: "MELT",
-        average: 4.477,
-        wrong: 140
-    },
-    {
-        word: "TELS",
-        average: 4.479,
-        wrong: 152
-    },
-    {
-        word: "DELT",
-        average: 4.481,
-        wrong: 145
-    },
-    {
-        word: "DART",
-        average: 4.481,
-        wrong: 150
-    },
-    {
-        word: "DRAT",
-        average: 4.482,
-        wrong: 153
-    },
-    {
-        word: "MELS",
-        average: 4.483,
-        wrong: 140
-    },
-    {
-        word: "MALT",
-        average: 4.499,
-        wrong: 154
-    },
-    {
-        word: "MARL",
-        average: 4.502,
-        wrong: 154
-    },
-    {
-        word: "SALT",
-        average: 4.503,
-        wrong: 159
-    },
-    {
-        word: "LAST",
-        average: 4.503,
-        wrong: 159
-    },
-    {
-        word: "LATS",
-        average: 4.506,
-        wrong: 157
-    },
-    {
-        word: "TERN",
-        average: 4.507,
-        wrong: 164
-    },
-    {
-        word: "SLAT",
-        average: 4.508,
-        wrong: 161
-    },
-    {
-        word: "MERL",
-        average: 4.511,
-        wrong: 153
-    },
-    {
-        word: "LARD",
-        average: 4.511,
-        wrong: 155
-    },
-    {
-        word: "LENT",
-        average: 4.514,
-        wrong: 165
-    },
-    {
-        word: "DELS",
-        average: 4.514,
-        wrong: 158
-    },
-    {
-        word: "DALS",
-        average: 4.516,
-        wrong: 159
-    },
-    {
-        word: "TARS",
-        average: 4.517,
-        wrong: 157
-    },
-    {
-        word: "RATS",
-        average: 4.525,
-        wrong: 161
-    },
-    {
-        word: "LAND",
-        average: 4.526,
-        wrong: 162
-    },
-    {
-        word: "RENT",
-        average: 4.528,
-        wrong: 176
-    },
-    {
-        word: "REST",
-        average: 4.528,
-        wrong: 161
-    },
-    {
-        word: "CELT",
-        average: 4.528,
-        wrong: 155
-    },
-    {
-        word: "TARN",
-        average: 4.530,
-        wrong: 175
-    },
-    {
-        word: "RANT",
-        average: 4.531,
-        wrong: 177
-    },
-    {
-        word: "TRES",
-        average: 4.531,
-        wrong: 169
-    },
-    {
-        word: "LARS",
-        average: 4.533,
-        wrong: 170
-    },
-    {
-        word: "ROTL",
-        average: 4.534,
-        wrong: 164
-    },
-    {
-        word: "RETS",
-        average: 4.536,
-        wrong: 161
-    },
-    {
-        word: "LEND",
-        average: 4.542,
-        wrong: 170
-    },
-    {
-        word: "SENT",
-        average: 4.547,
-        wrong: 174
-    },
-    {
-        word: "LENS",
-        average: 4.566,
-        wrong: 174
-    },
-    {
-        word: "LEHR",
-        average: 4.567,
-        wrong: 152
-    },
-    {
-        word: "HARL",
-        average: 4.569,
-        wrong: 164
-    },
-    {
-        word: "HERL",
-        average: 4.570,
-        wrong: 162
-    },
-    {
-        word: "LORN",
-        average: 4.580,
-        wrong: 169
-    },
-    {
-        word: "KELT",
-        average: 4.589,
-        wrong: 170
-    },
-    {
-        word: "DESECRATION",
-        average: 2.292,
-        wrong: 0
-    },
-    {
-        word: "CUSTOMARILY",
-        average: 2.304,
-        wrong: 0
-    },
-    {
-        word: "DEPRECATION",
-        average: 2.308,
-        wrong: 0
-    },
-    {
-        word: "PERSECUTION",
-        average: 2.309,
-        wrong: 0
-    },
-    {
-        word: "DESCRIPTION",
-        average: 2.311,
-        wrong: 0
-    },
-    {
-        word: "PERCOLATING",
-        average: 2.312,
-        wrong: 0
-    },
-    {
-        word: "DESECRATING",
-        average: 2.312,
-        wrong: 0
-    },
-    {
-        word: "ROMANTICISE",
-        average: 2.313,
-        wrong: 0
-    },
-    {
-        word: "DESPERATION",
-        average: 2.316,
-        wrong: 0
-    },
-    {
-        word: "UNCLARITIES",
-        average: 2.319,
-        wrong: 0
-    },
-    {
-        word: "PATRIMONIES",
-        average: 2.321,
-        wrong: 0
-    },
-    {
-        word: "PASTURELAND",
-        average: 2.323,
-        wrong: 0
-    },
-    {
-        word: "DECLARATION",
-        average: 2.325,
-        wrong: 0
-    },
-    {
-        word: "RATIONALISE",
-        average: 2.325,
-        wrong: 0
-    },
-    {
-        word: "REPLICATION",
-        average: 2.327,
-        wrong: 0
-    },
-    {
-        word: "IMPORTANCES",
-        average: 2.327,
-        wrong: 0
-    },
-    {
-        word: "NORMALITIES",
-        average: 2.327,
-        wrong: 0
-    },
-    {
-        word: "DESTRUCTION",
-        average: 2.332,
-        wrong: 0
-    },
-    {
-        word: "PERSECUTING",
-        average: 2.333,
-        wrong: 0
-    },
-    {
-        word: "CELEBRATION",
-        average: 2.333,
-        wrong: 0
-    },
-    {
-        word: "DEPRECATING",
-        average: 2.333,
-        wrong: 0
-    },
-    {
-        word: "DECLINATION",
-        average: 2.334,
-        wrong: 0
-    },
-    {
-        word: "SUPERNATION",
-        average: 2.334,
-        wrong: 0
-    },
-    {
-        word: "SECONDARILY",
-        average: 2.335,
-        wrong: 0
-    },
-    {
-        word: "MENSURATION",
-        average: 2.335,
-        wrong: 0
-    },
-    {
-        word: "AERONAUTICS",
-        average: 2.336,
-        wrong: 0
-    },
-    {
-        word: "DELECTATION",
-        average: 2.336,
-        wrong: 0
-    },
-    {
-        word: "DEMARCATION",
-        average: 2.337,
-        wrong: 0
-    },
-    {
-        word: "METRICATION",
-        average: 2.337,
-        wrong: 0
-    },
-    {
-        word: "CARTELISING",
-        average: 2.337,
-        wrong: 0
-    },
-    {
-        word: "DETRACTIONS",
-        average: 2.339,
-        wrong: 0
-    },
-    {
-        word: "MISCREATION",
-        average: 2.339,
-        wrong: 0
-    },
-    {
-        word: "DISRELATION",
-        average: 2.341,
-        wrong: 0
-    },
-    {
-        word: "REEDUCATION",
-        average: 2.342,
-        wrong: 0
-    },
-    {
-        word: "PERSONALITY",
-        average: 2.342,
-        wrong: 0
-    },
-    {
-        word: "REPLICATING",
-        average: 2.343,
-        wrong: 0
-    },
-    {
-        word: "RECONSULTED",
-        average: 2.343,
-        wrong: 0
-    },
-    {
-        word: "CREATIONISM",
-        average: 2.344,
-        wrong: 0
-    },
-    {
-        word: "PERCOLATION",
-        average: 2.345,
-        wrong: 0
-    },
-    {
-        word: "DELINEATORS",
-        average: 2.345,
-        wrong: 0
-    },
-    {
-        word: "PERSONATING",
-        average: 2.346,
-        wrong: 0
-    },
-    {
-        word: "CERATOPSIAN",
-        average: 2.347,
-        wrong: 0
-    },
-    {
-        word: "CELEBRATING",
-        average: 2.347,
-        wrong: 0
-    },
-    {
-        word: "ULCERATIONS",
-        average: 2.347,
-        wrong: 0
-    },
-    {
-        word: "ORIENTALISM",
-        average: 2.348,
-        wrong: 0
-    },
-    {
-        word: "PATERNALISM",
-        average: 2.348,
-        wrong: 0
-    },
-    {
-        word: "REGIONALIST",
-        average: 2.349,
-        wrong: 0
-    },
-    {
-        word: "CRENULATION",
-        average: 2.349,
-        wrong: 0
-    },
-    {
-        word: "PERMUTATION",
-        average: 2.350,
-        wrong: 0
-    },
-    {
-        word: "RELUCTATION",
-        average: 2.351,
-        wrong: 0
-    },
-    {
-        word: "REPUDIATION",
-        average: 2.352,
-        wrong: 0
-    },
-    {
-        word: "PREDICATION",
-        average: 2.353,
-        wrong: 0
-    },
-    {
-        word: "SPORULATIVE",
-        average: 2.354,
-        wrong: 0
-    },
-    {
-        word: "CREATIONIST",
-        average: 2.354,
-        wrong: 0
-    },
-    {
-        word: "RESCULPTING",
-        average: 2.356,
-        wrong: 0
-    },
-    {
-        word: "MERCURATION",
-        average: 2.356,
-        wrong: 0
-    },
-    {
-        word: "INTERCOSTAL",
-        average: 2.356,
-        wrong: 0
-    },
-    {
-        word: "ELUCIDATORS",
-        average: 2.361,
-        wrong: 0
-    },
-    {
-        word: "DEMARCATING",
-        average: 2.362,
-        wrong: 0
-    },
-    {
-        word: "DISLOCATING",
-        average: 2.364,
-        wrong: 0
-    },
-    {
-        word: "SALET",
-        average: 3.686,
-        wrong: 33
-    },
-    {
-        word: "REAST",
-        average: 3.687,
-        wrong: 30
-    },
-    {
-        word: "SLATE",
-        average: 3.703,
-        wrong: 31
-    },
-    {
-        word: "SLANE",
-        average: 3.703,
-        wrong: 36
-    },
-    {
-        word: "TORSE",
-        average: 3.706,
-        wrong: 30
-    },
-    {
-        word: "ARTEL",
-        average: 3.710,
-        wrong: 34
-    },
-    {
-        word: "CARSE",
-        average: 3.710,
-        wrong: 33
-    },
-    {
-        word: "TRACE",
-        average: 3.711,
-        wrong: 32
-    },
-    {
-        word: "ALERT",
-        average: 3.712,
-        wrong: 33
-    },
-    {
-        word: "RESAT",
-        average: 3.712,
-        wrong: 32
-    },
-    {
-        word: "CARET",
-        average: 3.713,
-        wrong: 30
-    },
-    {
-        word: "LATEN",
-        average: 3.713,
-        wrong: 26
-    },
-    {
-        word: "CARTE",
-        average: 3.714,
-        wrong: 30
-    },
-    {
-        word: "TEARS",
-        average: 3.715,
-        wrong: 29
-    },
-    {
-        word: "ALTER",
-        average: 3.716,
-        wrong: 35
-    },
-    {
-        word: "TERAS",
-        average: 3.716,
-        wrong: 29
-    },
-    {
-        word: "TALES",
-        average: 3.717,
-        wrong: 31
-    },
-    {
-        word: "SANER",
-        average: 3.718,
-        wrong: 44
-    },
-    {
-        word: "CRATE",
-        average: 3.718,
-        wrong: 33
-    },
-    {
-        word: "ROSET",
-        average: 3.718,
-        wrong: 29
-    },
-    {
-        word: "TIRES",
-        average: 3.718,
-        wrong: 36
-    },
-    {
-        word: "TALER",
-        average: 3.719,
-        wrong: 34
-    },
-    {
-        word: "TARES",
-        average: 3.719,
-        wrong: 35
-    },
-    {
-        word: "EARST",
-        average: 3.719,
-        wrong: 33
-    },
-    {
-        word: "TASER",
-        average: 3.721,
-        wrong: 37
-    },
-    {
-        word: "RATEL",
-        average: 3.722,
-        wrong: 32
-    },
-    {
-        word: "CARLE",
-        average: 3.722,
-        wrong: 29
-    },
-    {
-        word: "TORES",
-        average: 3.723,
-        wrong: 31
-    },
-    {
-        word: "SNARE",
-        average: 3.724,
-        wrong: 45
-    },
-    {
-        word: "LATER",
-        average: 3.725,
-        wrong: 32
-    },
-    {
-        word: "STARE",
-        average: 3.725,
-        wrong: 36
-    },
-    {
-        word: "TRIES",
-        average: 3.727,
-        wrong: 42
-    },
-    {
-        word: "SERAL",
-        average: 3.729,
-        wrong: 27
-    },
-    {
-        word: "LANES",
-        average: 3.729,
-        wrong: 33
-    },
-    {
-        word: "TRONE",
-        average: 3.729,
-        wrong: 43
-    },
-    {
-        word: "LEARN",
-        average: 3.730,
-        wrong: 32
-    },
-    {
-        word: "CARES",
-        average: 3.730,
-        wrong: 29
-    },
-    {
-        word: "REANS",
-        average: 3.730,
-        wrong: 39
-    },
-    {
-        word: "STRAE",
-        average: 3.731,
-        wrong: 37
-    },
-    {
-        word: "RATES",
-        average: 3.732,
-        wrong: 34
-    },
-    {
-        word: "EARNT",
-        average: 3.732,
-        wrong: 37
-    },
-    {
-        word: "CATER",
-        average: 3.733,
-        wrong: 33
-    },
-    {
-        word: "LITRE",
-        average: 3.733,
-        wrong: 34
-    },
-    {
-        word: "RENAL",
-        average: 3.735,
-        wrong: 34
-    },
-    {
-        word: "REALS",
-        average: 3.736,
-        wrong: 29
-    },
-    {
-        word: "ROATE",
-        average: 3.737,
-        wrong: 41
-    },
-    {
-        word: "TILER",
-        average: 3.737,
-        wrong: 34
-    },
-    {
-        word: "LEARS",
-        average: 3.738,
-        wrong: 32
-    },
-    {
-        word: "TAPER",
-        average: 3.738,
-        wrong: 39
-    },
-    {
-        word: "TRADE",
-        average: 3.739,
-        wrong: 51
-    },
-    {
-        word: "DERAT",
-        average: 3.739,
-        wrong: 41
-    },
-    {
-        word: "LARES",
-        average: 3.740,
-        wrong: 32
-    },
-    {
-        word: "NARES",
-        average: 3.740,
-        wrong: 38
-    },
-    {
-        word: "TONER",
-        average: 3.740,
-        wrong: 45
-    },
-    {
-        word: "NEARS",
-        average: 3.740,
-        wrong: 38
-    },
-    {
-        word: "PARLE",
-        average: 3.741,
-        wrong: 32
-    },
-    {
-        word: "ANTRE",
-        average: 3.742,
-        wrong: 47
-    },
-    {
-        word: "TOILE",
-        average: 3.743,
-        wrong: 38
-    },
-    {
-        word: "PATER",
-        average: 3.743,
-        wrong: 39
-    },
-    {
-        word: "ARLES",
-        average: 3.744,
-        wrong: 33
-    },
-    {
-        word: "NATES",
-        average: 3.744,
-        wrong: 35
-    },
-    {
-        word: "SOREL",
-        average: 3.745,
-        wrong: 37
-    },
-    {
-        word: "TARED",
-        average: 3.745,
-        wrong: 53
-    },
-    {
-        word: "RACES",
-        average: 3.745,
-        wrong: 31
-    },
-    {
-        word: "LASER",
-        average: 3.746,
-        wrong: 34
-    },
-    {
-        word: "RALES",
-        average: 3.746,
-        wrong: 31
-    },
-    {
-        word: "ORATE",
-        average: 3.749,
-        wrong: 48
-    },
-    {
-        word: "RATED",
-        average: 3.749,
-        wrong: 53
-    },
-    {
-        word: "DARES",
-        average: 3.752,
-        wrong: 39
-    },
-    {
-        word: "ROLES",
-        average: 3.752,
-        wrong: 31
-    },
-    {
-        word: "DATER",
-        average: 3.753,
-        wrong: 43
-    },
-    {
-        word: "NERAL",
-        average: 3.753,
-        wrong: 34
-    },
-    {
-        word: "ALIEN",
-        average: 3.754,
-        wrong: 45
-    },
-    {
-        word: "ALONE",
-        average: 3.754,
-        wrong: 37
-    },
-    {
-        word: "SLIER",
-        average: 3.755,
-        wrong: 47
-    },
-    {
-        word: "EARLS",
-        average: 3.755,
-        wrong: 27
-    },
-    {
-        word: "TINEA",
-        average: 3.755,
-        wrong: 40
-    },
-    {
-        word: "SILER",
-        average: 3.756,
-        wrong: 48
-    },
-    {
-        word: "SIREN",
-        average: 3.756,
-        wrong: 54
-    },
-    {
-        word: "SARED",
-        average: 3.757,
-        wrong: 57
-    },
-    {
-        word: "LITER",
-        average: 3.757,
-        wrong: 33
-    },
-    {
-        word: "AISLE",
-        average: 3.757,
-        wrong: 53
-    },
-    {
-        word: "LACER",
-        average: 3.757,
-        wrong: 35
-    },
-    {
-        word: "LIANE",
-        average: 3.758,
-        wrong: 43
-    },
-    {
-        word: "CANER",
-        average: 3.758,
-        wrong: 46
-    },
-    {
-        word: "RAILE",
-        average: 3.760,
-        wrong: 43
-    },
-    {
-        word: "LAERS",
-        average: 3.760,
-        wrong: 33
-    },
-    {
-        word: "SAINE",
-        average: 3.762,
-        wrong: 52
-    },
-    {
-        word: "LORES",
-        average: 3.762,
-        wrong: 36
-    },
-    {
-        word: "ARLED",
-        average: 3.762,
-        wrong: 54
-    },
-    {
-        word: "ASTER",
-        average: 3.763,
-        wrong: 36
-    },
-    {
-        word: "RILES",
-        average: 3.764,
-        wrong: 43
-    },
-    {
-        word: "ANOLE",
-        average: 3.764,
-        wrong: 36
-    },
-    {
-        word: "IRATE",
-        average: 3.765,
-        wrong: 52
-    },
-    {
-        word: "RAINE",
-        average: 3.766,
-        wrong: 54
-    },
-    {
-        word: "SOLER",
-        average: 3.766,
-        wrong: 40
-    },
-    {
-        word: "ARIEL",
-        average: 3.768,
-        wrong: 51
-    },
-    {
-        word: "ORLES",
-        average: 3.768,
-        wrong: 33
-    },
-    {
-        word: "LONER",
-        average: 3.768,
-        wrong: 46
-    },
-    {
-        word: "ALOES",
-        average: 3.769,
-        wrong: 34
-    },
-    {
-        word: "URATE",
-        average: 3.769,
-        wrong: 40
-    },
-    {
-        word: "SATED",
-        average: 3.769,
-        wrong: 58
-    },
-    {
-        word: "ATONE",
-        average: 3.770,
-        wrong: 47
-    },
-    {
-        word: "SOARE",
-        average: 3.771,
-        wrong: 52
-    },
-    {
-        word: "PAIRE",
-        average: 3.771,
-        wrong: 50
-    },
-    {
-        word: "ARSED",
-        average: 3.773,
-        wrong: 60
-    },
-    {
-        word: "RAISE",
-        average: 3.774,
-        wrong: 51
-    },
-    {
-        word: "OATER",
-        average: 3.777,
-        wrong: 46
-    },
-    {
-        word: "OATEN",
-        average: 3.777,
-        wrong: 38
-    },
-    {
-        word: "COATE",
-        average: 3.777,
-        wrong: 40
-    },
-    {
-        word: "AROSE",
-        average: 3.779,
-        wrong: 52
-    },
-    {
-        word: "TERAI",
-        average: 3.779,
-        wrong: 47
-    },
-    {
-        word: "RETIA",
-        average: 3.780,
-        wrong: 47
-    },
-    {
-        word: "ARISE",
-        average: 3.783,
-        wrong: 59
-    },
-    {
-        word: "LOSER",
-        average: 3.784,
-        wrong: 40
-    },
-    {
-        word: "RASED",
-        average: 3.785,
-        wrong: 59
-    },
-    {
-        word: "PORAE",
-        average: 3.786,
-        wrong: 39
-    },
-    {
-        word: "REAIS",
-        average: 3.788,
-        wrong: 48
-    },
-    {
-        word: "AIRED",
-        average: 3.788,
-        wrong: 62
-    },
-    {
-        word: "HALER",
-        average: 3.788,
-        wrong: 35
-    },
-    {
-        word: "AESIR",
-        average: 3.790,
-        wrong: 53
-    },
-    {
-        word: "DEAIR",
-        average: 3.792,
-        wrong: 56
-    },
-    {
-        word: "REOIL",
-        average: 3.792,
-        wrong: 40
-    },
-    {
-        word: "PAREO",
-        average: 3.794,
-        wrong: 35
-    },
-    {
-        word: "SERAI",
-        average: 3.796,
-        wrong: 57
-    },
-    {
-        word: "STOAE",
-        average: 3.798,
-        wrong: 50
-    },
-    {
-        word: "REALO",
-        average: 3.799,
-        wrong: 35
-    },
-    {
-        word: "AIDER",
-        average: 3.799,
-        wrong: 66
-    },
-    {
-        word: "OILER",
-        average: 3.800,
-        wrong: 47
-    },
-    {
-        word: "ADORE",
-        average: 3.805,
-        wrong: 56
-    },
-    {
-        word: "RAYLE",
-        average: 3.808,
-        wrong: 27
-    },
-    {
-        word: "ALURE",
-        average: 3.811,
-        wrong: 57
-    },
-    {
-        word: "ORIEL",
-        average: 3.812,
-        wrong: 49
-    },
-    {
-        word: "AURES",
-        average: 3.812,
-        wrong: 52
-    },
-    {
-        word: "AEROS",
-        average: 3.815,
-        wrong: 49
-    },
-    {
-        word: "MAIRE",
-        average: 3.817,
-        wrong: 51
-    },
-    {
-        word: "ARSEY",
-        average: 3.819,
-        wrong: 55
-    },
-    {
-        word: "OARED",
-        average: 3.819,
-        wrong: 61
-    },
-    {
-        word: "SAYER",
-        average: 3.820,
-        wrong: 53
-    },
-    {
-        word: "IRADE",
-        average: 3.820,
-        wrong: 56
-    },
-    {
-        word: "OSIER",
-        average: 3.823,
-        wrong: 48
-    },
-    {
-        word: "LAYER",
-        average: 3.829,
-        wrong: 36
-    },
-    {
-        word: "AYRES",
-        average: 3.832,
-        wrong: 49
-    },
-    {
-        word: "AYRIE",
-        average: 3.880,
-        wrong: 57
-    },
-    {
-        word: "AUREI",
-        average: 3.882,
-        wrong: 65
-    },
-    {
-        word: "URAEI",
-        average: 3.903,
-        wrong: 68
-    },
-    {
-        word: "SLANT",
-        average: 3.685,
-        wrong: 25
-    },
-    {
-        word: "TARNS",
-        average: 3.694,
-        wrong: 22
-    },
-    {
-        word: "SLART",
-        average: 3.696,
-        wrong: 26
-    },
-    {
-        word: "CARTS",
-        average: 3.699,
-        wrong: 12
-    },
-    {
-        word: "DRANT",
-        average: 3.705,
-        wrong: 29
-    },
-    {
-        word: "RANTS",
-        average: 3.705,
-        wrong: 25
-    },
-    {
-        word: "CLART",
-        average: 3.705,
-        wrong: 19
-    },
-    {
-        word: "TIRLS",
-        average: 3.706,
-        wrong: 19
-    },
-    {
-        word: "LARNT",
-        average: 3.711,
-        wrong: 20
-    },
-    {
-        word: "TRANS",
-        average: 3.712,
-        wrong: 28
-    },
-    {
-        word: "DRATS",
-        average: 3.713,
-        wrong: 22
-    },
-    {
-        word: "DALTS",
-        average: 3.713,
-        wrong: 15
-    },
-    {
-        word: "DARTS",
-        average: 3.715,
-        wrong: 19
-    },
-    {
-        word: "LANTS",
-        average: 3.715,
-        wrong: 27
-    },
-    {
-        word: "SCRAT",
-        average: 3.715,
-        wrong: 16
-    },
-    {
-        word: "CARNS",
-        average: 3.717,
-        wrong: 18
-    },
-    {
-        word: "PERST",
-        average: 3.719,
-        wrong: 26
-    },
-    {
-        word: "CARLS",
-        average: 3.721,
-        wrong: 20
-    },
-    {
-        word: "STARN",
-        average: 3.723,
-        wrong: 27
-    },
-    {
-        word: "TRADS",
-        average: 3.727,
-        wrong: 28
-    },
-    {
-        word: "TERNS",
-        average: 3.732,
-        wrong: 38
-    },
-    {
-        word: "DREST",
-        average: 3.733,
-        wrong: 29
-    },
-    {
-        word: "DARNS",
-        average: 3.736,
-        wrong: 24
-    },
-    {
-        word: "PRENT",
-        average: 3.736,
-        wrong: 29
-    },
-    {
-        word: "TRILD",
-        average: 3.737,
-        wrong: 27
-    },
-    {
-        word: "SNARL",
-        average: 3.738,
-        wrong: 26
-    },
-    {
-        word: "ROTLS",
-        average: 3.738,
-        wrong: 20
-    },
-    {
-        word: "RENTS",
-        average: 3.739,
-        wrong: 36
-    },
-    {
-        word: "STREP",
-        average: 3.741,
-        wrong: 26
-    },
-    {
-        word: "STERN",
-        average: 3.743,
-        wrong: 29
-    },
-    {
-        word: "RANDS",
-        average: 3.744,
-        wrong: 31
-    },
-    {
-        word: "PERNS",
-        average: 3.746,
-        wrong: 31
-    },
-    {
-        word: "STAND",
-        average: 3.746,
-        wrong: 28
-    },
-    {
-        word: "STRAD",
-        average: 3.751,
-        wrong: 29
-    },
-    {
-        word: "CREST",
-        average: 3.751,
-        wrong: 34
-    },
-    {
-        word: "LARNS",
-        average: 3.752,
-        wrong: 25
-    },
-    {
-        word: "DERNS",
-        average: 3.754,
-        wrong: 38
-    },
-    {
-        word: "CERTS",
-        average: 3.754,
-        wrong: 31
-    },
-    {
-        word: "NERTS",
-        average: 3.755,
-        wrong: 38
-    },
-    {
-        word: "LARDS",
-        average: 3.757,
-        wrong: 25
-    },
-    {
-        word: "NARDS",
-        average: 3.760,
-        wrong: 33
-    },
-    {
-        word: "DELTS",
-        average: 3.760,
-        wrong: 43
-    },
-    {
-        word: "CARDS",
-        average: 3.761,
-        wrong: 30
-    },
-    {
-        word: "DIRLS",
-        average: 3.767,
-        wrong: 35
-    },
-    {
-        word: "DENTS",
-        average: 3.767,
-        wrong: 42
-    },
-    {
-        word: "LERPS",
-        average: 3.768,
-        wrong: 25
-    },
-    {
-        word: "HARLS",
-        average: 3.768,
-        wrong: 25
-    },
-    {
-        word: "DRENT",
-        average: 3.769,
-        wrong: 42
-    },
-    {
-        word: "SATYR",
-        average: 3.769,
-        wrong: 24
-    },
-    {
-        word: "MERLS",
-        average: 3.770,
-        wrong: 21
-    },
-    {
-        word: "TREND",
-        average: 3.773,
-        wrong: 51
-    },
-    {
-        word: "ARTSY",
-        average: 3.776,
-        wrong: 27
-    },
-    {
-        word: "LYART",
-        average: 3.779,
-        wrong: 26
-    },
-    {
-        word: "RENDS",
-        average: 3.784,
-        wrong: 47
-    },
-    {
-        word: "YARNS",
-        average: 3.785,
-        wrong: 26
-    },
-    {
-        word: "TRAYS",
-        average: 3.788,
-        wrong: 29
-    },
-    {
-        word: "HERLS",
-        average: 3.792,
-        wrong: 26
-    },
-    {
-        word: "TARDY",
-        average: 3.792,
-        wrong: 32
-    },
-    {
-        word: "NERDS",
-        average: 3.795,
-        wrong: 44
-    },
-    {
-        word: "SPRED",
-        average: 3.797,
-        wrong: 42
-    },
-    {
-        word: "TYRES",
-        average: 3.806,
-        wrong: 32
-    },
-    {
-        word: "RESTY",
-        average: 3.812,
-        wrong: 33
-    },
-    {
-        word: "YRENT",
-        average: 3.815,
-        wrong: 36
-    },
-    {
-        word: "SYREN",
-        average: 3.816,
-        wrong: 45
-    },
-    {
-        word: "TYNES",
-        average: 3.820,
-        wrong: 42
-    },
-    {
-        word: "TYLER",
-        average: 3.822,
-        wrong: 35
-    },
-    {
-        word: "ARYLS",
-        average: 3.825,
-        wrong: 33
-    },
-    {
-        word: "SHRED",
-        average: 3.826,
-        wrong: 57
-    },
-    {
-        word: "STYRE",
-        average: 3.840,
-        wrong: 41
-    },
-    {
-        word: "SLYER",
-        average: 3.841,
-        wrong: 40
-    },
-    {
-        word: "LYRES",
-        average: 3.842,
-        wrong: 37
-    },
-    {
-        word: "LYTES",
-        average: 3.844,
-        wrong: 38
-    },
-    {
-        word: "TYRED",
-        average: 3.851,
-        wrong: 57
-    },
-    {
-        word: "YRNEH",
-        average: 3.859,
-        wrong: 36
-    },
-    {
-        word: "SHYER",
-        average: 3.890,
-        wrong: 42
-    },
-    {
-        word: "SPRAT",
-        average: 3.689,
-        wrong: 15
-    },
-    {
-        word: "SPART",
-        average: 3.691,
-        wrong: 14
-    },
-    {
-        word: "TARPS",
-        average: 3.695,
-        wrong: 16
-    },
-    {
-        word: "PARTS",
-        average: 3.698,
-        wrong: 14
-    },
-    {
-        word: "CLAST",
-        average: 3.699,
-        wrong: 20
-    },
-    {
-        word: "PLANT",
-        average: 3.700,
-        wrong: 15
-    },
-    {
-        word: "TALCS",
-        average: 3.702,
-        wrong: 11
-    },
-    {
-        word: "SCART",
-        average: 3.707,
-        wrong: 18
-    },
-    {
-        word: "CLATS",
-        average: 3.707,
-        wrong: 16
-    },
-    {
-        word: "CROST",
-        average: 3.709,
-        wrong: 20
-    },
-    {
-        word: "SNIRT",
-        average: 3.713,
-        wrong: 30
-    },
-    {
-        word: "CANST",
-        average: 3.715,
-        wrong: 18
-    },
-    {
-        word: "SCANT",
-        average: 3.717,
-        wrong: 19
-    },
-    {
-        word: "PRATS",
-        average: 3.718,
-        wrong: 17
-    },
-    {
-        word: "TRAPS",
-        average: 3.718,
-        wrong: 21
-    },
-    {
-        word: "STRAP",
-        average: 3.721,
-        wrong: 17
-    },
-    {
-        word: "SNORT",
-        average: 3.723,
-        wrong: 26
-    },
-    {
-        word: "TRONS",
-        average: 3.724,
-        wrong: 23
-    },
-    {
-        word: "MARTS",
-        average: 3.725,
-        wrong: 16
-    },
-    {
-        word: "DORTS",
-        average: 3.726,
-        wrong: 21
-    },
-    {
-        word: "CRANS",
-        average: 3.727,
-        wrong: 26
-    },
-    {
-        word: "DIRTS",
-        average: 3.727,
-        wrong: 22
-    },
-    {
-        word: "CANTS",
-        average: 3.727,
-        wrong: 18
-    },
-    {
-        word: "TRINS",
-        average: 3.728,
-        wrong: 33
-    },
-    {
-        word: "TRODS",
-        average: 3.730,
-        wrong: 22
-    },
-    {
-        word: "SMART",
-        average: 3.730,
-        wrong: 18
-    },
-    {
-        word: "TORCS",
-        average: 3.730,
-        wrong: 21
-    },
-    {
-        word: "NARCS",
-        average: 3.731,
-        wrong: 20
-    },
-    {
-        word: "CIRLS",
-        average: 3.733,
-        wrong: 13
-    },
-    {
-        word: "DANTS",
-        average: 3.734,
-        wrong: 25
-    },
-    {
-        word: "BRANT",
-        average: 3.734,
-        wrong: 29
-    },
-    {
-        word: "DOLTS",
-        average: 3.734,
-        wrong: 26
-    },
-    {
-        word: "HARTS",
-        average: 3.736,
-        wrong: 19
-    },
-    {
-        word: "PREST",
-        average: 3.737,
-        wrong: 30
-    },
-    {
-        word: "SCRAN",
-        average: 3.738,
-        wrong: 25
-    },
-    {
-        word: "TRAMS",
-        average: 3.739,
-        wrong: 19
-    },
-    {
-        word: "PELTS",
-        average: 3.739,
-        wrong: 21
-    },
-    {
-        word: "PERTS",
-        average: 3.743,
-        wrong: 27
-    },
-    {
-        word: "RONTS",
-        average: 3.743,
-        wrong: 29
-    },
-    {
-        word: "BRAST",
-        average: 3.744,
-        wrong: 22
-    },
-    {
-        word: "TRASH",
-        average: 3.745,
-        wrong: 26
-    },
-    {
-        word: "CENTS",
-        average: 3.745,
-        wrong: 22
-    },
-    {
-        word: "CELTS",
-        average: 3.747,
-        wrong: 33
-    },
-    {
-        word: "PARDS",
-        average: 3.747,
-        wrong: 28
-    },
-    {
-        word: "PERCS",
-        average: 3.749,
-        wrong: 27
-    },
-    {
-        word: "HARNS",
-        average: 3.751,
-        wrong: 26
-    },
-    {
-        word: "BARNS",
-        average: 3.751,
-        wrong: 19
-    },
-    {
-        word: "MELTS",
-        average: 3.751,
-        wrong: 28
-    },
-    {
-        word: "MARLS",
-        average: 3.754,
-        wrong: 18
-    },
-    {
-        word: "GRANT",
-        average: 3.754,
-        wrong: 33
-    },
-    {
-        word: "RATHS",
-        average: 3.754,
-        wrong: 27
-    },
-    {
-        word: "WARST",
-        average: 3.754,
-        wrong: 17
-    },
-    {
-        word: "PRADS",
-        average: 3.755,
-        wrong: 29
-    },
-    {
-        word: "BRATS",
-        average: 3.755,
-        wrong: 23
-    },
-    {
-        word: "THARS",
-        average: 3.755,
-        wrong: 26
-    },
-    {
-        word: "SPRAD",
-        average: 3.756,
-        wrong: 29
-    },
-    {
-        word: "CREPT",
-        average: 3.756,
-        wrong: 28
-    },
-    {
-        word: "TAHRS",
-        average: 3.757,
-        wrong: 23
-    },
-    {
-        word: "BLART",
-        average: 3.759,
-        wrong: 22
-    },
-    {
-        word: "DRAPS",
-        average: 3.759,
-        wrong: 30
-    },
-    {
-        word: "TRABS",
-        average: 3.759,
-        wrong: 22
-    },
-    {
-        word: "MPRET",
-        average: 3.762,
-        wrong: 24
-    },
-    {
-        word: "SHARN",
-        average: 3.762,
-        wrong: 29
-    },
-    {
-        word: "BRANS",
-        average: 3.762,
-        wrong: 26
-    },
-    {
-        word: "TERMS",
-        average: 3.763,
-        wrong: 31
-    },
-    {
-        word: "TREMS",
-        average: 3.763,
-        wrong: 24
-    },
-    {
-        word: "SCALD",
-        average: 3.764,
-        wrong: 20
-    },
-    {
-        word: "WRAST",
-        average: 3.765,
-        wrong: 17
-    },
-    {
-        word: "SPARD",
-        average: 3.766,
-        wrong: 29
-    },
-    {
-        word: "DRAFT",
-        average: 3.769,
-        wrong: 27
-    },
-    {
-        word: "KARST",
-        average: 3.770,
-        wrong: 21
-    },
-    {
-        word: "SCROD",
-        average: 3.770,
-        wrong: 27
-    },
-    {
-        word: "DRAMS",
-        average: 3.771,
-        wrong: 22
-    },
-    {
-        word: "BRENT",
-        average: 3.773,
-        wrong: 31
-    },
-    {
-        word: "BLERT",
-        average: 3.774,
-        wrong: 26
-    },
-    {
-        word: "BRAND",
-        average: 3.775,
-        wrong: 34
-    },
-    {
-        word: "TRAWL",
-        average: 3.776,
-        wrong: 15
-    },
-    {
-        word: "GRANS",
-        average: 3.777,
-        wrong: 35
-    },
-    {
-        word: "NIRLS",
-        average: 3.778,
-        wrong: 28
-    },
-    {
-        word: "LANDS",
-        average: 3.778,
-        wrong: 25
-    },
-    {
-        word: "MERCS",
-        average: 3.778,
-        wrong: 24
-    },
-    {
-        word: "TENDS",
-        average: 3.782,
-        wrong: 44
-    },
-    {
-        word: "DERMS",
-        average: 3.782,
-        wrong: 23
-    },
-    {
-        word: "STRAG",
-        average: 3.782,
-        wrong: 19
-    },
-    {
-        word: "DERTH",
-        average: 3.783,
-        wrong: 32
-    },
-    {
-        word: "BRENS",
-        average: 3.783,
-        wrong: 23
-    },
-    {
-        word: "DRAGS",
-        average: 3.783,
-        wrong: 32
-    },
-    {
-        word: "DARGS",
-        average: 3.784,
-        wrong: 28
-    },
-    {
-        word: "BARDS",
-        average: 3.786,
-        wrong: 30
-    },
-    {
-        word: "LORDS",
-        average: 3.787,
-        wrong: 27
-    },
-    {
-        word: "SCAND",
-        average: 3.787,
-        wrong: 28
-    },
-    {
-        word: "DRABS",
-        average: 3.787,
-        wrong: 29
-    },
-    {
-        word: "FERNS",
-        average: 3.789,
-        wrong: 27
-    },
-    {
-        word: "GELTS",
-        average: 3.789,
-        wrong: 40
-    },
-    {
-        word: "LENDS",
-        average: 3.790,
-        wrong: 46
-    },
-    {
-        word: "DARBS",
-        average: 3.790,
-        wrong: 25
-    },
-    {
-        word: "TERFS",
-        average: 3.791,
-        wrong: 28
-    },
-    {
-        word: "TEHRS",
-        average: 3.793,
-        wrong: 31
-    },
-    {
-        word: "CREDS",
-        average: 3.795,
-        wrong: 39
-    },
-    {
-        word: "GNARL",
-        average: 3.795,
-        wrong: 34
-    },
-    {
-        word: "HERNS",
-        average: 3.796,
-        wrong: 50
-    },
-    {
-        word: "SHARD",
-        average: 3.797,
-        wrong: 34
-    },
-    {
-        word: "STEND",
-        average: 3.797,
-        wrong: 42
-    },
-    {
-        word: "GRENS",
-        average: 3.798,
-        wrong: 31
-    },
-    {
-        word: "FARLS",
-        average: 3.799,
-        wrong: 23
-    },
-    {
-        word: "GRADS",
-        average: 3.800,
-        wrong: 34
-    },
-    {
-        word: "SCEND",
-        average: 3.801,
-        wrong: 39
-    },
-    {
-        word: "HARDS",
-        average: 3.802,
-        wrong: 29
-    },
-    {
-        word: "VERST",
-        average: 3.812,
-        wrong: 30
-    },
-    {
-        word: "STREW",
-        average: 3.827,
-        wrong: 35
-    },
-    {
-        word: "HERDS",
-        average: 3.827,
-        wrong: 51
-    },
-    {
-        word: "DREGS",
-        average: 3.827,
-        wrong: 44
-    },
-    {
-        word: "LEHRS",
-        average: 3.836,
-        wrong: 36
-    },
-    {
-        word: "KERNS",
-        average: 3.843,
-        wrong: 39
-    },
-    {
-        word: "SHERD",
-        average: 3.849,
-        wrong: 60
-    }
-]
-
 const easy = 
 
 [
     {
-        word: "CANISTER",
-        average: 2.835,
-        wrong: 0
+        "word": "UNCLARITIES",
+        "restricted": {
+            "average": 2.2819324950363997,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.329483410331793,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CUSTOMARILY",
+        "restricted": {
+            "average": 2.286234281932495,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.385132297354053,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ROMANTICISE",
+        "restricted": {
+            "average": 2.2898742554599605,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.386182276354473,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PATRIMONIES",
+        "restricted": {
+            "average": 2.2951687624090007,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.3311633767324653,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERCOLATING",
+        "restricted": {
+            "average": 2.300794176042356,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.369172616547669,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DESECRATION",
+        "restricted": {
+            "average": 2.301786896095301,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.363922721545569,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERSECUTION",
+        "restricted": {
+            "average": 2.301786896095301,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.380092398152037,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RATIONALISE",
+        "restricted": {
+            "average": 2.302448709463931,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.4044519109617806,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DEPRECATION",
+        "restricted": {
+            "average": 2.3074123097286567,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.375052498950021,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DESECRATING",
+        "restricted": {
+            "average": 2.3084050297816017,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.367492650146997,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REPLICATION",
+        "restricted": {
+            "average": 2.3090668431502315,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.395422091558169,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DESPERATION",
+        "restricted": {
+            "average": 2.3186631369953674,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.3807223855522888,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "IMPORTANCES",
+        "restricted": {
+            "average": 2.3216412971542026,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.347333053338933,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DESCRIPTION",
+        "restricted": {
+            "average": 2.3239576439444076,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.377992440151197,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "NORMALITIES",
+        "restricted": {
+            "average": 2.327,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 2.340823183536329,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DECLARATION",
+        "restricted": {
+            "average": 2.3318994043679684,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DESTRUCTION",
+        "restricted": {
+            "average": 2.332,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERSECUTING",
+        "restricted": {
+            "average": 2.333,
+            "wrong": 0
+        },
     },
+    {
+        "word": "CELEBRATION",
+        "restricted": {
+            "average": 2.333,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DEPRECATING",
+        "restricted": {
+            "average": 2.333,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DECLINATION",
+        "restricted": {
+            "average": 2.334,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SUPERNATION",
+        "restricted": {
+            "average": 2.334,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SECONDARILY",
+        "restricted": {
+            "average": 2.335,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MENSURATION",
+        "restricted": {
+            "average": 2.335,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "AERONAUTICS",
+        "restricted": {
+            "average": 2.336,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DELECTATION",
+        "restricted": {
+            "average": 2.336,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DOCTRINAIRE",
+        "restricted": {
+            "average": 2.336,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DEMARCATION",
+        "restricted": {
+            "average": 2.337,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "METRICATION",
+        "restricted": {
+            "average": 2.337,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CARTELISING",
+        "restricted": {
+            "average": 2.337,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DETRACTIONS",
+        "restricted": {
+            "average": 2.339,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MISCREATION",
+        "restricted": {
+            "average": 2.339,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DISRELATION",
+        "restricted": {
+            "average": 2.341,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CEREMONIALS",
+        "restricted": {
+            "average": 2.341,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REEDUCATION",
+        "restricted": {
+            "average": 2.342,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERSONALITY",
+        "restricted": {
+            "average": 2.342,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REPLICATING",
+        "restricted": {
+            "average": 2.343,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RECONSULTED",
+        "restricted": {
+            "average": 2.343,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CREATIONISM",
+        "restricted": {
+            "average": 2.344,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RADIOLUCENT",
+        "restricted": {
+            "average": 2.344,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERCOLATION",
+        "restricted": {
+            "average": 2.345,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DELINEATORS",
+        "restricted": {
+            "average": 2.345,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERSONALIST",
+        "restricted": {
+            "average": 2.345,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PRATINCOLES",
+        "restricted": {
+            "average": 2.345,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERSONATING",
+        "restricted": {
+            "average": 2.346,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CERATOPSIAN",
+        "restricted": {
+            "average": 2.347,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CELEBRATING",
+        "restricted": {
+            "average": 2.347,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ULCERATIONS",
+        "restricted": {
+            "average": 2.347,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PECULATIONS",
+        "restricted": {
+            "average": 2.347,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ORIENTALISM",
+        "restricted": {
+            "average": 2.348,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PATERNALISM",
+        "restricted": {
+            "average": 2.348,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REGIONALIST",
+        "restricted": {
+            "average": 2.349,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CRENULATION",
+        "restricted": {
+            "average": 2.349,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERMUTATION",
+        "restricted": {
+            "average": 2.35,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RELUCTATION",
+        "restricted": {
+            "average": 2.351,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REPUDIATION",
+        "restricted": {
+            "average": 2.352,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CONSIDERATE",
+        "restricted": {
+            "average": 2.352,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SPORULATIVE",
+        "restricted": {
+            "average": 2.353,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PREDICATION",
+        "restricted": {
+            "average": 2.353,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SPORULATING",
+        "restricted": {
+            "average": 2.353,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CREATIONIST",
+        "restricted": {
+            "average": 2.354,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RESPIRATION",
+        "restricted": {
+            "average": 2.354,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SPECULATION",
+        "restricted": {
+            "average": 2.355,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MELIORATING",
+        "restricted": {
+            "average": 2.355,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RESCULPTING",
+        "restricted": {
+            "average": 2.356,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MERCURATION",
+        "restricted": {
+            "average": 2.356,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "INTERCOSTAL",
+        "restricted": {
+            "average": 2.356,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DECLAMATION",
+        "restricted": {
+            "average": 2.357,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "UNREALISTIC",
+        "restricted": {
+            "average": 2.358,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "VOLUNTARIES",
+        "restricted": {
+            "average": 2.358,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PELARGONIUM",
+        "restricted": {
+            "average": 2.36,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PASTURELAND",
+        "restricted": {
+            "average": 2.360026472534745,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ELUCIDATORS",
+        "restricted": {
+            "average": 2.361,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PREDICAMENT",
+        "restricted": {
+            "average": 2.361,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DEMARCATING",
+        "restricted": {
+            "average": 2.362,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RECLAMATION",
+        "restricted": {
+            "average": 2.362,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PROSECUTING",
+        "restricted": {
+            "average": 2.362,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CORRELATING",
+        "restricted": {
+            "average": 2.362,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DISLOCATING",
+        "restricted": {
+            "average": 2.363,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PRELOCATING",
+        "restricted": {
+            "average": 2.363,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REGIMENTALS",
+        "restricted": {
+            "average": 2.364,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MODERNISTIC",
+        "restricted": {
+            "average": 2.365,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DESALINATOR",
+        "restricted": {
+            "average": 2.365,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CONSTRAINED",
+        "restricted": {
+            "average": 2.366,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PATERNALIST",
+        "restricted": {
+            "average": 2.366,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REGIONALISM",
+        "restricted": {
+            "average": 2.366,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REPUDIATING",
+        "restricted": {
+            "average": 2.366,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MACERATIONS",
+        "restricted": {
+            "average": 2.367,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CLOISTERING",
+        "restricted": {
+            "average": 2.368,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REPUBLICANS",
+        "restricted": {
+            "average": 2.368,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RELUCTATING",
+        "restricted": {
+            "average": 2.369,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ROUNDTABLES",
+        "restricted": {
+            "average": 2.37,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ANCESTORING",
+        "restricted": {
+            "average": 2.37,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "IMPRECATION",
+        "restricted": {
+            "average": 2.371,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ERADICATION",
+        "restricted": {
+            "average": 2.373,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "GLUCOSAMINE",
+        "restricted": {
+            "average": 2.373,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PREDICATING",
+        "restricted": {
+            "average": 2.373,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DEPORTATION",
+        "restricted": {
+            "average": 2.373,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LACERATIONS",
+        "restricted": {
+            "average": 2.374,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RESIDENTIAL",
+        "restricted": {
+            "average": 2.374,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CONTRACTILE",
+        "restricted": {
+            "average": 2.374,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SPECULATING",
+        "restricted": {
+            "average": 2.375,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DEPRIVATION",
+        "restricted": {
+            "average": 2.375,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "INTERLACING",
+        "restricted": {
+            "average": 2.375,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CONTRASTIVE",
+        "restricted": {
+            "average": 2.376,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MISRELATING",
+        "restricted": {
+            "average": 2.376,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DECORATIONS",
+        "restricted": {
+            "average": 2.376,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ALTERCATION",
+        "restricted": {
+            "average": 2.377,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "NEUTROPHILS",
+        "restricted": {
+            "average": 2.377,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ELUCIDATION",
+        "restricted": {
+            "average": 2.378,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "INTERCAMPUS",
+        "restricted": {
+            "average": 2.378,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TELESCOPING",
+        "restricted": {
+            "average": 2.381,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "COPARENTING",
+        "restricted": {
+            "average": 2.381,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MEROBLASTIC",
+        "restricted": {
+            "average": 2.382,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "OBSECRATING",
+        "restricted": {
+            "average": 2.384,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LUBRICATION",
+        "restricted": {
+            "average": 2.385,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "COLINEARITY",
+        "restricted": {
+            "average": 2.387,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ENUMERATION",
+        "restricted": {
+            "average": 2.39,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "INOCULATORS",
+        "restricted": {
+            "average": 2.391,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ENUNCIATORS",
+        "restricted": {
+            "average": 2.393,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "INTRICATELY",
+        "restricted": {
+            "average": 2.395,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ELUCIDATING",
+        "restricted": {
+            "average": 2.402,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TRANSECTION",
+        "restricted": {
+            "average": 2.405,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "VENTILATORS",
+        "restricted": {
+            "average": 2.407,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CENTRALISE",
+        "restricted": {
+            "average": 2.422,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PORCELAINS",
+        "restricted": {
+            "average": 2.445,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CENTRALISM",
+        "restricted": {
+            "average": 2.449,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MERCANTILE",
+        "restricted": {
+            "average": 2.458,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RECOUNTALS",
+        "restricted": {
+            "average": 2.465,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LACUSTRINE",
+        "restricted": {
+            "average": 2.466,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CONTRARIES",
+        "restricted": {
+            "average": 2.469,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CENTRALIST",
+        "restricted": {
+            "average": 2.473,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "NEUTRALISE",
+        "restricted": {
+            "average": 2.474,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TOURMALINE",
+        "restricted": {
+            "average": 2.476,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PROLACTINS",
+        "restricted": {
+            "average": 2.48,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "NEOREALIST",
+        "restricted": {
+            "average": 2.481,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CATEGORISE",
+        "restricted": {
+            "average": 2.483,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "STREAMLINE",
+        "restricted": {
+            "average": 2.487,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REDACTIONS",
+        "restricted": {
+            "average": 2.491,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DEPILATORS",
+        "restricted": {
+            "average": 2.493,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RECAUTIONS",
+        "restricted": {
+            "average": 2.494,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DECORATING",
+        "restricted": {
+            "average": 2.494,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SENATORIAL",
+        "restricted": {
+            "average": 2.51,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REDISCOUNT",
+        "restricted": {
+            "average": 2.513,
+            "wrong": 0
+        },
+    },
     {
-        word: "AUNTLIER",
-        average: 2.847,
-        wrong: 0
+        "word": "DETRACTION",
+        "restricted": {
+            "average": 2.514,
+            "wrong": 0
+        },
     },
     {
-        word: "SODALITE",
-        average: 2.850,
-        wrong: 0
+        "word": "DISCRETION",
+        "restricted": {
+            "average": 2.521,
+            "wrong": 0
+        },
     },
     {
-        word: "DETRAINS",
-        average: 2.850,
-        wrong: 0
+        "word": "COASTLINE",
+        "restricted": {
+            "average": 2.613,
+            "wrong": 0
+        },
     },
     {
-        word: "SENORITA",
-        average: 2.852,
-        wrong: 0
+        "word": "PATRONISE",
+        "restricted": {
+            "average": 2.615,
+            "wrong": 0
+        },
     },
     {
-        word: "SORTIED",
-        average: 3.055,
-        wrong: 0
+        "word": "SAPROLITE",
+        "restricted": {
+            "average": 2.62,
+            "wrong": 0
+        },
     },
     {
-        word: "PASTIER",
-        average: 3.061,
-        wrong: 0
+        "word": "CONTRAILS",
+        "restricted": {
+            "average": 2.621,
+            "wrong": 0
+        },
     },
     {
-        word: "PLATIER",
-        average: 3.063,
-        wrong: 0
+        "word": "LARCENIST",
+        "restricted": {
+            "average": 2.623,
+            "wrong": 0
+        },
     },
     {
-        word: "REALIST",
-        average: 3.063,
-        wrong: 0
+        "word": "SECTORIAL",
+        "restricted": {
+            "average": 2.63,
+            "wrong": 0
+        },
     },
     {
-        word: "SAUNTER",
-        average: 3.070,
-        wrong: 0
+        "word": "AUTOCRINE",
+        "restricted": {
+            "average": 2.636,
+            "wrong": 0
+        },
     },
     {
-        word: "MALTIER",
-        average: 3.075,
-        wrong: 0
+        "word": "ANORETICS",
+        "restricted": {
+            "average": 2.639,
+            "wrong": 0
+        },
     },
     {
-        word: "COALIER",
-        average: 3.076,
-        wrong: 0
+        "word": "SOLEPRINT",
+        "restricted": {
+            "average": 2.641,
+            "wrong": 0
+        },
     },
     {
-        word: "CLARIES",
-        average: 3.079,
-        wrong: 0
+        "word": "COURANTES",
+        "restricted": {
+            "average": 2.642,
+            "wrong": 0
+        },
     },
     {
-        word: "TARDIES",
-        average: 3.081,
-        wrong: 0
+        "word": "COUNTRIES",
+        "restricted": {
+            "average": 2.643,
+            "wrong": 0
+        },
     },
     {
-        word: "SALTED",
-        average: 3.304,
-        wrong: 0
+        "word": "SATURNINE",
+        "restricted": {
+            "average": 2.644,
+            "wrong": 0
+        },
     },
     {
-        word: "RANTED",
-        average: 3.311,
-        wrong: 0
+        "word": "SECRETION",
+        "restricted": {
+            "average": 2.65,
+            "wrong": 0
+        },
     },
     {
-        word: "DARTLE",
-        average: 3.314,
-        wrong: 0
+        "word": "SERIATION",
+        "restricted": {
+            "average": 2.658,
+            "wrong": 0
+        },
     },
     {
-        word: "DARNEL",
-        average: 3.324,
-        wrong: 0
+        "word": "ELATERINS",
+        "restricted": {
+            "average": 2.659,
+            "wrong": 0
+        },
     },
     {
-        word: "MATIER",
-        average: 3.328,
-        wrong: 0
+        "word": "REACTIONS",
+        "restricted": {
+            "average": 2.659,
+            "wrong": 0
+        },
     },
     {
-        word: "STALER",
-        average: 3.331,
-        wrong: 0
+        "word": "CENTROIDS",
+        "restricted": {
+            "average": 2.662,
+            "wrong": 0
+        },
     },
     {
-        word: "TAILED",
-        average: 3.338,
-        wrong: 0
+        "word": "TENSORIAL",
+        "restricted": {
+            "average": 2.662,
+            "wrong": 0
+        },
     },
     {
-        word: "RAILED",
-        average: 3.338,
-        wrong: 0
+        "word": "RELATIONS",
+        "restricted": {
+            "average": 2.666,
+            "wrong": 0
+        },
     },
     {
-        word: "SAPROLITE",
-        average: 2.620,
-        wrong: 0
+        "word": "DESERTION",
+        "restricted": {
+            "average": 2.67,
+            "wrong": 0
+        },
     },
     {
-        word: "AUTOCRINE",
-        average: 2.636,
-        wrong: 0
+        "word": "DETRUSION",
+        "restricted": {
+            "average": 2.671,
+            "wrong": 0
+        },
     },
     {
-        word: "SOLEPRINT",
-        average: 2.641,
-        wrong: 0
+        "word": "NEUROTICS",
+        "restricted": {
+            "average": 2.671,
+            "wrong": 0
+        },
     },
     {
-        word: "COURANTES",
-        average: 2.642,
-        wrong: 0
+        "word": "LACERTIDS",
+        "restricted": {
+            "average": 2.673,
+            "wrong": 0
+        },
     },
     {
-        word: "COUNTRIES",
-        average: 2.643,
-        wrong: 0
+        "word": "DELATIONS",
+        "restricted": {
+            "average": 2.673,
+            "wrong": 0
+        },
     },
     {
-        word: "SATURNINE",
-        average: 2.644,
-        wrong: 0
+        "word": "CATENOIDS",
+        "restricted": {
+            "average": 2.677,
+            "wrong": 0
+        },
     },
     {
-        word: "SERIATION",
-        average: 2.658,
-        wrong: 0
+        "word": "ESTUARINE",
+        "restricted": {
+            "average": 2.677,
+            "wrong": 0
+        },
     },
     {
-        word: "ELATERINS",
-        average: 2.659,
-        wrong: 0
+        "word": "OUTLEARNS",
+        "restricted": {
+            "average": 2.689,
+            "wrong": 0
+        },
     },
     {
-        word: "CENTROIDS",
-        average: 2.662,
-        wrong: 0
+        "word": "COSTLIER",
+        "restricted": {
+            "average": 2.7522522522522523,
+            "wrong": 0
+        },
     },
     {
-        word: "TENSORIAL",
-        average: 2.662,
-        wrong: 0
+        "word": "CERATINS",
+        "restricted": {
+            "average": 2.7197822822822824,
+            "wrong": 0
+        },
     },
     {
-        word: "RELATIONS",
-        average: 2.666,
-        wrong: 0
+        "word": "CANISTER",
+        "restricted": {
+            "average": 2.7595720720720722,
+            "wrong": 0
+        },
     },
     {
-        word: "DESERTION",
-        average: 2.670,
-        wrong: 0
+        "word": "SCANTIER",
+        "restricted": {
+            "average": 2.773460960960961,
+            "wrong": 0
+        },
     },
     {
-        word: "DETRUSION",
-        average: 2.671,
-        wrong: 0
+        "word": "CALORIES",
+        "restricted": {
+            "average": 2.7473723723723724,
+            "wrong": 0
+        },
     },
     {
-        word: "NEUROTICS",
-        average: 2.671,
-        wrong: 0
+        "word": "AUNTLIER",
+        "restricted": {
+            "average": 2.76783033033033,
+            "wrong": 0
+        },
     },
     {
-        word: "LACERTIDS",
-        average: 2.673,
-        wrong: 0
+        "word": "SODALITE",
+        "restricted": {
+            "average": 2.75243993993994,
+            "wrong": 0
+        },
     },
     {
-        word: "DELATIONS",
-        average: 2.673,
-        wrong: 0
+        "word": "DETRAINS",
+        "restricted": {
+            "average": 2.7520645645645647,
+            "wrong": 0
+        },
     },
     {
-        word: "CATENOIDS",
-        average: 2.677,
-        wrong: 0
+        "word": "SENORITA",
+        "restricted": {
+            "average": 2.741554054054054,
+            "wrong": 0
+        },
     },
     {
-        word: "ESTUARINE",
-        average: 2.677,
-        wrong: 0
+        "word": "NOTARIES",
+        "restricted": {
+            "average": 2.7501876876876876,
+            "wrong": 0
+        },
     },
     {
-        word: "OUTLEARNS",
-        average: 2.689,
-        wrong: 0
+        "word": "SALTIRE",
+        "restricted": {
+            "average": 2.905586918434884,
+            "wrong": 0
+        },
     },
     {
-        word: "CENTRALISE",
-        average: 2.422,
-        wrong: 0
+        "word": "SALTIER",
+        "restricted": {
+            "average": 2.921160210239439,
+            "wrong": 0
+        },
     },
     {
-        word: "PORCELAINS",
-        average: 2.445,
-        wrong: 0
+        "word": "REALIST",
+        "restricted": {
+            "average": 2.9338135098306406,
+            "wrong": 0
+        },
     },
     {
-        word: "CENTRALISM",
-        average: 2.449,
-        wrong: 0
+        "word": "SLATIER",
+        "restricted": {
+            "average": 2.9369281681915513,
+            "wrong": 0
+        },
     },
     {
-        word: "MERCANTILE",
-        average: 2.458,
-        wrong: 0
+        "word": "SORTIED",
+        "restricted": {
+            "average": 2.9400428265524625,
+            "wrong": 0
+        },
     },
     {
-        word: "RECOUNTALS",
-        average: 2.465,
-        wrong: 0
+        "word": "PASTIER",
+        "restricted": {
+            "average": 2.9443254817987152,
+            "wrong": 0
+        },
     },
     {
-        word: "LACUSTRINE",
-        average: 2.466,
-        wrong: 0
+        "word": "NASTIER",
+        "restricted": {
+            "average": 2.9460774771267277,
+            "wrong": 0
+        },
     },
     {
-        word: "CONTRARIES",
-        average: 2.469,
-        wrong: 0
+        "word": "MALTIER",
+        "restricted": {
+            "average": 2.951722795405879,
+            "wrong": 0
+        },
     },
     {
-        word: "CENTRALIST",
-        average: 2.473,
-        wrong: 0
+        "word": "COALIER",
+        "restricted": {
+            "average": 2.9526961261436635,
+            "wrong": 0
+        },
     },
     {
-        word: "NEUTRALISE",
-        average: 2.474,
-        wrong: 0
+        "word": "PLATIER",
+        "restricted": {
+            "average": 2.9604827720459412,
+            "wrong": 0
+        },
     },
     {
-        word: "TOURMALINE",
-        average: 2.476,
-        wrong: 0
+        "word": "SAUNTER",
+        "restricted": {
+            "average": 2.9669067549153203,
+            "wrong": 0
+        },
     },
     {
-        word: "PROLACTINS",
-        average: 2.480,
-        wrong: 0
+        "word": "SCALIER",
+        "restricted": {
+            "average": 3.078,
+            "wrong": 0
+        },
     },
     {
-        word: "NEOREALIST",
-        average: 2.481,
-        wrong: 0
+        "word": "CLARIES",
+        "restricted": {
+            "average": 3.079,
+            "wrong": 0
+        },
     },
     {
-        word: "CATEGORISE",
-        average: 2.483,
-        wrong: 0
+        "word": "ANTSIER",
+        "restricted": {
+            "average": 3.079,
+            "wrong": 0
+        },
     },
     {
-        word: "STREAMLINE",
-        average: 2.487,
-        wrong: 0
+        "word": "TARDIES",
+        "restricted": {
+            "average": 3.081,
+            "wrong": 0
+        },
     },
     {
-        word: "REDACTIONS",
-        average: 2.491,
-        wrong: 0
+        "word": "SALTER",
+        "restricted": {
+            "average": 3.179307321350285,
+            "wrong": 0
+        },
     },
     {
-        word: "DEPILATORS",
-        average: 2.493,
-        wrong: 0
+        "word": "DARTLE",
+        "restricted": {
+            "average": 3.1953090749671196,
+            "wrong": 0
+        },
     },
     {
-        word: "RECAUTIONS",
-        average: 2.494,
-        wrong: 0
+        "word": "LASTER",
+        "restricted": {
+            "average": 3.2025427444103465,
+            "wrong": 0
+        },
     },
     {
-        word: "DECORATING",
-        average: 2.494,
-        wrong: 0
+        "word": "SLATER",
+        "restricted": {
+            "average": 3.2036387549320473,
+            "wrong": 0
+        },
     },
     {
-        word: "SENATORIAL",
-        average: 2.510,
-        wrong: 0
+        "word": "SALTED",
+        "restricted": {
+            "average": 3.2058307759754494,
+            "wrong": 0
+        },
     },
     {
-        word: "REDISCOUNT",
-        average: 2.513,
-        wrong: 0
+        "word": "RANTED",
+        "restricted": {
+            "average": 3.2084612012275318,
+            "wrong": 0
+        },
     },
     {
-        word: "DETRACTION",
-        average: 2.514,
-        wrong: 0
+        "word": "DARNEL",
+        "restricted": {
+            "average": 3.212845243314336,
+            "wrong": 0
+        },
     },
     {
-        word: "DISCRETION",
-        average: 2.521,
-        wrong: 0
+        "word": "TAILER",
+        "restricted": {
+            "average": 3.216133274879439,
+            "wrong": 0
+        },
     },
     {
-        word: "COASTLINE",
-        average: 2.613,
-        wrong: 0
+        "word": "MATIER",
+        "restricted": {
+            "average": 3.2189829022358616,
+            "wrong": 0
+        },
     },
     {
-        word: "PATRONISE",
-        average: 2.615,
-        wrong: 0
+        "word": "STALER",
+        "restricted": {
+            "average": 3.222490135905305,
+            "wrong": 0
+        },
     },
     {
-        word: "CONTRAILS",
-        average: 2.621,
-        wrong: 0
+        "word": "SAILER",
+        "restricted": {
+            "average": 3.331,
+            "wrong": 0
+        },
     },
     {
-        word: "LARCENIST",
-        average: 2.623,
-        wrong: 0
+        "word": "AIRTED",
+        "restricted": {
+            "average": 3.333,
+            "wrong": 0
+        },
     },
     {
-        word: "SECTORIAL",
-        average: 2.630,
-        wrong: 0
+        "word": "TAILED",
+        "restricted": {
+            "average": 3.338,
+            "wrong": 0
+        },
     },
     {
-        word: "ANORETICS",
-        average: 2.639,
-        wrong: 0
+        "word": "RAILED",
+        "restricted": {
+            "average": 3.338,
+            "wrong": 0
+        },
     },
     {
-        word: "SECRETION",
-        average: 2.650,
-        wrong: 0
+        "word": "ANTLER",
+        "restricted": {
+            "average": 3.342,
+            "wrong": 0
+        },
     },
     {
-        word: "REACTIONS",
-        average: 2.659,
-        wrong: 0
+        "word": "NAILER",
+        "restricted": {
+            "average": 3.353,
+            "wrong": 0
+        },
     },
     {
-        word: "COSTLIER",
-        average: 2.821,
-        wrong: 0
+        "word": "LOANER",
+        "restricted": {
+            "average": 3.359,
+            "wrong": 0
+        },
     },
     {
-        word: "CERATINS",
-        average: 2.830,
-        wrong: 0
+        "word": "SALET",
+        "restricted": {
+            "average": 3.4207343412527,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.6771221329151147,
+            "wrong": 0
+        },
     },
     {
-        word: "SCANTIER",
-        average: 2.840,
-        wrong: 0
+        "word": "REAST",
+        "restricted": {
+            "average": 3.423326133909287,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7220152911193884,
+            "wrong": 0
+        },
     },
     {
-        word: "CALORIES",
-        average: 2.842,
-        wrong: 0
+        "word": "CRATE",
+        "restricted": {
+            "average": 3.424622030237581,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7171142913154283,
+            "wrong": 0
+        },
     },
     {
-        word: "NOTARIES",
-        average: 2.857,
-        wrong: 0
+        "word": "TRACE",
+        "restricted": {
+            "average": 3.4374187960155913,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7186826112526954,
+            "wrong": 0
+        },
     },
     {
-        word: "SALTIER",
-        average: 3.042,
-        wrong: 0
+        "word": "SLATE",
+        "restricted": {
+            "average": 3.437851883932438,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.6912370123505194,
+            "wrong": 0
+        },
     },
     {
-        word: "SLATIER",
-        average: 3.047,
-        wrong: 0
+        "word": "TRINE",
+        "restricted": {
+            "average": 3.4384449244060473,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7112330915506764,
+            "wrong": 0
+        },
     },
     {
-        word: "SALTIRE",
-        average: 3.051,
-        wrong: 0
+        "word": "CRANE",
+        "restricted": {
+            "average": 3.4391511476829795,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7210350911585963,
+            "wrong": 0
+        },
     },
     {
-        word: "NASTIER",
-        average: 3.073,
-        wrong: 0
+        "word": "SLANT",
+        "restricted": {
+            "average": 3.4395842355998267,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7016271319349148,
+            "wrong": 0
+        },
     },
     {
-        word: "SCALIER",
-        average: 3.078,
-        wrong: 0
+        "word": "CARLE",
+        "restricted": {
+            "average": 3.440450411433521,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.702411291903548,
+            "wrong": 0
+        },
     },
     {
-        word: "ANTSIER",
-        average: 3.079,
-        wrong: 0
+        "word": "SLANE",
+        "restricted": {
+            "average": 3.440883499350368,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7059400117623995,
+            "wrong": 0
+        },
     },
     {
-        word: "SALTER",
-        average: 3.287,
-        wrong: 0
+        "word": "STALE",
+        "restricted": {
+            "average": 3.441036717062635,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7128014114879435,
+            "wrong": 0
+        },
     },
     {
-        word: "LASTER",
-        average: 3.306,
-        wrong: 0
+        "word": "CARTE",
+        "restricted": {
+            "average": 3.441749675184062,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.6982944520682217,
+            "wrong": 0
+        },
     },
     {
-        word: "SLATER",
-        average: 3.314,
-        wrong: 0
+        "word": "RANCE",
+        "restricted": {
+            "average": 3.441900647948164,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7137816114487356,
+            "wrong": 0
+        },
     },
     {
-        word: "TAILER",
-        average: 3.322,
-        wrong: 0
+        "word": "TORSE",
+        "restricted": {
+            "average": 3.4434820268514508,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7243677710252894,
+            "wrong": 0
+        },
     },
     {
-        word: "SAILER",
-        average: 3.331,
-        wrong: 0
+        "word": "TRADE",
+        "restricted": {
+            "average": 3.4453563714902806,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.7273083709076653,
+            "wrong": 0
+        },
     },
     {
-        word: "AIRTED",
-        average: 3.333,
-        wrong: 0
+        "word": "CARSE",
+        "restricted": {
+            "average": 3.4460805543525335,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.732601450695942,
+            "wrong": 0
+        },
     },
     {
-        word: "ANTLER",
-        average: 3.342,
-        wrong: 0
+        "word": "TRAPE",
+        "restricted": {
+            "average": 3.44622030237581,
+            "wrong": 0
+        },
     },
     {
-        word: "NAILER",
-        average: 3.353,
-        wrong: 0
+        "word": "LEANT",
+        "restricted": {
+            "average": 3.4466522678185747,
+            "wrong": 0
+        },
     },
     {
-        word: "LOANER",
-        average: 3.359,
-        wrong: 0
+        "word": "SNARE",
+        "restricted": {
+            "average": 3.4475161987041036,
+            "wrong": 0
+        },
     },
     {
-        word: "LEST",
-        average: 4.146,
-        wrong: 0
+        "word": "REACT",
+        "restricted": {
+            "average": 3.4475161987041036,
+            "wrong": 0
+        },
     },
     {
-        word: "SALT",
-        average: 4.146,
-        wrong: 2
+        "word": "STANE",
+        "restricted": {
+            "average": 3.4488120950323973,
+            "wrong": 0
+        },
     },
     {
-        word: "LAST",
-        average: 4.151,
-        wrong: 2
+        "word": "LEAST",
+        "restricted": {
+            "average": 3.4504114335210048,
+            "wrong": 0
+        },
     },
     {
-        word: "LENT",
-        average: 4.158,
-        wrong: 0
+        "word": "TOILE",
+        "restricted": {
+            "average": 3.4509719222462203,
+            "wrong": 0
+        },
     },
     {
-        word: "TERN",
-        average: 4.158,
-        wrong: 0
+        "word": "SLART",
+        "restricted": {
+            "average": 3.451277609354699,
+            "wrong": 0
+        },
     },
     {
-        word: "PELT",
-        average: 4.158,
-        wrong: 0
+        "word": "DRANT",
+        "restricted": {
+            "average": 3.452267818574514,
+            "wrong": 0
+        },
     },
     {
-        word: "RANT",
-        average: 4.163,
-        wrong: 1
+        "word": "TRONE",
+        "restricted": {
+            "average": 3.45257687310524,
+            "wrong": 0
+        },
     },
     {
-        word: "LARD",
-        average: 4.165,
-        wrong: 1
+        "word": "EARST",
+        "restricted": {
+            "average": 3.45257687310524,
+            "wrong": 0
+        },
     },
     {
-        word: "MELT",
-        average: 4.167,
-        wrong: 2
+        "word": "TASER",
+        "restricted": {
+            "average": 3.4530099610220875,
+            "wrong": 0
+        },
     },
     {
-        word: "SLAT",
-        average: 4.169,
-        wrong: 2
+        "word": "SANER",
+        "restricted": {
+            "average": 3.4531317494600433,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.70221525191139,
+            "wrong": 0
+        },
     },
     {
-        word: "TARN",
-        average: 4.172,
-        wrong: 1
+        "word": "SOREL",
+        "restricted": {
+            "average": 3.4531317494600433,
+            "wrong": 0
+        },
     },
     {
-        word: "LEPT",
-        average: 4.173,
-        wrong: 0
+        "word": "STARE",
+        "restricted": {
+            "average": 3.4538761368557815,
+            "wrong": 0
+        },
     },
     {
-        word: "RENT",
-        average: 4.174,
-        wrong: 0
+        "word": "PARSE",
+        "restricted": {
+            "average": 3.4539956803455723,
+            "wrong": 0
+        },
     },
     {
-        word: "TELS",
-        average: 4.176,
-        wrong: 0
+        "word": "CLART",
+        "restricted": {
+            "average": 3.454427645788337,
+            "wrong": 0
+        },
     },
     {
-        word: "DELT",
-        average: 4.179,
-        wrong: 2
+        "word": "CARET",
+        "restricted": {
+            "average": 3.454742312689476,
+            "wrong": 0
+        },
     },
     {
-        word: "MERL",
-        average: 4.187,
-        wrong: 2
+        "word": "PRATE",
+        "restricted": {
+            "average": 3.455175400606323,
+            "wrong": 0
+        },
     },
     {
-        word: "LARS",
-        average: 4.192,
-        wrong: 1
+        "word": "TARES",
+        "restricted": {
+            "average": 3.4557235421166306,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.6655557733777693,
+            "wrong": 0
+        },
     },
     {
-        word: "LETS",
-        average: 4.192,
-        wrong: 1
+        "word": "DEALT",
+        "restricted": {
+            "average": 3.4557235421166306,
+            "wrong": 0
+        },
     },
     {
-        word: "LATS",
-        average: 4.193,
-        wrong: 1
+        "word": "RAINE",
+        "restricted": {
+            "average": 3.457451403887689,
+            "wrong": 0
+        },
     },
     {
-        word: "REST",
-        average: 4.204,
-        wrong: 1
+        "word": "STORE",
+        "restricted": {
+            "average": 3.457451403887689,
+            "wrong": 0
+        },
     },
     {
-        word: "LENS",
-        average: 4.217,
-        wrong: 0
+        "word": "ARTEL",
+        "restricted": {
+            "average": 3.4583153347732183,
+            "wrong": 0
+        },
     },
     {
-        word: "HERL",
-        average: 4.233,
-        wrong: 1
+        "word": "RONTE",
+        "restricted": {
+            "average": 3.4587473002159825,
+            "wrong": 0
+        },
     },
     {
-        word: "RETS",
-        average: 4.241,
-        wrong: 1
+        "word": "STRAE",
+        "restricted": {
+            "average": 3.4587473002159825,
+            "wrong": 0
+        },
     },
     {
-        word: "TALE",
-        average: 4.145,
-        wrong: 0
+        "word": "ANTRE",
+        "restricted": {
+            "average": 3.4587473002159825,
+            "wrong": 0
+        },
     },
     {
-        word: "LATE",
-        average: 4.161,
-        wrong: 2
+        "word": "CATER",
+        "restricted": {
+            "average": 3.4609071274298056,
+            "wrong": 0
+        },
     },
     {
-        word: "RALE",
-        average: 4.163,
-        wrong: 2
+        "word": "TRANS",
+        "restricted": {
+            "average": 3.4613390928725702,
+            "wrong": 0
+        },
     },
     {
-        word: "TOLE",
-        average: 4.170,
-        wrong: 0
+        "word": "TARNS",
+        "restricted": {
+            "average": 3.462203023758099,
+            "wrong": 0
+        },
     },
     {
-        word: "TARE",
-        average: 4.178,
-        wrong: 2
+        "word": "ALTER",
+        "restricted": {
+            "average": 3.462634989200864,
+            "wrong": 0
+        },
     },
     {
-        word: "TEAL",
-        average: 4.183,
-        wrong: 0
+        "word": "PARLE",
+        "restricted": {
+            "average": 3.464362850971922,
+            "wrong": 0
+        },
     },
     {
-        word: "EARL",
-        average: 4.187,
-        wrong: 1
+        "word": "SARED",
+        "restricted": {
+            "average": 3.46695464362851,
+            "wrong": 0
+        },
     },
     {
-        word: "SALE",
-        average: 4.190,
-        wrong: 2
+        "word": "TALER",
+        "restricted": {
+            "average": 3.478995236032915,
+            "wrong": 0
+        },
     },
     {
-        word: "TAEL",
-        average: 4.192,
-        wrong: 0
+        "word": "ROSET",
+        "restricted": {
+            "average": 3.478995236032915,
+            "wrong": 0
+        },
     },
     {
-        word: "RATE",
-        average: 4.192,
-        wrong: 2
+        "word": "TARED",
+        "restricted": {
+            "average": 3.479861411866609,
+            "wrong": 0
+        },
     },
     {
-        word: "TELA",
-        average: 4.193,
-        wrong: 0
+        "word": "TONER",
+        "restricted": {
+            "average": 3.480727587700303,
+            "wrong": 0
+        },
     },
     {
-        word: "LEAN",
-        average: 4.194,
-        wrong: 0
+        "word": "DROLE",
+        "restricted": {
+            "average": 3.4811606756171503,
+            "wrong": 0
+        },
     },
     {
-        word: "LANE",
-        average: 4.195,
-        wrong: 3
+        "word": "STARN",
+        "restricted": {
+            "average": 3.4815937635339975,
+            "wrong": 0
+        },
     },
     {
-        word: "ROLE",
-        average: 4.195,
-        wrong: 3
+        "word": "PALET",
+        "restricted": {
+            "average": 3.4820268514508443,
+            "wrong": 0
+        },
     },
     {
-        word: "REAL",
-        average: 4.200,
-        wrong: 2
+        "word": "CARES",
+        "restricted": {
+            "average": 3.482893027284539,
+            "wrong": 0
+        },
     },
     {
-        word: "LORE",
-        average: 4.200,
-        wrong: 2
+        "word": "ARLED",
+        "restricted": {
+            "average": 3.48419229103508,
+            "wrong": 0
+        },
     },
     {
-        word: "LASE",
-        average: 4.203,
-        wrong: 1
+        "word": "RATEL",
+        "restricted": {
+            "average": 3.484625378951927,
+            "wrong": 0
+        },
     },
     {
-        word: "TEAR",
-        average: 4.206,
-        wrong: 2
+        "word": "LATER",
+        "restricted": {
+            "average": 3.4880900822867043,
+            "wrong": 0
+        },
     },
     {
-        word: "LEAR",
-        average: 4.207,
-        wrong: 2
+        "word": "RATED",
+        "restricted": {
+            "average": 3.4963187527067996,
+            "wrong": 0
+        },
     },
     {
-        word: "SEAL",
-        average: 4.215,
-        wrong: 5
+        "word": "TILER",
+        "restricted": {
+            "average": 3.498484192291035,
+            "wrong": 0
+        },
     },
     {
-        word: "SANE",
-        average: 4.216,
-        wrong: 2
+        "word": "DATER",
+        "restricted": {
+            "average": 3.5580357142857144,
+            "wrong": 0
+        },
     },
     {
-        word: "LEAS",
-        average: 4.219,
-        wrong: 4
+        "word": "TORES",
+        "restricted": {
+            "average": 3.558407738095238,
+            "wrong": 0
+        },
     },
     {
-        word: "SATE",
-        average: 4.219,
-        wrong: 4
+        "word": "RESAT",
+        "restricted": {
+            "average": 3.558407738095238,
+            "wrong": 0
+        },
     },
     {
-        word: "RASE",
-        average: 4.221,
-        wrong: 3
+        "word": "CANER",
+        "restricted": {
+            "average": 3.558407738095238,
+            "wrong": 0
+        },
     },
     {
-        word: "ORLE",
-        average: 4.227,
-        wrong: 3
+        "word": "RAILE",
+        "restricted": {
+            "average": 3.558779761904762,
+            "wrong": 0
+        },
     },
     {
-        word: "ALOE",
-        average: 4.280,
-        wrong: 5
+        "word": "SATED",
+        "restricted": {
+            "average": 3.5591517857142856,
+            "wrong": 0
+        },
     },
+    {
+        "word": "ALDER",
+        "restricted": {
+            "average": 3.5591517857142856,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "STIRE",
+        "restricted": {
+            "average": 3.5591517857142856,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SLADE",
+        "restricted": {
+            "average": 3.5591517857142856,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SIREN",
+        "restricted": {
+            "average": 3.5595238095238093,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RAISE",
+        "restricted": {
+            "average": 3.560267857142857,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "EARNT",
+        "restricted": {
+            "average": 3.560639880952381,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LARNT",
+        "restricted": {
+            "average": 3.5610119047619047,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SOARE",
+        "restricted": {
+            "average": 3.5613839285714284,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.735542050578318,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RINSE",
+        "restricted": {
+            "average": 3.5613839285714284,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LATEN",
+        "restricted": {
+            "average": 3.5617559523809526,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LITRE",
+        "restricted": {
+            "average": 3.5617559523809526,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PATER",
+        "restricted": {
+            "average": 3.5617559523809526,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SCARE",
+        "restricted": {
+            "average": 3.5621279761904763,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TALES",
+        "restricted": {
+            "average": 3.5625,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.674377573024897,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DERAT",
+        "restricted": {
+            "average": 3.5625,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TREAD",
+        "restricted": {
+            "average": 3.5625,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DENAR",
+        "restricted": {
+            "average": 3.5632440476190474,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LACET",
+        "restricted": {
+            "average": 3.5632440476190474,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DEARN",
+        "restricted": {
+            "average": 3.5636160714285716,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PAIRE",
+        "restricted": {
+            "average": 3.5639880952380953,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TEARS",
+        "restricted": {
+            "average": 3.564360119047619,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TAPER",
+        "restricted": {
+            "average": 3.564360119047619,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SANED",
+        "restricted": {
+            "average": 3.5651041666666665,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RATES",
+        "restricted": {
+            "average": 3.5651041666666665,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.68868849245246,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PAREN",
+        "restricted": {
+            "average": 3.5654761904761907,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SOLER",
+        "restricted": {
+            "average": 3.566220238095238,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PERST",
+        "restricted": {
+            "average": 3.566220238095238,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SCRAE",
+        "restricted": {
+            "average": 3.566220238095238,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LANES",
+        "restricted": {
+            "average": 3.566592261904762,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.689472652421094,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TRIES",
+        "restricted": {
+            "average": 3.566592261904762,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SLIER",
+        "restricted": {
+            "average": 3.566592261904762,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TEALS",
+        "restricted": {
+            "average": 3.566592261904762,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LONER",
+        "restricted": {
+            "average": 3.5669642857142856,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TIRLS",
+        "restricted": {
+            "average": 3.5677083333333335,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ALIEN",
+        "restricted": {
+            "average": 3.568080357142857,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LASER",
+        "restricted": {
+            "average": 3.5691964285714284,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SNORE",
+        "restricted": {
+            "average": 3.5691964285714284,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SIRED",
+        "restricted": {
+            "average": 3.5699404761904763,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ALONE",
+        "restricted": {
+            "average": 3.5699404761904763,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SCART",
+        "restricted": {
+            "average": 3.5699404761904763,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RALES",
+        "restricted": {
+            "average": 3.5703125,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.693393452264262,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SAINE",
+        "restricted": {
+            "average": 3.5703125,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MARLE",
+        "restricted": {
+            "average": 3.5703125,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ALERT",
+        "restricted": {
+            "average": 3.5706845238095237,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LATED",
+        "restricted": {
+            "average": 3.5714285714285716,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ARMET",
+        "restricted": {
+            "average": 3.5718005952380953,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LARES",
+        "restricted": {
+            "average": 3.572544642857143,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.688100372475985,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RANTS",
+        "restricted": {
+            "average": 3.5729166666666665,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PARES",
+        "restricted": {
+            "average": 3.5736607142857144,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CARLS",
+        "restricted": {
+            "average": 3.574032738095238,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SERAL",
+        "restricted": {
+            "average": 3.5747767857142856,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TERAS",
+        "restricted": {
+            "average": 3.5755208333333335,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.6914330523426777,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "AISLE",
+        "restricted": {
+            "average": 3.5755208333333335,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CARTS",
+        "restricted": {
+            "average": 3.5755208333333335,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TIRES",
+        "restricted": {
+            "average": 3.576264880952381,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TARGE",
+        "restricted": {
+            "average": 3.576264880952381,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SILER",
+        "restricted": {
+            "average": 3.5770089285714284,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "CARNS",
+        "restricted": {
+            "average": 3.5777529761904763,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "NARES",
+        "restricted": {
+            "average": 3.578125,
+            "wrong": 0
+        },
+        "complete": {
+            "average": 3.705743971770241,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ARSED",
+        "restricted": {
+            "average": 3.5792410714285716,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MARSE",
+        "restricted": {
+            "average": 3.5796130952380953,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SPAER",
+        "restricted": {
+            "average": 3.5811011904761907,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TERNS",
+        "restricted": {
+            "average": 3.582217261904762,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DARES",
+        "restricted": {
+            "average": 3.584077380952381,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RASED",
+        "restricted": {
+            "average": 3.5848214285714284,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "DALES",
+        "restricted": {
+            "average": 3.5855654761904763,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TALE",
+        "restricted": {
+            "average": 4.145,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LEST",
+        "restricted": {
+            "average": 4.146,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "SALT",
+        "restricted": {
+            "average": 4.146,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LAST",
+        "restricted": {
+            "average": 4.151,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LENT",
+        "restricted": {
+            "average": 4.158,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TERN",
+        "restricted": {
+            "average": 4.158,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "PELT",
+        "restricted": {
+            "average": 4.158,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LATE",
+        "restricted": {
+            "average": 4.161,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "RANT",
+        "restricted": {
+            "average": 4.163,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "RALE",
+        "restricted": {
+            "average": 4.163,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LARD",
+        "restricted": {
+            "average": 4.165,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "MELT",
+        "restricted": {
+            "average": 4.167,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "SLAT",
+        "restricted": {
+            "average": 4.169,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "TOLE",
+        "restricted": {
+            "average": 4.17,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TARN",
+        "restricted": {
+            "average": 4.172,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "LEPT",
+        "restricted": {
+            "average": 4.173,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RENT",
+        "restricted": {
+            "average": 4.174,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TELS",
+        "restricted": {
+            "average": 4.176,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "TARE",
+        "restricted": {
+            "average": 4.178,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "DELT",
+        "restricted": {
+            "average": 4.179,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "TEAL",
+        "restricted": {
+            "average": 4.183,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "MERL",
+        "restricted": {
+            "average": 4.187,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "EARL",
+        "restricted": {
+            "average": 4.187,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "SALE",
+        "restricted": {
+            "average": 4.19,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LARS",
+        "restricted": {
+            "average": 4.192,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "LETS",
+        "restricted": {
+            "average": 4.192,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "TAEL",
+        "restricted": {
+            "average": 4.192,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "RATE",
+        "restricted": {
+            "average": 4.192,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LATS",
+        "restricted": {
+            "average": 4.193,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "TELA",
+        "restricted": {
+            "average": 4.193,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LEAN",
+        "restricted": {
+            "average": 4.194,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LANE",
+        "restricted": {
+            "average": 4.195,
+            "wrong": 3
+        },
+    },
+    {
+        "word": "ROLE",
+        "restricted": {
+            "average": 4.195,
+            "wrong": 3
+        },
+    },
+    {
+        "word": "REAL",
+        "restricted": {
+            "average": 4.2,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LORE",
+        "restricted": {
+            "average": 4.2,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LASE",
+        "restricted": {
+            "average": 4.203,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "REST",
+        "restricted": {
+            "average": 4.204,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "TEAR",
+        "restricted": {
+            "average": 4.206,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LEAR",
+        "restricted": {
+            "average": 4.207,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "SEAL",
+        "restricted": {
+            "average": 4.215,
+            "wrong": 5
+        },
+    },
+    {
+        "word": "SANE",
+        "restricted": {
+            "average": 4.216,
+            "wrong": 2
+        },
+    },
+    {
+        "word": "LENS",
+        "restricted": {
+            "average": 4.217,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LEAS",
+        "restricted": {
+            "average": 4.219,
+            "wrong": 4
+        },
+    },
+    {
+        "word": "SATE",
+        "restricted": {
+            "average": 4.219,
+            "wrong": 4
+        },
+    },
+    {
+        "word": "RASE",
+        "restricted": {
+            "average": 4.221,
+            "wrong": 3
+        },
+    },
+    {
+        "word": "ORLE",
+        "restricted": {
+            "average": 4.227,
+            "wrong": 3
+        },
+    },
+    {
+        "word": "HERL",
+        "restricted": {
+            "average": 4.233,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "RETS",
+        "restricted": {
+            "average": 4.241,
+            "wrong": 1
+        },
+    },
+    {
+        "word": "ALOE",
+        "restricted": {
+            "average": 4.28,
+            "wrong": 5
+        },
+    },
+    {
+        "word": "TOEA",
+        "restricted": {
+            "average": 4.293,
+            "wrong": 5
+        },
+    },
+    {
+        "word": "AERO",
+        "restricted": {
+            "average": 4.297,
+            "wrong": 8
+        },
+    },
+    {
+        "word": "AEON",
+        "restricted": {
+            "average": 4.319,
+            "wrong": 5
+        },
+    },
+    {
+        "word": "OLEA",
+        "restricted": {
+            "average": 4.32,
+            "wrong": 7
+        },
+    },
+    {
+        "word": "ARLES",
+        "complete": {
+            "average": 3.7043716918251324,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "REAIS",
+        "complete": {
+            "average": 3.7471084101156635,
+            "wrong": 0.00019603999215840032
+        },
+    },
+    {
+        "word": "REALS",
+        "complete": {
+            "average": 3.7122132915114685,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LEARS",
+        "complete": {
+            "average": 3.712605371495785,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "ALOES",
+        "complete": {
+            "average": 3.749656930013723,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "LAERS",
+        "complete": {
+            "average": 3.7196628112134875,
+            "wrong": 0
+        },
+    },
+    {
+        "word": "EARLS",
+        "complete": {
+            "average": 3.723191531072339,
+            "wrong": 0
+        },
+    }
+]
+
+const hard = 
+
+[
     {
-        word: "TOEA",
-        average: 4.293,
-        wrong: 5
+        "word": "DESECRATION",
+
+        "restricted": {
+            "average": 2.292,
+            "wrong": 0
+        },
     },
     {
-        word: "AERO",
-        average: 4.297,
-        wrong: 8
+        "word": "CUSTOMARILY",
+
+        "restricted": {
+            "average": 2.304,
+            "wrong": 0
+        },
     },
     {
-        word: "AEON",
-        average: 4.319,
-        wrong: 5
+        "word": "DEPRECATION",
+
+        "restricted": {
+            "average": 2.308,
+            "wrong": 0
+        },
     },
     {
-        word: "OLEA",
-        average: 4.320,
-        wrong: 7
+        "word": "PERSECUTION",
+
+        "restricted": {
+            "average": 2.309,
+            "wrong": 0
+        },
     },
     {
-        word: "DESECRATION",
-        average: 2.292,
-        wrong: 0
+        "word": "DESCRIPTION",
+
+        "restricted": {
+            "average": 2.311,
+            "wrong": 0
+        },
     },
     {
-        word: "CUSTOMARILY",
-        average: 2.304,
-        wrong: 0
+        "word": "PERCOLATING",
+
+        "restricted": {
+            "average": 2.312,
+            "wrong": 0
+        },
     },
     {
-        word: "DEPRECATION",
-        average: 2.308,
-        wrong: 0
+        "word": "DESECRATING",
+
+        "restricted": {
+            "average": 2.312,
+            "wrong": 0
+        },
     },
     {
-        word: "PERSECUTION",
-        average: 2.309,
-        wrong: 0
+        "word": "ROMANTICISE",
+
+        "restricted": {
+            "average": 2.313,
+            "wrong": 0
+        },
     },
     {
-        word: "DESCRIPTION",
-        average: 2.311,
-        wrong: 0
+        "word": "DESPERATION",
+
+        "restricted": {
+            "average": 2.316,
+            "wrong": 0
+        },
     },
     {
-        word: "PERCOLATING",
-        average: 2.312,
-        wrong: 0
+        "word": "UNCLARITIES",
+
+        "restricted": {
+            "average": 2.319,
+            "wrong": 0
+        },
     },
     {
-        word: "ROMANTICISE",
-        average: 2.312,
-        wrong: 0
+        "word": "PATRIMONIES",
+
+        "restricted": {
+            "average": 2.321,
+            "wrong": 0
+        },
     },
     {
-        word: "DESECRATING",
-        average: 2.312,
-        wrong: 0
+        "word": "PASTURELAND",
+
+        "restricted": {
+            "average": 2.323,
+            "wrong": 0
+        },
     },
     {
-        word: "DESPERATION",
-        average: 2.316,
-        wrong: 0
+        "word": "DECLARATION",
+
+        "restricted": {
+            "average": 2.325,
+            "wrong": 0
+        },
     },
     {
-        word: "UNCLARITIES",
-        average: 2.319,
-        wrong: 0
+        "word": "RATIONALISE",
+
+        "restricted": {
+            "average": 2.325,
+            "wrong": 0
+        },
     },
     {
-        word: "PATRIMONIES",
-        average: 2.321,
-        wrong: 0
+        "word": "REPLICATION",
+
+        "restricted": {
+            "average": 2.327,
+            "wrong": 0
+        },
     },
     {
-        word: "PASTURELAND",
-        average: 2.323,
-        wrong: 0
+        "word": "IMPORTANCES",
+
+        "restricted": {
+            "average": 2.327,
+            "wrong": 0
+        },
     },
     {
-        word: "DECLARATION",
-        average: 2.325,
-        wrong: 0
+        "word": "NORMALITIES",
+
+        "restricted": {
+            "average": 2.327,
+            "wrong": 0
+        },
     },
     {
-        word: "RATIONALISE",
-        average: 2.325,
-        wrong: 0
+        "word": "DESTRUCTION",
+
+        "restricted": {
+            "average": 2.332,
+            "wrong": 0
+        },
     },
     {
-        word: "REPLICATION",
-        average: 2.327,
-        wrong: 0
+        "word": "PERSECUTING",
+
+        "restricted": {
+            "average": 2.333,
+            "wrong": 0
+        },
     },
     {
-        word: "IMPORTANCES",
-        average: 2.327,
-        wrong: 0
+        "word": "CELEBRATION",
+
+        "restricted": {
+            "average": 2.333,
+            "wrong": 0
+        },
     },
     {
-        word: "NORMALITIES",
-        average: 2.327,
-        wrong: 0
+        "word": "DEPRECATING",
+
+        "restricted": {
+            "average": 2.333,
+            "wrong": 0
+        },
     },
     {
-        word: "DESTRUCTION",
-        average: 2.332,
-        wrong: 0
+        "word": "DECLINATION",
+
+        "restricted": {
+            "average": 2.334,
+            "wrong": 0
+        },
     },
     {
-        word: "PERSECUTING",
-        average: 2.333,
-        wrong: 0
+        "word": "SUPERNATION",
+
+        "restricted": {
+            "average": 2.334,
+            "wrong": 0
+        },
     },
     {
-        word: "CELEBRATION",
-        average: 2.333,
-        wrong: 0
+        "word": "SECONDARILY",
+
+        "restricted": {
+            "average": 2.335,
+            "wrong": 0
+        },
     },
     {
-        word: "DEPRECATING",
-        average: 2.333,
-        wrong: 0
+        "word": "MENSURATION",
+
+        "restricted": {
+            "average": 2.335,
+            "wrong": 0
+        },
     },
     {
-        word: "DECLINATION",
-        average: 2.334,
-        wrong: 0
+        "word": "AERONAUTICS",
+
+        "restricted": {
+            "average": 2.336,
+            "wrong": 0
+        },
     },
     {
-        word: "SUPERNATION",
-        average: 2.334,
-        wrong: 0
+        "word": "DELECTATION",
+
+        "restricted": {
+            "average": 2.336,
+            "wrong": 0
+        },
     },
     {
-        word: "SECONDARILY",
-        average: 2.335,
-        wrong: 0
+        "word": "DEMARCATION",
+
+        "restricted": {
+            "average": 2.337,
+            "wrong": 0
+        },
     },
     {
-        word: "MENSURATION",
-        average: 2.335,
-        wrong: 0
+        "word": "METRICATION",
+
+        "restricted": {
+            "average": 2.337,
+            "wrong": 0
+        },
     },
     {
-        word: "AERONAUTICS",
-        average: 2.336,
-        wrong: 0
+        "word": "CARTELISING",
+
+        "restricted": {
+            "average": 2.337,
+            "wrong": 0
+        },
     },
     {
-        word: "DELECTATION",
-        average: 2.336,
-        wrong: 0
+        "word": "DETRACTIONS",
+
+        "restricted": {
+            "average": 2.339,
+            "wrong": 0
+        },
     },
     {
-        word: "DOCTRINAIRE",
-        average: 2.336,
-        wrong: 0
+        "word": "MISCREATION",
+
+        "restricted": {
+            "average": 2.339,
+            "wrong": 0
+        },
     },
     {
-        word: "DEMARCATION",
-        average: 2.337,
-        wrong: 0
+        "word": "DISRELATION",
+
+        "restricted": {
+            "average": 2.341,
+            "wrong": 0
+        },
     },
     {
-        word: "METRICATION",
-        average: 2.337,
-        wrong: 0
+        "word": "REEDUCATION",
+
+        "restricted": {
+            "average": 2.342,
+            "wrong": 0
+        },
     },
     {
-        word: "CARTELISING",
-        average: 2.337,
-        wrong: 0
+        "word": "PERSONALITY",
+
+        "restricted": {
+            "average": 2.342,
+            "wrong": 0
+        },
     },
     {
-        word: "DETRACTIONS",
-        average: 2.339,
-        wrong: 0
+        "word": "REPLICATING",
+
+        "restricted": {
+            "average": 2.343,
+            "wrong": 0
+        },
     },
     {
-        word: "MISCREATION",
-        average: 2.339,
-        wrong: 0
+        "word": "RECONSULTED",
+
+        "restricted": {
+            "average": 2.343,
+            "wrong": 0
+        },
     },
     {
-        word: "DISRELATION",
-        average: 2.341,
-        wrong: 0
+        "word": "CREATIONISM",
+
+        "restricted": {
+            "average": 2.344,
+            "wrong": 0
+        },
     },
     {
-        word: "CEREMONIALS",
-        average: 2.341,
-        wrong: 0
+        "word": "PERCOLATION",
+
+        "restricted": {
+            "average": 2.345,
+            "wrong": 0
+        },
     },
     {
-        word: "REEDUCATION",
-        average: 2.342,
-        wrong: 0
+        "word": "DELINEATORS",
+
+        "restricted": {
+            "average": 2.345,
+            "wrong": 0
+        },
     },
     {
-        word: "PERSONALITY",
-        average: 2.342,
-        wrong: 0
+        "word": "PERSONATING",
+
+        "restricted": {
+            "average": 2.346,
+            "wrong": 0
+        },
     },
     {
-        word: "REPLICATING",
-        average: 2.343,
-        wrong: 0
+        "word": "CERATOPSIAN",
+
+        "restricted": {
+            "average": 2.347,
+            "wrong": 0
+        },
     },
     {
-        word: "RECONSULTED",
-        average: 2.343,
-        wrong: 0
+        "word": "CELEBRATING",
+
+        "restricted": {
+            "average": 2.347,
+            "wrong": 0
+        },
     },
     {
-        word: "CREATIONISM",
-        average: 2.344,
-        wrong: 0
+        "word": "ULCERATIONS",
+
+        "restricted": {
+            "average": 2.347,
+            "wrong": 0
+        },
     },
     {
-        word: "RADIOLUCENT",
-        average: 2.344,
-        wrong: 0
+        "word": "ORIENTALISM",
+
+        "restricted": {
+            "average": 2.348,
+            "wrong": 0
+        },
     },
     {
-        word: "PERCOLATION",
-        average: 2.345,
-        wrong: 0
+        "word": "PATERNALISM",
+
+        "restricted": {
+            "average": 2.348,
+            "wrong": 0
+        },
     },
     {
-        word: "DELINEATORS",
-        average: 2.345,
-        wrong: 0
+        "word": "REGIONALIST",
+
+        "restricted": {
+            "average": 2.349,
+            "wrong": 0
+        },
     },
     {
-        word: "PERSONALIST",
-        average: 2.345,
-        wrong: 0
+        "word": "CRENULATION",
+
+        "restricted": {
+            "average": 2.349,
+            "wrong": 0
+        },
     },
     {
-        word: "PRATINCOLES",
-        average: 2.345,
-        wrong: 0
+        "word": "PERMUTATION",
+
+        "restricted": {
+            "average": 2.35,
+            "wrong": 0
+        },
     },
     {
-        word: "PERSONATING",
-        average: 2.346,
-        wrong: 0
+        "word": "RELUCTATION",
+
+        "restricted": {
+            "average": 2.351,
+            "wrong": 0
+        },
     },
     {
-        word: "CERATOPSIAN",
-        average: 2.347,
-        wrong: 0
+        "word": "REPUDIATION",
+
+        "restricted": {
+            "average": 2.352,
+            "wrong": 0
+        },
     },
     {
-        word: "CELEBRATING",
-        average: 2.347,
-        wrong: 0
+        "word": "PREDICATION",
+
+        "restricted": {
+            "average": 2.353,
+            "wrong": 0
+        },
     },
     {
-        word: "ULCERATIONS",
-        average: 2.347,
-        wrong: 0
+        "word": "SPORULATIVE",
+
+        "restricted": {
+            "average": 2.354,
+            "wrong": 0
+        },
     },
     {
-        word: "PECULATIONS",
-        average: 2.347,
-        wrong: 0
+        "word": "CREATIONIST",
+
+        "restricted": {
+            "average": 2.354,
+            "wrong": 0
+        },
     },
     {
-        word: "ORIENTALISM",
-        average: 2.348,
-        wrong: 0
+        "word": "RESCULPTING",
+
+        "restricted": {
+            "average": 2.356,
+            "wrong": 0
+        },
     },
     {
-        word: "PATERNALISM",
-        average: 2.348,
-        wrong: 0
+        "word": "MERCURATION",
+
+        "restricted": {
+            "average": 2.356,
+            "wrong": 0
+        },
     },
     {
-        word: "REGIONALIST",
-        average: 2.349,
-        wrong: 0
+        "word": "INTERCOSTAL",
+
+        "restricted": {
+            "average": 2.356,
+            "wrong": 0
+        },
     },
     {
-        word: "CRENULATION",
-        average: 2.349,
-        wrong: 0
+        "word": "ELUCIDATORS",
+
+        "restricted": {
+            "average": 2.361,
+            "wrong": 0
+        },
     },
     {
-        word: "PERMUTATION",
-        average: 2.350,
-        wrong: 0
+        "word": "DEMARCATING",
+
+        "restricted": {
+            "average": 2.362,
+            "wrong": 0
+        },
     },
     {
-        word: "RELUCTATION",
-        average: 2.351,
-        wrong: 0
+        "word": "DISLOCATING",
+
+        "restricted": {
+            "average": 2.364,
+            "wrong": 0
+        },
     },
     {
-        word: "REPUDIATION",
-        average: 2.352,
-        wrong: 0
+        "word": "CENTRALISE",
+
+        "restricted": {
+            "average": 2.422,
+            "wrong": 0
+        },
     },
     {
-        word: "CONSIDERATE",
-        average: 2.352,
-        wrong: 0
+        "word": "PORCELAINS",
+
+        "restricted": {
+            "average": 2.445,
+            "wrong": 0
+        },
     },
     {
-        word: "SPORULATIVE",
-        average: 2.353,
-        wrong: 0
+        "word": "CENTRALISM",
+
+        "restricted": {
+            "average": 2.45,
+            "wrong": 0
+        },
     },
     {
-        word: "PREDICATION",
-        average: 2.353,
-        wrong: 0
+        "word": "MERCANTILE",
+
+        "restricted": {
+            "average": 2.459,
+            "wrong": 0
+        },
     },
     {
-        word: "SPORULATING",
-        average: 2.353,
-        wrong: 0
+        "word": "RECOUNTALS",
+
+        "restricted": {
+            "average": 2.466,
+            "wrong": 0
+        },
     },
     {
-        word: "CREATIONIST",
-        average: 2.354,
-        wrong: 0
+        "word": "LACUSTRINE",
+
+        "restricted": {
+            "average": 2.466,
+            "wrong": 0
+        },
     },
     {
-        word: "RESPIRATION",
-        average: 2.354,
-        wrong: 0
+        "word": "CENTRALIST",
+
+        "restricted": {
+            "average": 2.473,
+            "wrong": 0
+        },
     },
     {
-        word: "SPECULATION",
-        average: 2.355,
-        wrong: 0
+        "word": "NEUTRALISE",
+
+        "restricted": {
+            "average": 2.474,
+            "wrong": 0
+        },
     },
     {
-        word: "MELIORATING",
-        average: 2.355,
-        wrong: 0
+        "word": "CATEGORISE",
+
+        "restricted": {
+            "average": 2.483,
+            "wrong": 0
+        },
     },
     {
-        word: "RESCULPTING",
-        average: 2.356,
-        wrong: 0
+        "word": "NEOREALIST",
+
+        "restricted": {
+            "average": 2.483,
+            "wrong": 0
+        },
     },
     {
-        word: "MERCURATION",
-        average: 2.356,
-        wrong: 0
+        "word": "COASTLINE",
+
+        "restricted": {
+            "average": 2.619,
+            "wrong": 0
+        },
     },
     {
-        word: "INTERCOSTAL",
-        average: 2.356,
-        wrong: 0
+        "word": "PATRONISE",
+
+        "restricted": {
+            "average": 2.62,
+            "wrong": 0
+        },
     },
     {
-        word: "DECLAMATION",
-        average: 2.357,
-        wrong: 0
+        "word": "SAPROLITE",
+
+        "restricted": {
+            "average": 2.622,
+            "wrong": 0
+        },
     },
     {
-        word: "UNREALISTIC",
-        average: 2.358,
-        wrong: 0
+        "word": "CONTRAILS",
+
+        "restricted": {
+            "average": 2.625,
+            "wrong": 0
+        },
     },
     {
-        word: "VOLUNTARIES",
-        average: 2.358,
-        wrong: 0
+        "word": "LARCENIST",
+
+        "restricted": {
+            "average": 2.628,
+            "wrong": 0
+        },
     },
     {
-        word: "PELARGONIUM",
-        average: 2.360,
-        wrong: 0
+        "word": "SECTORIAL",
+
+        "restricted": {
+            "average": 2.633,
+            "wrong": 0
+        },
     },
     {
-        word: "ELUCIDATORS",
-        average: 2.361,
-        wrong: 0
+        "word": "ANORETICS",
+
+        "restricted": {
+            "average": 2.645,
+            "wrong": 0
+        },
     },
     {
-        word: "PREDICAMENT",
-        average: 2.361,
-        wrong: 0
+        "word": "COURANTES",
+
+        "restricted": {
+            "average": 2.646,
+            "wrong": 0
+        },
     },
     {
-        word: "DEMARCATING",
-        average: 2.362,
-        wrong: 0
+        "word": "SOLEPRINT",
+
+        "restricted": {
+            "average": 2.648,
+            "wrong": 0
+        },
     },
     {
-        word: "RECLAMATION",
-        average: 2.362,
-        wrong: 0
+        "word": "SECRETION",
+
+        "restricted": {
+            "average": 2.654,
+            "wrong": 0
+        },
     },
     {
-        word: "PROSECUTING",
-        average: 2.362,
-        wrong: 0
+        "word": "SERIATION",
+
+        "restricted": {
+            "average": 2.661,
+            "wrong": 0
+        },
     },
     {
-        word: "CORRELATING",
-        average: 2.362,
-        wrong: 0
+        "word": "REACTIONS",
+
+        "restricted": {
+            "average": 2.664,
+            "wrong": 0
+        },
     },
     {
-        word: "DISLOCATING",
-        average: 2.363,
-        wrong: 0
+        "word": "ELATERINS",
+
+        "restricted": {
+            "average": 2.664,
+            "wrong": 0
+        },
     },
     {
-        word: "PRELOCATING",
-        average: 2.363,
-        wrong: 0
+        "word": "TENSORIAL",
+
+        "restricted": {
+            "average": 2.666,
+            "wrong": 0
+        },
     },
     {
-        word: "REGIMENTALS",
-        average: 2.364,
-        wrong: 0
+        "word": "CENTROIDS",
+
+        "restricted": {
+            "average": 2.667,
+            "wrong": 0
+        },
     },
     {
-        word: "MODERNISTIC",
-        average: 2.365,
-        wrong: 0
+        "word": "RELATIONS",
+
+        "restricted": {
+            "average": 2.671,
+            "wrong": 0
+        },
     },
     {
-        word: "DESALINATOR",
-        average: 2.365,
-        wrong: 0
+        "word": "LACERTIDS",
+
+        "restricted": {
+            "average": 2.676,
+            "wrong": 0
+        },
     },
     {
-        word: "CONSTRAINED",
-        average: 2.366,
-        wrong: 0
+        "word": "DELATIONS",
+
+        "restricted": {
+            "average": 2.677,
+            "wrong": 0
+        },
     },
     {
-        word: "PATERNALIST",
-        average: 2.366,
-        wrong: 0
+        "word": "COSTLIER",
+
+        "restricted": {
+            "average": 2.842,
+            "wrong": 0
+        },
     },
     {
-        word: "REGIONALISM",
-        average: 2.366,
-        wrong: 0
+        "word": "CERATINS",
+
+        "restricted": {
+            "average": 2.854,
+            "wrong": 1
+        },
     },
     {
-        word: "REPUDIATING",
-        average: 2.366,
-        wrong: 0
+        "word": "SCANTIER",
+
+        "restricted": {
+            "average": 2.865,
+            "wrong": 0
+        },
     },
     {
-        word: "MACERATIONS",
-        average: 2.367,
-        wrong: 0
+        "word": "CENTRALS",
+
+        "restricted": {
+            "average": 2.866,
+            "wrong": 0
+        },
     },
     {
-        word: "CLOISTERING",
-        average: 2.368,
-        wrong: 0
+        "word": "CALORIES",
+
+        "restricted": {
+            "average": 2.867,
+            "wrong": 0
+        },
     },
     {
-        word: "REPUBLICANS",
-        average: 2.368,
-        wrong: 0
+        "word": "SODALITE",
+
+        "restricted": {
+            "average": 2.872,
+            "wrong": 2
+        },
     },
     {
-        word: "RELUCTATING",
-        average: 2.369,
-        wrong: 0
+        "word": "AUNTLIER",
+
+        "restricted": {
+            "average": 2.873,
+            "wrong": 1
+        },
     },
     {
-        word: "ROUNDTABLES",
-        average: 2.370,
-        wrong: 0
+        "word": "CALDRONS",
+
+        "restricted": {
+            "average": 2.883,
+            "wrong": 0
+        },
     },
     {
-        word: "ANCESTORING",
-        average: 2.370,
-        wrong: 0
+        "word": "NOTARIES",
+
+        "restricted": {
+            "average": 2.883,
+            "wrong": 2
+        },
     },
     {
-        word: "IMPRECATION",
-        average: 2.371,
-        wrong: 0
+        "word": "TENDRILS",
+
+        "restricted": {
+            "average": 2.894,
+            "wrong": 1
+        },
     },
     {
-        word: "ERADICATION",
-        average: 2.373,
-        wrong: 0
+        "word": "WRASTLE",
+
+        "restricted": {
+            "average": 3.045941210823438,
+            "wrong": 0
+        },
     },
     {
-        word: "GLUCOSAMINE",
-        average: 2.373,
-        wrong: 0
+        "word": "BORSCHT",
+
+        "restricted": {
+            "average": 3.083122445006813,
+            "wrong": 0
+        },
     },
     {
-        word: "PREDICATING",
-        average: 2.373,
-        wrong: 0
+        "word": "SALTIER",
+
+        "restricted": {
+            "average": 2.9495814677827528,
+            "wrong": 0
+        },
     },
     {
-        word: "DEPORTATION",
-        average: 2.373,
-        wrong: 0
+        "word": "SLATIER",
+
+        "restricted": {
+            "average": 2.9628187658166243,
+            "wrong": 0
+        },
     },
     {
-        word: "LACERATIONS",
-        average: 2.374,
-        wrong: 0
+        "word": "SALTIRE",
+
+        "restricted": {
+            "average": 2.9326455129452986,
+            "wrong": 0
+        },
     },
     {
-        word: "RESIDENTIAL",
-        average: 2.374,
-        wrong: 0
+        "word": "SCARLET",
+
+        "restricted": {
+            "average": 2.9783920576211798,
+            "wrong": 0.00019466614755693986
+        },
     },
     {
-        word: "CONTRACTILE",
-        average: 2.374,
-        wrong: 0
+        "word": "CANTLES",
+
+        "restricted": {
+            "average": 2.957952112127701,
+            "wrong": 0
+        },
     },
     {
-        word: "SPECULATING",
-        average: 2.375,
-        wrong: 0
+        "word": "PLASTER",
+
+        "restricted": {
+            "average": 3.0042826552462527,
+            "wrong": 0.00019466614755693986
+        },
     },
     {
-        word: "DEPRIVATION",
-        average: 2.375,
-        wrong: 0
+        "word": "SCANTER",
+
+        "restricted": {
+            "average": 2.989682694179482,
+            "wrong": 0
+        },
     },
     {
-        word: "INTERLACING",
-        average: 2.375,
-        wrong: 0
+        "word": "DARTLES",
+
+        "restricted": {
+            "average": 3.131,
+            "wrong": 4
+        },
     },
     {
-        word: "CONTRASTIVE",
-        average: 2.376,
-        wrong: 0
+        "word": "STAPLER",
+
+        "restricted": {
+            "average": 3.132,
+            "wrong": 6
+        },
     },
     {
-        word: "MISRELATING",
-        average: 2.376,
-        wrong: 0
+        "word": "PSALTER",
+
+        "restricted": {
+            "average": 3.135,
+            "wrong": 5
+        },
     },
     {
-        word: "DECORATIONS",
-        average: 2.376,
-        wrong: 0
+        "word": "PLANTER",
+
+        "restricted": {
+            "average": 3.14,
+            "wrong": 8
+        },
     },
     {
-        word: "ALTERCATION",
-        average: 2.377,
-        wrong: 0
+        "word": "TRANCES",
+
+        "restricted": {
+            "average": 3.141,
+            "wrong": 11
+        },
     },
     {
-        word: "NEUTROPHILS",
-        average: 2.377,
-        wrong: 0
+        "word": "HARSLET",
+
+        "restricted": {
+            "average": 3.144,
+            "wrong": 8
+        },
     },
     {
-        word: "ELUCIDATION",
-        average: 2.378,
-        wrong: 0
+        "word": "LAMSTER",
+
+        "restricted": {
+            "average": 3.146,
+            "wrong": 7
+        },
     },
     {
-        word: "INTERCAMPUS",
-        average: 2.378,
-        wrong: 0
+        "word": "RATLINS",
+
+        "restricted": {
+            "average": 3.146,
+            "wrong": 12
+        },
     },
     {
-        word: "TELESCOPING",
-        average: 2.381,
-        wrong: 0
+        "word": "SLATHER",
+
+        "restricted": {
+            "average": 3.148,
+            "wrong": 8
+        },
     },
     {
-        word: "COPARENTING",
-        average: 2.381,
-        wrong: 0
+        "word": "SMARTEN",
+
+        "restricted": {
+            "average": 3.148,
+            "wrong": 10
+        },
     },
     {
-        word: "MEROBLASTIC",
-        average: 2.382,
-        wrong: 0
+        "word": "SNORTED",
+
+        "restricted": {
+            "average": 3.149,
+            "wrong": 11
+        },
     },
     {
-        word: "OBSECRATING",
-        average: 2.384,
-        wrong: 0
+        "word": "SALTERN",
+
+        "restricted": {
+            "average": 3.151,
+            "wrong": 14
+        },
     },
     {
-        word: "LUBRICATION",
-        average: 2.385,
-        wrong: 0
+        "word": "DENTALS",
+
+        "restricted": {
+            "average": 3.153,
+            "wrong": 17
+        },
     },
     {
-        word: "COLINEARITY",
-        average: 2.387,
-        wrong: 0
+        "word": "RENTALS",
+
+        "restricted": {
+            "average": 3.158,
+            "wrong": 16
+        },
     },
     {
-        word: "ENUMERATION",
-        average: 2.390,
-        wrong: 0
+        "word": "NASTIER",
+
+        "restricted": {
+            "average": 3.158,
+            "wrong": 17
+        },
     },
     {
-        word: "INOCULATORS",
-        average: 2.391,
-        wrong: 0
+        "word": "SNARLED",
+
+        "restricted": {
+            "average": 3.164,
+            "wrong": 16
+        },
     },
     {
-        word: "ENUNCIATORS",
-        average: 2.393,
-        wrong: 0
+        "word": "SLANDER",
+
+        "restricted": {
+            "average": 3.173,
+            "wrong": 12
+        },
     },
     {
-        word: "INTRICATELY",
-        average: 2.395,
-        wrong: 0
+        "word": "WARSTLE",
+
+        "restricted": {
+            "average": 3.174,
+            "wrong": 4
+        },
     },
     {
-        word: "ELUCIDATING",
-        average: 2.402,
-        wrong: 0
+        "word": "STANDER",
+
+        "restricted": {
+            "average": 3.176,
+            "wrong": 12
+        },
     },
     {
-        word: "TRANSECTION",
-        average: 2.405,
-        wrong: 0
+        "word": "TANGLER",
+
+        "restricted": {
+            "average": 3.179,
+            "wrong": 14
+        },
     },
     {
-        word: "VENTILATORS",
-        average: 2.407,
-        wrong: 0
+        "word": "WASTREL",
+
+        "restricted": {
+            "average": 3.18,
+            "wrong": 6
+        },
     },
     {
-        word: "SALET",
-        average: 3.552,
-        wrong: 0
+        "word": "DARNELS",
+
+        "restricted": {
+            "average": 3.183,
+            "wrong": 15
+        },
     },
     {
-        word: "CARTE",
-        average: 3.558,
-        wrong: 0
+        "word": "WAISTER",
+
+        "restricted": {
+            "average": 3.185,
+            "wrong": 9
+        },
     },
     {
-        word: "CARLE",
-        average: 3.563,
-        wrong: 0
+        "word": "GLISTER",
+
+        "restricted": {
+            "average": 3.19,
+            "wrong": 16
+        },
     },
     {
-        word: "TRACE",
-        average: 3.564,
-        wrong: 0
+        "word": "WINTLES",
+
+        "restricted": {
+            "average": 3.199,
+            "wrong": 14
+        },
     },
     {
-        word: "REAST",
-        average: 3.565,
-        wrong: 0
+        "word": "TRAWLED",
+
+        "restricted": {
+            "average": 3.202,
+            "wrong": 5
+        },
     },
     {
-        word: "CARET",
-        average: 3.566,
-        wrong: 0
+        "word": "WARSLED",
+
+        "restricted": {
+            "average": 3.204,
+            "wrong": 7
+        },
     },
     {
-        word: "SANER",
-        average: 3.567,
-        wrong: 0
+        "word": "TAWNIER",
+
+        "restricted": {
+            "average": 3.204,
+            "wrong": 11
+        },
     },
     {
-        word: "TARED",
-        average: 3.568,
-        wrong: 0
+        "word": "SPLOTCH",
+
+        "restricted": {
+            "average": 3.205,
+            "wrong": 7
+        },
     },
     {
-        word: "CRATE",
-        average: 3.568,
-        wrong: 0
+        "word": "TAWNIES",
+
+        "restricted": {
+            "average": 3.209,
+            "wrong": 16
+        },
     },
     {
-        word: "SLATE",
-        average: 3.568,
-        wrong: 0
+        "word": "DRACHMS",
+
+        "restricted": {
+            "average": 3.213,
+            "wrong": 4
+        },
     },
     {
-        word: "CARSE",
-        average: 3.570,
-        wrong: 0
+        "word": "WASPIER",
+
+        "restricted": {
+            "average": 3.213,
+            "wrong": 14
+        },
     },
     {
-        word: "TORSE",
-        average: 3.571,
-        wrong: 0
+        "word": "DAWTIES",
+
+        "restricted": {
+            "average": 3.214,
+            "wrong": 8
+        },
     },
     {
-        word: "TARES",
-        average: 3.574,
-        wrong: 0
+        "word": "PLINTHS",
+
+        "restricted": {
+            "average": 3.219,
+            "wrong": 14
+        },
     },
     {
-        word: "EARST",
-        average: 3.578,
-        wrong: 0
+        "word": "WETLAND",
+
+        "restricted": {
+            "average": 3.221,
+            "wrong": 9
+        },
     },
     {
-        word: "TALER",
-        average: 3.579,
-        wrong: 0
+        "word": "SWIRLED",
+
+        "restricted": {
+            "average": 3.223,
+            "wrong": 10
+        },
     },
     {
-        word: "SARED",
-        average: 3.580,
-        wrong: 0
+        "word": "STRAWED",
+
+        "restricted": {
+            "average": 3.231,
+            "wrong": 6
+        },
     },
     {
-        word: "TASER",
-        average: 3.581,
-        wrong: 0
+        "word": "PSCHENT",
+
+        "restricted": {
+            "average": 3.242,
+            "wrong": 11
+        },
     },
     {
-        word: "SNARE",
-        average: 3.582,
-        wrong: 0
+        "word": "LENGTHS",
+
+        "restricted": {
+            "average": 3.249,
+            "wrong": 17
+        },
     },
     {
-        word: "STARE",
-        average: 3.582,
-        wrong: 0
+        "word": "THRONGS",
+
+        "restricted": {
+            "average": 3.25,
+            "wrong": 13
+        },
     },
     {
-        word: "CRANE",
-        average: 3.582,
-        wrong: 0
+        "word": "SPRIGHT",
+
+        "restricted": {
+            "average": 3.255,
+            "wrong": 9
+        },
     },
     {
-        word: "LEAST",
-        average: 3.582,
-        wrong: 0
+        "word": "WARMTHS",
+
+        "restricted": {
+            "average": 3.257,
+            "wrong": 6
+        },
     },
     {
-        word: "SOREL",
-        average: 3.583,
-        wrong: 0
+        "word": "PLIGHTS",
+
+        "restricted": {
+            "average": 3.257,
+            "wrong": 12
+        },
     },
     {
-        word: "RATED",
-        average: 3.583,
-        wrong: 0
+        "word": "DIRNDLS",
+
+        "restricted": {
+            "average": 3.266,
+            "wrong": 17
+        },
     },
     {
-        word: "ROSET",
-        average: 3.583,
-        wrong: 0
+        "word": "THRALLS",
+
+        "restricted": {
+            "average": 3.269,
+            "wrong": 9
+        },
     },
     {
-        word: "PARSE",
-        average: 3.583,
-        wrong: 0
+        "word": "BLIGHTS",
+
+        "restricted": {
+            "average": 3.274,
+            "wrong": 8
+        },
     },
     {
-        word: "TRADE",
-        average: 3.584,
-        wrong: 0
+        "word": "SCRATCH",
+
+        "restricted": {
+            "average": 3.275,
+            "wrong": 6
+        },
     },
     {
-        word: "DENAR",
-        average: 3.584,
-        wrong: 0
+        "word": "SALTER",
+
+        "restricted": {
+            "average": 3.2823323103901796,
+            "wrong": 0.006137658921525646
+        },
     },
     {
-        word: "ALTER",
-        average: 3.585,
-        wrong: 0
+        "word": "SALTED",
+
+        "restricted": {
+            "average": 3.2823323103901796,
+            "wrong": 0.003726435773783428
+        },
     },
     {
-        word: "DATER",
-        average: 3.585,
-        wrong: 0
+        "word": "BRIGHTS",
+
+        "restricted": {
+            "average": 3.283,
+            "wrong": 6
+        },
     },
     {
-        word: "ARTEL",
-        average: 3.586,
-        wrong: 0
+        "word": "FLIGHTS",
+
+        "restricted": {
+            "average": 3.285,
+            "wrong": 9
+        },
     },
     {
-        word: "CATER",
-        average: 3.586,
-        wrong: 0
+        "word": "THRILLS",
+
+        "restricted": {
+            "average": 3.285,
+            "wrong": 12
+        },
     },
     {
-        word: "TRAPE",
-        average: 3.586,
-        wrong: 0
+        "word": "SCRIPTS",
+
+        "restricted": {
+            "average": 3.285,
+            "wrong": 12
+        },
     },
     {
-        word: "STRAE",
-        average: 3.587,
-        wrong: 0
+        "word": "GROWTHS",
+
+        "restricted": {
+            "average": 3.287,
+            "wrong": 5
+        },
     },
     {
-        word: "PRATE",
-        average: 3.587,
-        wrong: 0
+        "word": "FRIGHTS",
+
+        "restricted": {
+            "average": 3.291,
+            "wrong": 13
+        },
     },
     {
-        word: "RANCE",
-        average: 3.587,
-        wrong: 0
+        "word": "SPLINTS",
+
+        "restricted": {
+            "average": 3.295,
+            "wrong": 19
+        },
     },
     {
-        word: "DEARN",
-        average: 3.587,
-        wrong: 0
+        "word": "STRETCH",
+
+        "restricted": {
+            "average": 3.296,
+            "wrong": 6
+        },
     },
     {
-        word: "PARLE",
-        average: 3.589,
-        wrong: 0
+        "word": "SPRINTS",
+
+        "restricted": {
+            "average": 3.296,
+            "wrong": 17
+        },
     },
     {
-        word: "RATEL",
-        average: 3.590,
-        wrong: 0
+        "word": "STRANDS",
+
+        "restricted": {
+            "average": 3.297,
+            "wrong": 20
+        },
     },
     {
-        word: "REACT",
-        average: 3.590,
-        wrong: 0
+        "word": "STRANDS",
+
+        "restricted": {
+            "average": 3.297,
+            "wrong": 20
+        },
     },
     {
-        word: "SIREN",
-        average: 3.591,
-        wrong: 0
+        "word": "SLATER",
+
+        "restricted": {
+            "average": 3.3018412976764577,
+            "wrong": 0.005918456817185445
+        },
     },
     {
-        word: "TORES",
-        average: 3.592,
-        wrong: 0
+        "word": "SPLENTS",
+
+        "restricted": {
+            "average": 3.304,
+            "wrong": 7
+        },
     },
     {
-        word: "RESAT",
-        average: 3.593,
-        wrong: 0
+        "word": "DARTLE",
+
+        "restricted": {
+            "average": 3.30403331871986,
+            "wrong": 0.006137658921525646
+        },
     },
     {
-        word: "TONER",
-        average: 3.593,
-        wrong: 0
+        "word": "LASTER",
+
+        "restricted": {
+            "average": 3.3042525208241997,
+            "wrong": 0.006137658921525646
+        },
     },
     {
-        word: "STALE",
-        average: 3.593,
-        wrong: 0
+        "word": "WRIGHTS",
+
+        "restricted": {
+            "average": 3.311,
+            "wrong": 10
+        },
     },
     {
-        word: "LATER",
-        average: 3.594,
-        wrong: 0
+        "word": "TAILER",
+
+        "restricted": {
+            "average": 3.3145550197281892,
+            "wrong": 0.005918456817185445
+        },
     },
     {
-        word: "ANTRE",
-        average: 3.594,
-        wrong: 0
+        "word": "CANTER",
+
+        "restricted": {
+            "average": 3.31543182814555,
+            "wrong": 0.009425690486628672
+        },
     },
     {
-        word: "CARES",
-        average: 3.594,
-        wrong: 0
+        "word": "SPRAWLS",
+
+        "restricted": {
+            "average": 3.316,
+            "wrong": 8
+        },
     },
     {
-        word: "DEALT",
-        average: 3.594,
-        wrong: 0
+        "word": "SPRINT",
+
+        "restricted": {
+            "average": 3.3176238491889523,
+            "wrong": 0.0054800526085050415
+        },
     },
     {
-        word: "LEANT",
-        average: 3.594,
-        wrong: 0
+        "word": "SCRAWLS",
+
+        "restricted": {
+            "average": 3.318,
+            "wrong": 13
+        },
     },
     {
-        word: "LATEN",
-        average: 3.595,
-        wrong: 0
+        "word": "SAILER",
+
+        "restricted": {
+            "average": 3.3180622533976325,
+            "wrong": 0.006795265234546251
+        },
     },
     {
-        word: "TEARS",
-        average: 3.595,
-        wrong: 0
+        "word": "STALER",
+
+        "restricted": {
+            "average": 3.3244191144234985,
+            "wrong": 0.00657606313020605
+        },
     },
     {
-        word: "ARLED",
-        average: 3.595,
-        wrong: 0
+        "word": "SPRANGS",
+
+        "restricted": {
+            "average": 3.325,
+            "wrong": 25
+        },
     },
     {
-        word: "CANER",
-        average: 3.595,
-        wrong: 0
+        "word": "SCHMALZ",
+
+        "restricted": {
+            "average": 3.329,
+            "wrong": 7
+        },
     },
     {
-        word: "RATES",
-        average: 3.596,
-        wrong: 0
+        "word": "SWARTHS",
+
+        "restricted": {
+            "average": 3.33,
+            "wrong": 4
+        },
     },
     {
-        word: "SOLER",
-        average: 3.596,
-        wrong: 0
+        "word": "STRAND",
+
+        "restricted": {
+            "average": 3.3353792196405085,
+            "wrong": 0.004164839982463832
+        },
     },
     {
-        word: "TALES",
-        average: 3.596,
-        wrong: 0
+        "word": "THWACKS",
+
+        "restricted": {
+            "average": 3.346,
+            "wrong": 4
+        },
     },
     {
-        word: "ALIEN",
-        average: 3.597,
-        wrong: 0
+        "word": "DROWNDS",
+
+        "restricted": {
+            "average": 3.348,
+            "wrong": 8
+        },
     },
     {
-        word: "LITRE",
-        average: 3.597,
-        wrong: 0
+        "word": "TROWTHS",
+
+        "restricted": {
+            "average": 3.348,
+            "wrong": 12
+        },
     },
     {
-        word: "TIRES",
-        average: 3.597,
-        wrong: 0
+        "word": "THWARTS",
+
+        "restricted": {
+            "average": 3.352,
+            "wrong": 5
+        },
     },
     {
-        word: "ALERT",
-        average: 3.598,
-        wrong: 0
+        "word": "STRINGS",
+
+        "restricted": {
+            "average": 3.354,
+            "wrong": 35
+        },
     },
     {
-        word: "TERAS",
-        average: 3.598,
-        wrong: 0
+        "word": "BRANTS",
+
+        "restricted": {
+            "average": 3.3605874616396316,
+            "wrong": 0.004384042086804033
+        },
     },
     {
-        word: "SATED",
-        average: 3.598,
-        wrong: 0
+        "word": "BRACTS",
+
+        "restricted": {
+            "average": 3.3625602805786934,
+            "wrong": 0.002849627356422622
+        },
     },
     {
-        word: "DERAT",
-        average: 3.598,
-        wrong: 0
+        "word": "FROWSTS",
+
+        "restricted": {
+            "average": 3.365,
+            "wrong": 6
+        },
     },
     {
-        word: "SOARE",
-        average: 3.599,
-        wrong: 0
+        "word": "BRONCS",
+
+        "restricted": {
+            "average": 3.368478737395879,
+            "wrong": 0.003288031565103025
+        },
     },
     {
-        word: "RAILE",
-        average: 3.600,
-        wrong: 0
+        "word": "BIRTHS",
+
+        "restricted": {
+            "average": 3.3886453309951774,
+            "wrong": 0.006137658921525646
+        },
     },
     {
-        word: "RAINE",
-        average: 3.600,
-        wrong: 0
+        "word": "TWELFTH",
+
+        "restricted": {
+            "average": 3.413,
+            "wrong": 3
+        },
     },
     {
-        word: "RALES",
-        average: 3.601,
-        wrong: 0
+        "word": "BRAWNS",
+
+        "restricted": {
+            "average": 3.437746602367383,
+            "wrong": 0.001972818939061815
+        },
     },
     {
-        word: "ALDER",
-        average: 3.601,
-        wrong: 0
+        "word": "PLANTS",
+
+        "restricted": {
+            "average": 3.466,
+            "wrong": 24
+        },
     },
     {
-        word: "SERAL",
-        average: 3.602,
-        wrong: 0
+        "word": "MATIER",
+
+        "restricted": {
+            "average": 3.468,
+            "wrong": 28
+        },
     },
     {
-        word: "TILER",
-        average: 3.602,
-        wrong: 0
+        "word": "PALIER",
+
+        "restricted": {
+            "average": 3.473,
+            "wrong": 31
+        },
     },
     {
-        word: "TRIES",
-        average: 3.602,
-        wrong: 0
+        "word": "SPRENT",
+
+        "restricted": {
+            "average": 3.474,
+            "wrong": 22
+        },
     },
     {
-        word: "SCARE",
-        average: 3.602,
-        wrong: 0
+        "word": "RANTED",
+
+        "restricted": {
+            "average": 3.474,
+            "wrong": 44
+        },
     },
     {
-        word: "TAPER",
-        average: 3.603,
-        wrong: 0
+        "word": "ANTLER",
+
+        "restricted": {
+            "average": 3.478,
+            "wrong": 38
+        },
     },
     {
-        word: "SIRED",
-        average: 3.603,
-        wrong: 0
+        "word": "DARNEL",
+
+        "restricted": {
+            "average": 3.48,
+            "wrong": 37
+        },
     },
     {
-        word: "STIRE",
-        average: 3.603,
-        wrong: 0
+        "word": "TAILED",
+
+        "restricted": {
+            "average": 3.48,
+            "wrong": 41
+        },
     },
     {
-        word: "DARES",
-        average: 3.604,
-        wrong: 0
+        "word": "LACIER",
+
+        "restricted": {
+            "average": 3.481,
+            "wrong": 36
+        },
     },
     {
-        word: "ARSED",
-        average: 3.604,
-        wrong: 0
+        "word": "SANDER",
+
+        "restricted": {
+            "average": 3.486,
+            "wrong": 42
+        },
     },
     {
-        word: "RASED",
-        average: 3.604,
-        wrong: 0
+        "word": "GRANTS",
+
+        "restricted": {
+            "average": 3.489,
+            "wrong": 26
+        },
     },
     {
-        word: "PATER",
-        average: 3.604,
-        wrong: 0
+        "word": "AIRTED",
+
+        "restricted": {
+            "average": 3.493,
+            "wrong": 49
+        },
     },
     {
-        word: "TREAD",
-        average: 3.604,
-        wrong: 0
+        "word": "RAILED",
+
+        "restricted": {
+            "average": 3.501,
+            "wrong": 37
+        },
     },
     {
-        word: "RAISE",
-        average: 3.605,
-        wrong: 0
+        "word": "LOANER",
+
+        "restricted": {
+            "average": 3.501,
+            "wrong": 46
+        },
     },
     {
-        word: "NARES",
-        average: 3.605,
-        wrong: 0
+        "word": "NAILER",
+
+        "restricted": {
+            "average": 3.503,
+            "wrong": 48
+        },
     },
     {
-        word: "PAIRE",
-        average: 3.605,
-        wrong: 0
+        "word": "STRANG",
+
+        "restricted": {
+            "average": 3.506,
+            "wrong": 37
+        },
     },
     {
-        word: "EARNT",
-        average: 3.605,
-        wrong: 0
+        "word": "ALINER",
+
+        "restricted": {
+            "average": 3.506,
+            "wrong": 47
+        },
     },
     {
-        word: "ALONE",
-        average: 3.605,
-        wrong: 0
+        "word": "SALET",
+        "restricted": {
+            "average": 3.5079913606911446,
+            "wrong": 0.0021598272138228943
+        },
     },
     {
-        word: "LASER",
-        average: 3.606,
-        wrong: 0
+        "word": "BRUNTS",
+
+        "restricted": {
+            "average": 3.509,
+            "wrong": 19
+        },
     },
     {
-        word: "AISLE",
-        average: 3.606,
-        wrong: 0
+        "word": "DIALER",
+
+        "restricted": {
+            "average": 3.511,
+            "wrong": 44
+        },
     },
     {
-        word: "LONER",
-        average: 3.606,
-        wrong: 0
+        "word": "GNARLS",
+
+        "restricted": {
+            "average": 3.512,
+            "wrong": 30
+        },
     },
     {
-        word: "SCRAE",
-        average: 3.606,
-        wrong: 0
+        "word": "LAIRED",
+
+        "restricted": {
+            "average": 3.514,
+            "wrong": 45
+        },
     },
     {
-        word: "PARES",
-        average: 3.606,
-        wrong: 0
+        "word": "SLATE",
+
+        "restricted": {
+            "average": 3.5161987041036715,
+            "wrong": 0.0038876889848812094
+        },
     },
     {
-        word: "TEALS",
-        average: 3.606,
-        wrong: 0
+        "word": "BRANDS",
+
+        "restricted": {
+            "average": 3.518,
+            "wrong": 23
+        },
     },
     {
-        word: "STORE",
-        average: 3.606,
-        wrong: 0
+        "word": "TRACE",
+
+        "restricted": {
+            "average": 3.5205183585313176,
+            "wrong": 0.0034557235421166306
+        },
     },
     {
-        word: "SNORE",
-        average: 3.606,
-        wrong: 0
+        "word": "REAST",
+
+        "restricted": {
+            "average": 3.524838012958963,
+            "wrong": 0.004319654427645789
+        },
     },
     {
-        word: "LARES",
-        average: 3.607,
-        wrong: 0
+        "word": "GRANDS",
+
+        "restricted": {
+            "average": 3.525,
+            "wrong": 35
+        },
     },
     {
-        word: "SAINE",
-        average: 3.607,
-        wrong: 0
+        "word": "CLAST",
+
+        "restricted": {
+            "average": 3.5265658747300215,
+            "wrong": 0.0012958963282937365
+        },
     },
     {
-        word: "ROTES",
-        average: 3.608,
-        wrong: 0
+        "word": "BRENTS",
+
+        "restricted": {
+            "average": 3.528,
+            "wrong": 22
+        },
     },
     {
-        word: "AIRED",
-        average: 3.609,
-        wrong: 0
+        "word": "SLANT",
+
+        "restricted": {
+            "average": 3.530453563714903,
+            "wrong": 0.003023758099352052
+        },
     },
     {
-        word: "NACRE",
-        average: 3.609,
-        wrong: 0
+        "word": "BERTHS",
+
+        "restricted": {
+            "average": 3.531,
+            "wrong": 19
+        },
     },
     {
-        word: "ROATE",
-        average: 3.610,
-        wrong: 0
+        "word": "CRATE",
+
+        "restricted": {
+            "average": 3.5317494600431965,
+            "wrong": 0.0038876889848812094
+        },
     },
     {
-        word: "LACER",
-        average: 3.610,
-        wrong: 0
+        "word": "DRAWLS",
+
+        "restricted": {
+            "average": 3.533,
+            "wrong": 24
+        },
     },
     {
-        word: "ALINE",
-        average: 3.610,
-        wrong: 0
+        "word": "SLANE",
+
+        "restricted": {
+            "average": 3.538228941684665,
+            "wrong": 0.004751619870410367
+        },
     },
     {
-        word: "SERAC",
-        average: 3.610,
-        wrong: 0
+        "word": "TORSE",
+
+        "restricted": {
+            "average": 3.5386609071274298,
+            "wrong": 0.0021598272138228943
+        },
     },
     {
-        word: "LEARN",
-        average: 3.611,
-        wrong: 0
+        "word": "CARET",
+
+        "restricted": {
+            "average": 3.5421166306695464,
+            "wrong": 0.006047516198704104
+        },
     },
     {
-        word: "TRAIL",
-        average: 3.613,
-        wrong: 0
+        "word": "TRANS",
+
+        "restricted": {
+            "average": 3.5473002159827214,
+            "wrong": 0.0012958963282937365
+        },
     },
     {
-        word: "LADER",
-        average: 3.614,
-        wrong: 0
+        "word": "TRENDS",
+
+        "restricted": {
+            "average": 3.551,
+            "wrong": 34
+        },
     },
     {
-        word: "TAMER",
-        average: 3.614,
-        wrong: 0
+        "word": "CARSE",
+
+        "restricted": {
+            "average": 3.5547856214811606,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "LIANE",
-        average: 3.615,
-        wrong: 0
+        "word": "CARLE",
+
+        "restricted": {
+            "average": 3.555218709398008,
+            "wrong": 0.00259852750108272
+        },
     },
     {
-        word: "REANS",
-        average: 3.615,
-        wrong: 0
+        "word": "TARPS",
+
+        "restricted": {
+            "average": 3.555939524838013,
+            "wrong": 0
+        },
     },
     {
-        word: "ANOLE",
-        average: 3.615,
-        wrong: 0
+        "word": "TRAPS",
+
+        "restricted": {
+            "average": 3.5572354211663066,
+            "wrong": 0.0008639308855291577
+        },
     },
     {
-        word: "DEAIR",
-        average: 3.616,
-        wrong: 0
+        "word": "TRADE",
+
+        "restricted": {
+            "average": 3.5578172368990906,
+            "wrong": 0.0043308791684712
+        },
     },
     {
-        word: "AIDER",
-        average: 3.616,
-        wrong: 0
+        "word": "CARTE",
+
+        "restricted": {
+            "average": 3.558250324815938,
+            "wrong": 0.0043308791684712
+        },
     },
     {
-        word: "PALER",
-        average: 3.616,
-        wrong: 0
+        "word": "PLANT",
+
+        "restricted": {
+            "average": 3.559116500649632,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "ANILE",
-        average: 3.617,
-        wrong: 0
+        "word": "SPART",
+
+        "restricted": {
+            "average": 3.5598272138228944,
+            "wrong": 0.0017278617710583153
+        },
     },
     {
-        word: "ARETS",
-        average: 3.617,
-        wrong: 0
+        "word": "PRATS",
+
+        "restricted": {
+            "average": 3.5602591792656586,
+            "wrong": 0.00043196544276457883
+        },
     },
     {
-        word: "IRATE",
-        average: 3.618,
-        wrong: 0
+        "word": "SMALT",
+
+        "restricted": {
+            "average": 3.5606911447084233,
+            "wrong": 0.00043196544276457883
+        },
     },
     {
-        word: "RACES",
-        average: 3.618,
-        wrong: 0
+        "word": "TALES",
+
+        "restricted": {
+            "average": 3.5612819402338673,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "RITES",
-        average: 3.618,
-        wrong: 0
+        "word": "SCANT",
+
+        "restricted": {
+            "average": 3.5612819402338673,
+            "wrong": 0.0038977912516240795
+        },
     },
     {
-        word: "ARIEL",
-        average: 3.619,
-        wrong: 0
+        "word": "RESAT",
+
+        "restricted": {
+            "average": 3.562148116067562,
+            "wrong": 0.0043308791684712
+        },
     },
     {
-        word: "ARISE",
-        average: 3.620,
-        wrong: 0
+        "word": "CANST",
+
+        "restricted": {
+            "average": 3.563014291901256,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "LITER",
-        average: 3.620,
-        wrong: 0
+        "word": "SLART",
+
+        "restricted": {
+            "average": 3.563014291901256,
+            "wrong": 0.0034647033347769596
+        },
     },
     {
-        word: "RENAL",
-        average: 3.620,
-        wrong: 0
+        "word": "DRANT",
+
+        "restricted": {
+            "average": 3.5634473798181032,
+            "wrong": 0.00259852750108272
+        },
     },
     {
-        word: "STEAR",
-        average: 3.620,
-        wrong: 0
+        "word": "TRIES",
+
+        "restricted": {
+            "average": 3.56388046773495,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "RATHE",
-        average: 3.620,
-        wrong: 0
+        "word": "SPRAT",
+
+        "restricted": {
+            "average": 3.5645788336933046,
+            "wrong": 0.00043196544276457883
+        },
     },
     {
-        word: "OATEN",
-        average: 3.621,
-        wrong: 0
+        "word": "TIRLS",
+
+        "restricted": {
+            "average": 3.5645788336933046,
+            "wrong": 0.0012958963282937365
+        },
     },
     {
-        word: "ATONE",
-        average: 3.621,
-        wrong: 0
+        "word": "PARTS",
+
+        "restricted": {
+            "average": 3.5650107991360693,
+            "wrong": 0.00043196544276457883
+        },
     },
     {
-        word: "ROLES",
-        average: 3.622,
-        wrong: 0
+        "word": "CARTS",
+
+        "restricted": {
+            "average": 3.5651797314854914,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "THRAE",
-        average: 3.622,
-        wrong: 0
+        "word": "CLART",
+
+        "restricted": {
+            "average": 3.566045907319186,
+            "wrong": 0.00259852750108272
+        },
     },
     {
-        word: "OATER",
-        average: 3.623,
-        wrong: 0
+        "word": "DERAT",
+
+        "restricted": {
+            "average": 3.5673451710697273,
+            "wrong": 0.0034647033347769596
+        },
     },
     {
-        word: "ORATE",
-        average: 3.623,
-        wrong: 0
+        "word": "EARST",
+
+        "restricted": {
+            "average": 3.5673451710697273,
+            "wrong": 0.0043308791684712
+        },
     },
     {
-        word: "REALS",
-        average: 3.623,
-        wrong: 0
+        "word": "TARNS",
+
+        "restricted": {
+            "average": 3.5682113469034213,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "ARLES",
-        average: 3.624,
-        wrong: 0
+        "word": "TASER",
+
+        "restricted": {
+            "average": 3.5682113469034213,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "EARNS",
-        average: 3.624,
-        wrong: 0
+        "word": "TEARS",
+
+        "restricted": {
+            "average": 3.5686444348202686,
+            "wrong": 0.0034647033347769596
+        },
     },
     {
-        word: "RISEN",
-        average: 3.624,
-        wrong: 0
+        "word": "CATER",
+
+        "restricted": {
+            "average": 3.5703767864876568,
+            "wrong": 0.0043308791684712
+        },
     },
     {
-        word: "AROSE",
-        average: 3.625,
-        wrong: 0
+        "word": "CLATS",
+
+        "restricted": {
+            "average": 3.570809874404504,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "SAYER",
-        average: 3.625,
-        wrong: 0
+        "word": "EARNT",
+
+        "restricted": {
+            "average": 3.57297531398874,
+            "wrong": 0.00563014291901256
+        },
     },
     {
-        word: "LORES",
-        average: 3.625,
-        wrong: 0
+        "word": "CLANS",
+
+        "restricted": {
+            "average": 3.5734084019055867,
+            "wrong": 0.00259852750108272
+        },
     },
     {
-        word: "TINEA",
-        average: 3.625,
-        wrong: 0
+        "word": "TALCS",
+
+        "restricted": {
+            "average": 3.573841489822434,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "MATER",
-        average: 3.626,
-        wrong: 0
+        "word": "SNIRT",
+
+        "restricted": {
+            "average": 3.573841489822434,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "LEARS",
-        average: 3.627,
-        wrong: 0
+        "word": "RATEL",
+
+        "restricted": {
+            "average": 3.5742745777392813,
+            "wrong": 0.0043308791684712
+        },
     },
     {
-        word: "LOSER",
-        average: 3.627,
-        wrong: 0
+        "word": "TERAS",
+
+        "restricted": {
+            "average": 3.5755738414898226,
+            "wrong": 0.0034647033347769596
+        },
     },
     {
-        word: "OARED",
-        average: 3.628,
-        wrong: 0
+        "word": "SCART",
+
+        "restricted": {
+            "average": 3.576873105240364,
+            "wrong": 0.00259852750108272
+        },
     },
     {
-        word: "PORAE",
-        average: 3.628,
-        wrong: 0
+        "word": "SNORT",
+
+        "restricted": {
+            "average": 3.5773061931572108,
+            "wrong": 0.0034647033347769596
+        },
     },
     {
-        word: "LINER",
-        average: 3.628,
-        wrong: 0
+        "word": "RANTS",
+
+        "restricted": {
+            "average": 3.577739281074058,
+            "wrong": 0.00259852750108272
+        },
     },
     {
-        word: "RELIT",
-        average: 3.629,
-        wrong: 0
+        "word": "DRATS",
+
+        "restricted": {
+            "average": 3.578605456907752,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "ASTER",
-        average: 3.630,
-        wrong: 0
+        "word": "SANER",
+
+        "restricted": {
+            "average": 3.578605456907752,
+            "wrong": 0.004763967085318319
+        },
     },
     {
-        word: "DEARS",
-        average: 3.630,
-        wrong: 0
+        "word": "LANTS",
+
+        "restricted": {
+            "average": 3.5794716327414466,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "ALOED",
-        average: 3.630,
-        wrong: 0
+        "word": "TARES",
+
+        "restricted": {
+            "average": 3.5799047206582935,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "MAIRE",
-        average: 3.631,
-        wrong: 0
+        "word": "TRILD",
+
+        "restricted": {
+            "average": 3.580770896491988,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "NEARS",
-        average: 3.632,
-        wrong: 0
+        "word": "TRONS",
+
+        "restricted": {
+            "average": 3.580770896491988,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "HATER",
-        average: 3.632,
-        wrong: 0
+        "word": "STARN",
+
+        "restricted": {
+            "average": 3.5842355998267648,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "HALER",
-        average: 3.633,
-        wrong: 0
+        "word": "LARNT",
+
+        "restricted": {
+            "average": 3.5851017756604593,
+            "wrong": 0.0043308791684712
+        },
     },
     {
-        word: "ACRES",
-        average: 3.633,
-        wrong: 0
+        "word": "TRADS",
+
+        "restricted": {
+            "average": 3.585534863577306,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "NERAL",
-        average: 3.635,
-        wrong: 0
+        "word": "CARLS",
+
+        "restricted": {
+            "average": 3.5907319185794715,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "URATE",
-        average: 3.636,
-        wrong: 0
+        "word": "CARNS",
+
+        "restricted": {
+            "average": 3.5907319185794715,
+            "wrong": 0.0034647033347769596
+        },
     },
     {
-        word: "EARLS",
-        average: 3.636,
-        wrong: 0
+        "word": "STOLN",
+
+        "restricted": {
+            "average": 3.591598094413166,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "PAREO",
-        average: 3.637,
-        wrong: 0
+        "word": "DALTS",
+
+        "restricted": {
+            "average": 3.595928973581637,
+            "wrong": 0.0030316154179298397
+        },
     },
     {
-        word: "AESIR",
-        average: 3.638,
-        wrong: 0
+        "word": "MARTS",
+
+        "restricted": {
+            "average": 3.596362061498484,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "LAERS",
-        average: 3.638,
-        wrong: 0
+        "word": "MALTS",
+
+        "restricted": {
+            "average": 3.596362061498484,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "ORIEL",
-        average: 3.639,
-        wrong: 0
+        "word": "DARTS",
+
+        "restricted": {
+            "average": 3.6045907319185795,
+            "wrong": 0.00259852750108272
+        },
     },
     {
-        word: "ALOES",
-        average: 3.639,
-        wrong: 0
+        "word": "CRAMP",
+
+        "restricted": {
+            "average": 3.605183585313175,
+            "wrong": 0.0008639308855291577
+        },
     },
     {
-        word: "STOAE",
-        average: 3.639,
-        wrong: 0
+        "word": "TRODS",
+
+        "restricted": {
+            "average": 3.6076223473365094,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "ALURE",
-        average: 3.640,
-        wrong: 0
+        "word": "DANTS",
+
+        "restricted": {
+            "average": 3.6093546990038976,
+            "wrong": 0.00259852750108272
+        },
     },
     {
-        word: "TERAI",
-        average: 3.641,
-        wrong: 0
+        "word": "STRAP",
+
+        "restricted": {
+            "average": 3.609787786920745,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "RAYNE",
-        average: 3.642,
-        wrong: 0
+        "word": "DOLTS",
+
+        "restricted": {
+            "average": 3.610653962754439,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "ORLES",
-        average: 3.643,
-        wrong: 0
+        "word": "MORTS",
+
+        "restricted": {
+            "average": 3.613252490255522,
+            "wrong": 0.0021654395842356
+        },
     },
     {
-        word: "ANISE",
-        average: 3.643,
-        wrong: 0
+        "word": "TRAMP",
+
+        "restricted": {
+            "average": 3.6149848419229103,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "REALO",
-        average: 3.644,
-        wrong: 0
+        "word": "CORMS",
+
+        "restricted": {
+            "average": 3.623758099352052,
+            "wrong": 0.00043196544276457883
+        },
     },
     {
-        word: "ADORE",
-        average: 3.644,
-        wrong: 0
+        "word": "CLAMP",
+
+        "restricted": {
+            "average": 3.6266782156777824,
+            "wrong": 0.00129926375054136
+        },
     },
     {
-        word: "TELIA",
-        average: 3.646,
-        wrong: 0
+        "word": "MARCS",
+
+        "restricted": {
+            "average": 3.627544391511477,
+            "wrong": 0.00129926375054136
+        },
     },
     {
-        word: "ARSEY",
-        average: 3.648,
-        wrong: 0
+        "word": "CRIMP",
+
+        "restricted": {
+            "average": 3.6357730619315722,
+            "wrong": 0.00129926375054136
+        },
     },
     {
-        word: "RETIA",
-        average: 3.649,
-        wrong: 0
+        "word": "SCRIM",
+
+        "restricted": {
+            "average": 3.6565612819402338,
+            "wrong": 0.00129926375054136
+        },
     },
     {
-        word: "IRONE",
-        average: 3.649,
-        wrong: 0
+        "word": "SCAMP",
+
+        "restricted": {
+            "average": 3.6591598094413165,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "AIMER",
-        average: 3.649,
-        wrong: 0
+        "word": "CAMPS",
+
+        "restricted": {
+            "average": 3.660892161108705,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "SERAI",
-        average: 3.650,
-        wrong: 0
+        "word": "TALER",
+
+        "restricted": {
+            "average": 3.6711309523809526,
+            "wrong": 0.007068452380952381
+        },
     },
     {
-        word: "AURES",
-        average: 3.650,
-        wrong: 0
+        "word": "CRANS",
+
+        "restricted": {
+            "average": 3.671875,
+            "wrong": 0.004464285714285714
+        },
     },
     {
-        word: "READS",
-        average: 3.650,
-        wrong: 0
+        "word": "LITRE",
+
+        "restricted": {
+            "average": 3.671875,
+            "wrong": 0.004836309523809524
+        },
     },
     {
-        word: "RAYLE",
-        average: 3.652,
-        wrong: 0
+        "word": "PREST",
+
+        "restricted": {
+            "average": 3.671875,
+            "wrong": 0.006696428571428571
+        },
     },
     {
-        word: "REOIL",
-        average: 3.654,
-        wrong: 0
+        "word": "SCRAT",
+
+        "restricted": {
+            "average": 3.6722470238095237,
+            "wrong": 0.003720238095238095
+        },
     },
     {
-        word: "RAMIE",
-        average: 3.654,
-        wrong: 0
+        "word": "PERST",
+
+        "restricted": {
+            "average": 3.6722470238095237,
+            "wrong": 0.005952380952380952
+        },
     },
     {
-        word: "MORAE",
-        average: 3.654,
-        wrong: 0
+        "word": "CANTS",
+
+        "restricted": {
+            "average": 3.6726190476190474,
+            "wrong": 0.005580357142857143
+        },
     },
     {
-        word: "AIDES",
-        average: 3.654,
-        wrong: 0
+        "word": "TRONE",
+
+        "restricted": {
+            "average": 3.6726190476190474,
+            "wrong": 0.007068452380952381
+        },
     },
     {
-        word: "OILER",
-        average: 3.656,
-        wrong: 0
+        "word": "LATEN",
+
+        "restricted": {
+            "average": 3.6733630952380953,
+            "wrong": 0.004464285714285714
+        },
     },
     {
-        word: "REAIS",
-        average: 3.657,
-        wrong: 0
+        "word": "ALERT",
+
+        "restricted": {
+            "average": 3.673735119047619,
+            "wrong": 0.006696428571428571
+        },
     },
     {
-        word: "IRADE",
-        average: 3.661,
-        wrong: 0
+        "word": "TIRES",
+
+        "restricted": {
+            "average": 3.674107142857143,
+            "wrong": 0.004464285714285714
+        },
     },
     {
-        word: "LAYER",
-        average: 3.662,
-        wrong: 0
+        "word": "CROST",
+
+        "restricted": {
+            "average": 3.674107142857143,
+            "wrong": 0.005952380952380952
+        },
     },
     {
-        word: "RIMAE",
-        average: 3.662,
-        wrong: 0
+        "word": "ALTER",
+
+        "restricted": {
+            "average": 3.675595238095238,
+            "wrong": 0.00818452380952381
+        },
     },
     {
-        word: "AEROS",
-        average: 3.670,
-        wrong: 0
+        "word": "ROSET",
+
+        "restricted": {
+            "average": 3.6767113095238093,
+            "wrong": 0.004836309523809524
+        },
     },
     {
-        word: "AYRES",
-        average: 3.670,
-        wrong: 0
+        "word": "TORCS",
+
+        "restricted": {
+            "average": 3.6785714285714284,
+            "wrong": 0.005580357142857143
+        },
     },
     {
-        word: "OCREA",
-        average: 3.670,
-        wrong: 0
+        "word": "SERAL",
+
+        "restricted": {
+            "average": 3.6785714285714284,
+            "wrong": 0.006696428571428571
+        },
     },
     {
-        word: "URASE",
-        average: 3.672,
-        wrong: 0
+        "word": "LATER",
+
+        "restricted": {
+            "average": 3.6785714285714284,
+            "wrong": 0.00744047619047619
+        },
     },
     {
-        word: "OSIER",
-        average: 3.679,
-        wrong: 0
+        "word": "LANES",
+
+        "restricted": {
+            "average": 3.6793154761904763,
+            "wrong": 0.004464285714285714
+        },
     },
     {
-        word: "URSAE",
-        average: 3.679,
-        wrong: 0
+        "word": "SNARE",
+
+        "restricted": {
+            "average": 3.6793154761904763,
+            "wrong": 0.00818452380952381
+        },
     },
     {
-        word: "AYRIE",
-        average: 3.696,
-        wrong: 0
+        "word": "TERNS",
+
+        "restricted": {
+            "average": 3.6796875,
+            "wrong": 0.005952380952380952
+        },
     },
     {
-        word: "AUREI",
-        average: 3.706,
-        wrong: 0
+        "word": "STARE",
+
+        "restricted": {
+            "average": 3.6796875,
+            "wrong": 0.0078125
+        },
     },
     {
-        word: "URAEI",
-        average: 3.734,
-        wrong: 0
+        "word": "REALS",
+
+        "restricted": {
+            "average": 3.6800595238095237,
+            "wrong": 0.005208333333333333
+        },
     },
     {
-        word: "SLANE",
-        average: 3.578,
-        wrong: 0
+        "word": "ARTEL",
+
+        "restricted": {
+            "average": 3.6804315476190474,
+            "wrong": 0.008928571428571428
+        },
     },
     {
-        word: "SANED",
-        average: 3.580,
-        wrong: 0
+        "word": "TILER",
+
+        "restricted": {
+            "average": 3.681547619047619,
+            "wrong": 0.005952380952380952
+        },
     },
     {
-        word: "TRINE",
-        average: 3.589,
-        wrong: 0
+        "word": "REANS",
+
+        "restricted": {
+            "average": 3.681547619047619,
+            "wrong": 0.00744047619047619
+        },
     },
     {
-        word: "PALET",
-        average: 3.589,
-        wrong: 0
+        "word": "SMART",
+
+        "restricted": {
+            "average": 3.6822916666666665,
+            "wrong": 0.003720238095238095
+        },
     },
     {
-        word: "DROLE",
-        average: 3.591,
-        wrong: 0
+        "word": "DREST",
+
+        "restricted": {
+            "average": 3.6822916666666665,
+            "wrong": 0.005208333333333333
+        },
     },
     {
-        word: "PAREN",
-        average: 3.593,
-        wrong: 0
+        "word": "CRITS",
+
+        "restricted": {
+            "average": 3.6826636904761907,
+            "wrong": 0.005580357142857143
+        },
     },
     {
-        word: "TOILE",
-        average: 3.594,
-        wrong: 0
+        "word": "LEARS",
+
+        "restricted": {
+            "average": 3.6830357142857144,
+            "wrong": 0.006324404761904762
+        },
     },
     {
-        word: "STANE",
-        average: 3.594,
-        wrong: 0
+        "word": "LEARN",
+
+        "restricted": {
+            "average": 3.6830357142857144,
+            "wrong": 0.007068452380952381
+        },
     },
     {
-        word: "LANES",
-        average: 3.597,
-        wrong: 0
+        "word": "TAPER",
+
+        "restricted": {
+            "average": 3.6841517857142856,
+            "wrong": 0.007068452380952381
+        },
     },
     {
-        word: "TRONE",
-        average: 3.597,
-        wrong: 0
+        "word": "CARES",
+
+        "restricted": {
+            "average": 3.685639880952381,
+            "wrong": 0.005952380952380952
+        },
     },
     {
-        word: "RINSE",
-        average: 3.599,
-        wrong: 0
+        "word": "PRENT",
+
+        "restricted": {
+            "average": 3.6860119047619047,
+            "wrong": 0.005952380952380952
+        },
     },
     {
-        word: "LACET",
-        average: 3.600,
-        wrong: 0
+        "word": "NARCS",
+
+        "restricted": {
+            "average": 3.6863839285714284,
+            "wrong": 0.004836309523809524
+        },
     },
     {
-        word: "SLIER",
-        average: 3.602,
-        wrong: 0
+        "word": "STRAE",
+
+        "restricted": {
+            "average": 3.6863839285714284,
+            "wrong": 0.00818452380952381
+        },
     },
     {
-        word: "RONTE",
-        average: 3.602,
-        wrong: 0
+        "word": "TORES",
+
+        "restricted": {
+            "average": 3.6871279761904763,
+            "wrong": 0.005208333333333333
+        },
     },
     {
-        word: "MARSE",
-        average: 3.604,
-        wrong: 0
+        "word": "BRANT",
+
+        "restricted": {
+            "average": 3.6875,
+            "wrong": 0.005208333333333333
+        },
     },
     {
-        word: "ARMET",
-        average: 3.605,
-        wrong: 0
+        "word": "ROATE",
+
+        "restricted": {
+            "average": 3.6878720238095237,
+            "wrong": 0.00855654761904762
+        },
     },
     {
-        word: "SILER",
-        average: 3.606,
-        wrong: 0
+        "word": "DARNS",
+
+        "restricted": {
+            "average": 3.689360119047619,
+            "wrong": 0.005580357142857143
+        },
     },
     {
-        word: "SLADE",
-        average: 3.606,
-        wrong: 0
+        "word": "RENTS",
+
+        "restricted": {
+            "average": 3.689360119047619,
+            "wrong": 0.005580357142857143
+        },
     },
     {
-        word: "SPAER",
-        average: 3.606,
-        wrong: 0
+        "word": "RATES",
+
+        "restricted": {
+            "average": 3.689360119047619,
+            "wrong": 0.005952380952380952
+        },
     },
     {
-        word: "TARGE",
-        average: 3.606,
-        wrong: 0
+        "word": "CIRLS",
+
+        "restricted": {
+            "average": 3.689732142857143,
+            "wrong": 0.003720238095238095
+        },
     },
     {
-        word: "MARLE",
-        average: 3.607,
-        wrong: 0
+        "word": "SLEPT",
+
+        "restricted": {
+            "average": 3.689732142857143,
+            "wrong": 0.006696428571428571
+        },
     },
     {
-        word: "LATED",
-        average: 3.607,
-        wrong: 0
+        "word": "RENAL",
+
+        "restricted": {
+            "average": 3.6908482142857144,
+            "wrong": 0.00744047619047619
+        },
     },
     {
-        word: "DALES",
-        average: 3.607,
-        wrong: 0
+        "word": "TRINS",
+
+        "restricted": {
+            "average": 3.691592261904762,
+            "wrong": 0.007068452380952381
+        },
     },
     {
-        word: "TOLES",
-        average: 3.608,
-        wrong: 0
+        "word": "HARTS",
+
+        "restricted": {
+            "average": 3.6949404761904763,
+            "wrong": 0.004836309523809524
+        },
     },
     {
-        word: "RONES",
-        average: 3.609,
-        wrong: 0
+        "word": "SNARL",
+
+        "restricted": {
+            "average": 3.6953125,
+            "wrong": 0.005208333333333333
+        },
     },
     {
-        word: "LASED",
-        average: 3.610,
-        wrong: 0
+        "word": "SPELT",
+
+        "restricted": {
+            "average": 3.6953125,
+            "wrong": 0.006324404761904762
+        },
     },
     {
-        word: "RAMET",
-        average: 3.611,
-        wrong: 0
+        "word": "ROTLS",
+
+        "restricted": {
+            "average": 3.6964285714285716,
+            "wrong": 0.004836309523809524
+        },
     },
     {
-        word: "DIANE",
-        average: 3.611,
-        wrong: 0
+        "word": "DIRTS",
+
+        "restricted": {
+            "average": 3.6968005952380953,
+            "wrong": 0.004092261904761905
+        },
     },
     {
-        word: "NOTER",
-        average: 3.612,
-        wrong: 0
+        "word": "SCRAN",
+
+        "restricted": {
+            "average": 3.7020089285714284,
+            "wrong": 0.005952380952380952
+        },
     },
     {
-        word: "TASED",
-        average: 3.613,
-        wrong: 0
+        "word": "DORTS",
+
+        "restricted": {
+            "average": 3.7023809523809526,
+            "wrong": 0.003720238095238095
+        },
     },
     {
-        word: "DAINE",
-        average: 3.613,
-        wrong: 0
+        "word": "CRWTH",
+
+        "restricted": {
+            "average": 3.713728886964054,
+            "wrong": 0.0017323516673884798
+        },
     },
     {
-        word: "SAICE",
-        average: 3.616,
-        wrong: 0
+        "word": "LEST",
+
+        "restricted": {
+            "average": 4.457,
+            "wrong": 148
+        },
     },
     {
-        word: "SABER",
-        average: 3.617,
-        wrong: 0
+        "word": "LEPT",
+
+        "restricted": {
+            "average": 4.46,
+            "wrong": 126
+        },
     },
     {
-        word: "LIART",
-        average: 3.618,
-        wrong: 0
+        "word": "PELT",
+
+        "restricted": {
+            "average": 4.462,
+            "wrong": 131
+        },
     },
     {
-        word: "NATES",
-        average: 3.621,
-        wrong: 0
+        "word": "LETS",
+
+        "restricted": {
+            "average": 4.468,
+            "wrong": 146
+        },
     },
     {
-        word: "DATES",
-        average: 3.621,
-        wrong: 0
+        "word": "MELT",
+
+        "restricted": {
+            "average": 4.477,
+            "wrong": 140
+        },
     },
     {
-        word: "COATE",
-        average: 3.622,
-        wrong: 0
+        "word": "TELS",
+
+        "restricted": {
+            "average": 4.479,
+            "wrong": 152
+        },
     },
     {
-        word: "LADES",
-        average: 3.622,
-        wrong: 0
+        "word": "DELT",
+
+        "restricted": {
+            "average": 4.481,
+            "wrong": 145
+        },
     },
     {
-        word: "NITER",
-        average: 3.623,
-        wrong: 0
+        "word": "DART",
+
+        "restricted": {
+            "average": 4.481,
+            "wrong": 150
+        },
     },
     {
-        word: "ANTES",
-        average: 3.624,
-        wrong: 0
+        "word": "DRAT",
+
+        "restricted": {
+            "average": 4.482,
+            "wrong": 153
+        },
     },
     {
-        word: "TOISE",
-        average: 3.624,
-        wrong: 0
+        "word": "MELS",
+
+        "restricted": {
+            "average": 4.483,
+            "wrong": 140
+        },
     },
     {
-        word: "MASER",
-        average: 3.624,
-        wrong: 0
+        "word": "MALT",
+
+        "restricted": {
+            "average": 4.499,
+            "wrong": 154
+        },
     },
     {
-        word: "MARES",
-        average: 3.625,
-        wrong: 0
+        "word": "MARL",
+
+        "restricted": {
+            "average": 4.502,
+            "wrong": 154
+        },
     },
     {
-        word: "RAPES",
-        average: 3.625,
-        wrong: 0
+        "word": "SALT",
+
+        "restricted": {
+            "average": 4.503,
+            "wrong": 159
+        },
     },
     {
-        word: "NOSER",
-        average: 3.626,
-        wrong: 0
+        "word": "LAST",
+
+        "restricted": {
+            "average": 4.503,
+            "wrong": 159
+        },
     },
     {
-        word: "RINES",
-        average: 3.626,
-        wrong: 0
+        "word": "LATS",
+
+        "restricted": {
+            "average": 4.506,
+            "wrong": 157
+        },
     },
     {
-        word: "APTER",
-        average: 3.626,
-        wrong: 0
+        "word": "TERN",
+
+        "restricted": {
+            "average": 4.507,
+            "wrong": 164
+        },
     },
     {
-        word: "SENOR",
-        average: 3.629,
-        wrong: 0
+        "word": "SLAT",
+
+        "restricted": {
+            "average": 4.508,
+            "wrong": 161
+        },
     },
     {
-        word: "RILES",
-        average: 3.630,
-        wrong: 0
+        "word": "MERL",
+
+        "restricted": {
+            "average": 4.511,
+            "wrong": 153
+        },
     },
     {
-        word: "SAGER",
-        average: 3.630,
-        wrong: 0
+        "word": "LARD",
+
+        "restricted": {
+            "average": 4.511,
+            "wrong": 155
+        },
     },
     {
-        word: "HARES",
-        average: 3.635,
-        wrong: 0
+        "word": "TELA",
+
+        "restricted": {
+            "average": 4.513,
+            "wrong": 180
+        },
     },
     {
-        word: "GATER",
-        average: 3.638,
-        wrong: 0
+        "word": "DELS",
+
+        "restricted": {
+            "average": 4.514,
+            "wrong": 158
+        },
     },
     {
-        word: "LEIRS",
-        average: 3.641,
-        wrong: 0
+        "word": "LENT",
+
+        "restricted": {
+            "average": 4.514,
+            "wrong": 165
+        },
     },
     {
-        word: "SOLEI",
-        average: 3.647,
-        wrong: 0
+        "word": "DALS",
+
+        "restricted": {
+            "average": 4.516,
+            "wrong": 159
+        },
     },
     {
-        word: "REDIA",
-        average: 3.651,
-        wrong: 0
+        "word": "TEAL",
+
+        "restricted": {
+            "average": 4.516,
+            "wrong": 177
+        },
     },
     {
-        word: "AEONS",
-        average: 3.652,
-        wrong: 0
+        "word": "TARS",
+
+        "restricted": {
+            "average": 4.517,
+            "wrong": 157
+        },
     },
     {
-        word: "HAOLE",
-        average: 3.655,
-        wrong: 0
+        "word": "LADE",
+
+        "restricted": {
+            "average": 4.522,
+            "wrong": 170
+        },
     },
     {
-        word: "CERIA",
-        average: 3.659,
-        wrong: 0
+        "word": "TAEL",
+
+        "restricted": {
+            "average": 4.522,
+            "wrong": 176
+        },
     },
     {
-        word: "SLART",
-        average: 3.573,
-        wrong: 0
+        "word": "DALE",
+
+        "restricted": {
+            "average": 4.523,
+            "wrong": 177
+        },
     },
     {
-        word: "SLANT",
-        average: 3.573,
-        wrong: 0
+        "word": "TALE",
+
+        "restricted": {
+            "average": 4.523,
+            "wrong": 179
+        },
     },
     {
-        word: "TARNS",
-        average: 3.579,
-        wrong: 0
+        "word": "RATS",
+
+        "restricted": {
+            "average": 4.525,
+            "wrong": 161
+        },
     },
     {
-        word: "TRANS",
-        average: 3.588,
-        wrong: 0
+        "word": "LAME",
+
+        "restricted": {
+            "average": 4.525,
+            "wrong": 171
+        },
     },
     {
-        word: "DRANT",
-        average: 3.593,
-        wrong: 0
+        "word": "PALE",
+
+        "restricted": {
+            "average": 4.525,
+            "wrong": 177
+        },
     },
     {
-        word: "LARNT",
-        average: 3.594,
-        wrong: 0
+        "word": "LATE",
+
+        "restricted": {
+            "average": 4.525,
+            "wrong": 178
+        },
     },
     {
-        word: "STARN",
-        average: 3.594,
-        wrong: 0
+        "word": "LAND",
+
+        "restricted": {
+            "average": 4.526,
+            "wrong": 162
+        },
     },
     {
-        word: "PERST",
-        average: 3.597,
-        wrong: 0
+        "word": "CELT",
+
+        "restricted": {
+            "average": 4.528,
+            "wrong": 155
+        },
     },
     {
-        word: "TIRLS",
-        average: 3.599,
-        wrong: 0
+        "word": "REST",
+
+        "restricted": {
+            "average": 4.528,
+            "wrong": 161
+        },
     },
     {
-        word: "CLART",
-        average: 3.602,
-        wrong: 0
+        "word": "RENT",
+
+        "restricted": {
+            "average": 4.528,
+            "wrong": 176
+        },
     },
     {
-        word: "RANTS",
-        average: 3.603,
-        wrong: 0
+        "word": "TARN",
+
+        "restricted": {
+            "average": 4.53,
+            "wrong": 175
+        },
     },
     {
-        word: "CARNS",
-        average: 3.605,
-        wrong: 0
+        "word": "TRES",
+
+        "restricted": {
+            "average": 4.531,
+            "wrong": 169
+        },
     },
     {
-        word: "SCART",
-        average: 3.605,
-        wrong: 0
+        "word": "RANT",
+
+        "restricted": {
+            "average": 4.531,
+            "wrong": 177
+        },
     },
     {
-        word: "TERNS",
-        average: 3.606,
-        wrong: 0
+        "word": "LARS",
+
+        "restricted": {
+            "average": 4.533,
+            "wrong": 170
+        },
     },
     {
-        word: "CARLS",
-        average: 3.606,
-        wrong: 0
+        "word": "ROTL",
+
+        "restricted": {
+            "average": 4.534,
+            "wrong": 164
+        },
     },
     {
-        word: "CARTS",
-        average: 3.607,
-        wrong: 0
+        "word": "TOLE",
+
+        "restricted": {
+            "average": 4.535,
+            "wrong": 174
+        },
     },
     {
-        word: "DARTS",
-        average: 3.611,
-        wrong: 0
+        "word": "RETS",
+
+        "restricted": {
+            "average": 4.536,
+            "wrong": 161
+        },
     },
     {
-        word: "TREND",
-        average: 3.611,
-        wrong: 0
+        "word": "MALE",
+
+        "restricted": {
+            "average": 4.536,
+            "wrong": 177
+        },
     },
     {
-        word: "TRILD",
-        average: 3.613,
-        wrong: 0
+        "word": "LEAR",
+
+        "restricted": {
+            "average": 4.536,
+            "wrong": 188
+        },
     },
     {
-        word: "DARNS",
-        average: 3.616,
-        wrong: 0
+        "word": "TORE",
+
+        "restricted": {
+            "average": 4.539,
+            "wrong": 184
+        },
     },
     {
-        word: "DRENT",
-        average: 3.616,
-        wrong: 0
+        "word": "REAL",
+
+        "restricted": {
+            "average": 4.539,
+            "wrong": 189
+        },
     },
     {
-        word: "RENTS",
-        average: 3.617,
-        wrong: 0
+        "word": "TARE",
+
+        "restricted": {
+            "average": 4.54,
+            "wrong": 185
+        },
     },
     {
-        word: "SCRAT",
-        average: 3.617,
-        wrong: 0
+        "word": "LEND",
+
+        "restricted": {
+            "average": 4.542,
+            "wrong": 170
+        },
     },
     {
-        word: "SNARL",
-        average: 3.619,
-        wrong: 0
+        "word": "EARL",
+
+        "restricted": {
+            "average": 4.545,
+            "wrong": 178
+        },
     },
     {
-        word: "DRATS",
-        average: 3.620,
-        wrong: 0
+        "word": "RATE",
+
+        "restricted": {
+            "average": 4.545,
+            "wrong": 187
+        },
     },
     {
-        word: "DREST",
-        average: 3.620,
-        wrong: 0
+        "word": "RALE",
+
+        "restricted": {
+            "average": 4.546,
+            "wrong": 191
+        },
     },
     {
-        word: "STREP",
-        average: 3.620,
-        wrong: 0
+        "word": "SENT",
+
+        "restricted": {
+            "average": 4.547,
+            "wrong": 174
+        },
     },
     {
-        word: "CREST",
-        average: 3.623,
-        wrong: 0
+        "word": "TEAR",
+
+        "restricted": {
+            "average": 4.55,
+            "wrong": 184
+        },
     },
     {
-        word: "STRAD",
-        average: 3.625,
-        wrong: 0
+        "word": "SEAL",
+
+        "restricted": {
+            "average": 4.555,
+            "wrong": 191
+        },
     },
     {
-        word: "LANTS",
-        average: 3.627,
-        wrong: 0
+        "word": "SOLE",
+
+        "restricted": {
+            "average": 4.558,
+            "wrong": 179
+        },
     },
     {
-        word: "STAND",
-        average: 3.627,
-        wrong: 0
+        "word": "LEAN",
+
+        "restricted": {
+            "average": 4.558,
+            "wrong": 200
+        },
     },
     {
-        word: "SPRED",
-        average: 3.630,
-        wrong: 0
+        "word": "LEAS",
+
+        "restricted": {
+            "average": 4.56,
+            "wrong": 193
+        },
     },
     {
-        word: "NERTS",
-        average: 3.631,
-        wrong: 0
+        "word": "NEAT",
+
+        "restricted": {
+            "average": 4.56,
+            "wrong": 199
+        },
     },
     {
-        word: "TRADS",
-        average: 3.631,
-        wrong: 0
+        "word": "SLOE",
+
+        "restricted": {
+            "average": 4.562,
+            "wrong": 185
+        },
     },
     {
-        word: "ROTLS",
-        average: 3.631,
-        wrong: 0
+        "word": "SALE",
+
+        "restricted": {
+            "average": 4.563,
+            "wrong": 192
+        },
     },
     {
-        word: "DERNS",
-        average: 3.632,
-        wrong: 0
+        "word": "LENS",
+
+        "restricted": {
+            "average": 4.566,
+            "wrong": 174
+        },
     },
     {
-        word: "STERN",
-        average: 3.632,
-        wrong: 0
+        "word": "LASE",
+
+        "restricted": {
+            "average": 4.566,
+            "wrong": 189
+        },
     },
     {
-        word: "LARNS",
-        average: 3.633,
-        wrong: 0
+        "word": "LEHR",
+
+        "restricted": {
+            "average": 4.567,
+            "wrong": 152
+        },
     },
     {
-        word: "PRENT",
-        average: 3.633,
-        wrong: 0
+        "word": "SATE",
+
+        "restricted": {
+            "average": 4.568,
+            "wrong": 182
+        },
     },
     {
-        word: "DENTS",
-        average: 3.635,
-        wrong: 0
+        "word": "HARL",
+
+        "restricted": {
+            "average": 4.569,
+            "wrong": 164
+        },
     },
     {
-        word: "PERTS",
-        average: 3.635,
-        wrong: 0
+        "word": "SEAT",
+
+        "restricted": {
+            "average": 4.569,
+            "wrong": 192
+        },
     },
     {
-        word: "CERTS",
-        average: 3.636,
-        wrong: 0
+        "word": "HERL",
+
+        "restricted": {
+            "average": 4.57,
+            "wrong": 162
+        },
     },
     {
-        word: "RANDS",
-        average: 3.638,
-        wrong: 0
+        "word": "SEAR",
+
+        "restricted": {
+            "average": 4.573,
+            "wrong": 185
+        },
     },
     {
-        word: "DIRLS",
-        average: 3.639,
-        wrong: 0
+        "word": "ORLE",
+
+        "restricted": {
+            "average": 4.573,
+            "wrong": 190
+        },
     },
     {
-        word: "LARDS",
-        average: 3.641,
-        wrong: 0
+        "word": "LANE",
+
+        "restricted": {
+            "average": 4.573,
+            "wrong": 198
+        },
     },
     {
-        word: "NARDS",
-        average: 3.643,
-        wrong: 0
+        "word": "TEAS",
+
+        "restricted": {
+            "average": 4.575,
+            "wrong": 187
+        },
     },
     {
-        word: "DALTS",
-        average: 3.643,
-        wrong: 0
+        "word": "ROLE",
+
+        "restricted": {
+            "average": 4.575,
+            "wrong": 195
+        },
     },
     {
-        word: "PERNS",
-        average: 3.644,
-        wrong: 0
+        "word": "ALES",
+
+        "restricted": {
+            "average": 4.576,
+            "wrong": 197
+        },
     },
     {
-        word: "DANTS",
-        average: 3.644,
-        wrong: 0
+        "word": "LOSE",
+
+        "restricted": {
+            "average": 4.577,
+            "wrong": 181
+        },
     },
     {
-        word: "DELTS",
-        average: 3.646,
-        wrong: 0
+        "word": "LORN",
+
+        "restricted": {
+            "average": 4.58,
+            "wrong": 169
+        },
     },
     {
-        word: "CARDS",
-        average: 3.648,
-        wrong: 0
+        "word": "HALE",
+
+        "restricted": {
+            "average": 4.58,
+            "wrong": 192
+        },
     },
     {
-        word: "MERLS",
-        average: 3.649,
-        wrong: 0
+        "word": "KELT",
+
+        "restricted": {
+            "average": 4.589,
+            "wrong": 170
+        },
     },
     {
-        word: "SHRED",
-        average: 3.650,
-        wrong: 0
+        "word": "ARSE",
+
+        "restricted": {
+            "average": 4.589,
+            "wrong": 188
+        },
     },
     {
-        word: "TENDS",
-        average: 3.652,
-        wrong: 0
+        "word": "RASE",
+
+        "restricted": {
+            "average": 4.591,
+            "wrong": 185
+        },
     },
     {
-        word: "HARLS",
-        average: 3.656,
-        wrong: 0
+        "word": "LORE",
+
+        "restricted": {
+            "average": 4.591,
+            "wrong": 197
+        },
     },
     {
-        word: "RENDS",
-        average: 3.657,
-        wrong: 0
+        "word": "SERA",
+
+        "restricted": {
+            "average": 4.592,
+            "wrong": 187
+        },
     },
     {
-        word: "TERMS",
-        average: 3.657,
-        wrong: 0
+        "word": "SANE",
+
+        "restricted": {
+            "average": 4.597,
+            "wrong": 200
+        },
     },
     {
-        word: "HERNS",
-        average: 3.658,
-        wrong: 0
+        "word": "NEAR",
+
+        "restricted": {
+            "average": 4.6,
+            "wrong": 202
+        },
     },
     {
-        word: "HERLS",
-        average: 3.660,
-        wrong: 0
+        "word": "AERO",
+
+        "restricted": {
+            "average": 4.611,
+            "wrong": 217
+        },
     },
     {
-        word: "LERPS",
-        average: 3.662,
-        wrong: 0
+        "word": "TOEA",
+
+        "restricted": {
+            "average": 4.644,
+            "wrong": 231
+        },
     },
     {
-        word: "SHARD",
-        average: 3.663,
-        wrong: 0
+        "word": "ILEA",
+
+        "restricted": {
+            "average": 4.648,
+            "wrong": 226
+        },
     },
     {
-        word: "NERDS",
-        average: 3.665,
-        wrong: 0
+        "word": "ALOE",
+
+        "restricted": {
+            "average": 4.654,
+            "wrong": 236
+        },
     },
     {
-        word: "LENDS",
-        average: 3.670,
-        wrong: 0
+        "word": "OLEA",
+
+        "restricted": {
+            "average": 4.662,
+            "wrong": 234
+        },
     },
     {
-        word: "LEHRS",
-        average: 3.700,
-        wrong: 0
+        "word": "AEON",
+
+        "restricted": {
+            "average": 4.7,
+            "wrong": 256
+        },
     }
 ]

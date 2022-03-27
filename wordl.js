@@ -1,19 +1,9 @@
-
 var word_length = 5;
-var guesses = 6;
+var pairings = [];
 
-var style = window.getComputedStyle(document.documentElement);
-
-const correct_color = style.getPropertyValue('--correct-color');
-const wrong_spots_color = style.getPropertyValue('--wrong-spots-color');
-const incorrect_color = style.getPropertyValue('--incorrect-color');
-const ignore_color = style.getPropertyValue('--ignore-color');
-
-const colors = [incorrect_color, correct_color, wrong_spots_color, ignore_color];
-const clr = {"G": correct_color, "Y": wrong_spots_color, "B": incorrect_color };
+const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y"; 
 
 $(document).ready(function() {
-    pairings = [];
 
     if (localStorage.getItem("word length")) {
         word_length = localStorage.getItem("word length");
@@ -33,13 +23,14 @@ $(document).ready(function() {
     setLength();
     makeTables();
     initialList();
-    $("#word_entered").focus();
 
     $("#refresh").click(function() {
-        // testStartingWords();
         $("#grid").html("");
         initialList();
-        $(".submission").focus();
+    });
+
+    $("#wordlebot").click(function() {
+        testStartingWords();
     });
 
     $("select#num_letters").on('input', function() {
@@ -47,9 +38,16 @@ $(document).ready(function() {
         removeTest();
         makeTables();
         initialList();
-        $("#word_entered").focus();
 
         localStorage.setItem("word length", word_length);
+    });
+
+    $("select#wordbank").on('input', function() {
+        setWordbank();
+        if ($(".tile").length) update();
+        else initialList();
+
+        // localStorage.setItem("word length", word_length);
     });
 
     $("#mode").on('input', function() {
@@ -76,7 +74,6 @@ $(document).ready(function() {
         if (words.includes(val)) {
             $("#word_entered").blur();
             
-            removeTest();
             makeTables(val);
             
             if (word_length == 11) {
@@ -85,29 +82,9 @@ $(document).ready(function() {
         } 
     });
 
-    $(document).on('click', 'button.tile', function() {
-        let color = $(this).css("background-color");
-        let new_color;
-
-        $(this).css("color", "white");
-
-        // if (color == colors[3]) new_color = colors[0];
-        // else if (color == colors[0]) new_color = colors[1];
-        // else if (color == colors[1]) new_color = colors[2];
-        // else {
-        //     new_color = colors[3];
-        //     $(this).css("color", "black");
-        // }
-
-        if (color == incorrect_color) new_color = correct_color;
-        else if (color == correct_color) new_color = wrong_spots_color;
-        else if (color == ignore_color) new_color = incorrect_color;
-        else {
-            new_color = ignore_color;
-            $(this).css("color", "black");
-        }
-
-        $(this).css("background-color", new_color);
+    $(document).on('click', '.tile', function(e) {
+        e.preventDefault();
+        changeTileColor($(this));
     });
 
     $(document).on('click', 'button.filter', function() {
@@ -121,12 +98,20 @@ $(document).ready(function() {
             $(".buttons").remove();
             initialList();
         }
-        else update();
     });
 
     $(document).on('click', 'button.test', function() {
         var val = getWord();
         setupTest(val);
+    });
+
+    $(document).on('click', '.showlist', function() {
+        if ($(this).children().hasClass("visible")) {
+            ($(this).children().removeClass("visible"));
+        } else {
+            $(this).children().addClass("visible");
+        }
+
     });
 });
 
@@ -142,7 +127,7 @@ function makeTables(val, c) {
         var row = "<div class = 'row'>"
         
         for (let i = 0; i < word_length; i++) {
-            row += "<button class = 'tile " + c + "'>" + val[i] + "</button>"
+            row += "<button class = 'B tile " + c + "'>" + val[i] + "</button>"
         }
         
         row += "</div><div class = 'buttons'><button class = 'filter'>Filter list</button>"
@@ -154,12 +139,27 @@ function makeTables(val, c) {
     }
 
     document.getElementById("word_entered").value = "";
+}
 
+function changeTileColor(tile) {
+    let new_color, old_color; 
 
-    var letters = document.getElementsByClassName("tile");
-    for (let i = Math.max(0, letters.length - word_length); i < letters.length; i++) {
-        document.getElementsByClassName("tile")[i].style.backgroundColor = incorrect_color;
+    if (tile[0].classList.contains(INCORRECT)) {
+        old_color = INCORRECT;
+        new_color = CORRECT;
+    } 
+
+    else if (tile[0].classList.contains(CORRECT)) {
+        old_color = CORRECT;
+        new_color = WRONG_SPOT;
     }
+
+    else if (tile[0].classList.contains(WRONG_SPOT)) {
+        old_color = WRONG_SPOT;
+        new_color = INCORRECT;
+    }
+
+    tile[0].classList.replace(old_color, new_color);
 }
 
 function setLength() {
@@ -169,8 +169,47 @@ function setLength() {
     document.getElementById('word_entered').value = "";
     document.getElementById('grid').innerHTML = "";
 
-    common = common_words.filter((element) => {return element.length == word_length});
+    setWordbank();
     words = big_list.filter((element) => {return element.length == word_length; });
+}
+
+function setWordbank() {
+    wordbank = document.getElementById("wordbank").value;
+
+    if (wordbank == 'restricted') {
+        if (word_length == 5) {
+            common = common_words.filter(a => {return a.game == 'official' || a.game == 'quordle'});
+        } else {
+            common = common_words.filter(a => {return a.game != 'unlimited' });
+        }
+    } else {
+        common = common_words.slice();
+    }
+
+    common = common.map(a => a.word);
+    common = common.filter(a => {return a.length == word_length});
+    common = [...new Set(common)];
+    common = common.sort();
+
+    for (let i = 0; i < easy.length; i++) {
+        if (easy[i][wordbank] != null) {
+            easy[i].average = easy[i][wordbank].average;
+            easy[i].wrong = easy[i][wordbank].wrong;
+        } else {
+            easy[i].average = 100;
+            easy[i].wrong = 10000;
+        }
+    }
+
+    for (let i = 0; i < hard.length; i++) {
+        if (hard[i][wordbank] != null) {
+            hard[i].average = hard[i][wordbank].average;
+            hard[i].wrong = hard[i][wordbank].wrong;
+        } else {
+            hard[i].average = 100;
+            hard[i].wrong = 10000;
+        }
+    }
 }
 
 function update(initial) {
@@ -190,13 +229,17 @@ function update(initial) {
         uncommon = true;
     }
 
+    if (!list.length) {
+        finalOptions([], []);
+        return;
+    }
+
     var alphabet = bestLetters(list);
     updateLetterList(alphabet, list.length);
 
     var sorted = sortList(list, alphabet);
     var newlist = words.slice();
     var full_list = sortList(newlist, alphabet, sorted);
-
     full_list = useTop(sorted.map(a => a.word), full_list.map(a => a.word), initial, false);
     // full_list = useTop(sorted.map(a => a.word), reduceList(full_list.map(a => a.word)), initial, false);
 
@@ -205,22 +248,115 @@ function update(initial) {
         t.word === value.word && t.rank === value.rank
         ))
     );
-    
+
     if (uncommon) sorted = [];
+
     updateLists(sorted, full_list);
 
     return full_list;
 }
 
 function filterList(list, letters) {
-    correctLetters(list, letters);
-    wrongSpots(list, letters);
-    wrongLetters(list, letters);
+    let restrictions = determineLetterPositions(letters);
+
+    outer:
+    for (let i = 0; i < list.length; i++) {
+        for (char in restrictions) {
+            let freq = count(list[i], char);
+            if (freq > restrictions[char].max || freq < restrictions[char].min) {
+                list.splice(i, 1);
+                i--;
+                continue outer;
+            }
+
+            let correct_positions = restrictions[char][CORRECT];
+            for (let j = 0; j < correct_positions.length; j++) {
+                if (list[i].charAt(correct_positions[j]) != char) {
+                    list.splice(i, 1);
+                    i--;
+                    continue outer;
+                }
+            }
+
+            let wrong_positions = restrictions[char][WRONG_SPOT];
+            for (let j = 0; j < wrong_positions.length; j++) {
+                if (list[i].charAt(wrong_positions[j]) == char) {
+                    list.splice(i, 1);
+                    i--;
+                    continue outer;
+                }
+            }
+        }
+    }
 
     return list;
 }
 
+function determineLetterPositions(letters) {
+    let letter_positions = determineCorrectLetters({}, letters, letters[0], letters[0].innerHTML, 0, 0);
+    letter_positions = determineIncorrectLetters(letter_positions, letters, letters[0], letters[0].innerHTML, 0, 0, [], []);
+
+    return letter_positions;
+}
+
+function determineCorrectLetters(letter_positions, letters, tile, char, position, index) {
+    if (letter_positions[char] == null) {
+        letter_positions[char] = {[CORRECT]: [], [WRONG_SPOT]: [], min: 0, max: 5};
+    }
+    
+    if (tile.classList.contains(CORRECT)) {
+        if (!letter_positions[char][CORRECT].includes(position)) {
+            letter_positions[char][CORRECT].push(position);
+            letter_positions[char].min++;
+        }
+    }
+    
+    if (index >= letters.length - 1) return letter_positions;
+    else return determineCorrectLetters(letter_positions, letters, letters[index+1], letters[index+1].innerHTML, (index+1)%word_length, index+1);
+}
+
+function determineIncorrectLetters(letter_positions, letters, tile, char, position, index, count, exclude) {
+    if (tile.classList.contains(WRONG_SPOT) || tile.classList.contains(INCORRECT)) {
+        if (!letter_positions[char][WRONG_SPOT].includes(position)) {
+            letter_positions[char][WRONG_SPOT].push(position);
+        }
+
+        if (tile.classList.contains(INCORRECT)) exclude[char] = true;
+    }
+
+    if (tile.classList.contains(WRONG_SPOT) || tile.classList.contains(CORRECT)) {
+        if (count[char]) count[char]++;
+        else count[char] = 1;
+    }
+
+    if (position == word_length-1) {
+        letter_positions = adjustMinAndMax(letter_positions, count, exclude);
+        count = [];
+        exclude = [];
+    }    
+
+    if (index >= letters.length - 1) return letter_positions;
+    else return determineIncorrectLetters(letter_positions, letters, letters[index+1], letters[index+1].innerHTML, (index+1)%word_length, index+1, count, exclude);
+}
+
+function adjustMinAndMax(letter_positions, count, exclude) {
+    Object.keys(count).forEach(function(key) {
+        letter_positions[key].min = Math.max(letter_positions[key].min, count[key]);
+    });
+
+    Object.keys(exclude).forEach(function(key) {
+        if (count[key]) {
+            letter_positions[key].max = Math.min(letter_positions[key].max, count[key]);
+        } else {
+            letter_positions[key].max = 0;
+        }
+    });
+
+    return letter_positions;
+}
+
 function initialList() {
+
     const list_size = 11;
     var easy_guesses = easy.filter(a => a.word.length == word_length).sort((a, b) => a.average >= b.average ? 1 : -1);
 
@@ -249,7 +385,14 @@ function initialList() {
     var fewest_list = "";
     for (let i = 0; i < parseInt(list_size/2)  && i < fewest_wrong.length; i++) {
         let word = "<div class = 'suggestion'>" + fewest_wrong[i].word + ": </div>";
-        let score = "<div class = 'score'>" + (((common.length-fewest_wrong[i].wrong)/common.length)*100).toFixed(2) + "% of words solved.</div>";
+        let percentage;
+        if (fewest_wrong[i].wrong < 1) {
+            percentage = (100 - fewest_wrong[i].wrong*100).toFixed(2);
+        } else {
+            percentage = (((common.length-fewest_wrong[i].wrong)/common.length)*100).toFixed(2);
+        }
+
+        let score = "<div class = 'score'>" + percentage + "% of words solved.</div>";
         fewest_list += "<li>" + word + score + "</li>";
     }
 
@@ -283,19 +426,22 @@ function initialList() {
 
 function updateLists(sorted, full_list) {
     const list_size = 10;
-    var words_left = filterList(full_list.map(a => a.word), document.getElementsByClassName("tile"));
-    var hard_guesses = full_list.filter(a => words_left.includes(a.word));
+    var words_left = filterList(words.slice(), document.getElementsByClassName("tile"));
+    // var hard_guesses = full_list.filter(a => words_left.includes(a.word));
+    var hard_guesses = useTop(sorted.map(a => a.word), words_left, false, false, true);
     var less_likely = hard_guesses.filter(a => !sorted.some(b => b.word == a.word));
 
     var easy_suggestions = "";
     for (let i = 0; i < sorted.length && i < list_size; i++) {
-        let suggestion = "<div class = 'suggestion'>" + full_list[i].word + ":</div> <div class = 'score'> reduces list to " + full_list[i].rank.toFixed(2) + " words.</div>";
+        let info = full_list[i].guesses_left.toFixed(2) + " guesses remaining.";
+        let suggestion = "<div class = 'suggestion'>" + full_list[i].word + ":</div> <div class = 'score'>" + info + "</div>";
         easy_suggestions += "<li>" + suggestion + "</li>";
     }
 
     hard_suggestions = "";
     for (let i = 0; i < sorted.length && i < list_size; i++) {
-        let suggestion = "<div class = 'suggestion'>" + hard_guesses[i].word + ":</div> <div class = 'score'> reduces list to " + hard_guesses[i].rank.toFixed(2) + " words.</div> ";
+        let info = hard_guesses[i].guesses_left.toFixed(2) + " guesses remaining.";
+        let suggestion = "<div class = 'suggestion'>" + hard_guesses[i].word + ":</div> <div class = 'score'>" + info + "</div>";
         hard_suggestions += "<li>" + suggestion + "</li>";
     }
 
@@ -308,7 +454,9 @@ function updateLists(sorted, full_list) {
     const unlikely = hard_guesses.length - sorted.length;
 
     heading.innerHTML = words_left.length + " possible word" + ((words_left.length != 1) ? "s" : "");
-    subheading.innerHTML = sorted.length + " probable answer" + ((sorted.length != 1) ? "s" : "") + ", " + unlikely + " unlikely possibilit" + ((unlikely != 1) ? "ies" : "y") + ".";
+    subheading.innerHTML = "<span class = 'showlist'><div></div>" + sorted.length + " probable answer" + ((sorted.length != 1) ? "s" : "") + "</span>, " 
+                            + "<span class = 'showlist'><div></div>" + unlikely + " unlikely possibilit" + ((unlikely != 1) ? "ies" : "y") + "</span>.";
+    
     normal_list.innerHTML = easy_suggestions;
     hard_list.innerHTML = hard_suggestions;
 
@@ -316,12 +464,36 @@ function updateLists(sorted, full_list) {
     document.getElementsByClassName("best-guesses hard")[0].append(hard_list);
     document.getElementsByClassName("best_options")[0].innerHTML = "these are your best possible guesses:";
 
+    var word_lists = document.getElementsByClassName("showlist");
+    var potential_answers = word_lists[0].getElementsByTagName("div")[0];
+    var technically_words = word_lists[1].getElementsByTagName("div")[0];
+
+    potential_answers.innerHTML = "";
+    for (let i = 0; i < sorted.length; i++) {
+        potential_answers.innerHTML += sorted[i].word + "<br>";
+    }
+    potential_answers.innerHTML = "<p>" + potential_answers.innerHTML + "</p>";
+
+    technically_words.innerHTML = "";
+    for (let i = 0; i < less_likely.length; i++) {
+        technically_words.innerHTML += less_likely[i].word + "<br>";
+    }
+    technically_words.innerHTML = "<p>" + technically_words.innerHTML + "</p>";
+    
     if (sorted.length <= 2) {
         finalOptions(sorted, less_likely);
     }
 }
 
 function finalOptions(sorted, less_likely) {
+    if (!sorted.length && !less_likely.length) {
+        const no_words = "<div id = 'nowords'>it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.</div>"
+
+        document.getElementsByClassName("best_options")[0].innerHTML = "";
+        document.getElementsByClassName("best-guesses normal")[0].getElementsByTagName("ul")[0].innerHTML = no_words;
+        document.getElementsByClassName("best-guesses hard")[0].innerHTML = no_words;
+    }
+
     if (sorted.length) {
         let final_words = "<li class = 'likely'>the word is almost certainly ";
 
@@ -333,7 +505,6 @@ function finalOptions(sorted, less_likely) {
             final_words += "<span class = 'final'>" + sorted[0].word + "</span></li>";
         }
 
-        document.getElementsByClassName("best_options")[0].innerHTML = "";
 
         // normal slide
         document.getElementsByClassName("best-guesses normal")[0].getElementsByTagName("ul")[0].innerHTML = final_words;
@@ -449,59 +620,158 @@ function sortList(list, alphabet, sorted_list) {
     return newranks;
 }
 
-function useTop(filtered, full_list, initial, isBot) {
-    var list_size = filtered.length;
-
-    if (initial) {
-        var check_list = filtered.slice(0, 250);
-        check_list = check_list.concat(full_list.slice(0, 250));
+function useTop(filtered, full_list, initial, isBot, hard_mode) {
+    if (initial || !isBot) {
+        var check_list = filtered;
+        check_list = check_list.concat(full_list.slice(0, 2250));
     } else { 
         var check_list = filtered;
         check_list = check_list.concat(full_list);
+
+        if (!isBot) {
+            check_list = filtered.concat(full_list.slice(0, 2250));
+        }
     }
 
-    var best_words = [];
-    var min = filtered.length;
+    check_list = [...new Set(check_list)]; 
 
-    outer:
-    for (let pos = 0; pos < check_list.length; pos++) {
-        var differences = [];
-        var compare = check_list[pos];
-        var weighted = 0;
+    return calculateBest(filtered, check_list, isBot, hard_mode);
+}
+
+const GUESSES_ALLOWED = 6;
+
+function calculateBest(answers, guesses, isBot, hard_mode) {
+    var best_words = reducesListMost(answers, guesses, isBot);
+    const check_size = 50;
+
+    let guesses_left = GUESSES_ALLOWED - (document.getElementsByClassName("tile").length/word_length);
+
+    for (let i = 0; i < check_size && i < best_words.length; i++) {
+        let remaining = best_words[i].differences;
+        let results = new Array(guesses_left).fill(0);
+        results.push(answers.length);
+
+        Object.keys(remaining).forEach(function(key) {
+            countResults(best_words[i], remaining[key], guesses, results, 0, hard_mode)
+        });
+    }
+
+    best_words.sort((a, b) => a.guesses_left >= b.guesses_left ? 1 : -1);
+
+    return best_words;
+}
+
+function createLetterTiles(word, coloring, letters) {
+    let board = document.getElementsByClassName("tile");
+
+    if (!letters.length) {
+        for (let i = 0; i < board.length; i++) {
+            letters.push(board[i]);
+        }
+    }
+
+    for (let i = 0; i < word.length; i++) {
+        let tile = document.createElement("div");
+        tile.classList.add(coloring.charAt(i));
+        tile.innerHTML = word.charAt(i);
+
+        letters.push(tile);
+    }
+
+    return letters;
+}
+
+function countResults(best, answers, guesses, results, attempt, hard_mode) {
+    if (answers.length <= 2) {
+        if (answers.length == 0) {
+            results[attempt]++;
+            results[results.length-1]--;
+        }  
         
-        for (let i = 0; i < filtered.length; i++) {
-            var s = filtered[i];
-            var diff = getDifference(compare, s);
+        if (answers.length <= 2 && answers.length != 0 && attempt < results.length - 1) {
+            results[attempt+1]++;
+            results[results.length-1]--;
+        }
 
-            if (differences[diff] != null) {
-                differences[diff]++;
-            } else {
-                if (diff == "GGGGG") {
-                    differences[diff] = 0;
-                }
-                
-                else differences[diff] = 1;
+        if (answers.length == 2 && attempt < results.length - 2) {
+            results[attempt+2]++;
+            results[results.length-1]--;
+        } 
+    } else if (attempt <= 3) {
+        let new_guesses = answers.concat(guesses);
+        new_guesses = [...new Set(new_guesses)];
+
+        let best_words = reducesListMost(answers, new_guesses, true);
+        let remaining = best_words[0].differences;
+
+        Object.keys(remaining).forEach(function(key) {
+            countResults(best_words[0], remaining[key], new_guesses, results, attempt+1, hard_mode);
+        });
+    }
+
+    let avg = 0;
+    let sum = 0;
+    for (let i = 0; i < results.length; i++) {
+        sum += results[i];
+        avg += results[i]*(i+1);
+    }
+
+    best.results = results;
+    
+    avg = avg/sum;
+    avg += results.at(-1)*100;
+
+    best.guesses_left = avg;
+}
+
+function reducesListMost(answers, guesses, isBot) {
+    let best_words = [];
+    let list_size = answers.length;
+
+    for (let pos = 0; pos < guesses.length; pos++) {
+        var differences = [];
+        let compare = guesses[pos];
+        let weighted = 0;
+
+        for (let i = 0; i < answers.length; i++) {
+            let s = answers[i];
+            let diff = getDifference(compare, s); 
+
+            if (differences[diff] == null) {
+                differences[diff] = [];
             }
-            let freq = differences[diff];
+
+            if (diff != CORRECT.repeat(word_length)) {
+                differences[diff].push(s);
+            }
+
+            let freq = differences[diff].length;
             
             if (freq > 0) {
                 weighted += (freq/list_size)*freq - ((freq-1)/list_size)*(freq-1);
             }
-            
-            if (weighted > min && isBot) continue outer;
         }
 
-        min = Math.min(weighted, min);
+        let threes = 0;
+        Object.keys(differences).forEach(function(key) {
+            if (differences[key].length == 0) {
+                threes += 1/answers.length;
+            } else {
+                threes += 1/answers.length*1/differences[key].length;
+            }
+        });
 
-        best_words.push({word: compare, rank: weighted});
-        
-        if (weighted == 1 && isBot) {
-            if (best_words.length >= filtered.length) break;
-        }
+        threes = Math.min(1, threes);
+        let adjusted = (1-threes)*weighted;
+
+        best_words.push({word: compare, rank: weighted, threes: threes, adjusted: adjusted, differences: differences, results: null, guesses_left: 100});
+        if (weighted < 1 && isBot) break;
+        if (weighted == 1 && pos >= answers.length && isBot) break;
     }
 
-    best_words.sort((a, b) => a.rank >= b.rank ? 1 : -1);
-
+    // best_words.sort((a, b) => a.rank >= b.rank ? 1 : -1);
+    best_words.sort((a, b) => a.adjusted >= b.adjusted ? 1 : -1);
+    
     return best_words;
 }
 
@@ -516,14 +786,14 @@ function getDifference(word1, word2) {
 
     for (let j = 0; j < word_length; j++) {
         if (word1.charAt(j) == word2.charAt(j)) {
-            diff += "G";
+            diff += CORRECT;
         } else if (!word2.includes(word1.charAt(j))) {
-            diff += "B";
+            diff += INCORRECT;
         } else {
             let c = word1.charAt(j);
 
             if (count(word1, c) <= count(word2, c)) {
-                diff += "Y";
+                diff += WRONG_SPOT;
             } else {
                 diff += compareDoubles(word1, word2, c, j);
             }
@@ -556,13 +826,13 @@ function compareDoubles(a, b, char, pos) {
         }
 
         if (b_list.length == 0) {
-            return "B";
+            return INCORRECT;
         }
     }
 
     for (let i = 0; i < a_list.length; i++) {
         if (pos == a_list[i])  {
-            return "Y";
+            return WRONG_SPOT;
         }
 
         a_list.splice(i, 1);
@@ -572,7 +842,7 @@ function compareDoubles(a, b, char, pos) {
         if (b_list.length == 0) return "B";
     }
 
-    return "B";
+    return INCORRECT;
 }
 
 function getSpots(string, char) {
@@ -593,142 +863,4 @@ function count(string, char) {
     }
 
     return count;
-}
-
-function wrongLetters(list, all_letters) {
-    var wrong_letters = [];
-    var doubles = [];
-    var wrong_spots = [];
-
-    for (let i = 0; i < all_letters.length; i++) {
-        var hash = parseInt(i/word_length) + " " + all_letters[i].innerHTML;
-        
-        if (all_letters[i].style.backgroundColor == wrong_spots_color || all_letters[i].style.backgroundColor == correct_color) {
-            if (doubles[hash] == null) {
-                doubles[hash] = 1;
-            } else {
-                doubles[hash]++;
-            }
-        }
-    }
-    
-    for (let i = 0; i < all_letters.length; i++) {
-        var hash = parseInt(i/word_length) + " " + all_letters[i].innerHTML;
-
-        if (all_letters[i].style.backgroundColor == incorrect_color) {
-            if (doubles[hash] != null) {
-                wrong_spots.push({char: all_letters[i].innerHTML, index: i%word_length, count: doubles[hash]});
-            } else {   
-                wrong_letters.push(all_letters[i].innerHTML);
-            }
-        }
-    }
-
-    outer:
-    for (let i = 0; i < list.length; i++) {
-        for (let j = 0; j < wrong_spots.length; j++) {
-            let pos = wrong_spots[j].index;
-            let c = wrong_spots[j].char;
-
-            if (list[i].charAt(pos) == c || count(list[i], c) > wrong_spots[j].count) {
-                list.splice(i, 1);
-                i--;
-                continue outer;
-            }
-        }
-
-        if (wrong_letters.some(r => list[i].includes(r))) {
-            list.splice(i, 1);
-            i--;
-        }
-    }
-
-    return wrong_letters;
-}
-
-function wrongSpots(list, all_letters) {
-    var wrong_spots = [];
-    var char_repeating = [];
-    var repeated = [];
-
-    for (let i = 0; i < all_letters.length; i++) {
-        if (all_letters[i].style.backgroundColor == wrong_spots_color) {
-            wrong_spots.push({char: all_letters[i].innerHTML, index: i%word_length});
-
-            if (repeated[all_letters[i].innerHTML]) {
-                repeated[all_letters[i].innerHTML]++;
-            } else {
-                repeated[all_letters[i].innerHTML] = 1;
-            }      
-        }
-
-        else if (all_letters[i].style.backgroundColor == correct_color) {
-            if (repeated[all_letters[i].innerHTML]) {
-                repeated[all_letters[i].innerHTML]++;
-            } else {
-                repeated[all_letters[i].innerHTML] = 1;
-            }
-        }
-
-        if (i % word_length == word_length - 1) {
-            Object.keys(repeated).forEach(function(r) {
-                if (repeated[r] > char_repeating[r] || char_repeating[r] == null) {
-                    char_repeating[r] = repeated[r];
-                }
-            });
-            repeated = [];
-        }
-    }
-
-    for (let i = 0; i < list.length; i++) {
-        for (let j = 0; j < wrong_spots.length; j++) {
-            let pos = wrong_spots[j].index;
-            let c = wrong_spots[j].char;
-
-            if (count(list[i], c) < char_repeating[c]) {
-                list.splice(i, 1);
-                i--;
-                break;
-            }
-
-            if (list[i].charAt(pos) == c) {
-                list.splice(i, 1);
-                i--;
-                break;
-            }
-        }
-    }
-
-    return list;
-}
-
-function getCorrectLetters(all_letters) {
-    var correct_letters = [];
-
-    for (let i = 0; i < all_letters.length; i++) {
-        if (all_letters[i].style.backgroundColor == correct_color) {
-            correct_letters.push({char: all_letters[i].innerHTML, index: i%word_length});
-        }
-    }    
-
-    return correct_letters;
-}
-
-function correctLetters(list, all_letters) {
-    var correct_letters = getCorrectLetters(all_letters);
-
-    for (let i = 0; i < list.length; i++) {
-        for (let j = 0; j < correct_letters.length; j++) {
-            let pos = correct_letters[j].index;
-            let c = correct_letters[j].char;
-
-            if (list[i].charAt(pos) != c) {
-                list.splice(i, 1);
-                i--;
-                break;
-            }
-        }
-    }
-
-    return list;
 }

@@ -1,12 +1,13 @@
 :root {
     --correct-color:rgb(83, 141, 78);
-    --wrong-spots-color:rgb(181, 159, 59);
+    --wrong-spot-color:rgb(181, 159, 59);
     --incorrect-color:rgb(58, 58, 60);
     --ignore-color:rgb(245, 245, 245);
     --input-color: gray;
     --off-white: #FCF7F8;
     --background: #D0F4EA;
     --bar-color: #3891A6;
+    --words-visibility: "transparent";
 }
 
 html {
@@ -68,7 +69,6 @@ body {
 
 .tile {
     flex: 1 1 0px;
-    aspect-ratio: 1;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
@@ -76,7 +76,6 @@ body {
     border: none;
     touch-action: manipulation;
     color: white;
-    background-color: var(--incorrect-color);
     margin: 0;
     padding: 0;
     display: flex;
@@ -86,12 +85,13 @@ body {
  
 .tile.normal {
     max-width: 3.5rem;
-    /* margin: 1px; */
+    height: 3.5rem;
 }
 
 .tile.testing {
     font-size: 1rem;
     max-width: 2rem;
+    height: 2rem;
     margin: 0;
 }
 
@@ -103,21 +103,20 @@ body {
     column-gap: 1rem;
 }
 
-button:not(.tile) {
+button {
     border: none;
     height: 2rem;
     font-size: 1rem;
     border-radius: .5rem;
     background: var(--incorrect-color);
     color: var(--off-white);
-    /* border: solid 1px var(--background); */
 }
 
-button:not(.tile):hover, select:hover {
+button:hover, select:hover {
     filter: brightness(90%);
 }
 
-button:hover {
+button:hover, .tile:hover {
     cursor: pointer;
 }
 
@@ -128,9 +127,17 @@ button:hover {
     color: white;
     height: 2rem;
     font-size: 1.2rem;
-    width: min(95%, 10rem);
+    width: min(95%, 12rem);
     text-align: center;
     margin: .5rem;
+}
+
+#word_entered::placeholder {
+    color: var(--off-white);
+}
+
+#word_entered:focus::placeholder {
+    color: transparent;
 }
 
 *:focus {
@@ -143,6 +150,7 @@ button:hover {
     margin: 1rem;
     text-align: center;
     flex-basis: 100%;
+    font-variant-caps: small-caps;
 }
 
 #header h1, h3 {
@@ -151,6 +159,9 @@ button:hover {
     min-height: 1rem;
 }
 
+select {
+    text-align: center;
+}
 
 /* ANSWERS */
 /* CONTAINS ALL INFO SHOWN IN SUGGESTION BOX */
@@ -170,11 +181,9 @@ button:hover {
 
 #refresh {
     position: absolute;
-    top: .25rem;
-    left: .25rem;
+    top: .5rem;
+    left: .5rem;
     z-index: 100;
-    background: var(--background);
-    color: rgb(19, 19, 18);
 }
 
 h2.num_options {
@@ -188,6 +197,48 @@ h3.by_likelihood {
     text-align: center;
 }
 
+.showlist {
+    position: relative;
+    text-decoration: underline;
+}
+
+.showlist:hover {
+    cursor: pointer;
+}
+
+.showlist div {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    font-size: .75rem;
+    top: 1rem;
+    overflow-y: scroll;
+    max-height: 350px;
+}
+
+.showlist div:not(.showlist div.visible) {
+    background: transparent;
+    border: none;
+    z-index: -1;
+}
+
+.visible {
+    background: var(--off-white);
+    color: var(--incorrect-color);
+    border: 1px solid black;
+    z-index: 100;
+}
+
+.visible p {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.label {
+    display: inline;
+    vertical-align: middle;
+}
+
 #mode {
     margin: .75rem;
 }
@@ -196,6 +247,7 @@ h3.best_options {
     font-size: .875rem;
     text-align: center;
     margin-bottom: .25rem;
+    text-transform: uppercase;
 }
 
 #answers {
@@ -287,6 +339,11 @@ li:not(.likely, .others) {
     display: block;
 }
 
+#nowords {
+    margin: 1rem;
+    font-style: italic;
+}
+
 .suggestion {
     display: inline;
     left: 1rem;
@@ -361,6 +418,13 @@ input[type=checkbox] {
     display: inline-block;
 }
 
+#cancel, .close {
+    position: absolute;
+    top: .25rem;
+    left: .25rem;
+    background: var(--background);
+    color: var(--incorrect-color);
+}
 
 .current {
     margin: auto;
@@ -373,7 +437,7 @@ input[type=checkbox] {
 
 .average {
     position: absolute;
-    top: 14rem;
+    top: 12rem;
     color: var(--off-white);
 }
 
@@ -404,7 +468,7 @@ input[type=checkbox] {
     position: absolute;
     text-align: center;
     width: 85%;
-    margin-top: 4rem;
+    margin-top: 1rem;
     color: var(--off-white);
 }
 
@@ -427,6 +491,7 @@ input[type=checkbox] {
 #letter-info h2 {
     text-align: center;
     margin: 0.75rem;
+    font-variant-caps: small-caps;
 }
 
 .best-letters {
@@ -464,4 +529,82 @@ input[type=checkbox] {
 .frequency {
     font-size: .9rem;
     font-style: italic;
+}
+
+/* sliders */
+.switch {
+    position: relative;
+    display: inline-block;
+    height: 1.375rem;
+    aspect-ratio: 1.765;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 76.5%;
+  aspect-ratio: 1;
+  left: 6.67%;
+  bottom: 13%;
+  background-color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 100vh;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* G --> CORRECT */
+/* Y --> WRONG SPOT */
+/* B --> INCORRECT */
+.G {
+    background: var(--correct-color);
+}
+
+.B {
+    background: var(--incorrect-color);
+}
+
+.Y {
+    background: var(--wrong-spot-color);
 }

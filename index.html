@@ -16,8 +16,9 @@
     <script type = "text/javascript" src = "words.js"></script>
     <script type = "text/javascript" src = "rankings.js"></script>
     <script type = "text/javascript" src = "commonwords.js"></script>
-    <!-- <script type = "text/javascript" src = "officialanswers.js"></script> -->
-	<title>Wordl Calcl</title>
+    <script type = "text/javascript" src = "officialanswers.js"></script>
+    <script type = "text/javascript" src = "colorings.js"></script>
+	<title>WordleBot</title>
 </head>
 <body>
     <div id = "container">
@@ -38,24 +39,35 @@
                 </select>
                 letter words
             </h3>
+                <select name="wordbank" id = "wordbank">
+                    <option value="restricted" selected = "selected">Most Likely Answers</option> 
+                    <option value="complete">Wordle + all variants</option>
+                </select>
+                <button id = "wordlebot">Run Bot</button>
         </div>
         
         <div id = "guesses">
-            <input type="text" autocomplete="off" id="word_entered" name="word_entered" 
+            <button id="refresh"><i class="fa fa-refresh"></i></button>
+            <input type="text" autocomplete="off" id="word_entered" name="word_entered" placeholder="enter your guess here"
             input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
             
             <div id = "grid"></div>
         </div>
         
         <div id = "suggestions">
-            <button id="refresh"><i class="fa fa-refresh"></i></button>
         
             <h2 class = 'num_options'></h2>
             <h3 class = 'by_likelihood'></h3> 
             
-            <input type="checkbox" id="mode" name="mode">
-            <label for="mode">Hard Mode</label>
-            
+            <!-- <input type="checkbox" id="mode" name="mode">
+            <label for="mode">Hard Mode</label> -->
+            <div class = "label">Hard Mode: </div>
+            <label class="switch"> 
+                <input type="checkbox" id = "mode">
+                <span class="slider round"></span>
+            </label>
+
+
             <h3 class = 'best_options'></h3>
 
             <div id = "answers">
