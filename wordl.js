@@ -2,7 +2,7 @@ var word_length = 5;
 var pairings = [];
 
 const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y"; 
-const NORMAL = 0, HARD = 1;
+const NORMAL = 0, HARD = 1, BOTH = 2;
 const NO_WORDS = "<div id = 'nowords'>it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.</div>"
 const STARTING_WORDS = "these are your best possible starting words:";
 const BEST_GUESSES = "these are your best possible guesses:";
@@ -652,7 +652,7 @@ function calculateGuessList(answers, guesses, isBot, difficulty) {
             countResults(best_words[i], remaining[key], guesses, results, 0, difficulty, key)
         });
 
-        best_words[i].wrong = best_words[i].results.at(-1)/answers.length;
+        best_words[i].wrong = best_words[i].results[results.length - 1]/answers.length;
     }
 
     best_words.sort((a, b) => a.wrong >= b.wrong ? 1 : -1);
