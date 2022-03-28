@@ -12,6 +12,8 @@ function reduceList(list) {
 }
 
 function findStart(index, list, key) {
+    if (index >= list.length) return index;
+
     if (seconds[list[index]] != null) {
         if (seconds[list[index]][key] != null) {
             return findStart(index+1, list, key);
@@ -21,32 +23,31 @@ function findStart(index, list, key) {
     return index;
 }
 
+function getStartingWords(difficulty) {
+    let words;
+    
+    if (isHardMode(difficulty)) words = hard;
+    else words = easy;
+
+    return words.sort((a, b) => a.average >= b.average ? 1 : -1).map(a => a.word).filter(a => a.length == word_length);
+}
+
 function testStartingWords() {
     console.log("testing");
-    // var check_list = reducesListMost(common.slice(), reduceList(words.slice()), true);
-
-    var check_list = easy;
-    // var check_list = hard;
-    check_list = check_list.sort((a, b) => a.average >= b.average ? 1 : -1);
-    // check_list = check_list.sort((a, b) => a.wrong >= b.wrong ? 1 : -1);
-    check_list = check_list.map(a => a.word);
-    check_list = check_list.filter(a => a.length == word_length);
+    const difficulty = Number(document.getElementById("mode").checked);
+    const list_type = document.getElementById("wordbank").value;
     
+    let check_list = getStartingWords(difficulty);
     console.log(check_list);
 
-
-    // var hard_mode = true;
-    var hard_mode = false;
-
-    const list_type = document.getElementById("wordbank").value;
     const diff = INCORRECT.repeat(word_length);
-    const hash_key = diff + "-" + list_type + "-" + hard_mode;
+    const hash_key = diff + "-" + list_type + "-" + difficulty;
 
     let i = findStart(0, check_list, hash_key);
     let test_size = check_list.length;
     let current = -1;
 
-    if (hard_mode) newlist = hard.slice();
+    if (isHardMode(difficulty)) newlist = hard.slice();
     else newlist = easy.slice();
 
     var iv = setInterval(function() {
@@ -54,7 +55,7 @@ function testStartingWords() {
             current = averages.length;
 
             makeTables(check_list[i]);
-            setupTest(check_list[i]);
+            setupTest(check_list[i], difficulty);
 
             if (document.getElementById("summary")) {
                 document.getElementById("summary").remove();
@@ -64,12 +65,11 @@ function testStartingWords() {
                 document.getElementById("test-settings").remove();
             }
             
-            let average = runBot(check_list[i], hard_mode, list_type);
-            
+            runBot(check_list[i], difficulty, list_type);
             i = findStart(i+1, check_list, hash_key);
         }
         
-        if (i > test_size) {
+        if (i >= test_size) {
             clearInterval(iv);
         }
     }, 1);
@@ -95,11 +95,7 @@ function removeTest() {
     document.getElementById("word_entered").disabled = false;
 }
 
-function setupTest(word) {
-    if (seconds[word] == null) {
-        seconds[word] = {};
-    }
-
+function setupTest(word, difficulty) {
     if (document.getElementById("results")) {
         document.getElementById("results").remove();
     } 
@@ -165,42 +161,42 @@ function setupTest(word) {
     });
 
     document.getElementsByClassName("bot")[0].addEventListener("click", function() {
-        hard_mode = document.getElementById("hard-mode").checked;
+        difficulty = Number(document.getElementById("hard-mode").checked);
+        console.log(difficulty);
         document.getElementById("test-settings").remove();
 
         let list_type = document.getElementById("wordbank").value;
-        runBot(word, hard_mode, list_type);
+        runBot(word, difficulty, list_type);
     });
 }
 
-function runBot(guess, hard_mode, list_type) {
+function getTestAnswers(test_size, random_answers) {
+    if (test_size == common.length) return common.slice();
+    if (test_size == random_answers.length) return random_answers;
+    
+    let index = Math.round(Math.random()*(common.length-1));
+    if (!random_answers.includes(common[index])) random_answers.push(common[index]);
+    return getTestAnswers(test_size, random_answers);
+}
+
+function runBot(guess, difficulty, list_type) {
     const startTime = performance.now();
     const test_size = common.length;
     // const test_size = 300;
 
-    var sum = 0;
-    var count = 0;
-    var missed = [];
-    var scores = new Array(7).fill(0);
-    var sample = common.slice();
-
-    // set the answers in random order if you're not testing the whole list
-    if (test_size < common.length) {
-        sample = [];
-        for (let i = 0; i < test_size; i++) {
-            let index = Math.round(Math.random()*(common.length-1));
-            if (!sample.includes(common[index])) sample.push(common[index]);
-            else i--;
-        }
-    }
+    let sum = 0;
+    let count = 0;
+    let missed = [];
+    let scores = new Array(7).fill(0);
+    let testing_sample = getTestAnswers(test_size, []);
 
     var iv = setInterval(function() {
         document.getElementById("grid").innerHTML = "";
 
-        let n = wordleBot(guess, sample[count], hard_mode, list_type);
+        let n = wordleBot(guess, testing_sample[count], difficulty, list_type);
         if (n == 7) {
             // clearInterval(iv);
-            missed.push(sample[count]);
+            missed.push(testing_sample[count]);
         }
 
         sum += n;
@@ -263,17 +259,15 @@ function runBot(guess, hard_mode, list_type) {
             // averages.sort((a, b) => a.wrong >= b.wrong ? 1 : -1);
 
             let index = newlist.map(function(e) { return e.word; }).indexOf(guess);
-            let wordbank = document.getElementById("wordbank").value;
+            // let wordbank = document.getElementById("wordbank").value;
             data = {average: average, wrong: wrong};
 
             if (index == -1) {
                 newlist.push({word: guess, average: null, wrong: null});
                 index = newlist.length - 1;
-                // newlist.at(-1)[wordbank] = data;
             } 
-            // else {
+            
             newlist[index][wordbank] = data;
-            // }        
             console.log(newlist);
 
             const endTime = performance.now();   
@@ -285,7 +279,7 @@ function runBot(guess, hard_mode, list_type) {
     }, 1);
 }
 
-function wordleBot(guess, answer, hard_mode, list_type) {
+function wordleBot(guess, answer, difficulty, list_type) {
     var attempts = 1;
 
     while (attempts <= 6) {
@@ -300,7 +294,7 @@ function wordleBot(guess, answer, hard_mode, list_type) {
         var pos = 0;
         
         for (let i = Math.max(0, letters.length - word_length); i < letters.length; i++) {
-            document.getElementsByClassName("tile")[i].classList.replace(INCORRECT, diff[pos]);
+            letters[i].classList.replace(INCORRECT, diff[pos]);
             pos++;
         }
         
@@ -311,76 +305,20 @@ function wordleBot(guess, answer, hard_mode, list_type) {
         
         attempts++;
         
-        if (attempts == 2) {
-            var hash_key = diff + "-" + list_type + "-" + hard_mode;
-            if (seconds[guess][hash_key] != null) {
-                guess = seconds[guess][hash_key];
-                continue;
-            }
-        }
-        
         var letters = document.getElementsByClassName("tile");
         var list  = filterList(common.slice(), letters);
         var full_list = words.slice();
-
-        if (hard_mode) {
+        if (isHardMode(difficulty)) {
             full_list = filterList(full_list, letters);
         } 
-        else {
-            if (list.length > 10) { 
-                var wrong_letters = getWrongLetters(letters);
-                full_list = removeWorthless(full_list, wrong_letters);
-            } 
-        }
 
-        const max_size = 3000000
-        if (list.length * full_list.length > max_size) {
-            let small_size = max_size/full_list.length;
-            let big_size = max_size/list.length;
-
-            var alphabet = bestLetters(list);
-            
-            list = sortList(list, alphabet);
-            list = list.slice(0, small_size);
-            list = list.map(a => a.word);
-            
-            full_list = sortList(full_list, alphabet, list);
-            full_list = full_list.slice(0, big_size);
-            full_list = full_list.map(a => a.word);
-        }
-
-        full_list = useTop(list, full_list, false, true, hard_mode);
+        full_list = determineBestGuesses(list, full_list, difficulty, true);
         let secondguess = full_list[0].word;  
-        
-        if (attempts == 2) {
-            if (seconds[guess][hash_key] == null) {
-                seconds[guess][hash_key] = secondguess;
-            }
-        }
 
         guess = secondguess;
     }
 
     return attempts;
-}
-
-function removeWorthless(list, wrong_letters) {
-    if (!list.length) return [];
-
-    outer:
-    for (let i = 0; i < list.length; i++) {
-        var word = list[i];
-
-        for (let j = 0; j < wrong_letters.length; j++) {
-            if (list[i].includes(wrong_letters[j])) {
-                list.splice(i, 1);
-                i--;
-                continue outer;
-            }
-        }
-    }
-
-    return list;
 }
 
 function getWrongLetters(all_letters) {
