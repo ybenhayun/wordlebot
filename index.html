@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://css.gg/bot.css' rel='stylesheet'>
 	<link rel = "stylesheet" type = "text/css" href = "wordl.css">
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
@@ -24,7 +25,12 @@
     <div id = "container">
         
         <div id="header">
-            <h1>Wordle Calcle</h1>
+            <div id = "top">
+                <button id="refresh"><i class="fa fa-refresh"></i></button>
+                <h1>Wordle Calcle</h1>
+                <button class = 'test'><i class="gg-bot"></i></button>
+            </div>
+            
             <h3>
                 currently solving 
                 <select name="num_letters" id = "num_letters">
@@ -39,19 +45,22 @@
                 </select>
                 letter words
             </h3>
+            <h3>
+                Wordbank: 
                 <select name="wordbank" id = "wordbank">
                     <option value="restricted" selected = "selected">Most Likely Answers</option> 
                     <option value="complete">Wordle + all variants</option>
                 </select>
-                <button id = "wordlebot">Run Bot</button>
+            </h3>
+                <!-- <button id = "wordlebot">Run Bot</button> -->
         </div>
         
         <div id = "guesses">
-            <button id="refresh"><i class="fa fa-refresh"></i></button>
             <input type="text" autocomplete="off" id="word_entered" name="word_entered" placeholder="enter your guess here"
-            input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter' >
+            input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()' type = 'letter'>
             
             <div id = "grid"></div>
+            <div id = "calculate"></div>
         </div>
         
         <div id = "suggestions">

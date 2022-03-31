@@ -4551,6 +4551,10 @@ const hard =
             "average": 3.5125215889464596,
             "wrong": 0
         },
+        "complete": {
+            "average": 3.876494804940208,
+            "wrong": 0.016075279356988825
+        }
     },
     {
         "word": "LAIRED",

@@ -45,6 +45,7 @@ body {
 /* GUESS AND ALL SUB DIVS */
 /* CONATINS ALL INFO ON WORDS ENTERED & PATTERNS */
 #guesses {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,9 +75,10 @@ body {
     text-align: center;
     border-radius: 0;
     border: none;
-    touch-action: manipulation;
     color: white;
     margin: 0;
+    margin-right: 1px;
+    margin-bottom: 1px;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -95,7 +97,7 @@ body {
     margin: 0;
 }
 
-.buttons {
+#calculate {
     margin-top: .5rem;
     margin-bottom: .5rem;
     display: flex;
@@ -104,15 +106,29 @@ body {
 }
 
 button {
-    border: none;
     height: 2rem;
-    font-size: 1rem;
-    border-radius: .5rem;
-    background: var(--incorrect-color);
-    color: var(--off-white);
+    font-size: .875rem;
+    border-radius: 0.25rem;
+    background: var(--off-white);
+    color: var(--incorrect-color);
+    border: 2px solid var(--incorrect-color);
 }
 
-button:hover, select:hover {
+#refresh {
+    position: absolute;
+    top: 1.25rem;
+    left: .5rem;
+    z-index: 100;
+}
+
+.test {
+    position: absolute;
+    top: 1.25rem;
+    right: .5rem;
+    z-index: 100;
+}
+
+button:not(.tile):hover, select:hover {
     filter: brightness(90%);
 }
 
@@ -177,13 +193,6 @@ select {
     background: #FFC2B4;
     border: solid 3px black;
     border-radius: .75rem;
-}
-
-#refresh {
-    position: absolute;
-    top: .5rem;
-    left: .5rem;
-    z-index: 100;
 }
 
 h2.num_options {
@@ -408,6 +417,11 @@ li:not(.likely, .others) {
 .info {
     padding: .5rem;
     text-align: center;
+}
+
+#testword {
+    text-align: center;
+    width:7rem;
 }
 
 label {
