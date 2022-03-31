@@ -43,7 +43,6 @@ $(document).ready(function() {
 
     $("#num_letters").on('input', function() {
         setLength();
-        removeTest();
         makeTables();
         update();
 
@@ -166,7 +165,7 @@ function setLength() {
     document.getElementById('word_entered').setAttribute('maxlength', word_length); 
     document.getElementById('word_entered').value = "";
     document.getElementById('grid').innerHTML = "";
-    document.getElementsByTagName('calculate').innerHTML = "";
+    document.getElementById('calculate').innerHTML = "";
 
     setWordbank();
     words = big_list.filter((a) =>  a.length == word_length);
@@ -366,10 +365,11 @@ function setBestGuesses(best_guesses, difficulty) {
     let hash = makeHash(wordbank, difficulty, diff)
 
     seconds[word][hash] = best_guesses.slice(0, LIST_SIZE);
+    console.log(seconds);
 }
 
 function numberOfGuessesSoFar(number) {
-    return parseInt(document.getElementsByClassName("tile").length/5) == number;
+    return document.getElementsByClassName("tile").length/word_length == number;
 }
 
 function writeBestGuessList(guesses, list_length) {
@@ -624,14 +624,12 @@ function getBestGuesses(answer_list, guess_list, all_possible_words, difficulty)
 
     if (!isDifficulty(HARD, difficulty) && !best_guesses.normal) {
         best_guesses.normal = calculateGuessList(answer_list, guess_list, initial_guesses.slice(0, CHECK_SIZE));
-        best_guesses.normal = sortGroupsByAverage(best_guesses.normal).slice(0, LIST_SIZE);
-        setBestGuesses(best_guesses.normal, NORMAL);
+        if (numberOfGuessesSoFar(1)) setBestGuesses(best_guesses.normal, NORMAL);
     }
 
     if (!best_guesses.hard && !isDifficulty(NORMAL, difficulty)) {
         best_guesses.hard = calculateGuessList(answer_list, all_possible_words, initial_hard_guesses.slice(0, CHECK_SIZE), HARD);
-        best_guesses.hard = sortGroupsByAverage(best_guesses.hard).slice(0, LIST_SIZE);  
-        setBestGuesses(best_guesses.hard, HARD);
+        if (numberOfGuessesSoFar(1)) setBestGuesses(best_guesses.hard, HARD);
     } 
     
     if (isDifficulty(HARD, difficulty)) return best_guesses.hard;
@@ -675,29 +673,21 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
             break;
         }
     }
-    best_words.sort((a, b) => a.wrong >= b.wrong ? 1 : -1);
-    return best_words.map(a => Object.assign( {}, {word: a.word, average: a.average, wrong: a.wrong}));
+
+    sortGroupsByAverage(best_words);
+    return best_words.map(a => Object.assign({}, {word: a.word, average: a.average, wrong: a.wrong})).slice(0, LIST_SIZE);
 }
 
 function sortGroupsByAverage(guesses) {
-    let best = [];
-
-    for (let i = 0; i < guesses.length; i++) {
-        let wrong = guesses[i].wrong;
-        if (best[wrong] == null) {
-            best[wrong] = [];
-        }
-
-        best[wrong].push(guesses[i]);
-    }
-
-    let final = [];
-    Object.keys(best).forEach(function(key) {
-        let subgroup = best[key].sort((a, b) => a.average >= b.average ? 1 : -1);
-        final = final.concat(subgroup)
+    guesses.sort(function(a,b) {
+        if(a.wrong > b.wrong) {return  1;}
+        if(a.wrong < b.wrong) {return -1;}
+        if(a.average > b.average) {return  1;}
+        if(a.average < b.average) {return -1;}
+        return 0;
     });
 
-    return final;
+    return guesses;
 }
 
 function createLetterTiles(word, coloring) {

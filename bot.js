@@ -259,6 +259,7 @@ function runBot(guess, difficulty) {
     let scores = new Array(7).fill(0);
     let testing_sample = getTestAnswers(test_size, []);
 
+
     let iv = setInterval(function() {
         document.getElementById("grid").innerHTML = "";
         let points = wordleBot(guess, testing_sample[count], difficulty);
@@ -334,9 +335,10 @@ function wordleBot(guess, answer, difficulty) {
         
         attempts++;
 
-        let list  = filterList(common.slice(), letters);
+        let list = filterList(common.slice(), letters);
         let all_possible_words = filterList(words.slice(), letters);
         final_guesses = getBestGuesses(list, words.slice(), all_possible_words, difficulty);
+
         guess = final_guesses[0].word;  
     }
 
