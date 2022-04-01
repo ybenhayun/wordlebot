@@ -46,8 +46,8 @@ function testStartingWords() {
     let test_size = check_list.length;
     let current = -1;
 
-    if (isDifficulty(HARD, difficulty)) newlist = hard.slice();
-    else newlist = easy.slice();
+    if (isDifficulty(HARD, difficulty)) newlist = hard;
+    else newlist = easy;
 
     let iv = setInterval(function() {
         if (averages.length > current) {
@@ -250,8 +250,8 @@ function showMissedWords(words_missed) {
 
 function runBot(guess, difficulty) {
     const startTime = performance.now();
-    const test_size = common.length;
-    // const test_size = 300;
+    // const test_size = common.length;
+    const test_size = 300;
 
     let sum = 0;
     let count = 0;
@@ -282,7 +282,7 @@ function runBot(guess, difficulty) {
             let wrong = missed.length/common.length;
             
             showResults(guess, test_size - missed.length, test_size, average.toFixed(3), missed);
-            updateWordData(guess, average, wrong);
+            updateWordData(guess, average, wrong, difficulty);
             printData(newlist, guess, average, (performance.now() - startTime)/1000);
             
             pairings = [];
@@ -291,15 +291,20 @@ function runBot(guess, difficulty) {
     }, 1);
 }
 
-function updateWordData(guess, average, wrong) {
+function updateWordData(guess, average, wrong, difficulty) {
+    if (!newlist.length) {
+        if (isDifficulty(HARD, difficulty)) newlist = hard;
+        else newlist = easy;
+    }
+
     averages.push({word: guess, average: average, wrong: wrong});
     averages.sort((a, b) => a.average >= b.average ? 1 : -1);
 
-    let index = newlist.map(function(e) { return e.word; }).indexOf(guess);
+    let index = newlist.map(a => a.word).indexOf(guess);
     let data = {average: average, wrong: wrong};
 
     if (index == -1) {
-        newlist.push({word: guess, average: null, wrong: null});
+        newlist.push({word: guess});
         index = newlist.length - 1;
     } 
             
@@ -307,7 +312,7 @@ function updateWordData(guess, average, wrong) {
 }
 
 function printData(all_words, guess, average, time) {
-    console.log(all_words);
+    console.log(all_words.map(a => Object.assign({}, {word: a.word, restricted: a.restricted, complete: a.complete})));
     console.log(guess + " --> " + average + " --> " + time + " seconds");
     console.log(averages);
     console.log(seconds);

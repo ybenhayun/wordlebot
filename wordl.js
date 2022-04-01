@@ -347,7 +347,7 @@ function guessesArePrecomputed(difficulty) {
 
         if (seconds[word] != null) {
             if (seconds[word][hash] != null) {
-                return seconds[word][hash];
+                return JSON.parse(seconds[word][hash]);
             }
         } else seconds[word] = {};
     }
@@ -364,7 +364,7 @@ function setBestGuesses(best_guesses, difficulty) {
     let word = getWord(1);
     let hash = makeHash(wordbank, difficulty, diff)
 
-    seconds[word][hash] = best_guesses.slice(0, LIST_SIZE);
+    seconds[word][hash] = JSON.stringify(best_guesses.slice(0, LIST_SIZE));
     console.log(seconds);
 }
 
@@ -552,8 +552,7 @@ function sortList(list, alphabet, sorted_list) {
     }
         
     newranks.sort((a, b) => (a.rank <= b.rank) ? 1 : -1);
-
-    return newranks;
+    return newranks.map(a => a.word);
 }
 
 function reduceListSize(guesses, answers) {
@@ -562,8 +561,7 @@ function reduceListSize(guesses, answers) {
         letter_restrictions = determineLetterPositions(letters);
         guesses = removeUselessGuesses(guesses, letter_restrictions);
     } 
-    
-    guesses = sortList(guesses, bestLetters(answers), answers).map(a => a.word);
+
     return guesses;
 }
 
@@ -592,8 +590,8 @@ function update() {
     }
 
     let alphabet = bestLetters(answer_list);
-    let sorted_answer_list = sortList(answer_list, alphabet).map(a => a.word);
-    let sorted_guess_list = sortList(words.slice(), alphabet, sorted_answer_list).map(a => a.word);
+    let sorted_answer_list = sortList(answer_list, alphabet);
+    let sorted_guess_list = sortList(words.slice(), alphabet, sorted_answer_list);
     let guesses = getBestGuesses(sorted_answer_list, sorted_guess_list, all_possible_words);
 
     if (uncommon) {
@@ -652,6 +650,7 @@ function getWordsToCheck(filtered, full_list) {
 }
 
 function calculateGuessList(answers, guesses, best_words, difficulty) {
+    guesses = getWordsToCheck(answers, guesses);
     guesses_left = GUESSES_ALLOWED - (document.getElementsByClassName("tile").length/word_length);
 
     const start_time = performance.now();
@@ -665,10 +664,7 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
         });
 
         best_words[i].wrong = best_words[i].results[results.length - 1]/answers.length;
-        // console.log(i + " --> " + (performance.now() - start_time));
         if (performance.now() - start_time > MAX_TIME) {
-            if (numberOfGuessesSoFar(1)) console.log("calculated " + i + " words");
-
             best_words = best_words.slice(0, i+1);
             break;
         }
@@ -726,10 +722,9 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
             results[results.length-1]--;
         } 
     } else if (attempt <= 3) {
+        let letters = createLetterTiles(best.word, differences);
         let new_guesses = answers.concat(guesses);
         new_guesses = [...new Set(new_guesses)];
-
-        let letters = createLetterTiles(best.word, differences);
 
         if (isDifficulty(HARD, difficulty)) {
             new_guesses = filterList(new_guesses, letters);
@@ -757,10 +752,11 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
 }
 
 const FACTOR = 1.5;
-function reducesListMost(answers, guesses, futureGuess) {
+function reducesListMost(answers, guesses, future_guess) {
     let best_words = [];
     let list_size = answers.length;
     let min = answers.length;
+    let start_time = performance.now();
 
     outer:
     for (let pos = 0; pos < guesses.length; pos++) {
@@ -784,9 +780,9 @@ function reducesListMost(answers, guesses, futureGuess) {
             
             if (freq > 0) {
                 weighted += (freq/list_size)*freq - ((freq-1)/list_size)*(freq-1);
-                // if (weighted > FACTOR*min) {
-                //     continue outer;
-                // }
+                if (weighted > FACTOR*min) {
+                    continue outer;
+                }
             }
         }
 
@@ -807,8 +803,8 @@ function reducesListMost(answers, guesses, futureGuess) {
         best_words.push({word: compare, adjusted: adjusted, differences: differences, 
                         results: null, average: null, wrong: null});
         
-        if (weighted < 1 && futureGuess) break;
-        if (weighted == 1 && pos >= answers.length && futureGuess) break;
+        if (weighted < 1 && future_guess) break;
+        if (weighted == 1 && pos >= answers.length && future_guess) break;
     }
 
     best_words.sort((a, b) => a.adjusted >= b.adjusted ? 1 : -1);
