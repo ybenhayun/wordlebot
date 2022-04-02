@@ -6,7 +6,7 @@ const NORMAL = 0, HARD = 1, BOTH = 2;
 const NO_WORDS = "<div id = 'nowords'>it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.</div>"
 const STARTING_WORDS = "these are your best possible starting words:";
 const BEST_GUESSES = "these are your best possible guesses:";
-const LIST_SIZE = 10;
+const TOP_TEN_LENGTH = 10;
 const GUESSES_ALLOWED = 6;
 const NOT_CORRECT_AMOUNT = 0;
 const NO_GREENS = 1;
@@ -364,7 +364,8 @@ function setBestGuesses(best_guesses, difficulty) {
     let word = getWord(1);
     let hash = makeHash(wordbank, difficulty, diff)
 
-    seconds[word][hash] = JSON.stringify(best_guesses.slice(0, LIST_SIZE));
+    seconds[word][hash] = JSON.stringify(best_guesses.slice(0, TOP_TEN_LENGTH
+    ));
     console.log(seconds);
 }
 
@@ -396,7 +397,8 @@ function isDifficulty(mode, check) {
 }
 
 function updateLists(words_left, likely_answers, unlikely_answers, normal_guesses, hard_guesses) {
-    let list_length = Math.min(likely_answers.length, LIST_SIZE);
+    let list_length = Math.min(likely_answers.length, TOP_TEN_LENGTH
+    );
     let normal_list = writeBestGuessList(normal_guesses, list_length, NORMAL);
     let hard_list = writeBestGuessList(hard_guesses, list_length, HARD);
     
@@ -410,6 +412,8 @@ function updateLists(words_left, likely_answers, unlikely_answers, normal_guesse
 }
 
 function createAnswerDropdown(likely_answers, unlikely_answers) {
+    if (numberOfGuessesSoFar(0)) return;
+    
     let word_lists = document.getElementsByClassName("showlist");
     let potential_answers = word_lists[0].getElementsByTagName("div")[0];
     let technically_words = word_lists[1].getElementsByTagName("div")[0];
@@ -555,12 +559,16 @@ function sortList(list, alphabet, sorted_list) {
     return newranks.map(a => a.word);
 }
 
-function reduceListSize(guesses, answers) {
+function reduceListSize(guesses, answers, letters) {
     if (answers.length > 10) { 
-        let letters = document.getElementsByClassName("tile");
+        if (!letters) letters = document.getElementsByClassName("tile");
         letter_restrictions = determineLetterPositions(letters);
         guesses = removeUselessGuesses(guesses, letter_restrictions);
-    } 
+    }
+    
+    if (answers.length > 500) {
+        guesses = guesses.slice(0, 250);
+    }
 
     return guesses;
 }
@@ -592,65 +600,46 @@ function update() {
     let alphabet = bestLetters(answer_list);
     let sorted_answer_list = sortList(answer_list, alphabet);
     let sorted_guess_list = sortList(words.slice(), alphabet, sorted_answer_list);
-    let guesses = getBestGuesses(sorted_answer_list, sorted_guess_list, all_possible_words);
+    let normal_guesses = getBestGuesses(sorted_answer_list, sorted_guess_list, NORMAL);
+    let hard_guesses = getBestGuesses(sorted_answer_list, all_possible_words, HARD);
 
     if (uncommon) {
         sorted_answer_list = [];
     }
     
     updateLetterList(alphabet, answer_list.length);
-    updateLists(all_possible_words, sorted_answer_list, unlikely_answers, guesses.normal, guesses.hard);
+    updateLists(all_possible_words, sorted_answer_list, unlikely_answers, normal_guesses, hard_guesses);
 }
 
-function getBestGuesses(answer_list, guess_list, all_possible_words, difficulty) {
-    let best_guesses = {normal: guessesArePrecomputed(NORMAL), hard: guessesArePrecomputed(HARD)};
-
-    if (best_guesses.normal && isDifficulty(NORMAL, difficulty)) return best_guesses.normal;
-    if (best_guesses.hard && isDifficulty(HARD, difficulty)) return best_guesses.hard;
-    if (best_guesses.normal && best_guesses.hard) return best_guesses;
-
-    if (numberOfGuessesSoFar(0)) {
-        best_guesses = getFirstGuesses();
-        return {normal: sortGroupsByAverage(best_guesses.normal), hard: sortGroupsByAverage(best_guesses.hard)};
-    }
+function getBestGuesses(answer_list, guess_list, difficulty) {
+    let best_guesses = guessesArePrecomputed(difficulty);
+    
+    if (best_guesses) return twoSort(best_guesses);
+    if (numberOfGuessesSoFar(0)) return twoSort(getFirstGuesses(difficulty));
 
     let words_to_check = getWordsToCheck(answer_list, guess_list);
-    if (isDifficulty(HARD, difficulty)) words_to_check = all_possible_words.slice();
-
     let initial_guesses = reducesListMost(answer_list, words_to_check);
-    let initial_hard_guesses = initial_guesses.map(a => Object.assign({}, a)).filter(a => all_possible_words.includes(a.word));
+    best_guesses = calculateGuessList(answer_list, guess_list, initial_guesses.slice(0, CHECK_SIZE), difficulty);
 
-    if (!isDifficulty(HARD, difficulty) && !best_guesses.normal) {
-        best_guesses.normal = calculateGuessList(answer_list, guess_list, initial_guesses.slice(0, CHECK_SIZE));
-        if (numberOfGuessesSoFar(1)) setBestGuesses(best_guesses.normal, NORMAL);
-    }
-
-    if (!best_guesses.hard && !isDifficulty(NORMAL, difficulty)) {
-        best_guesses.hard = calculateGuessList(answer_list, all_possible_words, initial_hard_guesses.slice(0, CHECK_SIZE), HARD);
-        if (numberOfGuessesSoFar(1)) setBestGuesses(best_guesses.hard, HARD);
-    } 
-    
-    if (isDifficulty(HARD, difficulty)) return best_guesses.hard;
-    if (isDifficulty(NORMAL, difficulty)) return best_guesses.normal;
+    if (numberOfGuessesSoFar(1)) setBestGuesses(best_guesses, difficulty);
 
     return best_guesses;
 }
 
-function getFirstGuesses(answers_left, possible_guesses, difficulty) {
-    return {normal: easy.filter(a => a.word.length == word_length).sort((a, b) => a.wrong >= b.wrong ? 1 : -1), 
-            hard: hard.filter(a => a.word.length == word_length).sort((a, b) => a.wrong >= b.wrong ? 1 : -1)}
+function getFirstGuesses(difficulty) {
+    if (isDifficulty(HARD, difficulty)) return hard.filter(a => a.word.length == word_length).sort((a, b) => a.wrong >= b.wrong ? 1 : -1);
+    return easy.filter(a => a.word.length == word_length).sort((a, b) => a.wrong >= b.wrong ? 1 : -1);
 }
 
-function getWordsToCheck(filtered, full_list) {
-    full_list = reduceListSize(full_list, filtered);
-    let check_list = filtered.concat(full_list);
-    check_list = [...new Set(check_list)]; 
+function getWordsToCheck(answers, guesses) {
+    guesses = reduceListSize(guesses, answers);
+    let words_to_check = answers.concat(guesses);
+    words_to_check = [...new Set(words_to_check)]; 
 
-    return check_list;
+    return words_to_check;
 }
 
 function calculateGuessList(answers, guesses, best_words, difficulty) {
-    guesses = getWordsToCheck(answers, guesses);
     guesses_left = GUESSES_ALLOWED - (document.getElementsByClassName("tile").length/word_length);
 
     const start_time = performance.now();
@@ -665,16 +654,16 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
 
         best_words[i].wrong = best_words[i].results[results.length - 1]/answers.length;
         if (performance.now() - start_time > MAX_TIME) {
-            best_words = best_words.slice(0, i+1);
+            console.log("only calculated " + (i++) + " words");
+            best_words = best_words.slice(0, i);
             break;
         }
     }
-
-    sortGroupsByAverage(best_words);
-    return best_words.map(a => Object.assign({}, {word: a.word, average: a.average, wrong: a.wrong})).slice(0, LIST_SIZE);
+    twoSort(best_words);
+    return best_words.map(a => Object.assign({}, {word: a.word, average: a.average, wrong: a.wrong})).slice(0, TOP_TEN_LENGTH);
 }
 
-function sortGroupsByAverage(guesses) {
+function twoSort(guesses) {
     guesses.sort(function(a,b) {
         if(a.wrong > b.wrong) {return  1;}
         if(a.wrong < b.wrong) {return -1;}
@@ -707,34 +696,36 @@ function createLetterTiles(word, coloring) {
 
 function countResults(best, answers, guesses, results, attempt, difficulty, differences) {
     if (answers.length <= 2) {
+        results[results.length-1]--;
+
         if (answers.length == 0) {
             results[attempt]++;
-            results[results.length-1]--;
-        }  
-        
-        if (answers.length <= 2 && answers.length != 0 && attempt < results.length - 1) {
-            results[attempt+1]++;
-            results[results.length-1]--;
+        } else {
+            results[Math.min(attempt+1, results.length-1)]++;
         }
-
-        if (answers.length == 2 && attempt < results.length - 2) {
-            results[attempt+2]++;
+        
+        if (answers.length == 2) {
+            results[Math.min(attempt+2, results.length-1)]++;
             results[results.length-1]--;
         } 
     } else if (attempt <= 3) {
-        let letters = createLetterTiles(best.word, differences);
+        let startTime = performance.now();
+
         let new_guesses = answers.concat(guesses);
         new_guesses = [...new Set(new_guesses)];
-
+        
+        let letters = createLetterTiles(best.word, differences);
         if (isDifficulty(HARD, difficulty)) {
             new_guesses = filterList(new_guesses, letters);
+        } else {
+            new_guesses = reduceListSize(new_guesses, answers, letters);
         }
 
         let best_words = reducesListMost(answers, new_guesses, true);
         let remaining = best_words[0].differences;
 
         Object.keys(remaining).forEach(function(key) {
-            countResults(best_words[0], remaining[key], new_guesses, results, attempt+1, difficulty, key);
+            return countResults(best_words[0], remaining[key], new_guesses, results, attempt+1, difficulty, key);
         });
     }
 
@@ -751,21 +742,27 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
     best.average = avg;
 }
 
-const FACTOR = 1.5;
-function reducesListMost(answers, guesses, future_guess) {
+const FACTOR = 1.7;
+function reducesListMost(answers, guesses, future_guess, list_so_far) {
     let best_words = [];
     let list_size = answers.length;
-    let min = answers.length;
-    let start_time = performance.now();
+    let min = list_size;
+    
+    if (list_so_far) {
+        if (list_so_far.length == CHECK_SIZE) return list_so_far;
+        best_words = list_so_far.slice();
+    }
 
     outer:
     for (let pos = 0; pos < guesses.length; pos++) {
         let differences = [];
         let compare = guesses[pos];
-        let weighted = 0;
+        let weighted = adjusted = 0;
+        let threes = 1;
 
-        for (let i = 0; i < answers.length; i++) {
+        for (let i = 0; i < list_size; i++) {
             let s = answers[i];
+            
             let diff = getDifference(compare, s); 
 
             if (differences[diff] == null) {
@@ -780,29 +777,20 @@ function reducesListMost(answers, guesses, future_guess) {
             
             if (freq > 0) {
                 weighted += (freq/list_size)*freq - ((freq-1)/list_size)*(freq-1);
-                if (weighted > FACTOR*min) {
-                    continue outer;
+                if (freq > 1) {
+                    threes -= 1/list_size;
                 }
+            }
+
+            adjusted = (1-threes)*weighted;
+            if (adjusted >= min && future_guess || adjusted > min*FACTOR) {
+                continue outer;
             }
         }
 
-        min = Math.min(min, weighted);
+        min = Math.min(min, adjusted);
+        best_words.push({word: compare, adjusted: adjusted, differences: differences});
 
-        let threes = 0;
-        Object.keys(differences).forEach(function(key) {
-            if (differences[key].length == 0) {
-                threes += 1/answers.length;
-            } else {
-                threes += 1/answers.length*1/differences[key].length;
-            }
-        });
-
-        threes = Math.min(1, threes);
-        let adjusted = (1-threes)*weighted;
-
-        best_words.push({word: compare, adjusted: adjusted, differences: differences, 
-                        results: null, average: null, wrong: null});
-        
         if (weighted < 1 && future_guess) break;
         if (weighted == 1 && pos >= answers.length && future_guess) break;
     }
@@ -812,36 +800,31 @@ function reducesListMost(answers, guesses, future_guess) {
 }
 
 function getDifference(word1, word2) {
-    if (pairings[word1] != null) {
-        if (pairings[word1][word2] != null) {
-            return pairings[word1][word2];
-        }
-    }
+    let start_time = performance.now();
+    if (pairings[word1]) {
+        if (pairings[word1][word2]) return pairings[word1][word2];
+    } else pairings[word1] = [];
 
     let diff = ""
 
     for (let j = 0; j < word_length; j++) {
-        if (word1.charAt(j) == word2.charAt(j)) {
+        let word1_c = word1.charAt(j);
+        let word2_c = word2.charAt(j);
+
+        if (word1_c == word2_c) {
             diff += CORRECT;
-        } else if (!word2.includes(word1.charAt(j))) {
+        } else if (!word2.includes(word1_c)) {
             diff += INCORRECT;
         } else {
-            let c = word1.charAt(j);
-
-            if (count(word1, c) <= count(word2, c)) {
+            if (count(word1, word1_c) <= count(word2, word1_c)) {
                 diff += WRONG_SPOT;
             } else {
-                diff += compareDoubles(word1, word2, c, j);
+                diff += compareDoubles(word1, word2, word1_c, j);
             }
         }
     }
 
-    if (pairings[word1] != null) {
-        pairings[word1][word2] = diff;
-    } else {
-        pairings[word1] = [];
-        pairings[word1][word2] = diff;
-    }
+    pairings[word1][word2] = diff;
 
     return diff;
 }

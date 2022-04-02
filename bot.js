@@ -1,6 +1,9 @@
 var averages = [];
 var newlist = [];
 
+// const test_size = common.length;
+const test_size = 300;
+
 function reduceTestList(list) {
     for (let i = 0; i < list.length; i++) {
         if (!list[i].includes('S')) {
@@ -149,7 +152,7 @@ function createBotMenu(word) {
     let input = "<input type = 'text' id = 'testword' placeholder='your starting word'"
                 + "input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()'>"
 
-    let info = "<div class = 'info'> The Wordle Bot will test " + input + " against 300 randomly selected answers.</div>";
+    let info = "<div class = 'info'> The Wordle Bot will test " + input + " against " + test_size + " randomly selected answers.</div>";
 
     menu.innerHTML = info + hard + submit_button;
 
@@ -178,7 +181,7 @@ function setupTest(word, difficulty) {
     removeNonBotElements(word);
 
     document.getElementById("cancel").addEventListener('click', function() {            
-        pairings = [];
+        pairings = {};
         resetGuessRows();
         removeTest();
     });
@@ -212,6 +215,7 @@ function getTestAnswers(test_size, random_answers) {
 }
 
 function adjustBarHeight(points, scores, total_sum, games_played) {
+    console.log(games_played);
     let max = Math.max(...scores);
     let bars = document.getElementsByClassName("bar");
     document.getElementsByClassName("count")[points].innerHTML = scores[points];
@@ -250,8 +254,6 @@ function showMissedWords(words_missed) {
 
 function runBot(guess, difficulty) {
     const startTime = performance.now();
-    // const test_size = common.length;
-    const test_size = 300;
 
     let sum = 0;
     let count = 0;
@@ -271,7 +273,8 @@ function runBot(guess, difficulty) {
 
         sum += points;
         scores[points-1] += 1;
-        adjustBarHeight(points-1, scores, sum, count++);
+        adjustBarHeight(points-1, scores, sum, count+1);
+        count++;
 
         document.getElementById("cancel").addEventListener('click', function() {
             removeTest(iv);
@@ -285,7 +288,7 @@ function runBot(guess, difficulty) {
             updateWordData(guess, average, wrong, difficulty);
             printData(newlist, guess, average, (performance.now() - startTime)/1000);
             
-            pairings = [];
+            pairings = {};
             clearInterval(iv);
         }
     }, 1);
@@ -341,8 +344,10 @@ function wordleBot(guess, answer, difficulty) {
         attempts++;
 
         let list = filterList(common.slice(), letters);
-        let all_possible_words = filterList(words.slice(), letters);
-        final_guesses = getBestGuesses(list, words.slice(), all_possible_words, difficulty);
+        let possible_guesses = words.slice();
+        if (isDifficulty(HARD, difficulty)) possible_guesses = filterList(possible_guesses, letters);
+
+        final_guesses = getBestGuesses(list, possible_guesses, difficulty);
 
         guess = final_guesses[0].word;  
     }

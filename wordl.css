@@ -114,6 +114,13 @@ button {
     border: 2px solid var(--incorrect-color);
 }
 
+select {
+    border-radius: 0.125rem;
+    color: var(--incorrect-color);
+    font-style: italic;
+    text-align: center;
+}
+
 #refresh {
     position: absolute;
     top: 1.25rem;
@@ -173,10 +180,6 @@ button:hover, .tile:hover {
     margin: 0;
     padding: 0;
     min-height: 1rem;
-}
-
-select {
-    text-align: center;
 }
 
 /* ANSWERS */
