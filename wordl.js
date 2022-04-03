@@ -2,19 +2,15 @@ var word_length = 5;
 var pairings = [];
 
 const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y"; 
+const NOT_CORRECT_AMOUNT = 0, NO_GREENS = 1, YELLOWS_IN_WRONG_SPOT = 2, NOT_IN_WORD = 3;
 const NORMAL = 0, HARD = 1, BOTH = 2;
-const NO_WORDS = "<div id = 'nowords'>it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.</div>"
-const STARTING_WORDS = "these are your best possible starting words:";
-const BEST_GUESSES = "these are your best possible guesses:";
-const TOP_TEN_LENGTH = 10;
+const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10;
 const GUESSES_ALLOWED = 6;
-const NOT_CORRECT_AMOUNT = 0;
-const NO_GREENS = 1;
-const YELLOWS_IN_WRONG_SPOT = 2;
-const NOT_IN_WORD = 3;
-const CHECK_SIZE = 50;
 const NOT_YET_TESTED = .999;
 const MAX_TIME = 2000;
+const SIZE_FACTOR = 1.7;
+const NO_WORDS = "<div id = 'nowords'>it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.</div>"
+const BEST_GUESSES = "these are your best possible guesses:";
 
 $(document).ready(function() {
     if (localStorage.getItem("word length")) {
@@ -169,6 +165,7 @@ function setLength() {
 
     setWordbank();
     words = big_list.filter((a) =>  a.length == word_length);
+    // words = official_guesses.slice(); // uncomment to use original wordle guess list
 }
 
 function setWordbank() {
@@ -188,6 +185,7 @@ function setWordbank() {
     common = common.filter(a => a.length == word_length);
     common = [...new Set(common)];
     common = common.sort();
+    // common = officical_answers.slice(); // uncomment to use original wordle answer list 
 
     for (let i = 0; i < easy.length; i++) {
         if (easy[i][wordbank] != null) {
@@ -654,8 +652,8 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
 
         best_words[i].wrong = best_words[i].results[results.length - 1]/answers.length;
         if (performance.now() - start_time > MAX_TIME) {
-            console.log("only calculated " + (i++) + " words");
-            best_words = best_words.slice(0, i);
+            console.log("only calculated " + (i+1) + " words");
+            best_words = best_words.slice(0, i+1);
             break;
         }
     }
@@ -742,16 +740,10 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
     best.average = avg;
 }
 
-const FACTOR = 1.7;
-function reducesListMost(answers, guesses, future_guess, list_so_far) {
+function reducesListMost(answers, guesses, future_guess) {
     let best_words = [];
     let list_size = answers.length;
     let min = list_size;
-    
-    if (list_so_far) {
-        if (list_so_far.length == CHECK_SIZE) return list_so_far;
-        best_words = list_so_far.slice();
-    }
 
     outer:
     for (let pos = 0; pos < guesses.length; pos++) {
@@ -761,16 +753,14 @@ function reducesListMost(answers, guesses, future_guess, list_so_far) {
         let threes = 1;
 
         for (let i = 0; i < list_size; i++) {
-            let s = answers[i];
-            
-            let diff = getDifference(compare, s); 
+            let diff = getDifference(compare, answers[i]); 
 
             if (differences[diff] == null) {
                 differences[diff] = [];
             }
 
             if (diff != CORRECT.repeat(word_length)) {
-                differences[diff].push(s);
+                differences[diff].push(answers[i]);
             }
 
             let freq = differences[diff].length;
@@ -783,7 +773,7 @@ function reducesListMost(answers, guesses, future_guess, list_so_far) {
             }
 
             adjusted = (1-threes)*weighted;
-            if (adjusted >= min && future_guess || adjusted > min*FACTOR) {
+            if (adjusted >= min && future_guess || adjusted > min*SIZE_FACTOR) {
                 continue outer;
             }
         }
@@ -792,7 +782,7 @@ function reducesListMost(answers, guesses, future_guess, list_so_far) {
         best_words.push({word: compare, adjusted: adjusted, differences: differences});
 
         if (weighted < 1 && future_guess) break;
-        if (weighted == 1 && pos >= answers.length && future_guess) break;
+        if (min == 0 && best_words.length >= answers.length && future_guess) break;
     }
 
     best_words.sort((a, b) => a.adjusted >= b.adjusted ? 1 : -1);

@@ -1,9 +1,6 @@
 var averages = [];
 var newlist = [];
 
-// const test_size = common.length;
-const test_size = 300;
-
 function reduceTestList(list) {
     for (let i = 0; i < list.length; i++) {
         if (!list[i].includes('S')) {
@@ -27,16 +24,17 @@ function findStart(index, list, key) {
 }
 
 function getStartingWords(difficulty) {
-    let words;
+    let testing_words;
     
-    if (isDifficulty(HARD, difficulty)) words = hard;
-    else words = easy;
+    if (isDifficulty(HARD, difficulty)) testing_words = hard;
+    else testing_words = easy;
 
-    return words.sort((a, b) => a.average >= b.average ? 1 : -1).map(a => a.word).filter(a => a.length == word_length);
+    return testing_words.sort((a, b) => a.average >= b.average ? 1 : -1).map(a => a.word).filter(a => a.length == word_length);
 }
 
 function testStartingWords() {
     console.log("testing");
+    
     const difficulty = Number(document.getElementById("mode").checked);
     
     let check_list = getStartingWords(difficulty);
@@ -46,7 +44,6 @@ function testStartingWords() {
     const hash_key = diff + "-" + wordbank + "-" + difficulty;
 
     let i = findStart(0, check_list, hash_key);
-    let test_size = check_list.length;
     let current = -1;
 
     if (isDifficulty(HARD, difficulty)) newlist = hard;
@@ -71,7 +68,7 @@ function testStartingWords() {
             i = findStart(i+1, check_list, hash_key);
         }
         
-        if (i >= test_size) {
+        if (i >= check_list.length-1) {
             clearInterval(iv);
         }
     }, 1);
@@ -142,7 +139,7 @@ function removeNonBotElements() {
     document.getElementById("calculate").innerHTML = "";
 }
 
-function createBotMenu(word) {
+function createBotMenu() {
     let menu = document.createElement("div");
     menu.setAttribute("id", "test-settings");
 
@@ -152,7 +149,7 @@ function createBotMenu(word) {
     let input = "<input type = 'text' id = 'testword' placeholder='your starting word'"
                 + "input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()'>"
 
-    let info = "<div class = 'info'> The Wordle Bot will test " + input + " against " + test_size + " randomly selected answers.</div>";
+    let info = "<div class = 'info'> The Wordle Bot will test " + input + " against " + TEST_SIZE + " randomly selected answers.</div>";
 
     menu.innerHTML = info + hard + submit_button;
 
@@ -174,6 +171,9 @@ function swapDiv(event, elem) {
 }
 
 function setupTest(word, difficulty) {
+    // TEST_SIZE = 300;
+    TEST_SIZE = common.length;
+
     let test_center = createBarGraphs();
     let menu = createBotMenu(word);
     test_center.appendChild(menu);
@@ -205,17 +205,16 @@ function placeTestRows(word) {
     document.getElementsByClassName("calculate").innerHTML = "";
 }
 
-function getTestAnswers(test_size, random_answers) {
-    if (test_size == common.length) return common.slice();
-    if (test_size == random_answers.length) return random_answers;
+function getTestAnswers(TEST_SIZE, random_answers) {
+    if (TEST_SIZE == common.length) return common.slice();
+    if (TEST_SIZE == random_answers.length) return random_answers;
     
     let index = Math.round(Math.random()*(common.length-1));
     if (!random_answers.includes(common[index])) random_answers.push(common[index]);
-    return getTestAnswers(test_size, random_answers);
+    return getTestAnswers(TEST_SIZE, random_answers);
 }
 
 function adjustBarHeight(points, scores, total_sum, games_played) {
-    console.log(games_played);
     let max = Math.max(...scores);
     let bars = document.getElementsByClassName("bar");
     document.getElementsByClassName("count")[points].innerHTML = scores[points];
@@ -253,14 +252,13 @@ function showMissedWords(words_missed) {
 }
 
 function runBot(guess, difficulty) {
-    const startTime = performance.now();
+    const start_time = performance.now();
 
     let sum = 0;
     let count = 0;
     let missed = [];
     let scores = new Array(7).fill(0);
-    let testing_sample = getTestAnswers(test_size, []);
-
+    let testing_sample = getTestAnswers(TEST_SIZE, []);
 
     let iv = setInterval(function() {
         document.getElementById("grid").innerHTML = "";
@@ -280,13 +278,15 @@ function runBot(guess, difficulty) {
             removeTest(iv);
         });
 
-        if (count >= test_size) {
+        if (count >= TEST_SIZE) {
             let average = parseFloat(sum/count);
             let wrong = missed.length/common.length;
             
-            showResults(guess, test_size - missed.length, test_size, average.toFixed(3), missed);
-            updateWordData(guess, average, wrong, difficulty);
-            printData(newlist, guess, average, (performance.now() - startTime)/1000);
+            showResults(guess, TEST_SIZE - missed.length, TEST_SIZE, average.toFixed(3), missed);
+            if (TEST_SIZE == common.length) {
+                updateWordData(guess, average, wrong, difficulty);
+                printData(newlist, guess, average, (performance.now() - start_time)/1000);
+            }
             
             pairings = {};
             clearInterval(iv);
@@ -343,11 +343,11 @@ function wordleBot(guess, answer, difficulty) {
         
         attempts++;
 
-        let list = filterList(common.slice(), letters);
+        let answer_list = filterList(common.slice(), letters);
         let possible_guesses = words.slice();
         if (isDifficulty(HARD, difficulty)) possible_guesses = filterList(possible_guesses, letters);
 
-        final_guesses = getBestGuesses(list, possible_guesses, difficulty);
+        final_guesses = getBestGuesses(answer_list, possible_guesses, difficulty);
 
         guess = final_guesses[0].word;  
     }

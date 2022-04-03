@@ -6216,7 +6216,7 @@ const hard =
     {
         "word": "SALET",
         "restricted": {
-            "average": 3.5125215889464596,
+            "average": 3.511879049676026,
             "wrong": 0
         },
         "complete": {

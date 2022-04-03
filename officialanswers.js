@@ -1,4 +1,4 @@
-const official = 
+const officical_answers = 
 [
 "ABACK",
 "ABASE",
@@ -41,6 +41,7 @@ const official =
 "AGING",
 "AGLOW",
 "AGONY",
+"AGORA",
 "AGREE",
 "AHEAD",
 "AIDER",
@@ -725,6 +726,7 @@ const official =
 "FEVER",
 "FEWER",
 "FIBER",
+"FIBRE",
 "FICUS",
 "FIELD",
 "FIEND",
@@ -1173,6 +1175,7 @@ const official =
 "LUSTY",
 "LYING",
 "LYMPH",
+"LYNCH",
 "LYRIC",
 "MACAW",
 "MACHO",
@@ -1491,6 +1494,7 @@ const official =
 "PULPY",
 "PULSE",
 "PUNCH",
+"PUPAL",
 "PUPIL",
 "PUPPY",
 "PUREE",
@@ -1774,6 +1778,7 @@ const official =
 "SLANT",
 "SLASH",
 "SLATE",
+"SLAVE",
 "SLEEK",
 "SLEEP",
 "SLEET",
@@ -2239,6 +2244,7 @@ const official =
 "WEIRD",
 "WELCH",
 "WELSH",
+"WENCH",
 "WHACK",
 "WHALE",
 "WHARF",
