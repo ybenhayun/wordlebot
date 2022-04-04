@@ -13,6 +13,12 @@ const NO_WORDS = "<div id = 'nowords'>it doesn't look like we have this word. do
 const BEST_GUESSES = "these are your best possible guesses:";
 
 $(document).ready(function() {
+    if (!localStorage.getItem('not first')) {
+        $("#info").removeClass('hide');
+        $("#info").addClass('display');
+        localStorage.setItem('not first', true);
+    }
+
     if (localStorage.getItem("word length")) {
         word_length = localStorage.getItem("word length");
         $("#num_letters").val(word_length);
