@@ -1,7 +1,9 @@
 # Wordle Bot
 This is both a Wordle solver and a fully functional Wordle bot. You can either:
-    - Enter in your guess, and see what the next best guess would be based on the color of your tiles.
-    - Enter in a starting word, and run the Wordle bot to see the average score the bot would receive over 300 games, if it started with that word.
+
+- Enter in your guess, and see what the next best guess would be based on the color of your tiles.
+- Enter in a starting word, and run the Wordle bot to see the average score the bot would receive over 300 games, if it started with that word.
+
 This bot has settings for both normal and hard mode (on hard mode you are forced to use all previously given hints). The suggestions for future guesses can be entirely different across these two settings, as they result in entirely different games.
 
 You have two choices for what I call the game's 'Wordbank', or the list of words it thinks could be the answer to any given game.
@@ -27,12 +29,15 @@ The bot starts by looking at all possible guesses after a first (or second/third
 
 So in this example, the bucket GBBBB would be size 2, and the bucket YYBBY, would be size one.
 After going through all the potential answers, and calculating all the expected differences, the bot:
-    - takes a weighted average of the size of each bucket (in the above example it would be 1.67)
-    - determines the approximate likelihood you should expect to land on the answer by the next guess. If you saw YYBBY, there is a 100% chance as there's only one word left, if you saw GBBBB you would have a 50% chance of guesses the correct word on the next guesses, as you'd still have two possibilities. This averages to 66.67% chance of ending the game on the next guess.
-    - Calculates a rough 'adjusted score' to sort by, by letting 
-        adjusted = (1 - 'odds game ends on the next turn')*'average size of each bucket'
+
+- takes a weighted average of the size of each bucket (in the above example it would be 1.67)
+- determines the approximate likelihood you should expect to land on the answer by the next guess. If you saw YYBBY, there is a 100% chance as there's only one word left, if you saw GBBBB you would have a 50% chance of guesses the correct word on the next guesses, as you'd still have two possibilities. This averages to 66.67% chance of ending the game on the next guess.
+- Calculates a rough 'adjusted score' to sort by, by letting 
+    
+    adjusted = (1 - 'odds game ends on the next turn')*'average size of each bucket'
 
 From there, the bot takes the top 50 words from that metric, and maps out how each of those words would get to *every possible answer* recursively. As in, if you were considering DRONE as a second guess after SALET:
+
     SALET --> DRONE --> REIGN (3 guesses to get to REIGN)
     SALET --> DRONE (2 guesses to get to DRONE)
     SALET --> DRONE --> URINE --> BRINE (4 guesses to get to BRINE)
