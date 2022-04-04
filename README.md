@@ -25,7 +25,7 @@ The bot starts by looking at all possible guesses after a first (or second/third
     Colors: YYBBY ('A', 'R', and 'E' are all in the word, but in different places).
     ----------------------
     Potential Answer: ALARM
-    Colors: GBBBB (notice this is the same pattern if ABACK was the answer).
+    Colors: GBBBB (notice this is the same pattern as ABACK).
 
 So in this example, the bucket GBBBB would be size 2, and the bucket YYBBY, would be size one.
 After going through all the potential answers, and calculating all the expected differences, the bot:
