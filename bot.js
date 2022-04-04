@@ -200,12 +200,13 @@ function setupTest(word, difficulty) {
         if (word.length >= 4 && word.length <= 11) {
             document.getElementById("num_letters").value = word.length;
             setLength();
-
-            // difficulty = Number(document.getElementById("hard-mode").checked);
-            difficulty = HARD;
-            document.getElementById("test-settings").remove();
-
-            runBot(word, difficulty);
+            if (words.includes(word)) {
+                // difficulty = Number(document.getElementById("hard-mode").checked);
+                difficulty = HARD;
+                document.getElementById("test-settings").remove();
+                
+                runBot(word, difficulty);
+            }
         }
     });
 }
