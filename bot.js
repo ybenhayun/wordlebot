@@ -98,6 +98,9 @@ function removeTest(animating) {
 
     document.getElementById("grid").innerHTML = "";
     document.getElementById("word_entered").disabled = false;
+    document.getElementById("word_entered").disabled = false;
+    document.getElementsByClassName("info")[0].disabled = false;
+    document.getElementsByClassName("test")[0].disabled = false;
 }
 
 function createBarGraphs() {
@@ -116,7 +119,7 @@ function createBarGraphs() {
     test_center.innerHTML += "<div class = 'bar five'><span class = 'num-guesses'>5/6</span><span class = 'count'></span></div>";
     test_center.innerHTML += "<div class = 'bar sixe'><span class = 'num-guesses'>6/6</span><span class = 'count'></span></div>";
     test_center.innerHTML += "<div class = 'bar x'><span class = 'num-guesses'>X/6</span><span class = 'count'></span></div>";
-    test_center.innerHTML += "<button id = 'cancel'>&#10006</button>";
+    test_center.innerHTML += "<button class = 'close'></button>";
     document.getElementById("suggestions").appendChild(test_center);    
 
     let count = document.getElementsByClassName("count");
@@ -130,6 +133,8 @@ function createBarGraphs() {
 
 function removeNonBotElements() {
     document.getElementById("word_entered").disabled = true;
+    document.getElementsByClassName("info")[0].disabled = true;
+    document.getElementsByClassName("test")[0].disabled = true;
     document.getElementById("grid").innerHTML = "";
 
     document.getElementsByClassName("current")[0].appendChild(
@@ -143,14 +148,14 @@ function createBotMenu() {
     let menu = document.createElement("div");
     menu.setAttribute("id", "test-settings");
 
-    let hard = "<div><input type='checkbox' id='hard-mode' name='hard-mode'>";
-    hard += "<label for='hard-mode'>Bot plays hard mode</label></div>";
+    let hard = "<div class = 'disclaimer'>For the time being, the WordleBot will test your word on hard mode for efficiency purposes.</div>"
+    // let hard = "<div><input type='checkbox' id='hard-mode' name='hard-mode'>";
+    // hard += "<label for='hard-mode'>Bot plays hard mode</label></div>";
     let submit_button = "<button class = 'bot'>Start WordleBot</button>";
     let input = "<input type = 'text' id = 'testword' placeholder='your starting word'"
                 + "input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()'>"
 
     let info = "<div class = 'info'> The Wordle Bot will test " + input + " against " + TEST_SIZE + " randomly selected answers.</div>";
-
     menu.innerHTML = info + hard + submit_button;
 
     return menu;
@@ -171,16 +176,20 @@ function swapDiv(event, elem) {
 }
 
 function setupTest(word, difficulty) {
-    // TEST_SIZE = 300;
-    TEST_SIZE = common.length;
+    TEST_SIZE = 300;
+    // TEST_SIZE = common.length;
 
     let test_center = createBarGraphs();
     let menu = createBotMenu(word);
     test_center.appendChild(menu);
+
+    let input = document.getElementById('testword');
+    input.focus();
+    input.select();
     
     removeNonBotElements(word);
 
-    document.getElementById("cancel").addEventListener('click', function() {            
+    document.getElementsByClassName("close")[1].addEventListener('click', function() {            
         pairings = {};
         resetGuessRows();
         removeTest();
@@ -192,7 +201,8 @@ function setupTest(word, difficulty) {
             document.getElementById("num_letters").value = word.length;
             setLength();
 
-            difficulty = Number(document.getElementById("hard-mode").checked);
+            // difficulty = Number(document.getElementById("hard-mode").checked);
+            difficulty = HARD;
             document.getElementById("test-settings").remove();
 
             runBot(word, difficulty);
@@ -274,7 +284,7 @@ function runBot(guess, difficulty) {
         adjustBarHeight(points-1, scores, sum, count+1);
         count++;
 
-        document.getElementById("cancel").addEventListener('click', function() {
+        document.getElementsByClassName("close")[1].addEventListener('click', function() {
             removeTest(iv);
         });
 

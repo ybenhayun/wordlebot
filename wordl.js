@@ -67,6 +67,16 @@ $(document).ready(function() {
         } 
     });
 
+    $(".info").click(function() {
+        $("#info").removeClass('hide');
+        $("#info").addClass('display');
+    });
+
+    $("#info > .close").click(function() {
+        $("#info").removeClass('display');
+        $("#info").addClass('hide');
+    });
+
     $(document).on('click', '.tile', function(e) {
         e.preventDefault();
         changeTileColor($(this));
@@ -321,9 +331,12 @@ function updateHeaders(words_left, likely_answers, unlikely_answers) {
     let heading = document.getElementsByClassName("num_options")[0];
     let subheading = document.getElementsByClassName("by_likelihood")[0];
 
+    let class_name = "class = 'showlist'><div></div>";
+    if (words_left.length == words.length) class_name = ">";
+
     heading.innerHTML = words_left.length + " possible word" + ((words_left.length > 1) ? "s" : "");
-    subheading.innerHTML = "<span class = 'showlist'><div></div>" + likely_answers.length + " probable answer" + ((likely_answers.length != 1) ? "s" : "") + "</span>, " 
-                        + "<span class = 'showlist'><div></div>" + unlikely_answers.length + " unlikely possibilit" + ((unlikely_answers.length != 1) ? "ies" : "y") + "</span>.";
+    subheading.innerHTML = "<span " + class_name + likely_answers.length + " probable answer" + ((likely_answers.length != 1) ? "s" : "") + "</span>, " 
+                        + "<span " + class_name + unlikely_answers.length + " unlikely possibilit" + ((unlikely_answers.length != 1) ? "ies" : "y") + "</span>.";
 }
 
 function getTileColors() {

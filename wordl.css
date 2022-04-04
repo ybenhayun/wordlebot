@@ -51,6 +51,7 @@ body {
     align-items: center;
     flex-direction: column;
     width: 100%;
+    padding-top: .5rem;
 }
 
 #grid {
@@ -106,6 +107,9 @@ body {
 }
 
 button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 2rem;
     font-size: .875rem;
     border-radius: 0.25rem;
@@ -117,22 +121,27 @@ button {
 select {
     border-radius: 0.125rem;
     color: var(--incorrect-color);
-    font-style: italic;
     text-align: center;
 }
 
 #refresh {
     position: absolute;
+    margin-left: -15.5rem;
+    top: 1.125rem;
+}
+
+.header-button {
+    position: absolute;
     top: 1.25rem;
-    left: .5rem;
     z-index: 100;
 }
 
+.info {
+    left: .5rem;
+}
+
 .test {
-    position: absolute;
-    top: 1.25rem;
     right: .5rem;
-    z-index: 100;
 }
 
 button:not(.tile):hover, select:hover {
@@ -182,12 +191,91 @@ button:hover, .tile:hover {
     min-height: 1rem;
 }
 
+#info {
+    width: min(630px, 95%);
+    margin: auto;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+    background: var(--off-white);
+    border: solid 1px black;
+    z-index: 100;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    max-height: 0;
+}
+
+#info p {
+    margin: .75rem;
+}
+
+.top {
+    text-align: center;
+    margin-top: 1rem;
+    border-bottom: solid 1px black;
+    width: 90%;
+}
+
+.mini {
+    font-size: .875rem;
+    text-align: left;
+    border-bottom: solid 1px black;
+    width: 90%;
+}
+
+.pictures {
+    margin-top: .5rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hide {
+    animation: hide .4s forwards;
+}
+
+.display {
+    animation: display .7s forwards;
+}
+
+.dummy {
+   display: inline; 
+}
+
+@keyframes hide {
+    from {
+        max-height: 200%;
+    }
+
+    to {
+        max-height: 0;
+    }
+}
+
+@keyframes display {
+    from {
+        max-height: 0;
+    }
+
+    to {
+        max-height: 200%;
+    }
+}
+
+
 /* ANSWERS */
 /* CONTAINS ALL INFO SHOWN IN SUGGESTION BOX */
 /* LIST OF BEST ANSWERS, NUMBER OF WORDS LEFT, REFRESH BUTTON */
 #suggestions {
     margin-top: .5rem;
-    border: solid 1px black;
     width: min(630px, 95%);
     margin: auto;
     position: relative;
@@ -415,6 +503,12 @@ li:not(.likely, .others) {
     flex-direction: column;
     row-gap: 1.5rem;
     background: var(--background);
+    padding: .5rem;
+}
+
+.disclaimer {
+    font-size: .875rem;
+    font-weight: normal;
 }
 
 .info {
@@ -435,12 +529,17 @@ input[type=checkbox] {
     display: inline-block;
 }
 
-#cancel, .close {
+.close {
     position: absolute;
     top: .25rem;
     left: .25rem;
     background: var(--background);
     color: var(--incorrect-color);
+}
+
+.close::after {
+    content: "\2716";
+    display: inline-block;
 }
 
 .current {
@@ -485,7 +584,7 @@ input[type=checkbox] {
     position: absolute;
     text-align: center;
     width: 85%;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
     color: var(--off-white);
 }
 
