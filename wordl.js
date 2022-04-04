@@ -30,7 +30,6 @@ $(document).ready(function() {
     }
     
     setLength();
-    makeTables();
     update();
 
     $("#refresh").click(function() {
@@ -45,7 +44,6 @@ $(document).ready(function() {
 
     $("#num_letters").on('input', function() {
         setLength();
-        makeTables();
         update();
 
         localStorage.setItem("word length", word_length);
@@ -103,6 +101,7 @@ $(document).ready(function() {
 
     $(document).on('click', '.test', function() {
         setupTest();
+        update();
     });
 
     $(document).on('click', '.showlist', function() {
@@ -599,6 +598,7 @@ function removeUselessGuesses(list, restrictions) {
 }
 
 function update() {
+    console.log("hello");
     let uncommon = false;
     let letters = document.getElementsByClassName("tile");
     let answer_list = filterList(common.slice(), letters);

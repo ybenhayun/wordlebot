@@ -90,6 +90,7 @@ function getWord(number) {
 function removeTest(animating) {
     if (animating) {
         clearInterval(animating);
+        animating = false;
     }
 
     if (document.getElementById("results")) {
@@ -204,7 +205,7 @@ function setupTest(word, difficulty) {
                 // difficulty = Number(document.getElementById("hard-mode").checked);
                 difficulty = HARD;
                 document.getElementById("test-settings").remove();
-                
+                update();
                 runBot(word, difficulty);
             }
         }
