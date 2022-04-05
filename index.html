@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://css.gg/bot.css' rel='stylesheet'>
 	<link rel = "stylesheet" type = "text/css" href = "wordl.css">
@@ -12,21 +13,19 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-    <script type = "text/javascript" src = "words.js"></script>
-    <script type = "text/javascript" src = "commonwords.js"></script>
-    <script type = "text/javascript" src = "officialanswers.js"></script>
-    <script type = "text/javascript" src = "officialguesses.js"></script>    
-    <script type = "text/javascript" src = "rankings.js"></script>
-    <script type = "text/javascript" src = "colorings.js"></script>
-    <script type = "text/javascript" src = "wordl.js"></script>
-    <script type = "text/javascript" src = "bot.js"></script>
+    <script type = "text/javascript" src = "word_lists/allwords.js"></script>
+    <script type = "text/javascript" src = "word_lists/commonwords.js"></script>
+    <script type = "text/javascript" src = "word_lists/officialanswers.js"></script>
+    <script type = "text/javascript" src = "word_lists/officialguesses.js"></script>    
+    <script type = "text/javascript" src = "word_lists/rankings.js"></script>
+    <script type = "text/javascript" src = "js/wordl.js"></script>
+    <script type = "text/javascript" src = "js/bot.js"></script>
 	<title>WordleBot</title>
 </head>
 <body>
     <div id = "container">
         <div id="header">
             <div id = "top">
-                <!-- <button id="refresh"><i class="fa fa-refresh"></i></button> -->
                 <h1>Wordle Calcle</h1>
                 <button class = 'header-button test'><i class="gg-bot"></i></button>
                 <button class = 'header-button info'><i class="fa fa-info-circle"></i></button>
@@ -63,8 +62,8 @@
                 and the WordleBot will give you the best possible guesses from that point.</p>
             <h3 class = 'mini'>After each guess you should see something like this:</h3>
             <div class = 'pictures'>
-                <img id = 'example-tiles' src="exampletiles.png" alt="example tiles">
-                <img id = 'example-answers' src="exampleanswers.png" alt="example answers">
+                <img id = 'example-tiles' src="images/exampletiles.png" alt="example tiles">
+                <img id = 'example-answers' src="images/exampleanswers.png" alt="example answers">
             </div>
             <p>This means the best guess from this point would be ALEPH, PLENA, or SPALE, 
                 and that you have an average of 2.214 guesses left. </p>
