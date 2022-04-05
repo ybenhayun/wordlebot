@@ -397,7 +397,7 @@ function writeBestGuessList(guesses, list_length) {
     let data, list = "";
     for (let i = 0; i < list_length && i < guesses.length; i++) {
         if (guesses[i].wrong > 0 && guesses[i].wrong != NOT_YET_TESTED) {
-            data = guesses[i].average.toFixed(3) + " guesses, "
+            data = (guesses[i].average + guessesSoFar()).toFixed(3) + " guesses, "
             + ((1 - guesses[i].wrong)*100).toFixed(2) + "% solve rate.";
         } else if (guesses[i].wrong == NOT_YET_TESTED) {
             data = "not yet tested ";
