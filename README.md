@@ -1,17 +1,21 @@
 # Wordle Bot
-This is both a Wordle solver and a fully functional Wordle bot. You can either:
+This is both a Wordle solver and a fully functional Wordle bot, based on the rules of [Wordle](https://www.nytimes.com/games/wordle/index.html) by Josh Wardle. You can either:
 
 - Enter in your guess, and see what the next best guess would be based on the color of your tiles.
 - Enter in a starting word, and run the Wordle bot to see the average score the bot would receive over 300 games, if it started with that word.
 
 This bot has settings for both normal and hard mode (on hard mode you are forced to use all previously given hints). The suggestions for future guesses can be entirely different across these two settings, as they result in entirely different games.
 
-You have two choices for what I call the game's 'Wordbank', or the list of words it thinks could be the answer to any given game.
-'Most Likely Answers' will consider the answers from the official NYT answer list, as well as Quordle (or hellowordl.net for words not 5 letters long). 'Wordle + all variants' is based on the answer list from WordleUnlimited.com (it is much, much larger). Since WordleUnlimited was recently taken down, I may have to change that.
+# Wordbank
 
-The starting guesses it suggests also differ if you change the Wordbank, but I haven't fully tested all possibilities yet.
+You have two choices for which wordbanks the wordlebot will consider as potential answers. Either:
+- 'Most Likely Answers', based on the answerbanks from [Wordle](https://www.nytimes.com/games/wordle/index.html), [Quordle](https://www.quordle.com/#/), and [hellowordl],(https://hellowordl.net/).
+- 'Wordle + all variants', includes all possible answers from Wordle Unlimited (no longer active).
+Since WordleUnlimited was taken down I will have to update the larger list. The starting words the bot suggests is different for 'Wordle + all variants', but I haven't fully tested all words under that setting.
 
-The algorithm for this bot is fully optimized for normal mode (3.4212 using SALET as an opening guess), and has a 100% success rate on hard mode (3.512 using SALET). In terms of lowering the overall average, there is still room for further optimization on hard mode.
+# Performance
+
+The algorithm for this bot is fully optimized for normal mode (3.4212 using SALET as an opening guess), and has a 100% success rate on hard mode (3.5119 using SALET). In terms of lowering the overall average, there is still room for further optimization on hard mode.
 
 # Algorithm
 The bot starts by looking at all possible guesses after a first (or second/third etc.) guess. It compares those possible guesses to all words that it thinks could be the answer, and groups them into buckets based on the colors you would see, for that specific guess and that specifc answer. For example:
