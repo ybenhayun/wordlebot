@@ -9,7 +9,7 @@ const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10;
 const GUESSES_ALLOWED = 6;
 const NOT_YET_TESTED = .999;
 const MAX_TIME = 2000;
-const SIZE_FACTOR = 10;
+const SIZE_FACTOR = 1.7;
 const NO_WORDS = "<div id = 'nowords'>it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.</div>"
 const BEST_GUESSES = "these are your best possible guesses:";
 
