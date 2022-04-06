@@ -126,8 +126,8 @@ select {
 
 #refresh {
     position: absolute;
-    margin-left: -15.5rem;
     top: 1.125rem;
+    margin-left: -15rem;
 }
 
 .header-button {

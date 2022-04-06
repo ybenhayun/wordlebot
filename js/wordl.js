@@ -9,7 +9,7 @@ const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10;
 const GUESSES_ALLOWED = 6;
 const NOT_YET_TESTED = .999;
 const MAX_TIME = 2000;
-const SIZE_FACTOR = 1.7;
+const SIZE_FACTOR = 10;
 const NO_WORDS = "<div id = 'nowords'>it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.</div>"
 const BEST_GUESSES = "these are your best possible guesses:";
 
@@ -397,12 +397,12 @@ function writeBestGuessList(guesses, list_length) {
     let data, list = "";
     for (let i = 0; i < list_length && i < guesses.length; i++) {
         if (guesses[i].wrong > 0 && guesses[i].wrong != NOT_YET_TESTED) {
-            data = (guesses[i].average + guessesSoFar()).toFixed(3) + " guesses, "
+            data = (guesses[i].average).toFixed(3) + " guesses, "
             + ((1 - guesses[i].wrong)*100).toFixed(2) + "% solve rate.";
         } else if (guesses[i].wrong == NOT_YET_TESTED) {
             data = "not yet tested ";
         }
-        else data = (guesses[i].average + guessesSoFar()).toFixed(3) + " total guesses.";
+        else data = (guesses[i].average).toFixed(3) + " guesses remaining.";
 
         let word = "<div class = 'suggestion'>" + guesses[i].word + ": </div>";
         let score = "<div class = 'score'>" + data + "</div>";
