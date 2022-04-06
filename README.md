@@ -9,7 +9,7 @@ This bot has settings for both normal and hard mode (on hard mode you are forced
 # Wordbank
 
 You have two choices for which wordbanks the wordlebot will consider as potential answers. Either:
-- 'Most Likely Answers', based on the answerbanks from [Wordle](https://www.nytimes.com/games/wordle/index.html), [Quordle](https://www.quordle.com/#/), and [hellowordl],(https://hellowordl.net/).
+- 'Most Likely Answers', based on the answerbanks from [Wordle](https://www.nytimes.com/games/wordle/index.html), [Quordle](https://www.quordle.com/#/), and [hellowordl](https://hellowordl.net/).
 - 'Wordle + all variants', includes all possible answers from Wordle Unlimited (no longer active).
 Since WordleUnlimited was taken down I will have to update the larger list. The starting words the bot suggests is different for 'Wordle + all variants', but I haven't fully tested all words under that setting.
 
