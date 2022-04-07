@@ -126,10 +126,10 @@ select {
 
 #refresh {
     position: relative;
-    top: 42px;
-    right: 120px;
-    height: 32px;
-    width: 28px;
+    top: 3em;
+    right: 9em;
+    height: 2.29em;
+    width: 2em;
 }
 
 .header-button {
