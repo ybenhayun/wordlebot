@@ -128,6 +128,8 @@ select {
     position: relative;
     top: 2.625rem;
     right: 7.5rem;
+    height: 2rem;
+    width: 1.75rem;
 }
 
 .header-button {
