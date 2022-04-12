@@ -380,6 +380,9 @@ h3.best_options {
     position: absolute;
 }
 
+.best-guesses.only {
+}
+
 .normal .word-list {
     height: 100%;
     display: flex;
@@ -724,4 +727,30 @@ input:checked + .slider:before {
 
 .Y {
     background: var(--wrong-spot-color);
+}
+
+.tracker {
+    margin-left: .5rem;
+}
+
+.tracker .correct {
+    margin-bottom: .25rem;
+}
+
+/* container for count and increment buttons on woodle mode */
+.tracker div {
+    display: flex;
+}
+
+/* count for greens & yellows on woodle mode */
+.tracker div div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+}
+
+/* increment button */
+.increment {
+    max-height: 1.5rem;
 }

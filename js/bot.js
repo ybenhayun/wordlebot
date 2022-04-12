@@ -3,7 +3,7 @@ var newlist = [];
 
 function reduceTestList(list) {
     for (let i = 0; i < list.length; i++) {
-        if (!list[i].includes('S')) {
+        if (count(list[i], 'A') + count(list[i], 'E') + count(list[i], 'I') + count(list[i], 'O') + count(list[i], 'U') + count(list[i], 'Y') > 1) {
             list.splice(i, 1);
             i--;
         }
@@ -11,25 +11,18 @@ function reduceTestList(list) {
     return list;
 }
 
-function findStart(index, list, key) {
-    if (index >= list.length) return index;
-
-    if (seconds[list[index]] != null) {
-        if (seconds[list[index]][key] != null) {
-            return findStart(index+1, list, key);
-        }
-    }
-
-    return index;
-}
-
 function getStartingWords(difficulty) {
-    let testing_words;
+    // let testing_words;
     
-    if (isDifficulty(HARD, difficulty)) testing_words = hard;
-    else testing_words = easy;
+    // if (isDifficulty(HARD, difficulty)) testing_words = hard;
+    // else testing_words = easy;
+    // // testing_words = easy.filter(a => !hard.some(b => b.word == a.word));
 
-    return testing_words.sort((a, b) => a.average >= b.average ? 1 : -1).map(a => a.word).filter(a => a.length == word_length);
+    // return testing_words.sort((a, b) => a.average >= b.average ? 1 : -1).map(a => a.word).filter(a => a.length == word_length);
+    let guesses = reduceTestList(words.slice());
+
+    let testing_words = reducesListMost(common.slice(), guesses);
+    return testing_words.sort((a, b) => a.adjusted >= b.adjusted ? 1 : -1).filter(a => !hard.some(b => b.word == a.word)).map(a => a.word);
 }
 
 function testStartingWords() {
@@ -43,7 +36,7 @@ function testStartingWords() {
     const diff = INCORRECT.repeat(word_length);
     const hash_key = diff + "-" + wordbank + "-" + difficulty;
 
-    let i = findStart(0, check_list, hash_key);
+    let i = 0;
     let current = -1;
 
     if (isDifficulty(HARD, difficulty)) newlist = hard;
@@ -65,26 +58,13 @@ function testStartingWords() {
             }
             
             runBot(check_list[i], difficulty);
-            i = findStart(i+1, check_list, hash_key);
+            i++;
         }
         
         if (i >= check_list.length-1) {
             clearInterval(iv);
         }
     }, 1);
-}
-
-function getWord(number) {
-    let row = document.getElementsByClassName("row")[number-1];
-    let tiles = row.getElementsByClassName("tile");
-
-    let guess = "";
-
-    for (let i = 0; i < word_length; i++) {
-        guess += tiles[i].innerHTML;
-    }
-
-    return guess;
 }
 
 function removeTest(animating) {
@@ -201,9 +181,10 @@ function setupTest(word, difficulty) {
         if (word.length >= 4 && word.length <= 11) {
             document.getElementById("num_letters").value = word.length;
             setLength();
+
             if (words.includes(word)) {
-                // difficulty = Number(document.getElementById("hard-mode").checked);
                 difficulty = HARD;
+                // difficulty = NORMAL;
                 document.getElementById("test-settings").remove();
                 update();
                 runBot(word, difficulty);
@@ -335,7 +316,6 @@ function printData(all_words, guess, average, time) {
 
 function wordleBot(guess, answer, difficulty) {
     let attempts = 1;
-
     while (attempts <= 6) {
         makeTables(guess, "testing");
 
@@ -355,13 +335,13 @@ function wordleBot(guess, answer, difficulty) {
         
         attempts++;
 
-        let answer_list = filterList(common.slice(), letters);
+        let answer_list = filterList(common.slice());
         let possible_guesses = words.slice();
-        if (isDifficulty(HARD, difficulty)) possible_guesses = filterList(possible_guesses, letters);
+        if (isDifficulty(HARD, difficulty)) possible_guesses = filterList(possible_guesses);
 
         final_guesses = getBestGuesses(answer_list, possible_guesses, difficulty);
-
         guess = final_guesses[0].word;  
+
     }
 
     return attempts;

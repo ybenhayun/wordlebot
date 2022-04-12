@@ -20,16 +20,16 @@
     <script type = "text/javascript" src = "word_lists/officialguesses.js"></script>    
     <script type = "text/javascript" src = "word_lists/rankings.js"></script>
 
-    <script type = "text/javascript" src = "js/wordle.js"></script>
+    <script type = "text/javascript" src = "js/woodle.js"></script>
     <script type = "text/javascript" src = "js/main.js"></script>
     <script type = "text/javascript" src = "js/bot.js"></script>
-	<title>WordleBot</title>
+	<title>WoodleBot</title>
 </head>
 <body>
     <div id = "container">
         <div id="header">
             <div id = "top">
-                <h1>Wordle Calcle</h1>
+                <h1>Woodle Calcle</h1>
                 <button class = 'header-button test'><i class="gg-bot"></i></button>
                 <button class = 'header-button info'><i class="fa fa-info-circle"></i></button>
             </div>
@@ -57,33 +57,6 @@
             </h3>
             <!-- <button id = "wordlebot">Run Bot</button> -->
         </div>
-        
-        <div id = "info">
-            <button class="close"></button>
-            <h3 class = 'top'>How does this work?</h3>
-            <p>Simply enter in your last guess, click on the tiles until the colors match, hit calculate, 
-                and the WordleBot will give you the best possible guesses from that point.</p>
-            <h3 class = 'mini'>After each guess you should see something like this:</h3>
-            <div class = 'pictures'>
-                <img id = 'example-tiles' src="images/exampletiles.png" alt="example tiles">
-                <img id = 'example-answers' src="images/exampleanswers.png" alt="example answers">
-            </div>
-            <p>This means the best guess from this point would be ALEPH, PLENA, or SPALE, 
-                and that you have an average of 2.214 guesses left. </p>
-            <p>Toggle the switch to turn on hard mode, and you'll be given completely different suggestions.
-                In this case, the top 4 would've been SPILT, SALET, SPALT, and SPELT (on hard mode you have to include
-                all previously given hints).
-            </p>
-            <p>This bot works on words from 4 to 11 letters long.
-                You can also switch from 'Most Likely Answers' to a much, much, much larger list. 
-                The larger list is based on the answer bank from WordleUnlimited, but since that was recently taken down I might have to update that.
-            </p>
-            <p>
-                Want to see how good your starting word is? Click the <button class = 'test dummy' disabled><i class="gg-bot"></i></button> on the top right to get a good idea.
-            </p>
-            <p>Got Feedback? Reach out to me on <a href = 'https://twitter.com/ybenhayun'>Twitter</a>.</p>
-        </div>
-
         <div id = "guesses">
             <button id="refresh"><i class="fa fa-refresh"></i></button>
             <input type="text" autocomplete="off" id="word_entered" name="word_entered" placeholder="enter your guess here"
@@ -97,21 +70,12 @@
         
             <h2 class = 'num_options'></h2>
             <h3 class = 'by_likelihood'></h3> 
-            <div class = "label">Hard Mode: </div>
-            <label class="switch"> 
-                <input type="checkbox" id = "mode">
-                <span class="slider round"></span>
-            </label>
 
 
             <h3 class = 'best_options'></h3>
 
             <div id = "answers">
-                <div class = 'best-guesses normal front'>
-                    <ul class = 'word-list'></ul>
-                </div>
-
-                <div class = "best-guesses hard back">
+                <div class = 'best-guesses only front'>
                     <ul class = 'word-list'></ul>
                 </div>
             </div>
