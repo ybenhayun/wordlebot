@@ -7350,5 +7350,803 @@ const hard =
             "average": 3.3886453309951774,
             "wrong": 0
         }
+    },
+    {
+        "word": "RELIST",
+        "restricted": {
+            "average": 3.269618588338448,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "LISTER",
+        "restricted": {
+            "average": 3.2915387987724682,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "LITRES",
+        "restricted": {
+            "average": 3.295703638754932,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "RANCES",
+        "restricted": {
+            "average": 3.3097325734327048,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "LISTEN",
+        "restricted": {
+            "average": 3.2645769399386233,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "MANTLE",
+        "restricted": {
+            "average": 3.2731258220078914,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "CASTLE",
+        "restricted": {
+            "average": 3.254493643138974,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "TINSEL",
+        "restricted": {
+            "average": 3.2680841736080666,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "LANCER",
+        "restricted": {
+            "average": 3.3274879438842615,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "LEARNS",
+        "restricted": {
+            "average": 3.333625602805787,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "MANTEL",
+        "restricted": {
+            "average": 3.268303375712407,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "TRAILS",
+        "restricted": {
+            "average": 3.2937308198158703,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "SANTUR",
+        "restricted": {
+            "average": 3.289127575624726,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "TALERS",
+        "restricted": {
+            "average": 3.3033757124068392,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "NESTOR",
+        "restricted": {
+            "average": 3.3097325734327048,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "PALTER",
+        "restricted": {
+            "average": 3.3051293292415607,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "CANTOR",
+        "restricted": {
+            "average": 3.2915387987724682,
+            "wrong": 0.001972818939061815
+        }
+    },
+    {
+        "word": "STELAR",
+        "restricted": {
+            "average": 3.3138974134151686,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "CARTED",
+        "restricted": {
+            "average": 3.2992108724243754,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "RECANT",
+        "restricted": {
+            "average": 3.2843051293292413,
+            "wrong": 0.0008768084173608067
+        }
+    },
+    {
+        "word": "NITRES",
+        "restricted": {
+            "average": 3.3046909250328804,
+            "wrong": 0.001972818939061815
+        }
+    },
+    {
+        "word": "STRAIN",
+        "restricted": {
+            "average": 3.2862779482683036,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "CENTRA",
+        "restricted": {
+            "average": 3.2900043840420867,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "TRINES",
+        "restricted": {
+            "average": 3.2994300745287153,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "TIRLED",
+        "restricted": {
+            "average": 3.309513371328365,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "LANCES",
+        "restricted": {
+            "average": 3.2897851819377464,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "GARNET",
+        "restricted": {
+            "average": 3.312801402893468,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "SAMLET",
+        "restricted": {
+            "average": 3.2621657167908813,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "INSTAR",
+        "restricted": {
+            "average": 3.3193774660236737,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "CLARET",
+        "restricted": {
+            "average": 3.3033757124068392,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "LASTED",
+        "restricted": {
+            "average": 3.2932924156071897,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "NEROLS",
+        "restricted": {
+            "average": 3.3274879438842615,
+            "wrong": 0.0008768084173608067
+        }
+    },
+    {
+        "word": "HANTLE",
+        "restricted": {
+            "average": 3.3042525208241997,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "RELICT",
+        "restricted": {
+            "average": 3.292196405085489,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "ARTELS",
+        "restricted": {
+            "average": 3.3027181060938187,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "MANTES",
+        "restricted": {
+            "average": 3.2702761946514687,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "MASTER",
+        "restricted": {
+            "average": 3.3042525208241997,
+            "wrong": 0.0008768084173608067
+        }
+    },
+    {
+        "word": "SANTOL",
+        "restricted": {
+            "average": 3.27181060938185,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "PARLES",
+        "restricted": {
+            "average": 3.2961420429636124,
+            "wrong": 0.0008768084173608067
+        }
+    },
+    {
+        "word": "BANTER",
+        "restricted": {
+            "average": 3.31543182814555,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "TRONES",
+        "restricted": {
+            "average": 3.301183691363437,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "NACRES",
+        "restricted": {
+            "average": 3.324638316527839,
+            "wrong": 0.0015344147303814116
+        }
+    },
+    {
+        "word": "CARLIN",
+        "restricted": {
+            "average": 3.2994300745287153,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "CENTAL",
+        "restricted": {
+            "average": 3.285620341955283,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "CORNET",
+        "restricted": {
+            "average": 3.2786058746163964,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "HALTER",
+        "restricted": {
+            "average": 3.3323103901797455,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "ARMLET",
+        "restricted": {
+            "average": 3.3097325734327048,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "LANDER",
+        "restricted": {
+            "average": 3.3312143796580447,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "LORANS",
+        "restricted": {
+            "average": 3.335817623849189,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "RECTAL",
+        "restricted": {
+            "average": 3.3049101271372203,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "CRATES",
+        "restricted": {
+            "average": 3.275975449364314,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "TRIALS",
+        "restricted": {
+            "average": 3.3046909250328804,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "TARGES",
+        "restricted": {
+            "average": 3.317404647084612,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "MATRES",
+        "restricted": {
+            "average": 3.2963612450679527,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "LATENS",
+        "restricted": {
+            "average": 3.3014028934677775,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "STONER",
+        "restricted": {
+            "average": 3.3191582639193338,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "MILTER",
+        "restricted": {
+            "average": 3.3176238491889523,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "TALONS",
+        "restricted": {
+            "average": 3.302279701885138,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "STOLEN",
+        "restricted": {
+            "average": 3.297895659798334,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "RUNLET",
+        "restricted": {
+            "average": 3.3222270933800964,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "TENORS",
+        "restricted": {
+            "average": 3.300964489259097,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "TRAINS",
+        "restricted": {
+            "average": 3.297676457693994,
+            "wrong": 0.00043840420868040335
+        }
+    },
+    {
+        "word": "MARTIN",
+        "restricted": {
+            "average": 3.286716352476984,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "CARTON",
+        "restricted": {
+            "average": 3.2864971503726434,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "TRANCE",
+        "restricted": {
+            "average": 3.3033757124068392,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "RACIST",
+        "restricted": {
+            "average": 3.275098640946953,
+            "wrong": 0.00021920210434020167
+        }
+    },
+    {
+        "word": "LECTOR",
+        "restricted": {
+            "average": 3.3101709776413855,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "PASTER",
+        "restricted": {
+            "average": 3.303594914511179,
+            "wrong": 0.0008768084173608067
+        }
+    },
+    {
+        "word": "CRANES",
+        "restricted": {
+            "average": 3.318281455501973,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "SECTOR",
+        "restricted": {
+            "average": 3.2900043840420867,
+            "wrong": 0.0010960105217010083
+        }
+    },
+    {
+        "word": "SCALER",
+        "restricted": {
+            "average": 3.316308636562911,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "CASTOR",
+        "restricted": {
+            "average": 3.280140289346778,
+            "wrong": 0.0008768084173608067
+        }
+    },
+    {
+        "word": "SILTED",
+        "restricted": {
+            "average": 3.2777290661990355,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "SORTED",
+        "restricted": {
+            "average": 3.2875931608943447,
+            "wrong": 0.001972818939061815
+        }
+    },
+    {
+        "word": "CORNEL",
+        "restricted": {
+            "average": 3.311924594476107,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "GASTER",
+        "restricted": {
+            "average": 3.3257343270495396,
+            "wrong": 0.00131521262604121
+        }
+    },
+    {
+        "word": "MINTER",
+        "restricted": {
+            "average": 3.3167470407715913,
+            "wrong": 0.0017536168347216134
+        }
+    },
+    {
+        "word": "DERATS",
+        "restricted": {
+            "average": 3.3073213502849628,
+            "wrong": 0.000657606313020605
+        }
+    },
+    {
+        "word": "ARLES",
+        "restricted": {
+            "average": 3.5790155440414506,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "LARES",
+        "restricted": {
+            "average": 3.5841968911917097,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "LASER",
+        "restricted": {
+            "average": 3.587219343696028,
+            "wrong": 0.0004317789291882556
+        }
+    },
+    {
+        "word": "RALES",
+        "restricted": {
+            "average": 3.5841968911917097,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "ANTRE",
+        "restricted": {
+            "average": 3.5483592400690847,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "STALE",
+        "restricted": {
+            "average": 3.535405872193437,
+            "wrong": 0.0004317789291882556
+        }
+    },
+    {
+        "word": "SLIER",
+        "restricted": {
+            "average": 3.5664939550949915,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "SOREL",
+        "restricted": {
+            "average": 3.570811744386874,
+            "wrong": 0.0004317789291882556
+        }
+    },
+    {
+        "word": "NARES",
+        "restricted": {
+            "average": 3.589378238341969,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "LEANT",
+        "restricted": {
+            "average": 3.5194300518134716,
+            "wrong": 0.0004317789291882556
+        }
+    },
+    {
+        "word": "LEAST",
+        "restricted": {
+            "average": 3.523316062176166,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "CRANE",
+        "restricted": {
+            "average": 3.5280656303972364,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "ARETS",
+        "restricted": {
+            "average": 3.5548359240069085,
+            "wrong": 0.0004317789291882556
+        }
+    },
+    {
+        "word": "ASTER",
+        "restricted": {
+            "average": 3.582901554404145,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "SOLER",
+        "restricted": {
+            "average": 3.5798791018998273,
+            "wrong": 0.0004317789291882556
+        }
+    },
+    {
+        "word": "SILER",
+        "restricted": {
+            "average": 3.570811744386874,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "STEAR",
+        "restricted": {
+            "average": 3.569516407599309,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "REACT",
+        "restricted": {
+            "average": 3.5328151986183074,
+            "wrong": 0.0008635578583765112
+        }
+    },
+    {
+        "word": "TRAIL",
+        "restricted": {
+            "average": 3.534974093264249,
+            "wrong": 0.0004317789291882556
+        }
+    },
+    {
+        "word": "LAERS",
+        "restricted": {
+            "average": 3.599309153713299,
+            "wrong": 0.0004317789291882556
+        }
+    },
+    {
+        "word": "EARLS",
+        "restricted": {
+            "average": 3.5867875647668392,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "STANE",
+        "restricted": {
+            "average": 3.5479274611398965,
+            "wrong": 0.0008635578583765112
+        }
+    },
+    {
+        "word": "TEALS",
+        "restricted": {
+            "average": 3.533678756476684,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "SCARE",
+        "restricted": {
+            "average": 3.570811744386874,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "NERAL",
+        "restricted": {
+            "average": 3.587651122625216,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "PRATE",
+        "restricted": {
+            "average": 3.528497409326425,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "SCRAE",
+        "restricted": {
+            "average": 3.5734024179620034,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "STORE",
+        "restricted": {
+            "average": 3.566062176165803,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "NEARS",
+        "restricted": {
+            "average": 3.5820379965457687,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "STIRE",
+        "restricted": {
+            "average": 3.569516407599309,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "LIART",
+        "restricted": {
+            "average": 3.55699481865285,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "TRINE",
+        "restricted": {
+            "average": 3.5319516407599307,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "RONTE",
+        "restricted": {
+            "average": 3.5544041450777204,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "SARED",
+        "restricted": {
+            "average": 3.582901554404145,
+            "wrong": 0
+        }
+    },
+    {
+        "word": "RANCE",
+        "restricted": {
+            "average": 3.5513816925734023,
+            "wrong": 0.0008635578583765112
+        }
+    },
+    {
+        "word": "SETAL",
+        "restricted": {
+            "average": 3.5492227979274613,
+            "wrong": 0.0004317789291882556
+        }
     }
 ]
