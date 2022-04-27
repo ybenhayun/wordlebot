@@ -550,7 +550,7 @@ function getTempList() {
     let letters = bot.getBestLetters(common.slice());
     guesses = sortList(words.slice(), letters);
     
-    guesses = reducesListMost(common.slice(), guesses.slice(0, 75));
+    guesses = reducesListMost(common.slice(), guesses.slice(0, 50));
     guesses = guesses.map(a => Object.assign ({}, {word: a.word, average: a.adjusted, wrong: NOT_YET_TESTED}));
     return guesses;
 }
