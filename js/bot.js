@@ -3,7 +3,7 @@ var newlist = [];
 
 function reduceTestList(list) {
     for (let i = 0; i < list.length; i++) {
-        if (count(list[i], 'A') + count(list[i], 'E') + count(list[i], 'I') + count(list[i], 'O') + count(list[i], 'U') + count(list[i], 'Y') > 1) {
+        if (count(list[i], 'A') + count(list[i], 'E') + count(list[i], 'I') + count(list[i], 'O') + count(list[i], 'U') + count(list[i], 'Y') > 2) {
             list.splice(i, 1);
             i--;
         }
@@ -12,26 +12,28 @@ function reduceTestList(list) {
 }
 
 function getStartingWords(difficulty) {
-    // let testing_words;
-    
-    // if (isDifficulty(HARD, difficulty)) testing_words = hard;
-    // else testing_words = easy;
-    // // testing_words = easy.filter(a => !hard.some(b => b.word == a.word));
+    let starting_words;
+    if (isDifficulty(HARD, difficulty) && bot.hasHardMode()) {
+        starting_words = hard; 
+    } else {
+        starting_words = easy;
+    }
 
-    // return testing_words.sort((a, b) => a.average >= b.average ? 1 : -1).map(a => a.word).filter(a => a.length == word_length);
-    let guesses = reduceTestList(words.slice());
+    starting_words = starting_words[bot.type];
+    starting_words = starting_words.map(a => a.word).filter(a => a.length == word_length);
 
-    let testing_words = reducesListMost(common.slice(), guesses);
-    return testing_words.sort((a, b) => a.adjusted >= b.adjusted ? 1 : -1).filter(a => !hard.some(b => b.word == a.word)).map(a => a.word);
+    console.log(starting_words);
+    return starting_words;
 }
 
 function testStartingWords() {
     console.log("testing");
     
-    const difficulty = Number(document.getElementById("mode").checked);
+    // const difficulty = Number(document.getElementById("mode").checked);
+    difficulty = HARD;
+    // difficulty = NORMAL;
     
     let check_list = getStartingWords(difficulty);
-    console.log(check_list);
 
     const diff = INCORRECT.repeat(word_length);
     const hash_key = diff + "-" + wordbank + "-" + difficulty;
@@ -39,7 +41,7 @@ function testStartingWords() {
     let i = 0;
     let current = -1;
 
-    if (isDifficulty(HARD, difficulty)) newlist = hard;
+    if (isDifficulty(HARD, difficulty) && bot.hasHardMode()) newlist = hard;
     else newlist = easy;
 
     let iv = setInterval(function() {
@@ -78,10 +80,11 @@ function removeTest(animating) {
     } 
 
     document.getElementById("grid").innerHTML = "";
-    document.getElementById("word_entered").disabled = false;
-    document.getElementById("word_entered").disabled = false;
+    document.getElementById("word-entered").disabled = false;
+    document.getElementById("word-entered").disabled = false;
     document.getElementsByClassName("info")[0].disabled = false;
     document.getElementsByClassName("test")[0].disabled = false;
+    document.getElementById('suggestions').classList.remove('testing');
 }
 
 function createBarGraphs() {
@@ -93,13 +96,12 @@ function createBarGraphs() {
     test_center.setAttribute("id", "results");
     test_center.setAttribute("class", "testing");
     test_center.innerHTML = "<div class = 'average'></div><div class = 'current'></div>";
-    test_center.innerHTML += "<div class = 'bar one'><span class = 'num-guesses'>1/6</span><span class = 'count'></span></div>";
-    test_center.innerHTML += "<div class = 'bar two'><span class = 'num-guesses'>2/6</span><span class = 'count'></span></div>";
-    test_center.innerHTML += "<div class = 'bar three'><span class = 'num-guesses'>3/6</span><span class = 'count'></span></div>";
-    test_center.innerHTML += "<div class = 'bar four'><span class = 'num-guesses'>4/6</span><span class = 'count'></span></div>";
-    test_center.innerHTML += "<div class = 'bar five'><span class = 'num-guesses'>5/6</span><span class = 'count'></span></div>";
-    test_center.innerHTML += "<div class = 'bar sixe'><span class = 'num-guesses'>6/6</span><span class = 'count'></span></div>";
-    test_center.innerHTML += "<div class = 'bar x'><span class = 'num-guesses'>X/6</span><span class = 'count'></span></div>";
+    
+    for (let i = 0; i < bot.guessesAllowed(); i++) {
+        test_center.innerHTML += "<div class = 'bar'><span class = 'num-guesses'>" + (i+1) + "/" + bot.guessesAllowed() + "</span><span class = 'count'></span></div>";
+    }
+
+    test_center.innerHTML += "<div class = 'bar x'><span class = 'num-guesses'>X/" + bot.guessesAllowed() + "</span><span class = 'count'></span></div>";
     test_center.innerHTML += "<button class = 'close'></button>";
     document.getElementById("suggestions").appendChild(test_center);    
 
@@ -113,7 +115,7 @@ function createBarGraphs() {
 }
 
 function removeNonBotElements() {
-    document.getElementById("word_entered").disabled = true;
+    document.getElementById("word-entered").disabled = true;
     document.getElementsByClassName("info")[0].disabled = true;
     document.getElementsByClassName("test")[0].disabled = true;
     document.getElementById("grid").innerHTML = "";
@@ -122,21 +124,19 @@ function removeNonBotElements() {
         document.getElementById("grid")
     );
 
-    document.getElementById("calculate").innerHTML = "";
+    document.getElementById("next-previous-buttons").innerHTML = "";
 }
 
 function createBotMenu() {
     let menu = document.createElement("div");
     menu.setAttribute("id", "test-settings");
 
-    let hard = "<div class = 'disclaimer'>For the time being, the WordleBot will test your word on hard mode for efficiency purposes.</div>"
-    // let hard = "<div><input type='checkbox' id='hard-mode' name='hard-mode'>";
-    // hard += "<label for='hard-mode'>Bot plays hard mode</label></div>";
+    let hard = "<div class = 'disclaimer'>If the bot starts out slow, don't worry. It will get increasingly faster as it plays more games.</div>";
     let submit_button = "<button class = 'bot'>Start WordleBot</button>";
     let input = "<input type = 'text' id = 'testword' placeholder='your starting word'"
                 + "input onkeypress = 'return /[a-z]/i.test(event.key)' oninput= 'this.value = this.value.toUpperCase()'>"
 
-    let info = "<div class = 'info'> The Wordle Bot will test " + input + " against " + TEST_SIZE + " randomly selected answers.</div>";
+    let info = "<div class = 'info'> The " + bot.type + "Bot will test " + input + " against " + TEST_SIZE + " randomly selected answers on hard mode.</div>";
     menu.innerHTML = info + hard + submit_button;
 
     return menu;
@@ -147,7 +147,7 @@ function resetGuessRows() {
         document.getElementById("grid")
     );    
     let rows = document.getElementById("grid");
-    let buttons = document.getElementById("calculate");
+    let buttons = document.getElementById("next-previous-buttons");
     swapDiv(buttons, rows);
     document.getElementById("grid").innerHTML = "";
 }
@@ -157,7 +157,7 @@ function swapDiv(event, elem) {
 }
 
 function setupTest(word, difficulty) {
-    TEST_SIZE = 300;
+    TEST_SIZE = 500;
     // TEST_SIZE = common.length;
 
     let test_center = createBarGraphs();
@@ -167,10 +167,12 @@ function setupTest(word, difficulty) {
     let input = document.getElementById('testword');
     input.focus();
     input.select();
-    
-    removeNonBotElements(word);
 
-    document.getElementsByClassName("close")[1].addEventListener('click', function() {            
+    removeNonBotElements(word);
+    document.getElementById('suggestions').classList.add('testing');
+
+    let num = document.getElementsByClassName('close').length-1;
+    document.getElementsByClassName("close")[num].addEventListener('click', function() {            
         pairings = {};
         resetGuessRows();
         removeTest();
@@ -179,8 +181,9 @@ function setupTest(word, difficulty) {
     document.getElementsByClassName("bot")[0].addEventListener("click", function() {
         let word = document.getElementById('testword').value;
         if (word.length >= 4 && word.length <= 11) {
-            document.getElementById("num_letters").value = word.length;
+            document.getElementById("word-length").value = word.length;
             setLength();
+            setWordbank();
 
             if (words.includes(word)) {
                 difficulty = HARD;
@@ -195,7 +198,7 @@ function setupTest(word, difficulty) {
 
 function placeTestRows(word) {
     makeTables(word, 'testing');
-    document.getElementsByClassName("calculate").innerHTML = "";
+    document.getElementsByClassName("next-previous-buttons").innerHTML = "";
 }
 
 function getTestAnswers(TEST_SIZE, random_answers) {
@@ -250,14 +253,14 @@ function runBot(guess, difficulty) {
     let sum = 0;
     let count = 0;
     let missed = [];
-    let scores = new Array(7).fill(0);
+    let scores = new Array(bot.guessesAllowed()+1).fill(0);
     let testing_sample = getTestAnswers(TEST_SIZE, []);
 
     let iv = setInterval(function() {
         document.getElementById("grid").innerHTML = "";
         let points = wordleBot(guess, testing_sample[count], difficulty);
 
-        if (points == 7) {
+        if (points > bot.guessesAllowed()) {
             // clearInterval(iv);
             missed.push(testing_sample[count]);
         }
@@ -289,45 +292,40 @@ function runBot(guess, difficulty) {
 
 function updateWordData(guess, average, wrong, difficulty) {
     if (!newlist.length) {
-        if (isDifficulty(HARD, difficulty)) newlist = hard;
+        if (isDifficulty(HARD, difficulty) && bot.hasHardMode()) newlist = hard;
         else newlist = easy;
     }
 
     averages.push({word: guess, average: average, wrong: wrong});
     averages.sort((a, b) => a.average >= b.average ? 1 : -1);
 
-    let index = newlist.map(a => a.word).indexOf(guess);
+    let index = newlist[bot.type].map(a => a.word).indexOf(guess);
     let data = {average: average, wrong: wrong};
 
     if (index == -1) {
-        newlist.push({word: guess});
-        index = newlist.length - 1;
+        newlist[bot.type].push({word: guess});
+        index = newlist[bot.type].length - 1;
     } 
             
-    newlist[index][wordbank] = data;
+    newlist[bot.type][index][wordbank] = data;
 }
 
 function printData(all_words, guess, average, time) {
-    console.log(all_words.map(a => Object.assign({}, {word: a.word, restricted: a.restricted, complete: a.complete})));
-    console.log(guess + " --> " + average + " --> " + time + " seconds");
+    console.log(all_words);
+    console.log(averages.map(a => a.word).indexOf(guess) + ": " + guess + " --> " + average + " --> " + time + " seconds");
     console.log(averages);
     console.log(seconds);
 }
 
 function wordleBot(guess, answer, difficulty) {
     let attempts = 1;
-    while (attempts <= 6) {
+
+    while (attempts <= bot.guessesAllowed()) {
         makeTables(guess, "testing");
 
-        let diff = getDifference(guess, answer);
-        let letters = document.getElementsByClassName("tile");
-        let pos = 0;
-        
-        for (let i = Math.max(0, letters.length - word_length); i < letters.length; i++) {
-            letters[i].classList.replace(INCORRECT, diff[pos]);
-            pos++;
-        }
-        
+        let diff = bot.getDifference(guess, answer);
+        bot.setRowColor(diff, document.getElementsByClassName('row')[attempts-1]);
+
         if (guess == answer || attempts == 6) {
             if (guess != answer) attempts++;
             break;
