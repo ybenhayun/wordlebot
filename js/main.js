@@ -52,6 +52,10 @@ function setWordbank() {
             wordbank = banks[i].id;
             break;
         }
+
+        if (i == banks.length - 1) {
+            banks[0].checked = true;
+        }
     }
 
     if (wordbank == 'restricted') {
@@ -528,25 +532,7 @@ function getFirstGuesses(difficulty) {
 }
 
 function getTempList() {
-    // let letters = [];
     let guesses = words.slice();
-
-    // if (bot.type != 'W-Peaks') {
-    //     letters = bestLetters(common);
-    //     guesses = sortList(words.slice(), letters);
-    // } else {
-    //     for (let c = 65; c <= 90; c++) {
-    //         let char = String.fromCharCode(c);
-    //         let val = 1/Math.abs(c - (90+65)/2);
-
-    //         letters[char] = [];
-    //         for (let i = 0; i < word_length+1; i++) {
-    //             letters[char].push(val);
-    //         }
-    //     }
-        
-    //     guesses = sortList(words.slice(), letters);
-    // }
     let letters = bot.getBestLetters(common.slice());
     guesses = sortList(words.slice(), letters);
     
