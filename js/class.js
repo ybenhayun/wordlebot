@@ -1,3 +1,9 @@
+// class constants
+const WORDLE = 'Wordle';
+const WOODLE = 'Woodle';
+const PEAKS = 'W-Peaks';
+const ANTI = 'Antiwordle';
+
 class Bot {
     constructor(type) {
         this.type = type;
@@ -8,16 +14,20 @@ class Bot {
     }
 
     hasHardMode() {
-        return this.type == 'Wordle';
+        return this.type == WORDLE || this.type == ANTI;
     }
 
-    guessesAllowed() {
-        if (this.type == 'Woodle') return 8;
+    guessesAllowed(difficulty) {
+        if (this.type == WOODLE) return 8;
+        if (this.type == ANTI) {
+            if (isDifficulty(HARD, difficulty)) return 18;
+            return 26;
+        }
         return 6;
     }
 
     setChangeEvents(row) {
-        if (this.type == 'Woodle') {
+        if (this.type == WOODLE) {
             woodleDropdown(row);
         } else {
             tilesChangeColor(row);
@@ -25,9 +35,9 @@ class Bot {
     }
 
     getDifference(word1, word2) {
-        if (this.type == 'Woodle') {
+        if (this.type == WOODLE) {
             return differencesWithoutPositions(word1, word2);
-        } else if (this.type == 'W-Peaks') {
+        } else if (this.type == PEAKS) {
             return getAlphabeticDifferences(word1, word2);
         } else {
             return differencesWithPositions(word1, word2);
@@ -35,7 +45,7 @@ class Bot {
     }
 
     getRowColor(row_number) {
-        if (this.type == 'Woodle') {
+        if (this.type == WOODLE) {
             return rowDifferencesWithoutPositions(row_number);
         } else {
             return rowDifferencesWithPositions(row_number);
@@ -43,7 +53,7 @@ class Bot {
     }
 
     setRowColor(difference, row) {
-        if (this.type == 'Woodle') {
+        if (this.type == WOODLE) {
             return setRowDifferencesWithoutPositions(difference, row);
         } else {
             return setRowDifferencesWithPositions(difference, row);
@@ -51,11 +61,19 @@ class Bot {
     }
 
     getBestLetters(list) {
-        if (this.type != 'W-Peaks') {
+        if (this.type != PEAKS) {
             return mostCommonLetters(list);
         } else {
             return lettersClosestToCenter(list);
         }   
+    }
+
+    reducesListBest(answers, guesses, future_guess) {
+        if (this.type == ANTI) {
+            return reducesListLeast(answers, guesses);
+        } else {
+            return reducesListMost(answers, guesses, future_guess);
+        }
     }
 }
 
@@ -103,7 +121,8 @@ function differencesWithPositions(word1, word2) {
         if (word1_c == word2_c) {
             temp1 = temp1.slice(0, j) + temp1.slice(j+1);
             temp2 = temp2.slice(0, j) + temp2.slice(j+1);
-            diff = diff.slice(0, pos) + CORRECT + diff.slice(pos+1);
+            // diff = diff.slice(0, pos) + CORRECT + diff.slice(pos+1);
+            diff = replaceAt(diff, CORRECT, pos);
             j--;
         }
         pos++;
@@ -119,12 +138,14 @@ function differencesWithPositions(word1, word2) {
 
         let word1_c = temp1.charAt(j);
         if (temp2.includes(word1_c)) {
-            diff = diff.slice(0, pos) + WRONG_SPOT + diff.slice(pos+1);
+            // diff = diff.slice(0, pos) + WRONG_SPOT + diff.slice(pos+1);
+            diff = replaceAt(diff, WRONG_SPOT, pos);
 
             let index = temp2.indexOf(word1_c);
             temp2 = temp2.slice(0, index) + temp2.slice(index+1);
         } else {
-            diff = diff.slice(0, pos) + INCORRECT + diff.slice(pos+1);
+            // diff = diff.slice(0, pos) + INCORRECT + diff.slice(pos+1);
+            diff = replaceAt(diff, INCORRECT, pos);
         }
 
 
@@ -132,7 +153,6 @@ function differencesWithPositions(word1, word2) {
     }
 
     pairings[word1][word2] = diff;
-
     return diff;
 }
 
@@ -306,4 +326,71 @@ function lettersClosestToCenter() {
     }
 
     return letters;
+}
+
+function reducesListMost(answers, guesses, future_guess) {
+    let best_words = [];
+    let min = answers.length;
+
+    for (let i = 0; i < guesses.length; i++) {
+        let data = calculateAverageBucketSize(guesses[i], answers, min, future_guess)
+        if (!data) continue;
+  
+        min = Math.min(min, data.adjusted);
+        best_words.push({word: guesses[i], average: data.adjusted, differences: data.differences});
+
+        if (data.weighted < 1 && future_guess) break;
+        if (min == 0 && best_words.length >= answers.length && future_guess) break;
+    }
+
+    best_words = sortListByAverage(best_words);
+    return best_words;
+}
+
+function reducesListLeast(answers, guesses) {
+    let best_words = [];
+
+    for (let i = 0; i < guesses.length; i++) {
+        let data = calculateAverageBucketSize(guesses[i], answers, 0, 0);
+
+        best_words.push({word: guesses[i], average: data.weighted, differences: data.differences});
+    }
+
+    best_words = sortListByAverage(best_words);
+    return best_words;    
+}
+
+function calculateAverageBucketSize(guess, answers, min, future_guess) {
+    let differences = [];
+    let list_size = answers.length;
+    let weighted = adjusted = 0;
+    let threes = 1;
+
+    for (let i = 0; i < list_size; i++) {
+        let diff = bot.getDifference(guess, answers[i]); 
+
+        if (differences[diff] == null) {
+            differences[diff] = [];
+        }
+
+        if (diff != CORRECT.repeat(word_length)) {
+            differences[diff].push(answers[i]);
+        }
+
+        let freq = differences[diff].length;
+        
+        if (freq > 0) {
+            weighted += (freq/list_size)*freq - ((freq-1)/list_size)*(freq-1);
+            if (freq > 1) {
+                threes -= 1/list_size;
+            }
+        }
+
+        adjusted = (1-threes)*weighted;
+        if (!bot.isFor(ANTI) && (adjusted >= min && future_guess || adjusted > min*SIZE_FACTOR)) {
+            return;
+        }
+    }
+    
+    return {word: guess, weighted: weighted, threes: threes, adjusted: adjusted, differences: differences};
 }

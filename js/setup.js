@@ -73,7 +73,7 @@ function getPreferences() {
     if (localStorage.getItem('bot_type')) {
         setBotMode(localStorage.getItem('bot_type'));
     } else {
-        setBotMode('Wordle');
+        setBotMode(WORDLE);
     }
 
     if (localStorage.getItem('wordbank')) {
@@ -144,7 +144,13 @@ const EXAMPLE_LIST =
         {word: 'TIRED', score: '2.222 guesses left'}, 
         {word: 'TOPEE', score: '2.222 guesses left'},
         {word: 'TOPEK', score: '2.222 guesses left'}
-    ],     
+    ],
+    "Antiwordle": [
+        {word: 'TAZZA', score: '9.000 guesses left', wrong: '96.77% solve rate'},
+        {word: 'THUJA', score: '8.813 guesses left'},
+        {word: 'TAPPA', score: '8.813 guesses left'},
+        {word: 'TAXED', score: '8.500 guesses left'}
+    ]     
 } 
 
 
@@ -201,15 +207,15 @@ function explainExample() {
     let explanation = document.createElement('div');
     explanation.setAttribute('class', 'description');
 
-    if (bot.isFor('Wordle')) {
+    if (bot.isFor(WORDLE)) {
         explanation.innerHTML = 'T is in the correct position, A is in the word but not in the correct position, and R, I, and N are not in the word.'
     }
 
-    if (bot.isFor('Woodle')) {
+    if (bot.isFor(WOODLE)) {
         explanation.innerHTML = 'TRAIN has one letter in the correct position, and one letter in the word, but not in the correct position';
     }
 
-    if (bot.isFor('W-Peaks')) {
+    if (bot.isFor(PEAKS)) {
         explanation.innerHTML = 'The 1st letter of the word is T, the second 2nd letter comes before R in the alphabet, the 3rd comes after A, the 4th before I, and the 5th before N.';
     }
 
@@ -301,23 +307,25 @@ function createAnswerLists(div) {
     let answer_lists = document.createElement('div');
     answer_lists.setAttribute('id', 'answers');
     
-    let normal_list_position = 'front', hard_list_position = 'back';
-    if (bot.hasHardMode() && document.getElementById('mode').checked) {
-        normal_list_position = 'back';
-        hard_list_position = 'front';
-    }
+    // let normal_list_position = 'front', hard_list_position = 'back';
+    // if (bot.hasHardMode() && document.getElementById('mode').checked) {
+    //     normal_list_position = 'back';
+    //     hard_list_position = 'front';
+    // }
 
-    createOptions(answer_lists, 'normal ' + normal_list_position);
 
-    if (bot.hasHardMode()) {
-        createOptions(answer_lists, 'hard ' + hard_list_position);
-    }
+    createOptions(answer_lists);
+
+    // if (bot.hasHardMode()) {
+    //     createOptions(answer_lists, 'hard ' + hard_list_position);
+    // }
 
     div.append(answer_lists);
 }
 
-function createOptions(div, position) {
-    let class_name = 'best-guesses ' + position;
+function createOptions(div) {
+    // let class_name = 'best-guesses ' + position;
+    let class_name = 'best-guesses';
     let best_guesses = document.createElement('div');
     best_guesses.setAttribute('class', class_name);
 
@@ -351,8 +359,7 @@ function createHardModeSwitch(div) {
     div.insertBefore(switch_container, header);
 
     switch_checkbox.addEventListener('change', function() {
-        swapSlides(document.getElementsByClassName('best-guesses normal'), 
-                    document.getElementsByClassName('best-guesses hard'), switch_checkbox.checked);
+        update();
     });
 }
 

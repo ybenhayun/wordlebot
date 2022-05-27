@@ -101138,5 +101138,11 @@ const common_words =
     "CALK",
     "KNAP",
     "DIRK",
-    "BURL"
+    "BURL",
+    "SALES",
+    "TERMS",
+    "TIRED",
+    "YOURS",
+    "ARMED",
+    "WORKS"
 ]

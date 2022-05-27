@@ -3,7 +3,7 @@ var newlist = [];
 
 function reduceTestList(list) {
     for (let i = 0; i < list.length; i++) {
-        if (count(list[i], 'A') + count(list[i], 'E') + count(list[i], 'I') + count(list[i], 'O') + count(list[i], 'U') + count(list[i], 'Y') > 2) {
+        if (count(list[i], 'Q') < 1) {
             list.splice(i, 1);
             i--;
         }
@@ -12,16 +12,9 @@ function reduceTestList(list) {
 }
 
 function getStartingWords(difficulty) {
-    let starting_words;
-    if (isDifficulty(HARD, difficulty) && bot.hasHardMode()) {
-        starting_words = hard; 
-    } else {
-        starting_words = easy;
-    }
-
-    starting_words = starting_words[bot.type];
-    starting_words = starting_words.map(a => a.word).filter(a => a.length == word_length);
-
+    let guesses = getFirstGuesses(difficulty);
+    let starting_words = guesses.map(a => a.word);
+    
     console.log(starting_words);
     return starting_words;
 }
@@ -29,7 +22,6 @@ function getStartingWords(difficulty) {
 function testStartingWords() {
     console.log("testing");
     
-    // const difficulty = Number(document.getElementById("mode").checked);
     difficulty = HARD;
     // difficulty = NORMAL;
     
@@ -41,15 +33,12 @@ function testStartingWords() {
     let i = 0;
     let current = -1;
 
-    if (isDifficulty(HARD, difficulty) && bot.hasHardMode()) newlist = hard;
-    else newlist = easy;
-
     let iv = setInterval(function() {
         if (averages.length > current) {
             current = averages.length;
 
             makeTables(check_list[i], 'testing');
-            setupTest(check_list[i], difficulty);
+            setupTest(check_list[i]);
 
             if (document.getElementById("summary")) {
                 document.getElementById("summary").remove();
@@ -87,7 +76,7 @@ function removeTest(animating) {
     document.getElementById('suggestions').classList.remove('testing');
 }
 
-function createBarGraphs() {
+function createBarGraphs(max_guesses) {
     if (document.getElementById("results")) {
         document.getElementById("results").remove();
     } 
@@ -97,11 +86,11 @@ function createBarGraphs() {
     test_center.setAttribute("class", "testing");
     test_center.innerHTML = "<div class = 'average'></div><div class = 'current'></div>";
     
-    for (let i = 0; i < bot.guessesAllowed(); i++) {
-        test_center.innerHTML += "<div class = 'bar'><span class = 'num-guesses'>" + (i+1) + "/" + bot.guessesAllowed() + "</span><span class = 'count'></span></div>";
+    for (let i = 0; i < max_guesses; i++) {
+        test_center.innerHTML += "<div class = 'bar'><span class = 'num-guesses'>" + (i+1) + "</span><span class = 'count'></span></div>";
     }
 
-    test_center.innerHTML += "<div class = 'bar x'><span class = 'num-guesses'>X/" + bot.guessesAllowed() + "</span><span class = 'count'></span></div>";
+    if (!bot.isFor(ANTI)) test_center.innerHTML += "<div class = 'bar x'><span class = 'num-guesses'>X" + "</span><span class = 'count'></span></div>";
     test_center.innerHTML += "<button class = 'close'></button>";
     document.getElementById("suggestions").appendChild(test_center);    
 
@@ -156,11 +145,14 @@ function swapDiv(event, elem) {
     elem.parentNode.insertBefore(elem, event);
 }
 
-function setupTest(word, difficulty) {
+function setupTest(word) {
     TEST_SIZE = 500;
     // TEST_SIZE = common.length;
 
-    let test_center = createBarGraphs();
+    let difficulty = HARD;
+    // let difficulty = NORMAL;
+
+    let test_center = createBarGraphs(bot.guessesAllowed(difficulty));
     let menu = createBotMenu(word);
     test_center.appendChild(menu);
 
@@ -186,8 +178,6 @@ function setupTest(word, difficulty) {
             setWordbank();
 
             if (words.includes(word)) {
-                difficulty = HARD;
-                // difficulty = NORMAL;
                 document.getElementById("test-settings").remove();
                 update();
                 runBot(word, difficulty);
@@ -253,20 +243,23 @@ function runBot(guess, difficulty) {
     let sum = 0;
     let count = 0;
     let missed = [];
-    let scores = new Array(bot.guessesAllowed()+1).fill(0);
+    let scores = new Array(bot.guessesAllowed(difficulty)+1).fill(0);
     let testing_sample = getTestAnswers(TEST_SIZE, []);
 
     let iv = setInterval(function() {
         document.getElementById("grid").innerHTML = "";
         let points = wordleBot(guess, testing_sample[count], difficulty);
 
-        if (points > bot.guessesAllowed()) {
+        if (points > bot.guessesAllowed(difficulty) && !bot.isFor(ANTI)) {
             // clearInterval(iv);
             missed.push(testing_sample[count]);
         }
 
+        if (points > 24) console.log(guess + " --> " + testing_sample[count]); 
+
         sum += points;
         scores[points-1] += 1;
+
         adjustBarHeight(points-1, scores, sum, count+1);
         count++;
 
@@ -320,24 +313,21 @@ function printData(all_words, guess, average, time) {
 function wordleBot(guess, answer, difficulty) {
     let attempts = 1;
 
-    while (attempts <= bot.guessesAllowed()) {
+    while (attempts <= bot.guessesAllowed(difficulty) || bot.isFor(ANTI)) {
         makeTables(guess, "testing");
 
         let diff = bot.getDifference(guess, answer);
         bot.setRowColor(diff, document.getElementsByClassName('row')[attempts-1]);
 
-        if (guess == answer || attempts == 6) {
-            if (guess != answer) attempts++;
+        if (guess == answer || attempts == bot.guessesAllowed(difficulty)) {
+            if (guess != answer && !bot.isFor(ANTI)) attempts++;
             break;
         }
         
         attempts++;
 
-        let answer_list = filterList(common.slice());
-        let possible_guesses = words.slice();
-        if (isDifficulty(HARD, difficulty)) possible_guesses = filterList(possible_guesses);
-
-        final_guesses = getBestGuesses(answer_list, possible_guesses, difficulty);
+        let lists = getPotentialGuessesAndAnswers(difficulty);
+        final_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty);
         guess = final_guesses[0].word;  
 
     }
