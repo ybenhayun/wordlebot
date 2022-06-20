@@ -3028,6 +3028,7106 @@ const easy =
                 "average": 3.723191531072339,
                 "wrong": 0
             }
+        },
+    ],
+    "Thirdle": [
+        {
+            "word": "AAH",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "AAL",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "AAS",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ABA",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "ABO",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ABS",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ABY",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "ACE",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "ACT",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "ADD",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ADO",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "ADS",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "ADZ",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "AFF",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "AFT",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "AGA",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "AGE",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "AGO",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "AGS",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "AHA",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "AHI",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "AHS",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "AID",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "AIL",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "AIM",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "AIN",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "AIR",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "AIS",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "AIT",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "ALA",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "ALB",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "ALE",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ALL",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "ALP",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ALS",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "ALT",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "AMA",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "AMI",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "AMP",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "AMU",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "ANA",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "AND",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "ANE",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "ANI",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "ANT",
+            "restricted": {
+                "average": 3.25,
+                "wrong": 0.375
+            }
+        },
+        {
+            "word": "ANY",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "APE",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "APO",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "APP",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "APT",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "ARB",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "ARC",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "ARE",
+            "restricted": {
+                "average": 3.25,
+                "wrong": 0.375
+            }
+        },
+        {
+            "word": "ARF",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "ARK",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "ARM",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "ARS",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "ART",
+            "restricted": {
+                "average": 3.236111111111111,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "ASH",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "ASK",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ASP",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ASS",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ATE",
+            "restricted": {
+                "average": 3.25,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "ATT",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "AUK",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "AVA",
+            "restricted": {
+                "average": 3.6527777777777777,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "AVE",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "AVO",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "AWA",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "AWE",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "AWL",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "AWN",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "AXE",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "AYE",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "AYS",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "AZO",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "BAA",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "BAD",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "BAG",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "BAH",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "BAL",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "BAM",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "BAN",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "BAP",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "BAR",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "BAS",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "BAT",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "BAY",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "BED",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "BEE",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "BEG",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "BEL",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "BEN",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "BES",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "BET",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "BEY",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "BIB",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "BID",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "BIG",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "BIN",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "BIO",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "BIS",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "BIT",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "BIZ",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "BOA",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "BOB",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "BOD",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "BOG",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "BOO",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "BOP",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "BOS",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "BOT",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "BOW",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "BOX",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "BOY",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "BRA",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "BRO",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "BRR",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "BUB",
+            "restricted": {
+                "average": 3.6527777777777777,
+                "wrong": 0.6944444444444444
+            }
+        },
+        {
+            "word": "BUD",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "BUG",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "BUM",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "BUN",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "BUR",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "BUS",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "BUT",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "BUY",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "BYE",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "BYS",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "CAB",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "CAD",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "CAM",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "CAN",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "CAP",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "CAR",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "CAT",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "CAW",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "CAY",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "CEE",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "CEL",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "CEP",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "CHI",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "CIG",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "CIS",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "COB",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "COD",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "COG",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "COL",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "CON",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "COO",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "COP",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "COR",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "COS",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "COT",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "COW",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "COX",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "COY",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "COZ",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "CRU",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "CRY",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "CUB",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "CUD",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "CUE",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "CUM",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "CUP",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "CUR",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "CUT",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "CWM",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "DAB",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "DAD",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "DAG",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "DAH",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "DAK",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "DAL",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "DAM",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "DAN",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "DAP",
+            "restricted": {
+                "average": 3.25,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "DAW",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "DAY",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "DEB",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "DEE",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DEF",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DEL",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "DEN",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "DEV",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "DEW",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "DEX",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DEY",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "DIB",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "DID",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "DIE",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "DIF",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "DIG",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "DIM",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DIN",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "DIP",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "DIS",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "DIT",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "DOC",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DOE",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "DOG",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DOL",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "DOM",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DON",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "DOR",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "DOS",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "DOT",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "DOW",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "DRY",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DUB",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "DUD",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "DUE",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DUG",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "DUH",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "DUI",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "DUN",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "DUO",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "DUP",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "DYE",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "EAR",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.375
+            }
+        },
+        {
+            "word": "EAT",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.375
+            }
+        },
+        {
+            "word": "EAU",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "EBB",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "ECU",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "EDH",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "EDS",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "EEK",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "EEL",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "EFF",
+            "restricted": {
+                "average": 3.625,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "EFS",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "EFT",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "EGG",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "EGO",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "EKE",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "ELD",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "ELF",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ELK",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "ELL",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "ELM",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "ELS",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "EME",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "EMS",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "EMU",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "END",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "ENG",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "ENS",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "EON",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "ERA",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "ERE",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "ERG",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "ERN",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "ERR",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "ERS",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "ESS",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "ETA",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "ETH",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "EVE",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "EWE",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "EYE",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "FAB",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "FAD",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "FAG",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "FAN",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "FAR",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "FAS",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "FAT",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "FAX",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "FAY",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "FED",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "FEE",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "FEH",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "FEM",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "FEN",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "FER",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "FES",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "FET",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "FEU",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "FEW",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "FEY",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "FEZ",
+            "restricted": {
+                "average": 3.625,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "FIB",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "FID",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "FIE",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "FIG",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "FIL",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "FIN",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "FIR",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "FIT",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "FIX",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "FIZ",
+            "restricted": {
+                "average": 3.6666666666666665,
+                "wrong": 0.7083333333333334
+            }
+        },
+        {
+            "word": "FLU",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.7083333333333334
+            }
+        },
+        {
+            "word": "FLY",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "FOB",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "FOE",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "FOG",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "FOH",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "FON",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "FOP",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "FOR",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "FOU",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "FOX",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "FOY",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "FRO",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "FRY",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "FUB",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "FUD",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "FUG",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "FUN",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "FUR",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "GAB",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "GAD",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.375
+            }
+        },
+        {
+            "word": "GAE",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "GAG",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "GAL",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "GAM",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "GAN",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "GAP",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "GAR",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "GAS",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "GAT",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "GAY",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "GED",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "GEE",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "GEL",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "GEM",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "GEN",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "GET",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "GEY",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "GHI",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "GIB",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "GID",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "GIE",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "GIG",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "GIN",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "GIP",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "GIT",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "GNU",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "GOA",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "GOB",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "GOD",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "GOO",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "GOR",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "GOS",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "GOT",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "GOX",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "GOY",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "GUL",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "GUM",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "GUN",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "GUT",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "GUV",
+            "restricted": {
+                "average": 3.6527777777777777,
+                "wrong": 0.6944444444444444
+            }
+        },
+        {
+            "word": "GUY",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "GYM",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "GYP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "HAD",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "HAE",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "HAG",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "HAH",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "HAJ",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "HAM",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "HAO",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "HAP",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "HAS",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "HAT",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "HAW",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "HAY",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "HEH",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "HEM",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "HEN",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "HEP",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "HER",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "HES",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "HET",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "HEW",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "HEX",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "HEY",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "HIC",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "HID",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "HIE",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "HIM",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "HIN",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "HIP",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "HIS",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "HIT",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "HMM",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "HOB",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "HOD",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "HOE",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "HOG",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "HON",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "HOP",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "HOS",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "HOT",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "HOW",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "HOY",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "HUB",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "HUE",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "HUG",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "HUH",
+            "restricted": {
+                "average": 3.6666666666666665,
+                "wrong": 0.75
+            }
+        },
+        {
+            "word": "HUM",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "HUN",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "HUP",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "HUT",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "HYP",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "ICE",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "ICH",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "ICK",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ICY",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "IDS",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "IFF",
+            "restricted": {
+                "average": 3.6666666666666665,
+                "wrong": 0.7083333333333334
+            }
+        },
+        {
+            "word": "IFS",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "IGG",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ILK",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "ILL",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "IMP",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "INK",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "INN",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "INS",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "ION",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "IRE",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "IRK",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "ISM",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "ITS",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "IVY",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "JAB",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "JAG",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "JAM",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "JAR",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "JAW",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "JAY",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "JEE",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "JET",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "JEU",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "JEW",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "JIB",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "JIG",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "JIN",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "JOB",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "JOE",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "JOG",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "JOT",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "JOW",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "JOY",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "JUG",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6944444444444444
+            }
+        },
+        {
+            "word": "JUN",
+            "restricted": {
+                "average": 3.6527777777777777,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "JUS",
+            "restricted": {
+                "average": 3.6944444444444446,
+                "wrong": 0.7361111111111112
+            }
+        },
+        {
+            "word": "JUT",
+            "restricted": {
+                "average": 3.625,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "KAB",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "KAE",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "KAF",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "KAS",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "KAT",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "KAY",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "KEA",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "KEF",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "KEG",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "KEN",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "KEP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "KEX",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "KEY",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "KHI",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "KID",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "KIF",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6944444444444444
+            }
+        },
+        {
+            "word": "KIN",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "KIP",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "KIR",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "KIS",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "KIT",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "KOA",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "KOB",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "KOI",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "KOP",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "KOR",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "KOS",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "KUE",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "KYE",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "LAB",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "LAC",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "LAD",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "LAG",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "LAM",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "LAP",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "LAR",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "LAS",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "LAT",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "LAV",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "LAW",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "LAX",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "LAY",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "LEA",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "LED",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "LEE",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "LEG",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "LEI",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "LEK",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "LES",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "LET",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "LEU",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "LEV",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "LEX",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "LEY",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "LEZ",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "LIB",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "LID",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "LIE",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "LIN",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "LIP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "LIS",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "LIT",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "LOB",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "LOG",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "LOO",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "LOP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "LOT",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "LOW",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "LOX",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "LUG",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "LUM",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "LUV",
+            "restricted": {
+                "average": 3.6805555555555554,
+                "wrong": 0.7361111111111112
+            }
+        },
+        {
+            "word": "LUX",
+            "restricted": {
+                "average": 3.625,
+                "wrong": 0.7083333333333334
+            }
+        },
+        {
+            "word": "LYE",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "MAC",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "MAD",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "MAE",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "MAG",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "MAN",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "MAP",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "MAR",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "MAS",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "MAT",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "MAW",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "MAX",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "MAY",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "MED",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "MEG",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "MEL",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "MEM",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "MEN",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "MET",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "MEW",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "MHO",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "MIB",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "MIC",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "MID",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "MIG",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "MIL",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "MIM",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "MIR",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "MIS",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "MIX",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "MOA",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "MOB",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "MOC",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "MOD",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "MOG",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "MOL",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "MOM",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "MON",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "MOO",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "MOP",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "MOR",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "MOS",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "MOT",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "MOW",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "MUD",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "MUG",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "MUM",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "MUN",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "MUS",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "MUT",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "MYC",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "NAB",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "NAE",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "NAG",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "NAH",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "NAM",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "NAN",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "NAP",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "NAW",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "NAY",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "NEB",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "NEE",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "NEG",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "NET",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "NEW",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "NIB",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "NIL",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "NIM",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "NIP",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "NIT",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "NIX",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "NOB",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "NOD",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "NOG",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "NOH",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "NOM",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "NOO",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "NOR",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "NOS",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "NOT",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "NOW",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "NTH",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "NUB",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "NUN",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "NUS",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "NUT",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "OAF",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "OAK",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "OAR",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "OAT",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "OBA",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "OBE",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "OBI",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "OCA",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "ODA",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ODD",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "ODE",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "ODS",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "OES",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "OFF",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6944444444444444
+            }
+        },
+        {
+            "word": "OFT",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "OHM",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "OHO",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "OHS",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "OIL",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "OKA",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "OKE",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "OLD",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "OLE",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "OMS",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "ONE",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "ONO",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ONS",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "OOH",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "OOT",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "OPE",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "OPS",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "OPT",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "ORA",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "ORB",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "ORC",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "ORE",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "ORS",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "ORT",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "OSE",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "OUD",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "OUR",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "OUT",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "OVA",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "OWE",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "OWL",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "OWN",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "OXO",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6944444444444444
+            }
+        },
+        {
+            "word": "OXY",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "PAC",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "PAD",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "PAH",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "PAL",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PAM",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "PAN",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "PAP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "PAR",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "PAS",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PAT",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "PAW",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PAX",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "PAY",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "PEA",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "PEC",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PED",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "PEE",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "PEG",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "PEH",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "PEN",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "PEP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "PER",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "PES",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "PET",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "PEW",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "PHI",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "PHT",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "PIA",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PIC",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "PIE",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PIG",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PIN",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PIP",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "PIS",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "PIT",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "PIU",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "PIX",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "PLY",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "POD",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "POH",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "POI",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "POL",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "POM",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "POO",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "POP",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "POT",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "POW",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "POX",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "PRO",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "PRY",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "PSI",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "PST",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "PUB",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "PUD",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "PUG",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "PUL",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "PUN",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "PUP",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "PUR",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "PUS",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "PUT",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "PYA",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "PYE",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "PYX",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "QAT",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "QIS",
+            "restricted": {
+                "average": 3.625,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "QUA",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "RAD",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.3333333333333333
+            }
+        },
+        {
+            "word": "RAG",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "RAH",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "RAI",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "RAJ",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "RAM",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "RAN",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "RAP",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "RAS",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "RAT",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "RAW",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "RAX",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "RAY",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "REB",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "REC",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "RED",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "REE",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "REF",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "REG",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "REI",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "REM",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "REP",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "RES",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "RET",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "REV",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "REX",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "RHO",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "RIA",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "RIB",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "RID",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "RIF",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "RIG",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "RIM",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "RIN",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "RIP",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ROB",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "ROC",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "ROD",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "ROE",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "ROM",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "ROT",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "ROW",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "RUB",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "RUE",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "RUG",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "RUM",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "RUN",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "RUT",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "RYA",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "RYE",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "SAB",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "SAC",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "SAD",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "SAE",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "SAG",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "SAL",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "SAP",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "SAT",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "SAU",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "SAW",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "SAX",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "SAY",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "SEA",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "SEC",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "SEE",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "SEG",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "SEI",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "SEL",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "SEN",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "SER",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "SET",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "SEW",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "SEX",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "SHA",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "SHE",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "SHH",
+            "restricted": {
+                "average": 3.6666666666666665,
+                "wrong": 0.7361111111111112
+            }
+        },
+        {
+            "word": "SHY",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "SIB",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "SIC",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "SIM",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "SIN",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "SIP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "SIR",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "SIS",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "SIT",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "SIX",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "SKA",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "SKI",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "SKY",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "SLY",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "SOB",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "SOD",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "SOL",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "SOM",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "SON",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "SOP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "SOS",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "SOT",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "SOU",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "SOW",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "SOX",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "SOY",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "SPA",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "SPY",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "SRI",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "STY",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "SUB",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "SUE",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "SUK",
+            "restricted": {
+                "average": 3.6666666666666665,
+                "wrong": 0.7222222222222222
+            }
+        },
+        {
+            "word": "SUM",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "SUN",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "SUP",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "SUQ",
+            "restricted": {
+                "average": 3.6944444444444446,
+                "wrong": 0.7361111111111112
+            }
+        },
+        {
+            "word": "SYN",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "TAB",
+            "restricted": {
+                "average": 3.2916666666666665,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "TAD",
+            "restricted": {
+                "average": 3.236111111111111,
+                "wrong": 0.2916666666666667
+            }
+        },
+        {
+            "word": "TAE",
+            "restricted": {
+                "average": 3.25,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "TAG",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.3888888888888889
+            }
+        },
+        {
+            "word": "TAJ",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "TAM",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "TAN",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "TAO",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4305555555555556
+            }
+        },
+        {
+            "word": "TAP",
+            "restricted": {
+                "average": 3.263888888888889,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "TAR",
+            "restricted": {
+                "average": 3.2777777777777777,
+                "wrong": 0.3611111111111111
+            }
+        },
+        {
+            "word": "TAS",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "TAT",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "TAU",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "TAV",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "TAW",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "TAX",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "TEA",
+            "restricted": {
+                "average": 3.3194444444444446,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "TED",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "TEE",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "TEG",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "TEL",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "TEN",
+            "restricted": {
+                "average": 3.3055555555555554,
+                "wrong": 0.4166666666666667
+            }
+        },
+        {
+            "word": "TET",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "TEW",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "THE",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "THO",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "THY",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "TIC",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "TIE",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "TIL",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "TIN",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "TIP",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "TIS",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "TIT",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "TOD",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "TOE",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "TOG",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "TOM",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "TON",
+            "restricted": {
+                "average": 3.4027777777777777,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "TOO",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "TOP",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "TOR",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "TOT",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "TOW",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "TOY",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "TRY",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "TSK",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "TUB",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "TUG",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "TUI",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "TUN",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "TUP",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "TUT",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "TUX",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "TWA",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "TWO",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "TYE",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "UDO",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "UGH",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "UKE",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "ULU",
+            "restricted": {
+                "average": 3.6805555555555554,
+                "wrong": 0.7361111111111112
+            }
+        },
+        {
+            "word": "UMM",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "UMP",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "UNS",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "UPO",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "UPS",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "URB",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "URD",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "URN",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "URP",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "USE",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "UTA",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "UTE",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "UTS",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "VAC",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "VAN",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "VAR",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "VAS",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "VAT",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "VAU",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "VAV",
+            "restricted": {
+                "average": 3.6527777777777777,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "VAW",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "VEE",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "VEG",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "VET",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "VEX",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "VIA",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "VID",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "VIE",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "VIG",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "VIM",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "VIS",
+            "restricted": {
+                "average": 3.625,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "VOE",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "VOW",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "VOX",
+            "restricted": {
+                "average": 3.625,
+                "wrong": 0.6944444444444444
+            }
+        },
+        {
+            "word": "VUG",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6944444444444444
+            }
+        },
+        {
+            "word": "VUM",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "WAB",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "WAD",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4027777777777778
+            }
+        },
+        {
+            "word": "WAE",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "WAG",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4861111111111111
+            }
+        },
+        {
+            "word": "WAN",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "WAP",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "WAR",
+            "restricted": {
+                "average": 3.361111111111111,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "WAS",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "WAT",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "WAW",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "WAX",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "WAY",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "WEB",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "WED",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "WEE",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "WEN",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "WET",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "WHA",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "WHO",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "WHY",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "WIG",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "WIN",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "WIS",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "WIT",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "WIZ",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "WOE",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "WOG",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "WOK",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "WON",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "WOO",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "WOP",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "WOS",
+            "restricted": {
+                "average": 3.5277777777777777,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "WOT",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "WOW",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "WRY",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "WUD",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "WYE",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "WYN",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "XIS",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "YAG",
+            "restricted": {
+                "average": 3.375,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "YAH",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "YAK",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "YAM",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "YAP",
+            "restricted": {
+                "average": 3.3333333333333335,
+                "wrong": 0.4583333333333333
+            }
+        },
+        {
+            "word": "YAR",
+            "restricted": {
+                "average": 3.3472222222222223,
+                "wrong": 0.4444444444444444
+            }
+        },
+        {
+            "word": "YAW",
+            "restricted": {
+                "average": 3.4305555555555554,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "YAY",
+            "restricted": {
+                "average": 3.513888888888889,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "YEA",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "YEH",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "YEN",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "YEP",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.5
+            }
+        },
+        {
+            "word": "YES",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "YET",
+            "restricted": {
+                "average": 3.388888888888889,
+                "wrong": 0.4722222222222222
+            }
+        },
+        {
+            "word": "YEW",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "YID",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "YIN",
+            "restricted": {
+                "average": 3.4583333333333335,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "YIP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5138888888888888
+            }
+        },
+        {
+            "word": "YOB",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "YOD",
+            "restricted": {
+                "average": 3.4166666666666665,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "YOK",
+            "restricted": {
+                "average": 3.5972222222222223,
+                "wrong": 0.6388888888888888
+            }
+        },
+        {
+            "word": "YOM",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "YON",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "YOU",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "YOW",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5972222222222222
+            }
+        },
+        {
+            "word": "YUK",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6805555555555556
+            }
+        },
+        {
+            "word": "YUM",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "YUP",
+            "restricted": {
+                "average": 3.5,
+                "wrong": 0.5694444444444444
+            }
+        },
+        {
+            "word": "ZAG",
+            "restricted": {
+                "average": 3.486111111111111,
+                "wrong": 0.5416666666666666
+            }
+        },
+        {
+            "word": "ZAP",
+            "restricted": {
+                "average": 3.4444444444444446,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "ZAS",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ZAX",
+            "restricted": {
+                "average": 3.5833333333333335,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "ZED",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5277777777777778
+            }
+        },
+        {
+            "word": "ZEE",
+            "restricted": {
+                "average": 3.611111111111111,
+                "wrong": 0.6527777777777778
+            }
+        },
+        {
+            "word": "ZEK",
+            "restricted": {
+                "average": 3.638888888888889,
+                "wrong": 0.6666666666666666
+            }
+        },
+        {
+            "word": "ZEP",
+            "restricted": {
+                "average": 3.4722222222222223,
+                "wrong": 0.5555555555555556
+            }
+        },
+        {
+            "word": "ZIG",
+            "restricted": {
+                "average": 3.5694444444444446,
+                "wrong": 0.6111111111111112
+            }
+        },
+        {
+            "word": "ZIN",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "ZIP",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "ZIT",
+            "restricted": {
+                "average": 3.5416666666666665,
+                "wrong": 0.5833333333333334
+            }
+        },
+        {
+            "word": "ZOA",
+            "restricted": {
+                "average": 3.5555555555555554,
+                "wrong": 0.625
+            }
+        },
+        {
+            "word": "ZOO",
+            "restricted": {
+                "average": 3.6666666666666665,
+                "wrong": 0.7222222222222222
+            }
+        },
+        {
+            "word": "ZUZ",
+            "restricted": {
+                "average": 3.763888888888889,
+                "wrong": 0.7916666666666666
+            }
         }
     ],
     "Woodle": [

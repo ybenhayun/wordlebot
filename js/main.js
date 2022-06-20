@@ -10,7 +10,7 @@ const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y", EMPTY = "X";
 // difficulty constants
 const NORMAL = 0, HARD = 1;
 // list size constants
-const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10, MAX_TIME = 2000;
+const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10, MAX_TIME = 1000;
 // misc constants
 const NOT_YET_TESTED = .999, SIZE_FACTOR = 5;
 
@@ -119,7 +119,10 @@ function getPotentialGuessesAndAnswers(difficulty) {
         sorted_guess_list = all_possible_words;
     } else if (bot.isFor(ANTI)) {
         sorted_guess_list = filterList(sorted_guess_list, 0, true);
-    }
+    } 
+    // else if (answer_list.length <= 2) {
+    //     sorted_guess_list = sorted_answer_list.slice();
+    // }
 
     sorted_guess_list = sortList(sorted_guess_list, alphabet, sorted_answer_list);
 
@@ -495,8 +498,6 @@ function getFirstGuesses(difficulty) {
 }
 
 function getTempList(guesses, answers) {
-    // let guesses = words.slice();
-    // let letters = bot.getBestLetters(common.slice());
     let letters = bot.getBestLetters(answers.slice());
     guesses = sortList(guesses.slice(), letters);
     
@@ -756,9 +757,9 @@ function sortList(list, alphabet, sorted_list) {
 
     for (let i = 0; i < newranks.length; i++) {
         for (let j = 0; j < word_length; j++) {
-            if (sorted_list != null) {
-                if (alphabet[newranks[i].word.charAt(j)][word_length] == sorted_list.length) continue;
-            }
+            // if (sorted_list != null) {
+            //     if (alphabet[newranks[i].word.charAt(j)][word_length] == sorted_list.length) continue;
+            // }
 
             if (checked[i + " " + newranks[i].word.charAt(j)] == true) continue;  //no extra credit to letters with doubles
             newranks[i].average += alphabet[newranks[i].word.charAt(j)][word_length];

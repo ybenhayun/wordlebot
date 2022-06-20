@@ -3,12 +3,16 @@ var newlist = [];
 
 function reduceTestList(list) {
     for (let i = 0; i < list.length; i++) {
-        if (count(list[i], 'Q') < 1) {
+        if (vowelCount(list[i]) > 1) {
             list.splice(i, 1);
             i--;
         }
     }
     return list;
+}
+
+function vowelCount(word) {
+    return count(word, 'A') + count(word, 'E') + count(word, 'I') + count(word, 'O') + count(word, 'U');
 }
 
 function getStartingWords(difficulty) {
@@ -146,7 +150,7 @@ function swapDiv(event, elem) {
 }
 
 function setupTest(word) {
-    TEST_SIZE = 500;
+    TEST_SIZE = Math.min(500, common.length);
     // TEST_SIZE = common.length;
 
     let difficulty = HARD;
@@ -165,14 +169,14 @@ function setupTest(word) {
 
     let num = document.getElementsByClassName('close').length-1;
     document.getElementsByClassName("close")[num].addEventListener('click', function() {            
-        pairings = {};
+        pairings = [];
         resetGuessRows();
         removeTest();
     });
 
     document.getElementsByClassName("bot")[0].addEventListener("click", function() {
         let word = document.getElementById('testword').value;
-        if (word.length >= 4 && word.length <= 11) {
+        if ((word.length >= 4 && word.length <= 11) || (word.length == 3 && bot.isFor(THIRDLE)))  {
             document.getElementById("word-length").value = word.length;
             setLength();
             setWordbank();
@@ -192,7 +196,7 @@ function placeTestRows(word) {
 }
 
 function getTestAnswers(TEST_SIZE, random_answers) {
-    if (TEST_SIZE == common.length) return common.slice();
+    if (TEST_SIZE >= common.length) return common.slice();
     if (TEST_SIZE == random_answers.length) return random_answers;
     
     let index = Math.round(Math.random()*(common.length-1));
@@ -246,6 +250,8 @@ function runBot(guess, difficulty) {
     let scores = new Array(bot.guessesAllowed(difficulty)+1).fill(0);
     let testing_sample = getTestAnswers(TEST_SIZE, []);
 
+    let final_scores = []
+
     let iv = setInterval(function() {
         document.getElementById("grid").innerHTML = "";
         let points = wordleBot(guess, testing_sample[count], difficulty);
@@ -255,7 +261,11 @@ function runBot(guess, difficulty) {
             missed.push(testing_sample[count]);
         }
 
+        if (!final_scores[points]) final_scores[points] = [];
+        final_scores[points].push(testing_sample[count]);
+
         if (points > 24) console.log(guess + " --> " + testing_sample[count]); 
+        pairings = [];
 
         sum += points;
         scores[points-1] += 1;
@@ -277,7 +287,9 @@ function runBot(guess, difficulty) {
                 printData(newlist, guess, average, (performance.now() - start_time)/1000);
             }
             
-            pairings = {};
+            pairings = [];
+
+            console.log(final_scores);
             clearInterval(iv);
         }
     }, 1);

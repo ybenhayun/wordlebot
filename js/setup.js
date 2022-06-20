@@ -94,7 +94,7 @@ function drawPage() {
     let header = document.getElementById('top-of-screen');
 
     createMainHeader(header);
-    createWordLengthSelector(header);
+    createWordLengthSelector();
 
     createGuessInput(container);
     createAnswerSuggestions(container);
@@ -118,9 +118,14 @@ function createWordLengthSelector() {
         options += "<option value='" + i + "' " + selected +">" + i + "</option>";
     }
 
+    if (bot.isFor(THIRDLE)) {
+        localStorage.setItem('word_length', 3);
+        options = "<option value ='3' selected = 'selected'>3</option>";
+    }
+
     select_length.innerHTML = options;
     
-    if (localStorage.getItem('word_length')) {
+    if (localStorage.getItem('word_length') && (localStorage.getItem('word_length') >= SMALLEST_WORD || bot.isFor(THIRDLE))) {
         select_length.value = localStorage.getItem('word_length');
     }
 }
@@ -150,7 +155,13 @@ const EXAMPLE_LIST =
         {word: 'THUJA', score: '8.813 guesses left'},
         {word: 'TAPPA', score: '8.813 guesses left'},
         {word: 'TAXED', score: '8.500 guesses left'}
-    ]     
+    ],
+    "Thirdle": [
+        {word: 'LEAST', score: '3.652 guesses left', wrong: '96.77% solve rate'}, 
+        {word: 'STALE', score: '3.661 guesses left'}, 
+        {word: 'SPATE', score: '3.665 guesses left'},
+        {word: 'BEARD', score: '3.674 guesses left'}     
+    ]
 } 
 
 
@@ -296,6 +307,10 @@ function createAnswerSuggestions() {
         removeHardModeSwitch(suggestions);
     }
 
+    if (bot.hasMax()) {
+        createMax(suggestions);
+    }
+
     createAnswerLists(suggestions);
 }
 
@@ -306,25 +321,12 @@ function createAnswerLists(div) {
 
     let answer_lists = document.createElement('div');
     answer_lists.setAttribute('id', 'answers');
-    
-    // let normal_list_position = 'front', hard_list_position = 'back';
-    // if (bot.hasHardMode() && document.getElementById('mode').checked) {
-    //     normal_list_position = 'back';
-    //     hard_list_position = 'front';
-    // }
-
 
     createOptions(answer_lists);
-
-    // if (bot.hasHardMode()) {
-    //     createOptions(answer_lists, 'hard ' + hard_list_position);
-    // }
-
     div.append(answer_lists);
 }
 
 function createOptions(div) {
-    // let class_name = 'best-guesses ' + position;
     let class_name = 'best-guesses';
     let best_guesses = document.createElement('div');
     best_guesses.setAttribute('class', class_name);
@@ -334,6 +336,10 @@ function createOptions(div) {
     best_guesses.append(word_list)
 
     div.append(best_guesses);
+}
+
+function createMax(div) {
+    // let max_input = document.createElement('')
 }
 
 function createHardModeSwitch(div) {
