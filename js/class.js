@@ -28,7 +28,7 @@ class Bot {
             if (isDifficulty(HARD, difficulty)) return 18;
             return 26;
         }
-        if (this.type == THIRDLE) return 3;
+        if (this.type == THIRDLE) return 6;
         return 6;
     }
 
