@@ -4,7 +4,7 @@ var pairings = [];
 var seconds = {};
 
 // word length constants
-const SMALLEST_WORD = 4, LARGEST_WORD = 11, DEFAULT_LENGTH = 5;
+const SMALLEST_WORD = 3, LARGEST_WORD = 11, DEFAULT_LENGTH = 5;
 // class constants to assign colors to tiles
 const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y", EMPTY = "X"; 
 // difficulty constants
@@ -24,6 +24,10 @@ function setBotMode(type) {
         } else {
             bots[i].checked = false;
         }
+    }
+
+    if (bot.isFor(WOODLE) && !localStorage.getItem('guesses' + bot.type)) {
+        localStorage.setItem('guesses' + bot.type, 8);
     }
 
     pairings = [];
@@ -403,7 +407,7 @@ function guessesArePrecomputed(difficulty) {
         word += getWord(i);
     }
 
-    let hash = makeHash(bot.type, wordbank, difficulty, diff);
+    let hash = makeHash(bot.type, wordbank, difficulty, bot.guessesAllowed(difficulty), diff);
 
     if (seconds[word] != null) {
         if (seconds[word][hash] != null) {
@@ -414,8 +418,8 @@ function guessesArePrecomputed(difficulty) {
     return 0;
 }
 
-function makeHash(game, list_type, difficulty, string) {
-    return game + "/" + list_type + "/" + difficulty + "/" + string;
+function makeHash(game, list_type, difficulty, guesses, string) {
+    return game + "/" + list_type + "/" + difficulty + "/" + guesses + "/" + string;
 }
 
 function setBestGuesses(best_guesses, difficulty) {
@@ -426,7 +430,7 @@ function setBestGuesses(best_guesses, difficulty) {
         word += getWord(i);
     }
 
-    let hash = makeHash(bot.type, wordbank, difficulty, diff);
+    let hash = makeHash(bot.type, wordbank, difficulty, bot.guessesAllowed(difficulty), diff);
 
     seconds[word][hash] = JSON.stringify(best_guesses.slice(0, TOP_TEN_LENGTH));
 }
@@ -693,7 +697,7 @@ function getAllDifferences(word, difference) {
         }
     }
 
-    all_diffs = createDiffsRecursive(word, difference, 0, chars, [difference]);
+    let all_diffs = createDiffsRecursive(word, difference, 0, chars, [difference]);
     return all_diffs;
 }
 
@@ -705,7 +709,7 @@ function getAllDifferences(word, difference) {
 // BYBGB
 // BBBGB
 function createDiffsRecursive(word, difference, index, char_list, diff_list) {
-    if (index == difference.length) return [...new Set(diff_list)];
+    if (index == difference.length || diff_list.length > 500) return [...new Set(diff_list)];
     
     if (char_list.includes(word.charAt(index)) && difference.charAt(index) != CORRECT) {
         let yellow = replaceAt(difference, WRONG_SPOT, index);

@@ -23,13 +23,12 @@ class Bot {
     }
 
     guessesAllowed(difficulty) {
-        if (this.type == WOODLE) return 8;
         if (this.type == ANTI) {
             if (isDifficulty(HARD, difficulty)) return 18;
             return 26;
         }
-        if (this.type == THIRDLE) return 6;
-        return 6;
+
+        return parseInt(document.getElementById('max-guesses').value);
     }
 
     setChangeEvents(row) {

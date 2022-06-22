@@ -17,7 +17,12 @@ $(document).ready(function() {
     });
 
     $("#word-length").on('input', function() {
-        localStorage.setItem('word_length', $(this).val());
+        localStorage.setItem('word_length' + bot.type, $(this).val());
+        createPage();
+    });
+
+    $("#max-guesses").on('input', function() {
+        localStorage.setItem('guesses' + bot.type, $(this).val());
         createPage();
     });
 
@@ -111,7 +116,7 @@ function createMainHeader(div) {
 function createWordLengthSelector() {
     let select_length = document.getElementById('word-length');
 
-    let options = ""
+    let options = "";
     for (let i = SMALLEST_WORD; i <= LARGEST_WORD; i++) {
         let selected = "";
         if (i == 5) selected = "selected = 'selected'";
@@ -119,14 +124,36 @@ function createWordLengthSelector() {
     }
 
     if (bot.isFor(THIRDLE)) {
-        localStorage.setItem('word_length', 3);
+        localStorage.setItem('word_length' + bot.type, 3);
         options = "<option value ='3' selected = 'selected'>3</option>";
     }
 
     select_length.innerHTML = options;
     
-    if (localStorage.getItem('word_length') && (localStorage.getItem('word_length') >= SMALLEST_WORD || bot.isFor(THIRDLE))) {
-        select_length.value = localStorage.getItem('word_length');
+    if (localStorage.getItem('word_length'+ bot.type) && (localStorage.getItem('word_length'+ bot.type) >= SMALLEST_WORD || bot.isFor(THIRDLE))) {
+        select_length.value = localStorage.getItem('word_length'+ bot.type);
+    }
+}
+
+function createMaxGuesses(div) {
+    let max_input = document.getElementById('max-guesses');
+
+    let options = "";
+    for (let i = 3; i <= 21; i++) {
+        let selected = "";
+        if (i == 6) selected = "selected = 'selected'";
+        options += "<option value='" + i + "' " + selected +">" + i + "</option>";    
+    }
+
+    if (bot.isFor(THIRDLE)) {
+        localStorage.setItem('guesses' + bot.type, 3);
+        options = "<option value ='3' selected = 'selected'>3</option>";
+    }
+
+    max_input.innerHTML = options;
+    
+    if (localStorage.getItem('guesses' + bot.type)) {
+        max_input.value = localStorage.getItem('guesses' + bot.type);
     }
 }
 
@@ -308,7 +335,11 @@ function createAnswerSuggestions() {
     }
 
     if (bot.hasMax()) {
-        createMax(suggestions);
+        createMaxGuesses(suggestions);
+    } else {
+        let max = document.getElementById('max-guesses');
+        localStorage.setItem('guesses' + bot.type, 'infinity');
+        max.innerHTML = "<option value ='infinity' selected = 'selected'> &#8734 </option>";    
     }
 
     createAnswerLists(suggestions);
@@ -336,10 +367,6 @@ function createOptions(div) {
     best_guesses.append(word_list)
 
     div.append(best_guesses);
-}
-
-function createMax(div) {
-    // let max_input = document.createElement('')
 }
 
 function createHardModeSwitch(div) {
