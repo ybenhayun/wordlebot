@@ -119,6 +119,8 @@ function getPotentialGuessesAndAnswers(difficulty) {
     let sorted_answer_list = sortList(answer_list, alphabet);
     let sorted_guess_list = words.slice();
 
+    if (bot.isFor(THIRDLE)) sorted_guess_list = allCombinations("", []);
+
     if (isDifficulty(HARD, difficulty)) {
         sorted_guess_list = all_possible_words;
     } else if (bot.isFor(ANTI)) {
@@ -127,10 +129,24 @@ function getPotentialGuessesAndAnswers(difficulty) {
         sorted_guess_list = reduceListSize(sorted_guess_list, sorted_answer_list);
     }
 
+    
+
 
     sorted_guess_list = sortList(sorted_guess_list, alphabet, sorted_answer_list);
 
     return {guesses: sorted_guess_list, answers: sorted_answer_list, all: all_possible_words, unlikely: unlikely_answers};
+}
+
+function allCombinations(string, list) {
+    if (string.length == word_length) {
+        list.push(string);
+    } else {
+        for (let c = 65; c <= 90; c++) {
+            allCombinations(string + String.fromCharCode(c), list);
+        }
+    }
+
+    return list;
 }
 
 // creates the suggetsions for both normal and hard mode
@@ -319,7 +335,7 @@ function isDifficulty(mode, check) {
 
 function makeTables(val, c) {
     if (c == null) c = "normal";
-    if (!words.includes(val)) return;
+    if (!words.includes(val) && !bot.isFor(THIRDLE)) return;
 
     if (val) {
         let row = createRow(val, c);
@@ -444,6 +460,8 @@ function getBestGuesses(answer_list, guess_list, difficulty) {
 
     if (numberOfGuessesSoFar(0)) return getFirstGuesses(difficulty);
     if (answer_list.length > 1000) return getTempList(guess_list, answer_list);
+
+    if (guessesSoFar() == bot.guessesAllowed()-1) guess_list = answer_list;
 
     let initial_guesses = bot.reducesListBest(answer_list, guess_list);
     best_guesses = calculateGuessList(answer_list, guess_list, initial_guesses, difficulty);
@@ -583,7 +601,7 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
         if (!bot.isFor(ANTI)) {
             results['wrong'] = results['wrong'].concat(answers);
         } else {
-            results[bot.guessesAllowed(difficulty)-1].concat(answers);
+            results[bot.guessesAllowed(difficulty)].concat(answers);
         }
     }
     
@@ -761,10 +779,6 @@ function sortList(list, alphabet, sorted_list) {
 
     for (let i = 0; i < newranks.length; i++) {
         for (let j = 0; j < word_length; j++) {
-            // if (sorted_list != null) {
-            //     if (alphabet[newranks[i].word.charAt(j)][word_length] == sorted_list.length) continue;
-            // }
-
             if (checked[i + " " + newranks[i].word.charAt(j)] == true) continue;  //no extra credit to letters with doubles
             newranks[i].average += alphabet[newranks[i].word.charAt(j)][word_length];
             checked[i + " " + newranks[i].word.charAt(j)] = true;

@@ -41,7 +41,7 @@ $(document).ready(function() {
     
     $("#word-entered").on('input', function(e) {
         let val = $("#word-entered").val();
-        if (words.includes(val)) {
+        if (val.length == word_length && (words.includes(val) || bot.isFor(THIRDLE))) {
             $("#word-entered").blur();
             
             makeTables(val);
