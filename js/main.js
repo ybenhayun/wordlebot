@@ -123,10 +123,10 @@ function getPotentialGuessesAndAnswers(difficulty) {
         sorted_guess_list = all_possible_words;
     } else if (bot.isFor(ANTI)) {
         sorted_guess_list = filterList(sorted_guess_list, 0, true);
-    } 
-    // else if (answer_list.length <= 2) {
-    //     sorted_guess_list = sorted_answer_list.slice();
-    // }
+    } else {
+        sorted_guess_list = reduceListSize(sorted_guess_list, sorted_answer_list);
+    }
+
 
     sorted_guess_list = sortList(sorted_guess_list, alphabet, sorted_answer_list);
 
