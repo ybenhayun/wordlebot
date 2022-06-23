@@ -26,8 +26,8 @@ function getStartingWords(difficulty) {
 function testStartingWords() {
     console.log("testing");
     
-    // difficulty = HARD;
-    difficulty = NORMAL;
+    difficulty = HARD;
+    // difficulty = NORMAL;
     
     let check_list = getStartingWords(difficulty);
 
@@ -153,8 +153,8 @@ function setupTest(word) {
     TEST_SIZE = Math.min(500, common.length);
     // TEST_SIZE = common.length;
 
-    // let difficulty = HARD;
-    let difficulty = NORMAL;
+    let difficulty = HARD;
+    // let difficulty = NORMAL;
 
     let test_center = createBarGraphs(bot.guessesAllowed(difficulty));
     let menu = createBotMenu(word);
