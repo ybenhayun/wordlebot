@@ -224,7 +224,7 @@ function makeCloseButton(type) {
 function createInfoParagraphs() {
     let p1 = document.createElement('p');
     p1.innerHTML = `Simply enter in your last guess, click on the tiles until the colors match, hit calculate, 
-                    and the WordleBot will give you sthe best possible guesses from that point.`
+                    and the WordleBot will give you the best possible guesses from that point.`
 
     let p2 = document.createElement('p');
     p2.innerHTML = `This means the best guess from this point would be ` + EXAMPLE_LIST[bot.type][0].word + `,

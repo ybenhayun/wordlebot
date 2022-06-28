@@ -16,9 +16,15 @@ function vowelCount(word) {
 }
 
 function getStartingWords(difficulty) {
-    let guesses = getFirstGuesses(difficulty);
-    let starting_words = guesses.map(a => a.word);
-    
+    // let guesses = getFirstGuesses(difficulty);
+    // let starting_words = guesses.map(a => a.word);
+
+    let starting_words = allCombinations("", []);
+    starting_words = sortList(starting_words, bot.getBestLetters(common.slice()));
+
+    starting_words = bot.reducesListBest(common.slice(), starting_words);
+    starting_words = starting_words.map(a => a.word);
+
     console.log(starting_words);
     return starting_words;
 }
@@ -181,7 +187,7 @@ function setupTest(word) {
             setLength();
             setWordbank();
 
-            if (words.includes(word)) {
+            if (words.includes(word) || (bot.isFor(THIRDLE) && word.length == 3)) {
                 document.getElementById("test-settings").remove();
                 update();
                 runBot(word, difficulty);

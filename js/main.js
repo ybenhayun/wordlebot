@@ -601,7 +601,7 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
         if (!bot.isFor(ANTI)) {
             results['wrong'] = results['wrong'].concat(answers);
         } else {
-            results[bot.guessesAllowed(difficulty)].concat(answers);
+            results[bot.guessesAllowed(difficulty)-1].concat(answers);
         }
     }
     
@@ -679,21 +679,23 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
     let new_list = [];
 
     if (reduced_filter) {
-        difference = getAllDifferences(guess, difference);
-    } else difference = [difference];
+        // difference = getAllDifferences(guess, difference);
+        new_list = antiwordleList(guess, difference, old_list)
+    } else { 
+        difference = [difference];
 
-    for (let i = 0; i < old_list.length; i++) {
-        if (differencesMatch(guess, old_list[i], difference, reduced_filter)) {
-            new_list.push(old_list[i]);
+        for (let i = 0; i < old_list.length; i++) {
+            if (differencesMatch(guess, old_list[i], difference)) {
+                new_list.push(old_list[i]);
+            }
         }
     }
-    
     if (new_list.length > 1) new_list = new_list.filter(a => a != guess);
 
     return new_list;
 }
 
-function differencesMatch(guess, answer, all_diffs, reduced_filter) {
+function differencesMatch(guess, answer, all_diffs) {
     let correct_diff = bot.getDifference(guess, answer);
 
     for (let i = 0; i < all_diffs.length; i++) {
@@ -706,17 +708,60 @@ function differencesMatch(guess, answer, all_diffs, reduced_filter) {
 // MILLS --> YBBBB
 // MOONY --> GBBBB
 // QAJAQ --> BYBBB - BGBBB - BGBGB - BGBYB - BYBYB
-function getAllDifferences(word, difference) {
-    let chars = [];
+function antiwordleList(word, difference, list) {
+    let correct = [];
+    let contains = [];
+    let incorrect = [];
 
     for (let i = 0; i < difference.length; i++) {
+        if (difference.charAt(i) == CORRECT) {
+            correct.push({letter: word.charAt(i), pos: i});
+        }
+
         if (difference.charAt(i) == WRONG_SPOT || difference.charAt(i) == CORRECT) {
-            chars.push(word.charAt(i)); 
+            contains.push(word.charAt(i));
         }
     }
 
-    let all_diffs = createDiffsRecursive(word, difference, 0, chars, [difference]);
-    return all_diffs;
+    for (let i = 0; i < word.length; i++) {
+        if (!contains.includes(word.charAt(i))) {
+            incorrect.push(word.charAt(i));
+        }
+    }
+
+    // let all_diffs = createDiffsRecursive(word, difference, 0, chars, [difference]);
+    // return all_diffs;
+    outer:
+    for (let i = 0; i < list.length; i++) {
+        for (let j = 0; j < correct.length; j++) {
+            let c = correct[j].letter;
+            let index = correct[j].pos;
+
+            if (list[i].charAt(index) != c) {
+                list.splice(i, 1);
+                i--;
+                continue outer;
+            }
+        }
+
+        for (let j = 0; j < contains.length; j++) {
+            if (!list[i].includes(contains[j])) {
+                list.splice(i, 1);
+                i--;
+                continue outer;
+            }
+        }
+
+        for (let j = 0; j < incorrect.length; j++) {
+            if (list[i].includes(incorrect[j])) {
+                list.splice(i, 1);
+                i--;
+                continue outer;
+            }
+        }
+    }
+
+    return list;
 }
 
 // BYBBB --> kayak
@@ -728,7 +773,7 @@ function getAllDifferences(word, difference) {
 // BBBGB
 function createDiffsRecursive(word, difference, index, char_list, diff_list) {
     if (index == difference.length || diff_list.length > 500) return [...new Set(diff_list)];
-    
+
     if (char_list.includes(word.charAt(index)) && difference.charAt(index) != CORRECT) {
         let yellow = replaceAt(difference, WRONG_SPOT, index);
         let green = replaceAt(difference, CORRECT, index);
@@ -766,7 +811,7 @@ function replaceAt(old_string, char, index) {
 
 // sorts the list based on which words have the most common letters
 // used when the list is too large to check against all possibilities
-function sortList(list, alphabet, sorted_list) {
+function sortList(list, alphabet) {
     if (!list.length) return [];
 
     let newranks = [];
