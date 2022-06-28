@@ -3028,7 +3028,7 @@ const easy =
                 "average": 3.723191531072339,
                 "wrong": 0
             }
-        },
+        }
     ],
     "Thirdle": [
         {
@@ -12759,7 +12759,7 @@ const easy =
         {
             "word": "QAJAQ",
             "restricted": {
-                "average": 12.446314102564102,
+                "average": 13.284455128205128,
                 "wrong": 0
             }
         },
@@ -12787,14 +12787,14 @@ const easy =
         {
             "word": "FUFFY",
             "restricted": {
-                "average": 12.177884615384615,
+                "average": 12.1875,
                 "wrong": 0
             }
         },
         {
             "word": "YUKKY",
             "restricted": {
-                "average": 12.19951923076923,
+                "average": 12.910657051282051,
                 "wrong": 0
             }
         },
@@ -12808,14 +12808,14 @@ const easy =
         {
             "word": "ZOPPO",
             "restricted": {
-                "average": 12.231570512820513,
+                "average": 12.772435897435898,
                 "wrong": 0
             }
         },
         {
             "word": "XYLYL",
             "restricted": {
-                "average": 12.194711538461538,
+                "average": 13.040064102564102,
                 "wrong": 0
             }
         },
@@ -12843,7 +12843,7 @@ const easy =
         {
             "word": "BUBBY",
             "restricted": {
-                "average": 12.266426282051283,
+                "average": 12.388221153846153,
                 "wrong": 0
             }
         },

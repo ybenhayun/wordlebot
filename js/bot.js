@@ -16,14 +16,14 @@ function vowelCount(word) {
 }
 
 function getStartingWords(difficulty) {
-    // let guesses = getFirstGuesses(difficulty);
-    // let starting_words = guesses.map(a => a.word);
+    let guesses = getFirstGuesses(difficulty);
+    let starting_words = guesses.map(a => a.word);
 
-    let starting_words = allCombinations("", []);
-    starting_words = sortList(starting_words, bot.getBestLetters(common.slice()));
+    // let starting_words = allCombinations("", []);
+    // starting_words = sortList(starting_words, bot.getBestLetters(common.slice()));
 
-    starting_words = bot.reducesListBest(common.slice(), starting_words);
-    starting_words = starting_words.map(a => a.word);
+    // starting_words = bot.reducesListBest(common.slice(), starting_words);
+    // starting_words = starting_words.map(a => a.word);
 
     console.log(starting_words);
     return starting_words;
@@ -288,10 +288,10 @@ function runBot(guess, difficulty) {
             let wrong = missed.length/common.length;
             
             showResults(guess, TEST_SIZE - missed.length, TEST_SIZE, average.toFixed(3), missed);
-            if (TEST_SIZE == common.length) {
+            // if (TEST_SIZE == common.length) {
                 updateWordData(guess, average, wrong, difficulty);
                 printData(newlist, guess, average, (performance.now() - start_time)/1000);
-            }
+            // }
             
             pairings = [];
 
@@ -302,13 +302,14 @@ function runBot(guess, difficulty) {
 }
 
 function updateWordData(guess, average, wrong, difficulty) {
+    averages.push({word: guess, average: average, wrong: wrong});
+    averages.sort((a, b) => a.average >= b.average ? 1 : -1);
+    if (TEST_SIZE < common.length) return;
+
     if (!newlist.length) {
         if (isDifficulty(HARD, difficulty) && bot.hasHardMode()) newlist = hard;
         else newlist = easy;
     }
-
-    averages.push({word: guess, average: average, wrong: wrong});
-    averages.sort((a, b) => a.average >= b.average ? 1 : -1);
 
     let index = newlist[bot.type].map(a => a.word).indexOf(guess);
     let data = {average: average, wrong: wrong};
