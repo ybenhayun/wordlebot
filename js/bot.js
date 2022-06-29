@@ -19,12 +19,6 @@ function getStartingWords(difficulty) {
     let guesses = getFirstGuesses(difficulty);
     let starting_words = guesses.map(a => a.word);
 
-    // let starting_words = allCombinations("", []);
-    // starting_words = sortList(starting_words, bot.getBestLetters(common.slice()));
-
-    // starting_words = bot.reducesListBest(common.slice(), starting_words);
-    // starting_words = starting_words.map(a => a.word);
-
     console.log(starting_words);
     return starting_words;
 }
@@ -162,7 +156,10 @@ function setupTest(word) {
     let difficulty = HARD;
     // let difficulty = NORMAL;
 
-    let test_center = createBarGraphs(bot.guessesAllowed(difficulty));
+    let num_guesses = bot.guessesAllowed();
+    if (num_guesses == INFINITY) num_guesses = 6;
+    let test_center = createBarGraphs(num_guesses);
+
     let menu = createBotMenu(word);
     test_center.appendChild(menu);
 
@@ -211,6 +208,8 @@ function getTestAnswers(TEST_SIZE, random_answers) {
 }
 
 function adjustBarHeight(points, scores, total_sum, games_played) {
+    if (points >= document.getElementsByClassName('bar').length) extendBarGraphs(document.getElementsByClassName('bar').length, points);
+
     let max = Math.max(...scores);
     let bars = document.getElementsByClassName("bar");
     document.getElementsByClassName("count")[points].innerHTML = scores[points];
@@ -220,6 +219,20 @@ function adjustBarHeight(points, scores, total_sum, games_played) {
     }
 
     document.getElementsByClassName("average")[0].innerHTML = "Average: " + (total_sum/games_played).toFixed(3);
+}
+
+function extendBarGraphs(current_length, new_max) {
+    let board = document.getElementById('results');
+    
+    for (let i = current_length; i <= new_max; i++) {
+        board.innerHTML += "<div class = 'bar'><span class = 'num-guesses'>" + (i+1) + "</span><span class = 'count'></span></div>";
+    }
+
+    let count = document.getElementsByClassName("count");
+    for (let i = current_length; i <= new_max; i++) {
+        count[i].innerHTML = "0";
+        document.getElementsByClassName("bar")[i].style.height = "1.125rem";
+    }
 }
 
 function showResults(guess, correct, total_tested, average, words_missed) {
@@ -253,16 +266,18 @@ function runBot(guess, difficulty) {
     let sum = 0;
     let count = 0;
     let missed = [];
-    let scores = new Array(bot.guessesAllowed(difficulty)+1).fill(0);
-    let testing_sample = getTestAnswers(TEST_SIZE, []);
 
+    let num_guesses = bot.guessesAllowed();
+    if (num_guesses == INFINITY) num_guesses = 6;
+    let scores = new Array(num_guesses).fill(0);
+
+    let testing_sample = getTestAnswers(TEST_SIZE, []);
     let final_scores = []
 
     let iv = setInterval(function() {
         document.getElementById("grid").innerHTML = "";
-        let points = wordleBot(guess, testing_sample[count], difficulty);
-
-        if (points > bot.guessesAllowed(difficulty) && !bot.isFor(ANTI)) {
+        let points = wordleBot(guess,  testing_sample[count], difficulty);
+        if (points > bot.guessesAllowed(difficulty)) {
             // clearInterval(iv);
             missed.push(testing_sample[count]);
         }
@@ -270,16 +285,18 @@ function runBot(guess, difficulty) {
         if (!final_scores[points]) final_scores[points] = [];
         final_scores[points].push(testing_sample[count]);
 
-        if (points > 24) console.log(guess + " --> " + testing_sample[count]); 
         pairings = [];
 
         sum += points;
+
+        if (points > scores.length) scores = extendArray(scores, points, 0)
         scores[points-1] += 1;
 
         adjustBarHeight(points-1, scores, sum, count+1);
         count++;
 
         document.getElementsByClassName("close")[1].addEventListener('click', function() {
+            resetGuessRows();
             removeTest(iv);
         });
 
@@ -288,10 +305,8 @@ function runBot(guess, difficulty) {
             let wrong = missed.length/common.length;
             
             showResults(guess, TEST_SIZE - missed.length, TEST_SIZE, average.toFixed(3), missed);
-            // if (TEST_SIZE == common.length) {
-                updateWordData(guess, average, wrong, difficulty);
-                printData(newlist, guess, average, (performance.now() - start_time)/1000);
-            // }
+            updateWordData(guess, average, wrong, difficulty);
+            printData(newlist, guess, average, (performance.now() - start_time)/1000);
             
             pairings = [];
 
@@ -299,6 +314,14 @@ function runBot(guess, difficulty) {
             clearInterval(iv);
         }
     }, 1);
+}
+
+function extendArray(array, new_max, value) {
+    for (let i = 0; i < new_max; i++) {
+        if (!array[i]) array[i] = value;
+    }
+
+    return array;
 }
 
 function updateWordData(guess, average, wrong, difficulty) {
@@ -332,24 +355,20 @@ function printData(all_words, guess, average, time) {
 function wordleBot(guess, answer, difficulty) {
     let attempts = 1;
 
-    while (attempts <= bot.guessesAllowed(difficulty) || bot.isFor(ANTI)) {
+    while (attempts <= bot.guessesAllowed(difficulty)) {
         makeTables(guess, "testing");
 
         let diff = bot.getDifference(guess, answer);
         bot.setRowColor(diff, document.getElementsByClassName('row')[attempts-1]);
 
-        if (guess == answer || attempts == bot.guessesAllowed(difficulty)) {
-            if (guess != answer && !bot.isFor(ANTI)) attempts++;
-            break;
-        }
-        
+        if (guess == answer) break;
         attempts++;
 
         let lists = getPotentialGuessesAndAnswers(difficulty);
         final_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty);
         guess = final_guesses[0].word;  
-
     }
+
 
     return attempts;
 }

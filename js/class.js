@@ -23,11 +23,7 @@ class Bot {
     }
 
     guessesAllowed(difficulty) {
-        if (this.type == ANTI) {
-            if (isDifficulty(HARD, difficulty)) return 18;
-            return 26;
-        }
-
+        if (this.type == ANTI) return INFINITY;
         return parseInt(document.getElementById('max-guesses').value);
     }
 

@@ -12,7 +12,7 @@ const NORMAL = 0, HARD = 1;
 // list size constants
 const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10, MAX_TIME = 1000;
 // misc constants
-const NOT_YET_TESTED = .999, SIZE_FACTOR = 5;
+const NOT_YET_TESTED = .999, SIZE_FACTOR = 5, INFINITY = 9999999;
 
 function setBotMode(type) {
     bot = new Bot(type);
@@ -182,7 +182,7 @@ function writeBestGuessList(guesses, list_length) {
         let num_guesses = (guesses[i].average - guessesSoFar()).toFixed(3);
         let num_wrong = ((1-guesses[i].wrong)*100).toFixed(2);
 
-        if (guesses[i].wrong > 0 && guesses[i].wrong != NOT_YET_TESTED && !bot.isFor(ANTI)) {
+        if (guesses[i].wrong > 0 && guesses[i].wrong != NOT_YET_TESTED) {
             data = num_wrong + "% solve rate";
         } else if (guesses[i].wrong == NOT_YET_TESTED) {
             data = "not fully tested ";
@@ -541,9 +541,13 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
     const start_time = performance.now();
     let can_finish = false;
 
-    for (let i = 0; i < best_words.length; i++) {
+    for (let i = 0; i < best_words.length; i++) { 
         let remaining = best_words[i].differences;
-        let results = Array.apply(null, Array(bot.guessesAllowed(difficulty)));
+
+        let num_guesses = bot.guessesAllowed();
+        if (num_guesses == INFINITY) num_guesses = 6;
+        let results = Array.apply(null, Array(num_guesses));
+        
         results.forEach(function(a, index) { results[index] = []});
         results['wrong'] = [];
         
@@ -552,6 +556,7 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
         });
 
         best_words[i].wrong = best_words[i].results['wrong'].length/answers.length;
+        // if (bot.isFor(ANTI)) best_words[i].wrong = 1 - best_words[i].results.length/100; //uncomment to for longest path antiwordle
 
         if (best_words[i].wrong == 0) {
             can_finish = true;
@@ -563,7 +568,7 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
             break;
         }
     }
-    best_words = best_words.slice(0, CHECK_SIZE);
+    // best_words = best_words.slice(0, CHECK_SIZE);
 
     twoSort(best_words);
     return best_words.map(a => Object.assign({}, {word: a.word, average: a.average, wrong: a.wrong})).slice(0, TOP_TEN_LENGTH);
@@ -585,7 +590,7 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
         addToResults(results, answers, attempt, best.word, bot.guessesAllowed(difficulty)); 
 
     } else if (attempt < bot.guessesAllowed(difficulty)-1) {
-        if (attempt == bot.guessesAllowed(difficulty)-2 && !bot.isFor(ANTI)) {
+        if (attempt == bot.guessesAllowed(difficulty)-2) {
             new_guesses = answers.slice();
         }
 
@@ -598,11 +603,7 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
     }
 
     if (attempt >= bot.guessesAllowed(difficulty)-1) {
-        if (!bot.isFor(ANTI)) {
             results['wrong'] = results['wrong'].concat(answers);
-        } else {
-            results[bot.guessesAllowed(difficulty)-1].concat(answers);
-        }
     }
     
     calculateAverageGuesses(best, results);
@@ -871,10 +872,10 @@ function sortBest(guesses) {
 
 function sortWorst(guesses) {
     guesses.sort(function(a,b) {
-        if(a.average < b.average) {return  1;}
-        if(a.average > b.average) {return -1;}
         if(a.wrong > b.wrong) {return  1;}
         if(a.wrong < b.wrong) {return -1;}
+        if(a.average < b.average) {return  1;}
+        if(a.average > b.average) {return -1;}
         return 0;
     });
     return guesses;
