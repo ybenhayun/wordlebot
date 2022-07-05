@@ -203,7 +203,20 @@ function getTestAnswers(TEST_SIZE, random_answers) {
     if (TEST_SIZE == random_answers.length) return random_answers;
     
     let index = Math.round(Math.random()*(common.length-1));
-    if (!random_answers.includes(common[index])) random_answers.push(common[index]);
+    if (!random_answers.includes(common[index])) {
+        if (!bot.isFor(XORDLE)) {
+            random_answers.push(common[index]);
+        } else {
+            while (true) {
+                let pair_index = Math.round(Math.random()*(common.length-1));
+                if (bot.getDifference(common[index], common[pair_index]) == INCORRECT.repeat(word_length)) {
+                    random_answers.push({word1: common[index], word2: common[pair_index]});
+                    break;
+                }
+            }
+        }
+    }
+
     return getTestAnswers(TEST_SIZE, random_answers);
 }
 
@@ -361,14 +374,35 @@ function wordleBot(guess, answer, difficulty) {
         let diff = bot.getDifference(guess, answer);
         bot.setRowColor(diff, document.getElementsByClassName('row')[attempts-1]);
 
-        if (guess == answer) break;
+        if (answerFound(guess, answer)) {
+            if (bot.isFor(XORDLE)) {
+                makeTables(otherAnswer(guess, answer), "testing");
+                bot.setRowColor(CORRECT.repeat(word_length), document.getElementsByClassName('row')[attempts])
+            }
+            break;
+        } 
         attempts++;
 
         let lists = getPotentialGuessesAndAnswers(difficulty);
-        final_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty);
+        final_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.pairs);
         guess = final_guesses[0].word;  
     }
 
 
     return attempts;
+}
+
+function otherAnswer(answer, answers) {
+    if (answer == answers.word1) return answers.word2;
+    return answers.word1;
+}
+
+function answerFound(guess, answer) {
+    if (guess == answer) return true;
+
+    if (bot.isFor(XORDLE)) {
+        if (guess == answer.word1 || guess == answer.word2) return true;
+    }
+
+    return false;
 }

@@ -10,7 +10,7 @@ const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y", EMPTY = "X";
 // difficulty constants
 const NORMAL = 0, HARD = 1;
 // list size constants
-const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10, MAX_TIME = 1000;
+const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10, MAX_TIME = 2000;
 // misc constants
 const NOT_YET_TESTED = .999, SIZE_FACTOR = 5, INFINITY = 9999999;
 
@@ -100,41 +100,70 @@ function update() {
     let best_guesses = [];
 
     if (lists.answers.length) {
-        best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty);
+        // best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty);
+        best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.pairs);
     }
 
     updateLists(lists.all, lists.answers, lists.unlikely, best_guesses);
 }
 
+function getAllPossibleAnswersFrom(list) {
+    list = filterList(list, 0);
+    if (bot.isFor(XORDLE)) {
+        while (true) {
+            let list_length = list.length;
+
+            for (let guess = 0; guess < guessesSoFar(); guess++) {
+                list = xordleFilter(getWord(guess), bot.getRowColor(guess), uniqueWordsFrom(list));
+            }
+
+            if (list.length == list_length) break;
+        }
+    }
+    return list;
+}
+
+function uniqueWordsFrom(list) {
+    if (!list.length) return [];
+
+    if (typeof list[0] == 'object') {
+        let unique = [];
+        for (let i = 0; i  < list.length; i++) {
+            unique = unique.concat(Object.values(list[i]));
+        }
+
+        return [... new Set(unique)];
+    } else return list;
+}
+
 function getPotentialGuessesAndAnswers(difficulty) {
-    let answer_list = filterList(common.slice(), 0);
+    let answer_list = getAllPossibleAnswersFrom(common.slice());
+    let unique_answers = uniqueWordsFrom(answer_list)
     let all_possible_words = filterList(words.slice(), 0);
-    let unlikely_answers = all_possible_words.filter(a => !answer_list.some(b => b == a));
+    let unlikely_answers = all_possible_words.filter(a => !unique_answers.some(b => b == a));
 
     if (!answer_list.length) {
         return {guesses: all_possible_words, answers: [], all: all_possible_words, unlikely: all_possible_words};
     }
 
-    let alphabet = bot.getBestLetters(answer_list);
-    let sorted_answer_list = sortList(answer_list, alphabet);
+    let alphabet = bot.getBestLetters(unique_answers);
+    let sorted_answer_list = sortList(unique_answers, alphabet);
     let sorted_guess_list = words.slice();
 
     if (bot.isFor(THIRDLE)) sorted_guess_list = allCombinations("", []);
-
-    if (isDifficulty(HARD, difficulty)) {
+    
+    if (answer_list.length <= 2 && !bot.isFor(ANTI)) {
+        sorted_guess_list = unique_answers;
+    } else if (isDifficulty(HARD, difficulty)) {
         sorted_guess_list = all_possible_words;
     } else if (bot.isFor(ANTI)) {
         sorted_guess_list = filterList(sorted_guess_list, 0, true);
     } else {
         sorted_guess_list = reduceListSize(sorted_guess_list, sorted_answer_list);
-    }
+    }   
 
-    
-
-
-    sorted_guess_list = sortList(sorted_guess_list, alphabet, sorted_answer_list);
-
-    return {guesses: sorted_guess_list, answers: sorted_answer_list, all: all_possible_words, unlikely: unlikely_answers};
+    sorted_guess_list = sortList(sorted_guess_list, alphabet);
+    return {guesses: sorted_guess_list, answers: sorted_answer_list, all: all_possible_words, unlikely: unlikely_answers, pairs: answer_list};
 }
 
 function allCombinations(string, list) {
@@ -323,6 +352,7 @@ function numberOfGuessesSoFar(number) {
 // mode --> the mode we want to see if we're playing
 // check --> the mode we are currently playing on
 function isDifficulty(mode, check) {
+    // if (bot.isFor(XORDLE) && mode == HARD) return true;
     return mode == check;
 }
 
@@ -451,7 +481,7 @@ function setBestGuesses(best_guesses, difficulty) {
     seconds[word][hash] = JSON.stringify(best_guesses.slice(0, TOP_TEN_LENGTH));
 }
 
-function getBestGuesses(answer_list, guess_list, difficulty) {
+function getBestGuesses(answer_list, guess_list, difficulty, pairs) {
     let best_guesses = guessesArePrecomputed(difficulty);
     
     if (best_guesses) { 
@@ -459,11 +489,12 @@ function getBestGuesses(answer_list, guess_list, difficulty) {
     }
 
     if (numberOfGuessesSoFar(0)) return getFirstGuesses(difficulty);
-    if (answer_list.length > 1000) return getTempList(guess_list, answer_list);
+    if (answer_list.length > 1000) return getTempList(guess_list, pairs);
 
     if (guessesSoFar() == bot.guessesAllowed()-1) guess_list = answer_list;
 
-    let initial_guesses = bot.reducesListBest(answer_list, guess_list);
+    // let initial_guesses = bot.reducesListBest(answer_list, guess_list);
+    let initial_guesses = bot.reducesListBest(pairs, guess_list);
     best_guesses = calculateGuessList(answer_list, guess_list, initial_guesses, difficulty);
 
     setBestGuesses(best_guesses, difficulty);
@@ -476,8 +507,9 @@ function reduceListSize(guesses, answers) {
     if (answers.length > 10) { 
         guesses = removeUselessGuesses(guesses, answers);
     }
-    
+
     if (answers.length > 500) {
+        guesses = sortList(guesses, bot.getBestLetters(answers))
         guesses = guesses.slice(0, 250);
     }
     return guesses;
@@ -520,21 +552,12 @@ function getFirstGuesses(difficulty) {
 }
 
 function getTempList(guesses, answers) {
-    let letters = bot.getBestLetters(answers.slice());
+    let letters = bot.getBestLetters(uniqueWordsFrom(answers.slice()));
     guesses = sortList(guesses.slice(), letters);
     
-    guesses = bot.reducesListBest(answers.slice(), guesses.slice(0, 50));
+    guesses = bot.reducesListBest(answers.slice(), guesses.slice(0, 100));
     guesses = guesses.map(a => Object.assign ({}, {word: a.word, average: a.adjusted, wrong: NOT_YET_TESTED}));
     return guesses;
-}
-
-function getWordsToCheck(answers, guesses) {
-    guesses = reduceListSize(guesses, answers);
-    let words_to_check = answers.concat(guesses);
-    words_to_check = [...new Set(words_to_check)]; 
-    words_to_check = sortList(words_to_check, bot.getBestLetters(answers), answers);
-
-    return words_to_check;
 }
 
 function calculateGuessList(answers, guesses, best_words, difficulty) {
@@ -568,20 +591,19 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
             break;
         }
     }
-    // best_words = best_words.slice(0, CHECK_SIZE);
 
     twoSort(best_words);
     return best_words.map(a => Object.assign({}, {word: a.word, average: a.average, wrong: a.wrong})).slice(0, TOP_TEN_LENGTH);
 }
 
 function countResults(best, answers, guesses, results, attempt, difficulty, differences) {
-    let new_guesses = answers.concat(guesses);
+    let new_guesses = uniqueWordsFrom(answers).concat(guesses);
     new_guesses = [...new Set(new_guesses)];
         
     if (isDifficulty(HARD, difficulty)) {
         new_guesses = filterList(new_guesses, {word: best.word, colors: differences});
     } else if (!bot.isFor(ANTI)) {
-        new_guesses = reduceListSize(new_guesses, answers);
+        new_guesses = reduceListSize(new_guesses, uniqueWordsFrom(answers));
     } else {
         new_guesses = filterList(new_guesses, {word: best.word, colors: differences}, true);
     }
@@ -591,10 +613,12 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
 
     } else if (attempt < bot.guessesAllowed(difficulty)-1) {
         if (attempt == bot.guessesAllowed(difficulty)-2) {
-            new_guesses = answers.slice();
+            new_guesses = uniqueWordsFrom(answers.slice());
         }
 
+        
         let best_words = bot.reducesListBest(answers, new_guesses, true);
+        if (!best_words[0]) return;
         let remaining = best_words[0].differences;
 
         Object.keys(remaining).forEach(function(key) {
@@ -680,10 +704,10 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
     let new_list = [];
 
     if (reduced_filter) {
-        // difference = getAllDifferences(guess, difference);
         new_list = antiwordleList(guess, difference, old_list)
     } else { 
-        difference = [difference];
+        if (bot.isFor(XORDLE)) difference = createDiffsRecursive(difference, 0, [difference]); 
+        else difference = [difference];
 
         for (let i = 0; i < old_list.length; i++) {
             if (differencesMatch(guess, old_list[i], difference)) {
@@ -691,9 +715,30 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
             }
         }
     }
-    if (new_list.length > 1) new_list = new_list.filter(a => a != guess);
+
+    if (new_list.length > 1 && !bot.isFor(XORDLE)) 
+        new_list = new_list.filter(a => a != guess);
 
     return new_list;
+}
+
+function xordleFilter(guess, difference, list) {
+    if (list.length > 1000) return list;
+
+    let doubles = [];
+    let new_list = [];
+    
+    for (let i = 0; i < list.length; i++) {
+        for (let j = i+1; j < list.length; j++) {
+            if (bot.getDifference(list[i], list[j]) == INCORRECT.repeat(word_length)
+                && getDoubleDifference(guess, {word1: list[i], word2: list[j]}) == difference) {
+                    
+                    doubles.push({word1: list[i], word2: list[j]});
+            }
+        }
+    }
+
+    return doubles;
 }
 
 function differencesMatch(guess, answer, all_diffs) {
@@ -730,8 +775,6 @@ function antiwordleList(word, difference, list) {
         }
     }
 
-    // let all_diffs = createDiffsRecursive(word, difference, 0, chars, [difference]);
-    // return all_diffs;
     outer:
     for (let i = 0; i < list.length; i++) {
         for (let j = 0; j < correct.length; j++) {
@@ -772,29 +815,17 @@ function antiwordleList(word, difference, list) {
 // BYBYB
 // BYBGB
 // BBBGB
-function createDiffsRecursive(word, difference, index, char_list, diff_list) {
-    if (index == difference.length || diff_list.length > 500) return [...new Set(diff_list)];
+function createDiffsRecursive(difference, index, diff_list) {
+    if (index == difference.length) return [...new Set(diff_list)];
 
-    if (char_list.includes(word.charAt(index)) && difference.charAt(index) != CORRECT) {
-        let yellow = replaceAt(difference, WRONG_SPOT, index);
-        let green = replaceAt(difference, CORRECT, index);
-        let black = replaceAt(difference, INCORRECT, index);
+    if (difference.charAt(index) != INCORRECT) {
+        let alt = replaceAt(difference, INCORRECT, index);
 
-        diff_list.push(yellow);
-        diff_list.push(green);
-        diff_list.push(difference);
-        
-        createDiffsRecursive(word, yellow, index+1, char_list, diff_list);
-        createDiffsRecursive(word, green, index+1, char_list, diff_list);
-        
-        let c = word.charAt(index);
-        if (index != word.indexOf(c)) {
-            diff_list.push(black);
-            createDiffsRecursive(word, black, index+1, char_list, diff_list);
-        }
+        diff_list.push(alt);
+        createDiffsRecursive(alt, index+1, diff_list);
     } 
 
-    return createDiffsRecursive(word, difference, index+1, char_list, diff_list);
+    return createDiffsRecursive(difference, index+1, diff_list);
 }
 
 function replace(old_string, old_char, new_char) {
@@ -814,6 +845,7 @@ function replaceAt(old_string, char, index) {
 // used when the list is too large to check against all possibilities
 function sortList(list, alphabet) {
     if (!list.length) return [];
+    if (!alphabet) alphabet = bot.getBestLetters(list);
 
     let newranks = [];
 
@@ -827,6 +859,7 @@ function sortList(list, alphabet) {
         for (let j = 0; j < word_length; j++) {
             if (checked[i + " " + newranks[i].word.charAt(j)] == true) continue;  //no extra credit to letters with doubles
             newranks[i].average += alphabet[newranks[i].word.charAt(j)][word_length];
+            newranks[i].average += alphabet[newranks[i].word.charAt(j)][j];
             checked[i + " " + newranks[i].word.charAt(j)] = true;
         }
         newranks[i].average = 1/newranks[i].average;

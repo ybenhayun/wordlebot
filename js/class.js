@@ -3,6 +3,7 @@ const WORDLE = 'Wordle';
 const WOODLE = 'Woodle';
 const PEAKS = 'W-Peaks';
 const ANTI = 'Antiwordle';
+const XORDLE = 'Xordle';
 const THIRDLE = 'Thirdle';
 
 class Bot {
@@ -40,6 +41,8 @@ class Bot {
             return differencesWithoutPositions(word1, word2);
         } else if (this.type == PEAKS) {
             return getAlphabeticDifferences(word1, word2);
+        } else if (typeof word2 == 'object') {
+            return getDoubleDifference(word1, word2);
         } else {
             return differencesWithPositions(word1, word2);
         }
@@ -157,6 +160,24 @@ function differencesWithPositions(word1, word2) {
     return diff;
 }
 
+function getDoubleDifference(guess, answers) {
+    let diff1 = bot.getDifference(guess, answers.word1);
+    let diff2 = bot.getDifference(guess, answers.word2);
+
+    let new_diff = "";
+    for (let i = 0; i < word_length; i++) {
+        if (diff1.charAt(i) != INCORRECT) {
+            new_diff += diff1.charAt(i);
+        } else if (diff2.charAt(i) != INCORRECT) {
+            new_diff += diff2.charAt(i);
+        } else {
+            new_diff += INCORRECT;
+        }
+    }
+
+    return new_diff;
+}
+
 function rowDifferencesWithPositions(row_number) {
     let row = document.getElementsByClassName("row")[row_number];
     let coloring = "";
@@ -166,6 +187,23 @@ function rowDifferencesWithPositions(row_number) {
     }
 
     return coloring;
+}
+
+function getAlphabeticDifferences(word1, word2) {
+    let diff = "";
+    for (let i = 0; i < word_length; i++) {
+        let a = word1.charAt(i), b = word2.charAt(i);
+
+        if (a == b) {
+            diff += CORRECT;
+        } else if (a > b) {
+            diff += 'B';
+        } else if (a < b) {
+            diff += 'Y';
+        }
+    }
+
+    return diff;
 }
 
 function setRowDifferencesWithPositions(coloring, row) {
@@ -264,24 +302,6 @@ function setRowDifferencesWithoutPositions(coloring, row) {
     num_wrong_spots.innerHTML = "<option value='" + wrong_spots + "'>" + wrong_spots + "</option>";
 }
 
-// Specific Functions
-function getAlphabeticDifferences(word1, word2) {
-    let diff = "";
-    for (let i = 0; i < word_length; i++) {
-        let a = word1.charAt(i), b = word2.charAt(i);
-
-        if (a == b) {
-            diff += CORRECT;
-        } else if (a > b) {
-            diff += 'B';
-        } else if (a < b) {
-            diff += 'Y';
-        }
-    }
-
-    return diff;
-}
-
 // calculates which letters appear most often throughout the remaining answers
 // used to rough sort the list if the entire list is too large to check
 // info is also prited underneath 'Most Common Letters' section
@@ -374,7 +394,7 @@ function calculateAverageBucketSize(guess, answers, min, future_guess) {
             differences[diff] = [];
         }
 
-        if (diff != CORRECT.repeat(word_length)) {
+        if (diff != CORRECT.repeat(word_length) || typeof answers[i] == 'object') {
             differences[diff].push(answers[i]);
         }
 
