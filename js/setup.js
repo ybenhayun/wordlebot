@@ -188,7 +188,13 @@ const EXAMPLE_LIST =
         {word: 'STALE', score: '3.661 guesses left'}, 
         {word: 'SPATE', score: '3.665 guesses left'},
         {word: 'BEARD', score: '3.674 guesses left'}     
-    ]
+    ],
+    "Xordle": [
+        {word: 'SOLDE', score: '3.227 guesses left', wrong: '96.77% solve rate'}, 
+        {word: 'POULE', score: '3.228 guesses left'},
+        {word: 'SOCLE', score: '3.238 guesses left'},     
+        {word: 'SLOPE', score: '3.255 guesses left'}, 
+    ]    
 } 
 
 

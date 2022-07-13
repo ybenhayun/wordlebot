@@ -831,6 +831,10 @@ input:checked + .slider:before {
     margin-bottom: 0;
 }
 
+.github {
+    height: 35px;
+}
+
 .links:last-child {
     margin-top: 0;
 }

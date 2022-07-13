@@ -394,7 +394,7 @@ function calculateAverageBucketSize(guess, answers, min, future_guess) {
             differences[diff] = [];
         }
 
-        if (diff != CORRECT.repeat(word_length) || typeof answers[i] == 'object') {
+        if (diff != CORRECT.repeat(word_length)) {
             differences[diff].push(answers[i]);
         }
 
@@ -412,6 +412,6 @@ function calculateAverageBucketSize(guess, answers, min, future_guess) {
             return;
         }
     }
-    
-    return {word: guess, weighted: weighted, threes: threes, adjusted: adjusted, differences: differences};
+    let buckect_data = {word: guess, weighted: weighted, threes: threes, adjusted: adjusted, differences: differences};
+    return buckect_data;
 }
