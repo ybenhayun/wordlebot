@@ -28,6 +28,8 @@ function setBotMode(type) {
 
     if (bot.isFor(WOODLE) && !localStorage.getItem('guesses' + bot.type)) {
         localStorage.setItem('guesses' + bot.type, 8);
+    } else if (bot.isFor(XORDLE) && !localStorage.getItem('guesses' + bot.type)) {
+        localStorage.setItem('guesses' + bot.type, 9);
     }
 
     pairings = [];
