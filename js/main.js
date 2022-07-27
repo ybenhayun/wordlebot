@@ -28,7 +28,7 @@ function setBotMode(type) {
 
     if (bot.isFor(WOODLE) && !localStorage.getItem('guesses' + bot.type)) {
         localStorage.setItem('guesses' + bot.type, 8);
-    } else if (bot.isFor(XORDLE) && !localStorage.getItem('guesses' + bot.type)) {
+    } else if ((bot.isFor(XORDLE) || bot.isFor(FIBBLE)) && !localStorage.getItem('guesses' + bot.type)) {
         localStorage.setItem('guesses' + bot.type, 9);
     }
 
@@ -115,9 +115,10 @@ function getAllPossibleAnswersFrom(list) {
         while (true) {
             let list_length = uniqueWordsFrom(list).length;
 
-            for (let guess = 0; guess < guessesSoFar(); guess++) {
-                list = xordleFilter(getWord(guess), bot.getRowColor(guess), uniqueWordsFrom(list));
-            }
+            // for (let guess = 0; guess < guessesSoFar(); guess++) {
+            //     list = xordleFilter(getWord(guess), bot.getRowColor(guess), uniqueWordsFrom(list));
+            // }
+            list = xordleFilter(uniqueWordsFrom(list));
 
             if (uniqueWordsFrom(list).length == list_length) break;
         }
@@ -148,7 +149,7 @@ function getPotentialGuessesAndAnswers(difficulty) {
         return {guesses: unique_answers, 
                 answers: answer_list, 
                 all: all_possible_words, 
-                unlikely: all_possible_words, 
+                unlikely: unlikely_answers, 
                 pairs: answer_list, 
                 unique: unique_answers};
     }
@@ -735,6 +736,30 @@ function filterList(list, letters, reduced_filter) {
     return list;
 }
 
+function getFibbleDiffs(diff) {
+    let differences = [];
+    // differences.push(diff);
+
+    for (let i = 0; i < diff.length; i++) {
+        if (diff.charAt(i) != INCORRECT) {
+            let new_diff = replaceAt(diff, INCORRECT, i);
+            differences.push(new_diff);
+        }
+
+        if (diff.charAt(i) != CORRECT) {
+            let new_diff = replaceAt(diff, CORRECT, i);
+            differences.push(new_diff);
+        }
+
+        if (diff.charAt(i) != WRONG_SPOT) {
+            let new_diff = replaceAt(diff, WRONG_SPOT, i);
+            differences.push(new_diff);
+        }
+    }
+
+    return differences;
+}
+
 function createFilteredList(old_list, guess, difference, reduced_filter) {
     let new_list = [];
 
@@ -742,6 +767,7 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
         new_list = antiwordleList(guess, difference, old_list)
     } else { 
         if (bot.isFor(XORDLE)) difference = createDiffsRecursive(difference, 0, [difference]); 
+        else if (bot.isFor(FIBBLE)) difference = getFibbleDiffs(difference);
         else difference = [difference];
 
         for (let i = 0; i < old_list.length; i++) {
@@ -757,16 +783,20 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
     return new_list;
 }
 
-function xordleFilter(guess, difference, list) {
+function xordleFilter(/*guess, difference,*/ list) {
     if (list.length > 1000) return list;
 
     let doubles = [];    
     for (let i = 0; i < list.length; i++) {
         for (let j = i+1; j < list.length; j++) {
-            if (bot.getDifference(list[i], list[j]) == INCORRECT.repeat(word_length)
-                && bot.getDifference(guess, {word1: list[i], word2: list[j]}) == difference) {
+
+            if (bot.getDifference(list[i], list[j]) == INCORRECT.repeat(word_length)) {
+                for (let guess = 0; guess < guessesSoFar(); guess++) {
+                    if (bot.getDifference(getWord(guess), {word1: list[i], word2: list[j]}) != bot.getRowColor(guess)) break;
+                        
+                    else if (guess == guessesSoFar() - 1) doubles.push({word1: list[i], word2: list[j]});
+                }
                     
-                    doubles.push({word1: list[i], word2: list[j]});
             }
         }
     }

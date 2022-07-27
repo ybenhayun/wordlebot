@@ -5,6 +5,7 @@ const PEAKS = 'W-Peaks';
 const ANTI = 'Antiwordle';
 const XORDLE = 'Xordle';
 const THIRDLE = 'Thirdle';
+const FIBBLE = 'Fibble';
 
 class Bot {
     constructor(type) {
