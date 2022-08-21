@@ -150,6 +150,7 @@ function swapDiv(event, elem) {
 }
 
 function setupTest(word) {
+    if (bot.isFor(XORDLE) || bot.isFor(FIBBLE)) return;
     TEST_SIZE = Math.min(500, common.length);
     // TEST_SIZE = common.length;
 

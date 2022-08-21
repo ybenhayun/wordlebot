@@ -194,6 +194,12 @@ const EXAMPLE_LIST =
         {word: 'POULE', score: '3.228 guesses left'},
         {word: 'SOCLE', score: '3.238 guesses left'},     
         {word: 'SLOPE', score: '3.255 guesses left'}, 
+    ], 
+    "Fibble": [
+        {word: "PALET", score: '2.932 guesses left', wrong: '96.77% solve rate'}, 
+        {word: "SALET", score: "2.935 guesses left"},
+        {word: "LACET", score: "2.952 guesses left"},
+        {word: "CAPLE", score: "2.952 guesses left"}
     ]    
 } 
 

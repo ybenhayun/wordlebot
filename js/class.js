@@ -80,6 +80,16 @@ class Bot {
             return reducesListMost(answers, guesses, future_guess);
         }
     }
+
+    getAllDifferences(difference) {
+        if (this.type == XORDLE) {
+            return getXordleDiffs(difference, 0, [difference]);
+        } else if (this.type == FIBBLE) {
+            return getFibbleDiffs(difference);
+        } 
+
+        return [difference];
+    }
 }
 
 // Wordle Specific Functions
@@ -303,6 +313,8 @@ function setRowDifferencesWithoutPositions(coloring, row) {
     num_wrong_spots.innerHTML = "<option value='" + wrong_spots + "'>" + wrong_spots + "</option>";
 }
 
+
+
 // calculates which letters appear most often throughout the remaining answers
 // used to rough sort the list if the entire list is too large to check
 // info is also prited underneath 'Most Common Letters' section
@@ -415,4 +427,41 @@ function calculateAverageBucketSize(guess, answers, min, future_guess) {
     }
     let buckect_data = {word: guess, weighted: weighted, threes: threes, adjusted: adjusted, differences: differences};
     return buckect_data;
+}
+
+function getXordleDiffs(difference, index, diff_list) {
+    if (index == difference.length) return [...new Set(diff_list)];
+
+    if (difference.charAt(index) != INCORRECT) {
+        let alt = replaceAt(difference, INCORRECT, index);
+
+        diff_list.push(alt);
+        getXordleDiffs(alt, index+1, diff_list);
+    } 
+
+    return getXordleDiffs(difference, index+1, diff_list);
+}
+
+function getFibbleDiffs(diff) {
+    let differences = [];
+    // differences.push(diff);
+
+    for (let i = 0; i < diff.length; i++) {
+        if (diff.charAt(i) != INCORRECT) {
+            let new_diff = replaceAt(diff, INCORRECT, i);
+            differences.push(new_diff);
+        }
+
+        if (diff.charAt(i) != CORRECT) {
+            let new_diff = replaceAt(diff, CORRECT, i);
+            differences.push(new_diff);
+        }
+
+        if (diff.charAt(i) != WRONG_SPOT) {
+            let new_diff = replaceAt(diff, WRONG_SPOT, i);
+            differences.push(new_diff);
+        }
+    }
+
+    return differences;
 }

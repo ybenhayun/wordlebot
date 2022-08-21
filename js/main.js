@@ -162,7 +162,7 @@ function getPotentialGuessesAndAnswers(difficulty) {
     
     if (answer_list.length <= 2 && !bot.isFor(ANTI)) {
         sorted_guess_list = unique_answers;
-    } else if (isDifficulty(HARD, difficulty) || bot.isFor(PEAKS)) {
+    } else if (isDifficulty(HARD, difficulty)){
         sorted_guess_list = all_possible_words.slice();
     } else if (bot.isFor(ANTI)) {
         sorted_guess_list = filterList(sorted_guess_list, 0, true);
@@ -736,29 +736,29 @@ function filterList(list, letters, reduced_filter) {
     return list;
 }
 
-function getFibbleDiffs(diff) {
-    let differences = [];
-    // differences.push(diff);
+// function getFibbleDiffs(diff) {
+//     let differences = [];
+//     // differences.push(diff);
 
-    for (let i = 0; i < diff.length; i++) {
-        if (diff.charAt(i) != INCORRECT) {
-            let new_diff = replaceAt(diff, INCORRECT, i);
-            differences.push(new_diff);
-        }
+//     for (let i = 0; i < diff.length; i++) {
+//         if (diff.charAt(i) != INCORRECT) {
+//             let new_diff = replaceAt(diff, INCORRECT, i);
+//             differences.push(new_diff);
+//         }
 
-        if (diff.charAt(i) != CORRECT) {
-            let new_diff = replaceAt(diff, CORRECT, i);
-            differences.push(new_diff);
-        }
+//         if (diff.charAt(i) != CORRECT) {
+//             let new_diff = replaceAt(diff, CORRECT, i);
+//             differences.push(new_diff);
+//         }
 
-        if (diff.charAt(i) != WRONG_SPOT) {
-            let new_diff = replaceAt(diff, WRONG_SPOT, i);
-            differences.push(new_diff);
-        }
-    }
+//         if (diff.charAt(i) != WRONG_SPOT) {
+//             let new_diff = replaceAt(diff, WRONG_SPOT, i);
+//             differences.push(new_diff);
+//         }
+//     }
 
-    return differences;
-}
+//     return differences;
+// }
 
 function createFilteredList(old_list, guess, difference, reduced_filter) {
     let new_list = [];
@@ -766,9 +766,11 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
     if (reduced_filter) {
         new_list = antiwordleList(guess, difference, old_list)
     } else { 
-        if (bot.isFor(XORDLE)) difference = createDiffsRecursive(difference, 0, [difference]); 
-        else if (bot.isFor(FIBBLE)) difference = getFibbleDiffs(difference);
-        else difference = [difference];
+        // if (bot.isFor(XORDLE)) difference = createDiffsRecursive(difference, 0, [difference]); 
+        // else if (bot.isFor(FIBBLE)) difference = getFibbleDiffs(difference);
+        // else difference = [difference];
+
+        difference = bot.getAllDifferences(difference);
 
         for (let i = 0; i < old_list.length; i++) {
             if (differencesMatch(guess, old_list[i], difference)) {
@@ -783,7 +785,7 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
     return new_list;
 }
 
-function xordleFilter(/*guess, difference,*/ list) {
+function xordleFilter(list) {
     if (list.length > 1000) return list;
 
     let doubles = [];    
@@ -878,18 +880,18 @@ function antiwordleList(word, difference, list) {
 // BYBYB
 // BYBGB
 // BBBGB
-function createDiffsRecursive(difference, index, diff_list) {
-    if (index == difference.length) return [...new Set(diff_list)];
+// function createDiffsRecursive(difference, index, diff_list) {
+//     if (index == difference.length) return [...new Set(diff_list)];
 
-    if (difference.charAt(index) != INCORRECT) {
-        let alt = replaceAt(difference, INCORRECT, index);
+//     if (difference.charAt(index) != INCORRECT) {
+//         let alt = replaceAt(difference, INCORRECT, index);
 
-        diff_list.push(alt);
-        createDiffsRecursive(alt, index+1, diff_list);
-    } 
+//         diff_list.push(alt);
+//         createDiffsRecursive(alt, index+1, diff_list);
+//     } 
 
-    return createDiffsRecursive(difference, index+1, diff_list);
-}
+//     return createDiffsRecursive(difference, index+1, diff_list);
+// }
 
 function replace(old_string, old_char, new_char) {
     let regex = new RegExp(old_char,'g'); // correct way
