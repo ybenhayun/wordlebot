@@ -12861,7 +12861,207 @@ const easy =
                 "wrong": 0
             }
         }
-    ]
+    ],
+    "Hardle": [
+        {
+            "word": "ROATE",
+            "restricted": {
+                "average": 3.7818979266347688,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "RAISE",
+            "restricted": {
+                "average": 3.794657097288676,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "SOARE",
+            "restricted": {
+                "average": 3.787878787878788,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "RAILE",
+            "restricted": {
+                "average": 3.7890749601275915,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ORATE",
+            "restricted": {
+                "average": 3.7886762360446573,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ARISE",
+            "restricted": {
+                "average": 3.815390749601276,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "IRATE",
+            "restricted": {
+                "average": 3.79585326953748,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "AROSE",
+            "restricted": {
+                "average": 3.7982456140350878,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ARIEL",
+            "restricted": {
+                "average": 3.818580542264753,
+                "wrong": 0.00039872408293460925
+            }
+        },
+        {
+            "word": "RAINE",
+            "restricted": {
+                "average": 3.7922647527910684,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "TALER",
+            "restricted": {
+                "average": 3.7942583732057416,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ARTEL",
+            "restricted": {
+                "average": 3.7759170653907494,
+                "wrong": 0.0007974481658692185
+            }
+        },
+        {
+            "word": "SANER",
+            "restricted": {
+                "average": 3.8086124401913874,
+                "wrong": 0.00039872408293460925
+            }
+        },
+        {
+            "word": "RATEL",
+            "restricted": {
+                "average": 3.785885167464115,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "TARES",
+            "restricted": {
+                "average": 3.7687400318979267,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "TASER",
+            "restricted": {
+                "average": 3.783891547049442,
+                "wrong": 0.00039872408293460925
+            }
+        },
+        {
+            "word": "LATER",
+            "restricted": {
+                "average": 3.808213716108453,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "SALET",
+            "restricted": {
+                "average": 3.7735247208931417,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ARLES",
+            "restricted": {
+                "average": 3.791866028708134,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "REAST",
+            "restricted": {
+                "average": 3.746810207336523,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ALTER",
+            "restricted": {
+                "average": 3.7942583732057416,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "STARE",
+            "restricted": {
+                "average": 3.7567783094098885,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "OATER",
+            "restricted": {
+                "average": 3.8066188197767143,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "SNARE",
+            "restricted": {
+                "average": 3.8006379585326955,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "STRAE",
+            "restricted": {
+                "average": 3.765151515151515,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "LARES",
+            "restricted": {
+                "average": 3.803030303030303,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "RATES",
+            "restricted": {
+                "average": 3.7667464114832536,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "REALO",
+            "restricted": {
+                "average": 3.825358851674641,
+                "wrong": 0.00039872408293460925
+            }
+        }
+    ],
+    "Xordle": [],
+    "Fibble": []
 }
 
 const hard =

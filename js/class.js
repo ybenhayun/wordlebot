@@ -6,6 +6,7 @@ const ANTI = 'Antiwordle';
 const XORDLE = 'Xordle';
 const THIRDLE = 'Thirdle';
 const FIBBLE = 'Fibble';
+const HARDLE = 'Hardle';
 
 class Bot {
     constructor(type) {
@@ -86,7 +87,9 @@ class Bot {
             return getXordleDiffs(difference, 0, [difference]);
         } else if (this.type == FIBBLE) {
             return getFibbleDiffs(difference);
-        } 
+        } else if (this.type == HARDLE) {
+            return getHardleDiffs(difference);
+        }
 
         return [difference];
     }
@@ -463,5 +466,21 @@ function getFibbleDiffs(diff) {
         }
     }
 
+    return differences;
+}
+
+function getHardleDiffs(diff) {
+    let differences = [diff];
+    let new_diff = "";
+
+    for (let i = 0; i < diff.length; i++) {
+        if (diff.charAt(i) == CORRECT) {
+            new_diff += WRONG_SPOT;
+        } else if (diff.charAt(i) == WRONG_SPOT) {
+            new_diff += CORRECT;
+        } else new_diff += INCORRECT;
+    }
+
+    differences.push(new_diff);
     return differences;
 }

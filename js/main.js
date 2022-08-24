@@ -26,9 +26,9 @@ function setBotMode(type) {
         }
     }
 
-    if (bot.isFor(WOODLE) && !localStorage.getItem('guesses' + bot.type)) {
+    if ((bot.isFor(WOODLE) || bot.isFor(HARDLE)) && !localStorage.getItem('guesses' + bot.type)) {
         localStorage.setItem('guesses' + bot.type, 8);
-    } else if ((bot.isFor(XORDLE) || bot.isFor(FIBBLE)) && !localStorage.getItem('guesses' + bot.type)) {
+    } else if ((bot.isFor(XORDLE) || bot.isFor(FIBBLE) ) && !localStorage.getItem('guesses' + bot.type)) {
         localStorage.setItem('guesses' + bot.type, 9);
     }
 
