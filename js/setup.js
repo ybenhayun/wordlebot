@@ -200,7 +200,13 @@ const EXAMPLE_LIST =
         {word: "SALET", score: "2.935 guesses left"},
         {word: "LACET", score: "2.952 guesses left"},
         {word: "CAPLE", score: "2.952 guesses left"}
-    ]    
+    ], 
+    "Hardle": [
+        {word: "BEALS", score: '2.500 guesses left', wrong: '96.77% solve rate'}, 
+        {word: "BELTS", score: "2.519 guesses left"},
+        {word: "SOCLE", score: "2.537 guesses left"},
+        {word: "HEALS", score: "2.537 guesses left"}
+    ]          
 } 
 
 

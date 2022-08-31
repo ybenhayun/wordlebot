@@ -212,6 +212,13 @@ function updateLists(words_left, likely_answers, unlikely_answers, best_guesses,
     if (likely_answers.length <= 2 && !bot.isFor(ANTI)) {
         // will only show the final two options as suggestions
         // ie: 'its either 'THIS' or 'THAT'
+
+        if (bot.isFor(XORDLE)) {
+            unlikely_answers = xordleFilter(unlikely_answers);
+            unlikely_answers = uniqueWordsFrom(unlikely_answers);
+            updateHeaders(words_left, likely_answers, unlikely_answers);
+        }
+
         return showFinalOptions(likely_answers, unlikely_answers);
     } 
 }
@@ -307,6 +314,9 @@ function showFinalOptions(sorted, less_likely) {
         if (sorted.length == 2) {
             sorted[1] = sorted[1].word1 + "/" + sorted[1].word2;
         }
+
+        less_likely = xordleFilter(less_likely);
+        less_likely = uniqueWordsFrom(less_likely);
     }
 
     if (sorted.length) {
@@ -548,6 +558,10 @@ function reduceListSize(guesses, answers, answers_size) {
         reduced = true;
     }
 
+    for (let guess = 0; guess < guessesSoFar(); guess++) {
+        guesses = guesses.filter(a => a != getWord(guess));
+    }
+    
     return {guesses: guesses, answers: answers, reduced: reduced};
 }
 
