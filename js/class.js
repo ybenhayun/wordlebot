@@ -139,7 +139,6 @@ function differencesWithPositions(word1, word2) {
         if (word1_c == word2_c) {
             temp1 = temp1.slice(0, j) + temp1.slice(j+1);
             temp2 = temp2.slice(0, j) + temp2.slice(j+1);
-            // diff = diff.slice(0, pos) + CORRECT + diff.slice(pos+1);
             diff = replaceAt(diff, CORRECT, pos);
             j--;
         }
@@ -447,7 +446,6 @@ function getXordleDiffs(difference, index, diff_list) {
 
 function getFibbleDiffs(diff) {
     let differences = [];
-    // differences.push(diff);
 
     for (let i = 0; i < diff.length; i++) {
         if (diff.charAt(i) != INCORRECT) {

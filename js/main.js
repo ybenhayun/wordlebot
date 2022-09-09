@@ -102,7 +102,6 @@ function update() {
     let best_guesses = [];
 
     if (lists.answers.length > 2 || bot.isFor(ANTI)) {
-        // best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty);
         best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.pairs);
     }
 
@@ -114,10 +113,6 @@ function getAllPossibleAnswersFrom(list) {
     if (bot.isFor(XORDLE)) {
         while (true) {
             let list_length = uniqueWordsFrom(list).length;
-
-            // for (let guess = 0; guess < guessesSoFar(); guess++) {
-            //     list = xordleFilter(getWord(guess), bot.getRowColor(guess), uniqueWordsFrom(list));
-            // }
             list = xordleFilter(uniqueWordsFrom(list));
 
             if (uniqueWordsFrom(list).length == list_length) break;
@@ -540,10 +535,6 @@ function reduceListSize(guesses, answers, answers_size) {
         guesses = removeUselessGuesses(guesses, answers);
     }
 
-    // if (answers.length > 500) {
-        //     guesses = guesses.slice(0, 250);
-        // }
-        
     const MAXIMUM = 100000;
     let reduced = false;
     if (answers_size * guesses.length > MAXIMUM) {
@@ -552,8 +543,6 @@ function reduceListSize(guesses, answers, answers_size) {
         let current = answers_size * guesses.length;
         let ratio = current/MAXIMUM;
         
-        // ratio = Math.sqrt(ratio);
-        // answers = answers.slice(0, answers.length/ratio);
         guesses = guesses.slice(0, guesses.length/ratio);
         reduced = true;
     }
@@ -750,40 +739,12 @@ function filterList(list, letters, reduced_filter) {
     return list;
 }
 
-// function getFibbleDiffs(diff) {
-//     let differences = [];
-//     // differences.push(diff);
-
-//     for (let i = 0; i < diff.length; i++) {
-//         if (diff.charAt(i) != INCORRECT) {
-//             let new_diff = replaceAt(diff, INCORRECT, i);
-//             differences.push(new_diff);
-//         }
-
-//         if (diff.charAt(i) != CORRECT) {
-//             let new_diff = replaceAt(diff, CORRECT, i);
-//             differences.push(new_diff);
-//         }
-
-//         if (diff.charAt(i) != WRONG_SPOT) {
-//             let new_diff = replaceAt(diff, WRONG_SPOT, i);
-//             differences.push(new_diff);
-//         }
-//     }
-
-//     return differences;
-// }
-
 function createFilteredList(old_list, guess, difference, reduced_filter) {
     let new_list = [];
 
     if (reduced_filter) {
         new_list = antiwordleList(guess, difference, old_list)
     } else { 
-        // if (bot.isFor(XORDLE)) difference = createDiffsRecursive(difference, 0, [difference]); 
-        // else if (bot.isFor(FIBBLE)) difference = getFibbleDiffs(difference);
-        // else difference = [difference];
-
         difference = bot.getAllDifferences(difference);
 
         for (let i = 0; i < old_list.length; i++) {
@@ -887,26 +848,6 @@ function antiwordleList(word, difference, list) {
     return list;
 }
 
-// BYBBB --> kayak
-// BGBBB
-// BGBYB
-// BGBGB
-// BYBYB
-// BYBGB
-// BBBGB
-// function createDiffsRecursive(difference, index, diff_list) {
-//     if (index == difference.length) return [...new Set(diff_list)];
-
-//     if (difference.charAt(index) != INCORRECT) {
-//         let alt = replaceAt(difference, INCORRECT, index);
-
-//         diff_list.push(alt);
-//         createDiffsRecursive(alt, index+1, diff_list);
-//     } 
-
-//     return createDiffsRecursive(difference, index+1, diff_list);
-// }
-
 function replace(old_string, old_char, new_char) {
     let regex = new RegExp(old_char,'g'); // correct way
     let new_string = old_string.replace(regex, new_char); // it works
@@ -958,13 +899,6 @@ function sortListByAverage(list) {
 }
 
 function twoSort(guesses) {
-    // guesses.sort(function(a,b) {
-    //     if(a.wrong > b.wrong) {return  1;}
-    //     if(a.wrong < b.wrong) {return -1;}
-    //     if(a.average > b.average) {return  1;}
-    //     if(a.average < b.average) {return -1;}
-    //     return 0;
-    // });
     if (bot.isFor(ANTI)) {
         guesses = sortWorst(guesses);
     } else {
