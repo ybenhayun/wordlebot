@@ -851,3 +851,13 @@ input:checked + .slider:before {
     position: relative;
     left: unset;
 }
+
+.click:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+
+.click {
+    /* text-decoration: underline; */
+    /* border: solid 1px var(--off-white); */
+}

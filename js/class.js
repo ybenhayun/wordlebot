@@ -93,6 +93,22 @@ class Bot {
 
         return [difference];
     }
+
+    isBetter(a, b) {
+        if (bot.isFor(ANTI)) {
+            return isHigher(a, b);
+        } else {
+            return isLower(a, b);
+        }
+    }
+}
+
+function isHigher(a, b) {
+    return a > b;
+}
+
+function isLower(a, b) {
+    return a < b;
 }
 
 // Wordle Specific Functions

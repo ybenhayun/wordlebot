@@ -243,9 +243,13 @@ function writeBestGuessList(guesses, list_length, reduced) {
 }
 
 function createListItem(word, data, rank) {
-    let name = "<div class = 'suggestion'>" + rank + ". " + word + ": </div>";
+    let name = "<div class = 'suggestion click' onclick='enterGuess("+JSON.stringify(word)+")'>" + rank + ". " + word + ": </div>";
     let score = "<div class = 'score'>" + data + "</div>";
     return "<li>" + name + score + "</li>";    
+}
+
+function enterGuess(word) {
+    makeTables(word);
 }
 
 function updateHeaders(words_left, likely_answers, unlikely_answers) {
@@ -899,32 +903,13 @@ function sortListByAverage(list) {
 }
 
 function twoSort(guesses) {
-    if (bot.isFor(ANTI)) {
-        guesses = sortWorst(guesses);
-    } else {
-        guesses = sortBest(guesses);
-    }
-    return guesses;
-}
-
-function sortBest(guesses) {
     guesses.sort(function(a,b) {
         if(a.wrong > b.wrong) {return  1;}
         if(a.wrong < b.wrong) {return -1;}
-        if(a.average > b.average) {return  1;}
-        if(a.average < b.average) {return -1;}
+        if(bot.isBetter(a.average, b.average)) {return  -1;}
+        if(!bot.isBetter(a.average, b.average)) {return 1;}
         return 0;
     });
-    return guesses;
-}
 
-function sortWorst(guesses) {
-    guesses.sort(function(a,b) {
-        if(a.wrong > b.wrong) {return  1;}
-        if(a.wrong < b.wrong) {return -1;}
-        if(a.average < b.average) {return  1;}
-        if(a.average > b.average) {return -1;}
-        return 0;
-    });
     return guesses;
 }
