@@ -166,6 +166,7 @@ function getPotentialGuessesAndAnswers(difficulty) {
     new_lists = reduceListSize(sorted_guess_list, sorted_answer_list, answer_list.length);
     sorted_guess_list = new_lists.guesses;
     sorted_guess_list = sortList(sorted_guess_list, alphabet);
+    sorted_guess_list = [...new Set(unique_answers.concat(sorted_guess_list))];
     
     return {guesses: sorted_guess_list, 
             answers: sorted_answer_list, 
