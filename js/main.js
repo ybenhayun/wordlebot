@@ -105,6 +105,10 @@ function update() {
         best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.pairs);
     }
 
+    for (let i = 0; i < guessesSoFar(); i++) {
+        best_guesses = best_guesses.filter(function(e) {return e.word !== getWord(i);});
+    }
+
     updateLists(lists.all, lists.answers, lists.unlikely, best_guesses, lists.reduced);
 }
 
@@ -197,6 +201,12 @@ function updateLists(words_left, likely_answers, unlikely_answers, best_guesses,
     let list_length = Math.min(likely_answers.length, TOP_TEN_LENGTH);
     let guess_list = writeBestGuessList(best_guesses, list_length, reduced);
 
+    if (bot.isFor(XORDLE)) {
+        unlikely_answers = xordleFilter(unlikely_answers);
+        unlikely_answers = uniqueWordsFrom(unlikely_answers);
+        // updateHeaders(words_left, likely_answers, unlikely_answers);
+    }
+
     updateHeaders(words_left, likely_answers, unlikely_answers);
     addToSlides("Your best possible guesses are:", guess_list);
     createAnswerDropdown(likely_answers, unlikely_answers);
@@ -208,12 +218,6 @@ function updateLists(words_left, likely_answers, unlikely_answers, best_guesses,
     if (likely_answers.length <= 2 && !bot.isFor(ANTI)) {
         // will only show the final two options as suggestions
         // ie: 'its either 'THIS' or 'THAT'
-
-        if (bot.isFor(XORDLE)) {
-            unlikely_answers = xordleFilter(unlikely_answers);
-            unlikely_answers = uniqueWordsFrom(unlikely_answers);
-            updateHeaders(words_left, likely_answers, unlikely_answers);
-        }
 
         return showFinalOptions(likely_answers, unlikely_answers);
     } 
@@ -277,12 +281,12 @@ function createAnswerDropdown(likely_answers, unlikely_answers) {
     let likely_list = unlikely_list = "";
 
     for (let i = 0; i < likely_answers.length; i++) {
-        likely_list += likely_answers[i] + "<br>";
+        likely_list += printAnswer(likely_answers[i]) + "<br>";
     }
     potential_answers.innerHTML = "<p>" + likely_list + "</p>";
 
     for (let i = 0; i < unlikely_answers.length; i++) {
-        unlikely_list += unlikely_answers[i] + "<br>";
+        unlikely_list += printAnswer(unlikely_answers[i]) + "<br>";
     }
     technically_words.innerHTML = "<p>" + unlikely_list + "</p>";
 
@@ -309,25 +313,25 @@ function noWordsLeftMessage() {
 function showFinalOptions(sorted, less_likely) {
     let final_words = "";
 
-    if (bot.isFor(XORDLE)) {
-        sorted[0] = sorted[0].word1 + "/" + sorted[0].word2;
-        if (sorted.length == 2) {
-            sorted[1] = sorted[1].word1 + "/" + sorted[1].word2;
-        }
+    // if (bot.isFor(XORDLE)) {
+    //     sorted[0] = sorted[0].word1 + "/" + sorted[0].word2;
+    //     if (sorted.length == 2) {
+    //         sorted[1] = sorted[1].word1 + "/" + sorted[1].word2;
+    //     }
 
-        less_likely = xordleFilter(less_likely);
-        less_likely = uniqueWordsFrom(less_likely);
-    }
+    //     less_likely = xordleFilter(less_likely);
+    //     less_likely = uniqueWordsFrom(less_likely);
+    // }
 
     if (sorted.length) {
         final_words += "<li class = 'likely'>the word is almost certainly ";
 
         if (sorted.length == 2) {
-            final_words += "<span class = 'final'>" + sorted[0] + "</span> or <span class = 'final'>" + sorted[1] + "<span></li>";
+            final_words += "<span class = 'final'>" + printAnswer(sorted[0]) + "</span> or <span class = 'final'>" + printAnswer(sorted[1]) + "<span></li>";
         }
 
         else {
-            final_words += "<span class = 'final'>" + sorted[0] + "</span></li>";
+            final_words += "<span class = 'final'>" + printAnswer(sorted[0]) + "</span></li>";
         }
     }
 
@@ -335,7 +339,7 @@ function showFinalOptions(sorted, less_likely) {
         final_words += "<li class = 'others'>Unlikely, but it might be ";
 
         for (let i = 0; i < less_likely.length; i++) {
-            final_words += "<span class = 'final'>" + less_likely[i] + "</span>";
+            final_words += "<span class = 'final'>" + printAnswer(less_likely[i]) + "</span>";
 
             if (i < less_likely.length - 1) final_words += ", ";
             else final_words += "."
@@ -345,6 +349,12 @@ function showFinalOptions(sorted, less_likely) {
     }
 
     addToSlides("", final_words);
+}
+
+function printAnswer(answer) {
+    if (typeof answer == 'string') return answer;
+
+    return answer.word1 + "/" + answer.word2;
 }
 
 // adds the heading, normal suggestsions, and hard suggestions
@@ -759,7 +769,7 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
         }
     }
 
-    if (new_list.length > 1 && !bot.isFor(XORDLE))  
+    if (new_list.length > 1 && !bot.isFor(XORDLE))
         new_list = new_list.filter(a => a != guess);
 
     return new_list;

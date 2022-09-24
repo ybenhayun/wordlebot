@@ -101234,5 +101234,7 @@ const common_words =
     "SHY",
     "TIN",
     "WAX",
-    "CUPID"
+    "CUPID",
+    "PARIS",
+    "KABOB"
 ]

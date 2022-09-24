@@ -2,16 +2,15 @@ $(document).ready(function() {
     getPreferences();
     createPage();
 
-    $(".bot-type").change(function() {
-        if (!$(this).is(':checked')) {
-            $(this).prop('checked', true);
-            return;
-        }
+    $("#bot-type").change(function() {
+        // if (!$(this).is(':checked')) {
+        //     $(this).prop('checked', true);
+        //     return;
+        // }
 
-        let val = $(this).attr('id');
+        let val = $(this).val();
         localStorage.setItem('bot_type', val);
-
-        $('.bot-type').not('#'+val).removeAttr('checked');
+        // $('.bot-type').not('#'+val).removeAttr('checked');
         setBotMode(val);
         createPage();
     });
@@ -76,7 +75,9 @@ function resetPage() {
 
 function getPreferences() {
     if (localStorage.getItem('bot_type')) {
-        setBotMode(localStorage.getItem('bot_type'));
+        let bot_type = localStorage.getItem('bot_type');
+        setBotMode(bot_type);
+        document.getElementById('bot-type').value = bot_type;
     } else {
         setBotMode(WORDLE);
     }
