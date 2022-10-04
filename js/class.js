@@ -425,7 +425,7 @@ function calculateAverageBucketSize(guess, answers, min, future_guess) {
             differences[diff] = [];
         }
 
-        if (diff != CORRECT.repeat(word_length)) {
+        if (diff != CORRECT.repeat(word_length) || bot.isFor(XORDLE)) {
             differences[diff].push(answers[i]);
         }
 

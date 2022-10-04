@@ -167,10 +167,11 @@ function getPotentialGuessesAndAnswers(difficulty) {
         sorted_guess_list = filterList(sorted_guess_list, 0, true);
     }
 
-    new_lists = reduceListSize(sorted_guess_list, sorted_answer_list, answer_list.length);
-    sorted_guess_list = new_lists.guesses;
     sorted_guess_list = sortList(sorted_guess_list, alphabet);
     sorted_guess_list = [...new Set(unique_answers.concat(sorted_guess_list))];
+    
+    new_lists = reduceListSize(sorted_guess_list, sorted_answer_list, answer_list.length);
+    sorted_guess_list = new_lists.guesses;
     
     return {guesses: sorted_guess_list, 
             answers: sorted_answer_list, 
@@ -553,7 +554,8 @@ function reduceListSize(guesses, answers, answers_size) {
     const MAXIMUM = 100000;
     let reduced = false;
     if (answers_size * guesses.length > MAXIMUM) {
-        guesses = sortList(guesses, bot.getBestLetters(answers))
+        // guesses = sortList(guesses, bot.getBestLetters(answers))
+        guesses = [...new Set(answers.concat(sortList(guesses, bot.getBestLetters(answers))))];
         
         let current = answers_size * guesses.length;
         let ratio = current/MAXIMUM;
