@@ -3,14 +3,8 @@ $(document).ready(function() {
     createPage();
 
     $("#bot-type").change(function() {
-        // if (!$(this).is(':checked')) {
-        //     $(this).prop('checked', true);
-        //     return;
-        // }
-
         let val = $(this).val();
         localStorage.setItem('bot_type', val);
-        // $('.bot-type').not('#'+val).removeAttr('checked');
         setBotMode(val);
         createPage();
     });

@@ -80,6 +80,16 @@ body {
     margin: 0;
 }
 
+.row.Dordle {
+    flex: 45%;
+}
+
+#grid:has(.Dordle) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: .5rem;
+}
+
 .tile {
     /* flex: 1 1 0px; */
     position: relative;

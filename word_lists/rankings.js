@@ -13061,8 +13061,171 @@ const easy =
         }
     ],
     "Xordle": [],
-    "Fibble": []
-}
+    "Fibble": [],
+    "Dordle": [
+        {
+            "word": "ROATE",
+            "restricted": {
+                "average": 4.92,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "SALET",
+            "restricted": {
+                "average": 4.92,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "IRATE",
+            "restricted": {
+                "average": 4.96,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ALTER",
+            "restricted": {
+                "average": 4.96,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "TASER",
+            "restricted": {
+                "average": 4.99,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "RAILE",
+            "restricted": {
+                "average": 5,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "TALER",
+            "restricted": {
+                "average": 5.01,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "STARE",
+            "restricted": {
+                "average": 5.01,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "SANER",
+            "restricted": {
+                "average": 5.03,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "RAISE",
+            "restricted": {
+                "average": 5.04,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ARTEL",
+            "restricted": {
+                "average": 5.05,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "RATEL",
+            "restricted": {
+                "average": 5.05,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "REAST",
+            "restricted": {
+                "average": 5.06,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ORATE",
+            "restricted": {
+                "average": 5.07,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "AROSE",
+            "restricted": {
+                "average": 5.08,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ARLES",
+            "restricted": {
+                "average": 5.08,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "OATER",
+            "restricted": {
+                "average": 5.08,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "SOARE",
+            "restricted": {
+                "average": 5.09,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ARISE",
+            "restricted": {
+                "average": 5.1,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "ARIEL",
+            "restricted": {
+                "average": 5.11,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "RAINE",
+            "restricted": {
+                "average": 5.12,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "LATER",
+            "restricted": {
+                "average": 5.13,
+                "wrong": 0
+            }
+        },
+        {
+            "word": "TARES",
+            "restricted": {
+                "average": 5.19,
+                "wrong": 0
+            }
+        }
+    ]   
+}   
 
 const hard =
 

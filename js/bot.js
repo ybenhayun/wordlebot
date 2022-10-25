@@ -202,23 +202,27 @@ function placeTestRows(word) {
 function getTestAnswers(TEST_SIZE, random_answers) {
     if (TEST_SIZE >= common.length) return common.slice();
     if (TEST_SIZE == random_answers.length) return random_answers;
-    
-    let index = Math.round(Math.random()*(common.length-1));
-    if (!random_answers.includes(common[index])) {
-        if (!bot.isFor(XORDLE)) {
-            random_answers.push(common[index]);
-        } else {
-            while (true) {
-                let pair_index = Math.round(Math.random()*(common.length-1));
-                if (bot.getDifference(common[index], common[pair_index]) == INCORRECT.repeat(word_length)) {
-                    random_answers.push({word1: common[index], word2: common[pair_index]});
-                    break;
-                }
-            }
+
+    random_answers.push(getRandomAnswer(random_answers));
+
+    return getTestAnswers(TEST_SIZE, random_answers);
+}
+
+function getRandomAnswer(random_answers) {
+    let index = Math.floor(Math.random()*(common.length-1));
+    if (bot.isFor(DORDLE)) {
+        while (true) {  
+            let index2 = Math.floor(Math.random()*(common.length-1));
+            return {word1: common[index], word2: common[index2]};
+        }
+    } else if (bot.isFor(XORDLE)) {
+        let pair_index = Math.round(Math.random()*(common.length-1));
+        if (bot.getDifference(common[index], common[pair_index]) == INCORRECT.repeat(word_length)) {
+            return {word1: common[index], word2: common[pair_index]};
         }
     }
 
-    return getTestAnswers(TEST_SIZE, random_answers);
+    return common[index];
 }
 
 function adjustBarHeight(points, scores, total_sum, games_played) {
@@ -266,7 +270,7 @@ function showResults(guess, correct, total_tested, average, words_missed) {
 function showMissedWords(words_missed) {
     let missed = "<div id = 'wrongs'>Missed words: ";
         for (let i = 0; i < words_missed.length; i++) {
-            missed += words_missed[i];
+            missed += printAnswer(words_missed[i]);
             if (i < words_missed.length - 1) {
                 missed += ", ";
             }
@@ -368,19 +372,24 @@ function printData(all_words, guess, average, time) {
 
 function wordleBot(guess, answer, difficulty) {
     let attempts = 1;
+    let found = false;
 
     while (attempts <= bot.guessesAllowed(difficulty)) {
         makeTables(guess, "testing");
 
         let diff = bot.getDifference(guess, answer);
-        bot.setRowColor(diff, document.getElementsByClassName('row')[attempts-1]);
+        bot.setRowColor(diff, document.getElementsByClassName('row')[(attempts-1)*bot.getCount()]);
 
         if (answerFound(guess, answer)) {
             if (bot.isFor(XORDLE)) {
                 makeTables(otherAnswer(guess, answer), "testing");
                 bot.setRowColor(CORRECT.repeat(word_length), document.getElementsByClassName('row')[attempts])
             }
-            break;
+            if (found) {
+                break;
+            } else {
+                found = true;
+            }
         } 
         attempts++;
 
@@ -401,7 +410,7 @@ function otherAnswer(answer, answers) {
 function answerFound(guess, answer) {
     if (guess == answer) return true;
 
-    if (bot.isFor(XORDLE)) {
+    if (bot.isFor(XORDLE) || bot.isFor(DORDLE)) {
         if (guess == answer.word1 || guess == answer.word2) return true;
     }
 

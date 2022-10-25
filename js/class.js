@@ -7,6 +7,7 @@ const XORDLE = 'Xordle';
 const THIRDLE = 'Thirdle';
 const FIBBLE = 'Fibble';
 const HARDLE = 'Hardle';
+const DORDLE = 'Dordle';
 
 class Bot {
     constructor(type) {
@@ -53,13 +54,17 @@ class Bot {
     getRowColor(row_number) {
         if (this.type == WOODLE) {
             return rowDifferencesWithoutPositions(row_number);
+        } else if (this.type == DORDLE) {
+            return rowDifferencesWithPairs(row_number);
         } else {
             return rowDifferencesWithPositions(row_number);
         }
     }
 
     setRowColor(difference, row) {
-        if (this.type == WOODLE) {
+        if (this.type == DORDLE) {
+            return setDordleDifferences(difference, row);
+        } else if (this.type == WOODLE) {
             return setRowDifferencesWithoutPositions(difference, row);
         } else {
             return setRowDifferencesWithPositions(difference, row);
@@ -89,6 +94,8 @@ class Bot {
             return getFibbleDiffs(difference);
         } else if (this.type == HARDLE) {
             return getHardleDiffs(difference);
+        } else if (this.type == DORDLE) {
+            return getDordleDiffs(difference);
         }
 
         return [difference];
@@ -100,6 +107,11 @@ class Bot {
         } else {
             return isLower(a, b);
         }
+    }
+
+    getCount() {
+        if (bot.isFor(DORDLE)) return 2;
+        else return 1;
     }
 }
 
@@ -190,6 +202,8 @@ function differencesWithPositions(word1, word2) {
 }
 
 function getDoubleDifference(guess, answers) {
+    if (bot.isFor(DORDLE)) return dordleDifference(guess, answers);
+
     let diff1 = bot.getDifference(guess, answers.word1);
     let diff2 = bot.getDifference(guess, answers.word2);
 
@@ -207,12 +221,34 @@ function getDoubleDifference(guess, answers) {
     return new_diff;
 }
 
+function dordleDifference(guess, answers) {
+    return [differencesWithPositions(guess, answers.word1), 
+            differencesWithPositions(guess, answers.word2)];
+}
+
 function rowDifferencesWithPositions(row_number) {
     let row = document.getElementsByClassName("row")[row_number];
     let coloring = "";
 
     for (let i = 0; i < word_length; i++) {
         coloring += getTileColor(row.getElementsByClassName("tile")[i]);
+    }
+
+    return coloring;
+}
+
+function rowDifferencesWithPairs(row_number) {
+    let row = document.getElementsByClassName("row");
+    let left = row[row_number*2];
+    let right = row[row_number*2+1];
+    let coloring = "";
+
+    for (let i = 0; i < word_length; i++) {
+        coloring += getTileColor(left.getElementsByClassName('tile')[i])
+    }
+
+    for (let i = 0; i < word_length; i++) {
+        coloring += getTileColor(right.getElementsByClassName('tile')[i])
     }
 
     return coloring;
@@ -233,6 +269,11 @@ function getAlphabeticDifferences(word1, word2) {
     }
 
     return diff;
+}
+
+function setDordleDifferences(colorings, row) {
+    setRowDifferencesWithPositions(colorings[0], row);
+    setRowDifferencesWithPositions(colorings[1], row.nextSibling);
 }
 
 function setRowDifferencesWithPositions(coloring, row) {
@@ -389,7 +430,7 @@ function reducesListMost(answers, guesses, future_guess) {
         if (!data) continue;
   
         min = Math.min(min, data.adjusted);
-        best_words.push({word: guesses[i], average: data.adjusted, differences: data.differences});
+        best_words.push({word: guesses[i], average: data.adjusted, differences: data.differences, wrong: 0});
 
         if (data.weighted < 1 && future_guess) break;
         if (min == 0 && best_words.length >= answers.length && future_guess) break;
@@ -497,4 +538,11 @@ function getHardleDiffs(diff) {
 
     differences.push(new_diff);
     return differences;
+}
+
+function getDordleDiffs(diff) {
+    let left = diff.slice(0, diff.length / 2);
+    let right = diff.slice(diff.length / 2, diff.length);
+
+    return [left, right];
 }
