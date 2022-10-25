@@ -174,6 +174,10 @@ function getPotentialGuessesAndAnswers(difficulty) {
     
     new_lists = reduceListSize(sorted_guess_list, sorted_answer_list, answer_list.length);
     sorted_guess_list = new_lists.guesses;
+
+    if (bot.isFor(DORDLE)) {
+        sorted_guess_list = dordleCheck(sorted_guess_list, unique_answers);
+    }
     
     return {guesses: sorted_guess_list, 
             answers: sorted_answer_list, 
@@ -182,6 +186,21 @@ function getPotentialGuessesAndAnswers(difficulty) {
             pairs: answer_list,
             unique: unique_answers,
             reduced: new_lists.reduced};
+}
+
+function dordleCheck(guesses, answers) {
+    let left = answers.slice();
+    let right = answers.slice();
+
+    for (let i = 0; i < guessesSoFar(); i++) {
+        let color = getDordleDiffs(bot.getRowColor(i));
+        left = filterList(answers, {word: getWord(i), colors: color[0]});
+        right = filterList(answers, {word: getWord(i), colors: color[1]});
+    }
+
+    if (left.length == 1) return left;
+    if (right.length == 1) return right;
+    return guesses;
 }
 
 function allCombinations(string, list) {

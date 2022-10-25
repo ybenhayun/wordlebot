@@ -541,6 +541,8 @@ function getHardleDiffs(diff) {
 }
 
 function getDordleDiffs(diff) {
+    if (diff.length == word_length) return [diff];
+
     let left = diff.slice(0, diff.length / 2);
     let right = diff.slice(diff.length / 2, diff.length);
 
