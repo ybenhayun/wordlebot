@@ -115,6 +115,11 @@ function update() {
 }
 
 function getAllPossibleAnswersFrom(list) {
+    if (bot.isFor(DORDLE) && guessesSoFar() > 0) {
+        let answers = dordleFilter(list);
+        list = answers.left.concat(answers.right);
+    }
+
     list = filterList(list, 0);
     if (bot.isFor(XORDLE)) {
         while (true) {
@@ -189,18 +194,32 @@ function getPotentialGuessesAndAnswers(difficulty) {
 }
 
 function dordleCheck(guesses, answers) {
-    let left = answers.slice();
-    let right = answers.slice();
+    // let left = answers.slice();
+    // let right = answers.slice();
+
+    // for (let i = 0; i < guessesSoFar(); i++) {
+    //     let color = getDordleDiffs(bot.getRowColor(i));
+    //     left = filterList(answers, {word: getWord(i), colors: color[0]});
+    //     right = filterList(answers, {word: getWord(i), colors: color[1]});
+    // }
+
+    let lists = dordleFilter(answers);
+
+    if (lists.left.length == 1) return lists.left;
+    if (lists.right.length == 1) return lists.right;
+    return guesses;
+}
+
+function dordleFilter(answers) {
+    let left = right = answers.slice();
 
     for (let i = 0; i < guessesSoFar(); i++) {
         let color = getDordleDiffs(bot.getRowColor(i));
-        left = filterList(answers, {word: getWord(i), colors: color[0]});
-        right = filterList(answers, {word: getWord(i), colors: color[1]});
+        left = filterList(left, {word: getWord(i), colors: color[0]});
+        right = filterList(right, {word: getWord(i), colors: color[1]});
     }
 
-    if (left.length == 1) return left;
-    if (right.length == 1) return right;
-    return guesses;
+    return ({left: left, right: right});
 }
 
 function allCombinations(string, list) {
