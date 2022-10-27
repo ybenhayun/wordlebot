@@ -211,10 +211,11 @@ function getTestAnswers(TEST_SIZE, random_answers) {
 function getRandomAnswer(random_answers) {
     let index = Math.floor(Math.random()*(common.length-1));
     if (bot.isFor(DORDLE)) {
-        while (true) {  
-            let index2 = Math.floor(Math.random()*(common.length-1));
-            return {word1: common[index], word2: common[index2]};
+        let index2 = index;
+        while (common[index2] == common[index]) {  
+            index2 = Math.floor(Math.random()*(common.length-1));
         }
+        return {word1: common[index], word2: common[index2]};
     } else if (bot.isFor(XORDLE)) {
         let pair_index = Math.round(Math.random()*(common.length-1));
         if (bot.getDifference(common[index], common[pair_index]) == INCORRECT.repeat(word_length)) {
@@ -385,7 +386,7 @@ function wordleBot(guess, answer, difficulty) {
                 makeTables(otherAnswer(guess, answer), "testing");
                 bot.setRowColor(CORRECT.repeat(word_length), document.getElementsByClassName('row')[attempts])
             }
-            if (found) {
+            if (!bot.isDordle || found) {
                 break;
             } else {
                 found = true;

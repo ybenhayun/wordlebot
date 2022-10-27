@@ -153,57 +153,59 @@ function createMaxGuesses(div) {
 }
 
 const EXAMPLE_LIST = 
-{
-    "Wordle": [
+// {
+    [
+    // "Wordle": [
         {word: 'BLOKE', score: '2.188 guesses left', wrong: '96.77% solve rate'}, 
         {word: 'YOLKS', score: '2.250 guesses left'}, 
         {word: 'KOELS', score: '2.250 guesses left'},
         {word: 'KYLOE', score: '2.250 guesses left'}
-    ], 
-    "Woodle": [
-        {word: 'LEAST', score: '3.652 guesses left', wrong: '96.77% solve rate'}, 
-        {word: 'STALE', score: '3.661 guesses left'}, 
-        {word: 'SPATE', score: '3.665 guesses left'},
-        {word: 'BEARD', score: '3.674 guesses left'}
-    ], 
-    "W-Peaks": [
-        {word: 'THREE', score: '2.111 guesses left', wrong: '96.77% solve rate'}, 
-        {word: 'TIRED', score: '2.222 guesses left'}, 
-        {word: 'TOPEE', score: '2.222 guesses left'},
-        {word: 'TOPEK', score: '2.222 guesses left'}
-    ],
-    "Antiwordle": [
-        {word: 'TAZZA', score: '9.000 guesses left', wrong: '96.77% solve rate'},
-        {word: 'THUJA', score: '8.813 guesses left'},
-        {word: 'TAPPA', score: '8.813 guesses left'},
-        {word: 'TAXED', score: '8.500 guesses left'}
-    ],
-    "Thirdle": [
-        {word: 'LEAST', score: '3.652 guesses left', wrong: '96.77% solve rate'}, 
-        {word: 'STALE', score: '3.661 guesses left'}, 
-        {word: 'SPATE', score: '3.665 guesses left'},
-        {word: 'BEARD', score: '3.674 guesses left'}     
-    ],
-    "Xordle": [
-        {word: 'SOLDE', score: '3.227 guesses left', wrong: '96.77% solve rate'}, 
-        {word: 'POULE', score: '3.228 guesses left'},
-        {word: 'SOCLE', score: '3.238 guesses left'},     
-        {word: 'SLOPE', score: '3.255 guesses left'}, 
-    ], 
-    "Fibble": [
-        {word: "PALET", score: '2.932 guesses left', wrong: '96.77% solve rate'}, 
-        {word: "SALET", score: "2.935 guesses left"},
-        {word: "LACET", score: "2.952 guesses left"},
-        {word: "CAPLE", score: "2.952 guesses left"}
-    ], 
-    "Hardle": [
-        {word: "BEALS", score: '2.500 guesses left', wrong: '96.77% solve rate'}, 
-        {word: "BELTS", score: "2.519 guesses left"},
-        {word: "SOCLE", score: "2.537 guesses left"},
-        {word: "HEALS", score: "2.537 guesses left"}
-    ]          
-} 
-
+    // ]
+    // , 
+    // "Woodle": [
+    //     {word: 'LEAST', score: '3.652 guesses left', wrong: '96.77% solve rate'}, 
+    //     {word: 'STALE', score: '3.661 guesses left'}, 
+    //     {word: 'SPATE', score: '3.665 guesses left'},
+    //     {word: 'BEARD', score: '3.674 guesses left'}
+    // ], 
+    // "W-Peaks": [
+    //     {word: 'THREE', score: '2.111 guesses left', wrong: '96.77% solve rate'}, 
+    //     {word: 'TIRED', score: '2.222 guesses left'}, 
+    //     {word: 'TOPEE', score: '2.222 guesses left'},
+    //     {word: 'TOPEK', score: '2.222 guesses left'}
+    // ],
+    // "Antiwordle": [
+    //     {word: 'TAZZA', score: '9.000 guesses left', wrong: '96.77% solve rate'},
+    //     {word: 'THUJA', score: '8.813 guesses left'},
+    //     {word: 'TAPPA', score: '8.813 guesses left'},
+    //     {word: 'TAXED', score: '8.500 guesses left'}
+    // ],
+    // "Thirdle": [
+    //     {word: 'LEAST', score: '3.652 guesses left', wrong: '96.77% solve rate'}, 
+    //     {word: 'STALE', score: '3.661 guesses left'}, 
+    //     {word: 'SPATE', score: '3.665 guesses left'},
+    //     {word: 'BEARD', score: '3.674 guesses left'}     
+    // ],
+    // "Xordle": [
+    //     {word: 'SOLDE', score: '3.227 guesses left', wrong: '96.77% solve rate'}, 
+    //     {word: 'POULE', score: '3.228 guesses left'},
+    //     {word: 'SOCLE', score: '3.238 guesses left'},     
+    //     {word: 'SLOPE', score: '3.255 guesses left'}, 
+    // ], 
+    // "Fibble": [
+    //     {word: "PALET", score: '2.932 guesses left', wrong: '96.77% solve rate'}, 
+    //     {word: "SALET", score: "2.935 guesses left"},
+    //     {word: "LACET", score: "2.952 guesses left"},
+    //     {word: "CAPLE", score: "2.952 guesses left"}
+    // ], 
+    // "Hardle": [
+    //     {word: "BEALS", score: '2.500 guesses left', wrong: '96.77% solve rate'}, 
+    //     {word: "BELTS", score: "2.519 guesses left"},
+    //     {word: "SOCLE", score: "2.537 guesses left"},
+    //     {word: "HEALS", score: "2.537 guesses left"}
+    // ]          
+// } 
+]
 
 function createExample() {
     let example_row = createRow('TRAIN', 'dummy');
@@ -212,8 +214,8 @@ function createExample() {
     let example_list = document.createElement('ul');
     example_list.setAttribute('class', 'word-list dummy');
     
-    for (let i = 0; i < EXAMPLE_LIST[bot.type].length; i++) {
-        example_list.innerHTML += createListItem(EXAMPLE_LIST[bot.type][i].word, EXAMPLE_LIST[bot.type][i].score, i+1);
+    for (let i = 0; i < EXAMPLE_LIST.length; i++) {
+        example_list.innerHTML += createListItem(EXAMPLE_LIST[i].word, EXAMPLE_LIST[i].score, i+1);
     }
 
     return {row: example_row, list: example_list};
@@ -222,7 +224,7 @@ function createExample() {
 function createWrongExample() {
     let example_wrong = document.createElement('ul');
     example_wrong.setAttribute('class', 'word-list dummy');
-    example_wrong.innerHTML = createListItem(EXAMPLE_LIST[bot.type][0].word, EXAMPLE_LIST[bot.type][0].wrong, 1);
+    example_wrong.innerHTML = createListItem(EXAMPLE_LIST[0].word, EXAMPLE_LIST[0].wrong, 1);
 
     return example_wrong;
 }
@@ -240,11 +242,11 @@ function createInfoParagraphs() {
                     and the WordleBot will give you the best possible guesses from that point.`
 
     let p2 = document.createElement('p');
-    p2.innerHTML = `This means the best guess from this point would be ` + EXAMPLE_LIST[bot.type][0].word + `,
-                    and that you have an average of ` + EXAMPLE_LIST[bot.type][0].score + `. If you see:`
+    p2.innerHTML = `This means the best guess from this point would be ` + EXAMPLE_LIST[0].word + `,
+                    and that you have an average of ` + EXAMPLE_LIST[0].score + `. If you see:`
 
     let p3 = document.createElement('p');
-    p3.innerHTML = `That means ` + EXAMPLE_LIST[bot.type][0].word + ` will only solve 96.77% of the remaining possible answers within ` + bot.guessesAllowed() + ` guesses.
+    p3.innerHTML = `That means ` + EXAMPLE_LIST[0].word + ` will only solve 96.77% of the remaining possible answers within ` + bot.guessesAllowed() + ` guesses.
                     Generally speaking, you should only see this if you're playing on hard mode.`
 
     let p4 = document.createElement('p');

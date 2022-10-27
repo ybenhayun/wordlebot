@@ -10,7 +10,7 @@ const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y", EMPTY = "X";
 // difficulty constants
 const NORMAL = 0, HARD = 1;
 // list size constants
-const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10, MAX_TIME = 500;
+const CHECK_SIZE = 50, TOP_TEN_LENGTH = 10, MAX_TIME = 1000;
 // misc constants
 const NOT_YET_TESTED = .999, SIZE_FACTOR = 5, INFINITY = 9999999;
 
@@ -115,10 +115,10 @@ function update() {
 }
 
 function getAllPossibleAnswersFrom(list) {
-    if (bot.isFor(DORDLE) && guessesSoFar() > 0) {
-        let answers = dordleFilter(list);
-        list = answers.left.concat(answers.right);
-    }
+    // if (bot.isFor(DORDLE) && guessesSoFar() > 0) {
+    //     let answers = dordleFilter(list);
+    //     list = answers.left.concat(answers.right);
+    // }
 
     list = filterList(list, 0);
     if (bot.isFor(XORDLE)) {
@@ -790,6 +790,13 @@ function count(string, char) {
 /* FILTER FUNCTIONS */ 
 
 function filterList(list, letters, reduced_filter) {
+    if (bot.isFor(DORDLE) && letters) {
+        if (letters.colors.length == word_length*2) {
+            let answers = dordleFilter(list);
+            return answers.left.concat(answers.right);
+        }
+    }
+
     if (letters) {
         return createFilteredList(list, letters.word, letters.colors, reduced_filter);
     }

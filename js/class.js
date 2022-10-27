@@ -62,7 +62,7 @@ class Bot {
     }
 
     setRowColor(difference, row) {
-        if (this.type == DORDLE) {
+        if (this.type == DORDLE && difference.length == word_length*2) {
             return setDordleDifferences(difference, row);
         } else if (this.type == WOODLE) {
             return setRowDifferencesWithoutPositions(difference, row);
