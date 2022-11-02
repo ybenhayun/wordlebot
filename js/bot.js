@@ -72,7 +72,8 @@ function removeTest(animating) {
         document.getElementById("results").remove();
     } 
 
-    document.getElementById("grid").innerHTML = "";
+    // document.getElementById('hints').innerHTML = "";
+    clearGrids();
     document.getElementById("word-entered").disabled = false;
     document.getElementById("word-entered").disabled = false;
     document.getElementsByClassName("info")[0].disabled = false;
@@ -111,10 +112,11 @@ function removeNonBotElements() {
     document.getElementById("word-entered").disabled = true;
     document.getElementsByClassName("info")[0].disabled = true;
     document.getElementsByClassName("test")[0].disabled = true;
-    document.getElementById("grid").innerHTML = "";
+    // document.getElementById('hints').innerHTML = "";
+    clearGrids();
 
     document.getElementsByClassName("current")[0].appendChild(
-        document.getElementById("grid")
+        document.getElementById('hint')
     );
 
     document.getElementById("next-previous-buttons").innerHTML = "";
@@ -137,12 +139,12 @@ function createBotMenu() {
 
 function resetGuessRows() {
     document.getElementById("guesses").appendChild(
-        document.getElementById("grid")
+        document.getElementById('hint')
     );    
-    let rows = document.getElementById("grid");
+    let rows = document.getElementById('hint')
     let buttons = document.getElementById("next-previous-buttons");
     swapDiv(buttons, rows);
-    document.getElementById("grid").innerHTML = "";
+    document.getElementById('hint').innerHTML = "";
 }
 
 function swapDiv(event, elem) {
@@ -294,7 +296,7 @@ function runBot(guess, difficulty) {
     let final_scores = []
 
     let iv = setInterval(function() {
-        document.getElementById("grid").innerHTML = "";
+        document.getElementById('hint').innerHTML = "";
         let points = wordleBot(guess,  testing_sample[count], difficulty);
         if (points > bot.guessesAllowed(difficulty)) {
             // clearInterval(iv);

@@ -62,9 +62,18 @@ function createPage() {
 }
 
 function resetPage() {
-    document.getElementById('grid').innerHTML = "";
+    // document.getElementById('hints').innerHTML = "";
+    clearGrids();
     document.getElementById('next-previous-buttons').innerHTML = "";
     update();
+}
+
+function clearGrids() {
+    let grids = document.getElementsByClassName('grid');
+
+    for (let i = 0; i < grids.length; i++) {
+        grids[i].innerHTML = "";
+    }
 }
 
 function getPreferences() {
@@ -92,12 +101,25 @@ function otherWordbank(bank) {
 function drawPage() {
     let container = document.getElementById('container');
     let header = document.getElementById('top-of-screen');
+    let hints = document.getElementById('hints');
+
+    addGrid(hints);
 
     createMainHeader(header);
     createWordLengthSelector();
 
     createGuessInput(container);
     createAnswerSuggestions(container);
+}
+
+function addGrid(hints) {
+    hints.innerHTML = "";
+
+    for (let i = 0; i < bot.getCount(); i++) {
+        let grid = document.createElement('div');
+        grid.setAttribute('class', 'grid');
+        hints.append(grid);
+    }
 }
 
 function createMainHeader(div) {

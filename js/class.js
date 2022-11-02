@@ -8,6 +8,9 @@ const THIRDLE = 'Thirdle';
 const FIBBLE = 'Fibble';
 const HARDLE = 'Hardle';
 const DORDLE = 'Dordle';
+const QUORDLE = 'Quordle';
+const OCTORDLE = 'Octordle';
+
 
 class Bot {
     constructor(type) {
@@ -54,7 +57,7 @@ class Bot {
     getRowColor(row_number) {
         if (this.type == WOODLE) {
             return rowDifferencesWithoutPositions(row_number);
-        } else if (this.type == DORDLE) {
+        } else if (this.getCount() > 1) {
             return rowDifferencesWithPairs(row_number);
         } else {
             return rowDifferencesWithPositions(row_number);
@@ -94,9 +97,14 @@ class Bot {
             return getFibbleDiffs(difference);
         } else if (this.type == HARDLE) {
             return getHardleDiffs(difference);
-        } else if (this.type == DORDLE) {
-            return getDordleDiffs(difference);
+        } 
+        else if (this.getCount() > 1) {
+            return difference;
         }
+
+        // else if (this.type == DORDLE) {
+        //     return getDordleDiffs(difference);
+        // }
 
         return [difference];
     }
@@ -111,6 +119,8 @@ class Bot {
 
     getCount() {
         if (bot.isFor(DORDLE)) return 2;
+        if (bot.isFor(QUORDLE)) return 4;
+        if (bot.isFor(OCTORDLE)) return 8;
         else return 1;
     }
 }
@@ -202,7 +212,7 @@ function differencesWithPositions(word1, word2) {
 }
 
 function getDoubleDifference(guess, answers) {
-    if (bot.isFor(DORDLE)) return dordleDifference(guess, answers);
+    // if (bot.isFor(DORDLE)) return dordleDifference(guess, answers);
 
     let diff1 = bot.getDifference(guess, answers.word1);
     let diff2 = bot.getDifference(guess, answers.word2);
@@ -238,20 +248,36 @@ function rowDifferencesWithPositions(row_number) {
 }
 
 function rowDifferencesWithPairs(row_number) {
-    let row = document.getElementsByClassName("row");
-    let left = row[row_number*2];
-    let right = row[row_number*2+1];
-    let coloring = "";
+    let colors = [];
+    let grids = document.getElementsByClassName('grid');
 
-    for (let i = 0; i < word_length; i++) {
-        coloring += getTileColor(left.getElementsByClassName('tile')[i])
+    for (let i = 0; i < grids.length; i++) {
+        let row = grids[i].getElementsByClassName('row')[row_number];
+        let coloring = "";
+
+        for (let j = 0; j < word_length; j++) {
+            coloring += getTileColor(row.getElementsByClassName("tile")[j]);
+        }
+
+        colors.push(coloring);
     }
+    
+    return colors;
 
-    for (let i = 0; i < word_length; i++) {
-        coloring += getTileColor(right.getElementsByClassName('tile')[i])
-    }
+    // let row = document.getElementsByClassName("row");
+    // let left = row[row_number*2];
+    // let right = row[row_number*2+1];
+    // let coloring = "";
 
-    return coloring;
+    // for (let i = 0; i < word_length; i++) {
+    //     coloring += getTileColor(left.getElementsByClassName('tile')[i])
+    // }
+
+    // for (let i = 0; i < word_length; i++) {
+    //     coloring += getTileColor(right.getElementsByClassName('tile')[i])
+    // }
+
+    // return coloring;
 }
 
 function getAlphabeticDifferences(word1, word2) {

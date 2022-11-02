@@ -53,13 +53,14 @@ body {
     margin-top: -1rem;
 }
 
-#grid {
+.grid {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 95%;
+    flex: 45%;
 }
 
 .row {
@@ -80,15 +81,15 @@ body {
     margin: 0;
 }
 
-.row.Dordle {
+/* .row.Dordle {
     flex: 45%;
-}
+} */
 
-#grid:has(.Dordle) {
+/* .grid:has(.Dordle) {
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: .5rem;
-}
+} */
 
 .tile {
     /* flex: 1 1 0px; */
@@ -870,4 +871,12 @@ input:checked + .slider:before {
 .click {
     /* text-decoration: underline; */
     /* border: solid 1px var(--off-white); */
+}
+
+#hints {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }

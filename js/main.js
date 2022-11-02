@@ -26,13 +26,18 @@ function setBotMode(type) {
         }
     }
 
-    if (bot.isFor(DORDLE) && !localStorage.getItem('guesses' + bot.type)) {
-        localStorage.setItem('guesses' + bot.type, 7);
-    } else if ((bot.isFor(WOODLE) || bot.isFor(HARDLE)) && !localStorage.getItem('guesses' + bot.type)) {
-        localStorage.setItem('guesses' + bot.type, 8);
-    } else if ((bot.isFor(XORDLE) || bot.isFor(FIBBLE) ) && !localStorage.getItem('guesses' + bot.type)) {
-        localStorage.setItem('guesses' + bot.type, 9);
+    if (!localStorage.getItem('guesses' + bot.type)) {
+        if (bot.isFor(DORDLE)) {
+            localStorage.setItem('guesses' + bot.type, 7);
+        } else if (bot.isFor(WOODLE) || bot.isFor(HARDLE)) {
+            localStorage.setItem('guesses' + bot.type, 8);
+        } else if (bot.isFor(XORDLE) || bot.isFor(FIBBLE) || bot.isFor(QUORDLE)) {
+            localStorage.setItem('guesses' + bot.type, 9);
+        } else if (bot.isFor(OCTORDLE)) {
+            localStorage.setItem('guesses' + bot.type, 13);
+        }
     }
+
 
     pairings = [];
 }
@@ -42,7 +47,8 @@ function setLength() {
 
     document.getElementById('word-entered').setAttribute('maxlength', word_length); 
     document.getElementById('word-entered').value = "";
-    document.getElementById('grid').innerHTML = "";
+    // document.getElementById('hints').innerHTML = "";
+    clearGrids();
     document.getElementById('next-previous-buttons').innerHTML = "";
 
     words = big_list.filter((a) =>  a.length == word_length);
@@ -120,7 +126,7 @@ function getAllPossibleAnswersFrom(list) {
     //     list = answers.left.concat(answers.right);
     // }
 
-    list = filterList(list, 0);
+    list = filterList(list, 0, 0, bot.getCount() > 1);
     if (bot.isFor(XORDLE)) {
         while (true) {
             let list_length = uniqueWordsFrom(list).length;
@@ -145,13 +151,21 @@ function uniqueWordsFrom(list) {
     } else return list;
 }
 
+function dontNeedToCheck(answers, unique_answers) {
+    return (answers.length <=2 && !bot.isFor(ANTI) && bot.getCount() == 1)
+            || unique_answers.length <= 2 || numberOfGuessesSoFar(0);
+}
+
 function getPotentialGuessesAndAnswers(difficulty) {
     let answer_list = getAllPossibleAnswersFrom(common.slice());
     let unique_answers = uniqueWordsFrom(answer_list);
     let all_possible_words = filterList(words.slice(), 0);
     let unlikely_answers = all_possible_words.filter(a => !unique_answers.some(b => b == a));
 
-    if (answer_list.length <= 2 && !bot.isFor(ANTI) || numberOfGuessesSoFar(0)) {
+    // if (answer_list.length <= 2 && !bot.isFor(ANTI) || numberOfGuessesSoFar(0)) {
+    if (dontNeedToCheck(answer_list, unique_answers)) {
+        if (!bot.isFor(XORDLE)) answer_list = unique_answers;
+
         return {guesses: unique_answers, 
                 answers: answer_list, 
                 all: all_possible_words, 
@@ -180,8 +194,12 @@ function getPotentialGuessesAndAnswers(difficulty) {
     new_lists = reduceListSize(sorted_guess_list, sorted_answer_list, answer_list.length);
     sorted_guess_list = new_lists.guesses;
 
-    if (bot.isFor(DORDLE)) {
-        sorted_guess_list = dordleCheck(sorted_guess_list, unique_answers);
+    // if (bot.isFor(DORDLE)) {
+        // sorted_guess_list = dordleCheck(sorted_guess_list, unique_answers);
+    // }
+    if (bot.getCount() > 1) {
+        sorted_guess_list = answerAlreadyFound(sorted_guess_list, answer_list);
+        answer_list = uniqueWordsFrom(answer_list);
     }
     
     return {guesses: sorted_guess_list, 
@@ -191,6 +209,16 @@ function getPotentialGuessesAndAnswers(difficulty) {
             pairs: answer_list,
             unique: unique_answers,
             reduced: new_lists.reduced};
+}
+
+function answerAlreadyFound(guesses, answer_lists) {
+    for (let i = 0; i < answer_lists.length; i++) {
+        if (answer_lists[i].length == 1) {
+            return answer_lists[i];
+        }
+    }
+
+    return guesses;
 }
 
 function dordleCheck(guesses, answers) {
@@ -394,6 +422,7 @@ function showFinalOptions(sorted, less_likely) {
 
 function printAnswer(answer) {
     if (typeof answer == 'string') return answer;
+    if (Array.isArray(answer)) return answer[0];
 
     return answer.word1 + "/" + answer.word2;
 }
@@ -453,7 +482,7 @@ function makeTables(val, c) {
     if (val) {
         for (let i = 0; i < bot.getCount(); i++) {
             let row = createRow(val, c);
-            document.getElementById("grid").append(row);
+            document.getElementsByClassName("grid")[i].append(row);
             bot.setChangeEvents(row);
         }
     }
@@ -493,13 +522,21 @@ function addButtons() {
     });
 
     document.getElementsByClassName('undo')[0].addEventListener('click', function() {
-        let rows = document.getElementsByClassName('row');
-        rows[rows.length-1].remove();
-        if (bot.isFor(DORDLE)) rows[rows.length-1].remove();
+        // let rows = document.getElementsByClassName('row');
+        // rows[rows.length-1].remove();
+        // if (bot.isFor(DORDLE)) rows[rows.length-1].remove();
+        let grids = document.getElementsByClassName('grid');
 
-        if (!rows.length) {
-            document.getElementById('next-previous-buttons').innerHTML = "";
+        for (let i = 0; i < grids.length; i++) {
+            let rows = grids[i].getElementsByClassName('row');
+            rows[rows.length-1].remove();
+            if (!rows.length) document.getElementById('next-previous-buttons').innerHTML = "";
         }
+
+        // if (!document.getElementsByClassName('rows').length) {
+        //     document.getElementById('next-previous-buttons').innerHTML = "";
+        // }
+
         let difficulty = NORMAL;
         if (bot.hasHardMode()) {
             difficulty = Number(document.getElementById("mode").checked);
@@ -509,7 +546,7 @@ function addButtons() {
 }
 
 function getWord(number) {
-    let row = document.getElementsByClassName("row")[number*bot.getCount()];
+    let row = document.getElementsByClassName("row")[number];
     let tiles = row.getElementsByClassName("tile");
 
     let guess = "";
@@ -789,27 +826,33 @@ function count(string, char) {
 
 /* FILTER FUNCTIONS */ 
 
-function filterList(list, letters, reduced_filter) {
-    if (bot.isFor(DORDLE) && letters) {
-        if (letters.colors.length == word_length*2) {
-            let answers = dordleFilter(list);
-            return answers.left.concat(answers.right);
-        }
-    }
+function filterList(list, letters, reduced_filter, split) {
+    // if (bot.isFor(DORDLE) && letters) {
+    //     if (letters.colors.length == word_length*2) {
+    //         let answers = dordleFilter(list);
+    //         return answers.left.concat(answers.right);
+    //     }
+    // }
 
     if (letters) {
-        return createFilteredList(list, letters.word, letters.colors, reduced_filter);
+        return createFilteredList(list, letters.word, letters.colors, reduced_filter, split);
     }
 
     for (let guess = 0; guess < guessesSoFar(); guess++) {
-        list = createFilteredList(list, getWord(guess), bot.getRowColor(guess), reduced_filter);
+        list = createFilteredList(list, getWord(guess), bot.getRowColor(guess), reduced_filter, split);
     }
 
     return list;
 }
 
-function createFilteredList(old_list, guess, difference, reduced_filter) {
-    let new_list = [];
+function createFilteredList(old_list, guess, difference, reduced_filter, split) {
+    // let new_list = [];
+    old_list = uniqueWordsFrom(old_list);
+
+    let new_list = new Array(difference.length);
+    for (let i = 0; i < new_list.length; i++) {
+        new_list[i] = [];
+    }
 
     if (reduced_filter) {
         new_list = antiwordleList(guess, difference, old_list)
@@ -817,20 +860,38 @@ function createFilteredList(old_list, guess, difference, reduced_filter) {
         difference = bot.getAllDifferences(difference);
 
         for (let i = 0; i < old_list.length; i++) {
-            if (differencesMatch(guess, old_list[i], difference)) {
-                new_list.push(old_list[i]);
+            let list_index = differencesMatch(guess, old_list[i], difference);
+            if (list_index != -1) {
+                new_list[list_index].push(old_list[i]);
             }
+            // if (differencesMatch(guess, old_list[i], difference)) {
+            //     new_list.push(old_list[i]);
+            // }
         }
     }
 
-    if (new_list.length > 1 && !bot.isFor(XORDLE))
-        new_list = new_list.filter(a => a != guess);
+    for (let i = 0; i < new_list.length; i++) {
+        if (!bot.isFor(XORDLE))
+            new_list[i] = new_list[i].filter(a => a != guess);
+    }
 
+    if (!split) new_list = uniqueWordsFrom(new_list);
     return new_list;
+}
+
+function differencesMatch(guess, answer, all_diffs) {
+    let correct_diff = bot.getDifference(guess, answer);
+
+    for (let i = 0; i < all_diffs.length; i++) {
+        if (correct_diff == all_diffs[i]) return i;
+    }
+
+    return -1;
 }
 
 function xordleFilter(list) {
     if (list.length > 1000) return list;
+    if (numberOfGuessesSoFar(0)) return list;
 
     let doubles = [];    
     for (let i = 0; i < list.length; i++) {
@@ -850,15 +911,6 @@ function xordleFilter(list) {
     return doubles;
 }
 
-function differencesMatch(guess, answer, all_diffs) {
-    let correct_diff = bot.getDifference(guess, answer);
-
-    for (let i = 0; i < all_diffs.length; i++) {
-        if (correct_diff == all_diffs[i]) return true;
-    }
-
-    return false;
-}
 
 // MILLS --> YBBBB
 // MOONY --> GBBBB

@@ -77,6 +77,8 @@
                         <option value="W-Peaks" class = "W-Peaks">Wordle Peaks</option> 
                         <option value="Thirdle" class = "Thirdle">Thirdle</option> 
                         <option value="Dordle" class = "Dordle">Dordle</option> 
+                        <option value="Quordle" class = "Quordle">Quordle</option> 
+                        <!-- <option value="Octordle" class = "Octordle">Octordle</option>  -->
                     </select>
                 </p>
         </div>
@@ -84,7 +86,9 @@
         <div id="guesses">
             <button id="refresh" onclick="resetPage();"><i class='fa fa-refresh'></i></button>
             <input type="text" id = "word-entered">
-            <div id="grid"></div>
+            <span id="hints">
+                <!-- <div class="grid"></div> -->
+            </span>
             <div id="next-previous-buttons"></div>
         </div>
 
