@@ -102,10 +102,6 @@ class Bot {
             return difference;
         }
 
-        // else if (this.type == DORDLE) {
-        //     return getDordleDiffs(difference);
-        // }
-
         return [difference];
     }
 
