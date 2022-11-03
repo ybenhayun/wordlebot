@@ -849,7 +849,7 @@ function createFilteredList(old_list, guess, difference, reduced_filter, split) 
     // let new_list = [];
     old_list = uniqueWordsFrom(old_list);
 
-    let new_list = new Array(difference.length);
+    let new_list = new Array(bot.getCount());
     for (let i = 0; i < new_list.length; i++) {
         new_list[i] = [];
     }
@@ -862,7 +862,11 @@ function createFilteredList(old_list, guess, difference, reduced_filter, split) 
         for (let i = 0; i < old_list.length; i++) {
             let list_index = differencesMatch(guess, old_list[i], difference);
             if (list_index != -1) {
-                new_list[list_index].push(old_list[i]);
+                if (bot.getCount() > 1) {
+                    new_list[list_index].push(old_list[i]);
+                } else {
+                    new_list[0].push(old_list[i]);
+                }
             }
             // if (differencesMatch(guess, old_list[i], difference)) {
             //     new_list.push(old_list[i]);
