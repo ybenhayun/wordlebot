@@ -16,16 +16,12 @@ const NOT_YET_TESTED = .999, SIZE_FACTOR = 5, INFINITY = 9999999;
 
 function setBotMode(type) {
     bot = new Bot(type);
-    let bots = document.getElementsByClassName('bot-type');
+    setMaxGuesses();
 
-    for (let i = 0; i < bots.length; i++) {
-        if (bots[i].id == type) {
-            bots[i].checked = true;
-        } else {
-            bots[i].checked = false;
-        }
-    }
+    pairings = [];
+}
 
+function setMaxGuesses() {
     if (!localStorage.getItem('guesses' + bot.type)) {
         if (bot.isFor(DORDLE)) {
             localStorage.setItem('guesses' + bot.type, 7);
@@ -37,9 +33,6 @@ function setBotMode(type) {
             localStorage.setItem('guesses' + bot.type, 13);
         }
     }
-
-
-    pairings = [];
 }
 
 function setLength() {
@@ -47,12 +40,12 @@ function setLength() {
 
     document.getElementById('word-entered').setAttribute('maxlength', word_length); 
     document.getElementById('word-entered').value = "";
-    // document.getElementById('hints').innerHTML = "";
-    clearGrids();
     document.getElementById('next-previous-buttons').innerHTML = "";
-
+    
     words = big_list.filter((a) =>  a.length == word_length);
     // words = official_guesses.slice(); // uncomment to use original wordle guess list
+    
+    clearGrids();
     setWordbank();
 }
 
@@ -78,12 +71,12 @@ function setWordbank() {
 
     common = common.filter(a => a.length == word_length).sort();
     common = [...new Set(common)];
-    common = common.sort();
     // common = officical_answers.slice(); // uncomment to use original wordle answer list 
 }
 
 function getBestOf(list) {
     let best_list;
+    
     if (list[bot.type]) {
         best_list = list[bot.type];
         best_list = best_list.filter(a => a[wordbank] != null);
@@ -148,7 +141,7 @@ function uniqueWordsFrom(list) {
         }
 
         return [... new Set(unique)];
-    } else return list;
+    } else return [... new Set(list)];
 }
 
 function dontNeedToCheck(answers, unique_answers) {
@@ -615,10 +608,7 @@ function getBestGuesses(answer_list, guess_list, difficulty, pairs) {
 
     if (guessesSoFar() == bot.guessesAllowed()-1) guess_list = answer_list;
 
-    // let initial_guesses = bot.reducesListBest(answer_list, guess_list);
     let initial_guesses = bot.reducesListBest(pairs, guess_list);
-    // if (bot.isFor(DORDLE)) best_guesses = initial_guesses; 
-    // else
     best_guesses = calculateGuessList(answer_list, guess_list, initial_guesses, difficulty);
 
     setBestGuesses(best_guesses, difficulty);
@@ -635,7 +625,6 @@ function reduceListSize(guesses, answers, answers_size) {
     const MAXIMUM = 100000;
     let reduced = false;
     if (answers_size * guesses.length > MAXIMUM) {
-        // guesses = sortList(guesses, bot.getBestLetters(answers))
         guesses = [...new Set(answers.concat(sortList(guesses, bot.getBestLetters(answers))))];
         
         let current = answers_size * guesses.length;
@@ -661,7 +650,8 @@ function removeUselessGuesses(list, possibilities) {
         for (let j = 0; j < word_length; j++) {
             let c = list[i].charAt(j);
 
-            if (alphabet[c][word_length] == 0 || (alphabet[c][j] == 0 && alphabet[c][word_length] == possibilities.length)) {
+            if (alphabet[c][word_length] == 0 || // if letter isn't in any of the words 
+                (alphabet[c][j] == 0 && alphabet[c][word_length] == possibilities.length)) { // if letter isn't in that spot in any word
                 list.splice(i, 1);
                 i--;
                 break;
@@ -703,9 +693,10 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
 
     for (let i = 0; i < best_words.length; i++) { 
         let remaining = best_words[i].differences;
-
+        
         let num_guesses = bot.guessesAllowed();
         if (num_guesses == INFINITY) num_guesses = 6;
+
         let results = Array.apply(null, Array(num_guesses));
         
         results.forEach(function(a, index) { results[index] = []});
@@ -734,17 +725,27 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
     return best_words.map(a => Object.assign({}, {word: a.word, average: a.average, wrong: a.wrong})).slice(0, TOP_TEN_LENGTH);
 }
 
+function getNextGuesses(new_guesses, answers, best, differences, difficulty) {
+    if (isDifficulty(HARD, difficulty)) {
+        return filterList(new_guesses, {word: best.word, colors: differences});
+    } else if (!bot.isFor(ANTI)) {
+        return reduceListSize(new_guesses, uniqueWordsFrom(answers), answers.length).guesses;
+    } else {
+        return filterList(new_guesses, {word: best.word, colors: differences}, true);
+    }    
+}
+
 function countResults(best, answers, guesses, results, attempt, difficulty, differences) {
     let new_guesses = uniqueWordsFrom(answers).concat(guesses);
-    new_guesses = [...new Set(new_guesses)];
         
-    if (isDifficulty(HARD, difficulty)) {
-        new_guesses = filterList(new_guesses, {word: best.word, colors: differences});
-    } else if (!bot.isFor(ANTI)) {
-        new_guesses = reduceListSize(new_guesses, uniqueWordsFrom(answers), answers.length).guesses;
-    } else {
-        new_guesses = filterList(new_guesses, {word: best.word, colors: differences}, true);
-    }
+    // if (isDifficulty(HARD, difficulty)) {
+    //     new_guesses = filterList(new_guesses, {word: best.word, colors: differences});
+    // } else if (!bot.isFor(ANTI)) {
+    //     new_guesses = reduceListSize(new_guesses, uniqueWordsFrom(answers), answers.length).guesses;
+    // } else {
+    //     new_guesses = filterList(new_guesses, {word: best.word, colors: differences}, true);
+    // }
+    new_guesses = getNextGuesses(new_guesses, answers, best, differences, difficulty);
     
     if (answers.length <= 2 && (!bot.isFor(ANTI) || new_guesses.length == answers.length || !answers.length)) {
         addToResults(results, answers, attempt, best.word, bot.guessesAllowed(difficulty)); 

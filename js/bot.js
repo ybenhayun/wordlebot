@@ -116,7 +116,7 @@ function removeNonBotElements() {
     clearGrids();
 
     document.getElementsByClassName("current")[0].appendChild(
-        document.getElementById('hint')
+        document.getElementById('hints')
     );
 
     document.getElementById("next-previous-buttons").innerHTML = "";
@@ -139,12 +139,13 @@ function createBotMenu() {
 
 function resetGuessRows() {
     document.getElementById("guesses").appendChild(
-        document.getElementById('hint')
+        document.getElementById('hints')
     );    
-    let rows = document.getElementById('hint')
+    let rows = document.getElementById('hints')
     let buttons = document.getElementById("next-previous-buttons");
     swapDiv(buttons, rows);
-    document.getElementById('hint').innerHTML = "";
+    // document.getElementById('hints').innerHTML = "";
+    clearGrids();
 }
 
 function swapDiv(event, elem) {
@@ -296,7 +297,8 @@ function runBot(guess, difficulty) {
     let final_scores = []
 
     let iv = setInterval(function() {
-        document.getElementById('hint').innerHTML = "";
+        // document.getElementById('hints').innerHTML = "";
+        clearGrids();
         let points = wordleBot(guess,  testing_sample[count], difficulty);
         if (points > bot.guessesAllowed(difficulty)) {
             // clearInterval(iv);

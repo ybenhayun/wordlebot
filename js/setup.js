@@ -62,7 +62,6 @@ function createPage() {
 }
 
 function resetPage() {
-    // document.getElementById('hints').innerHTML = "";
     clearGrids();
     document.getElementById('next-previous-buttons').innerHTML = "";
     update();
