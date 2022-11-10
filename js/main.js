@@ -855,7 +855,7 @@ function createFilteredList(old_list, guess, difference, reduced_filter, split) 
     }
 
     if (reduced_filter) {
-        new_list = antiwordleList(guess, difference, old_list)
+        new_list = [antiwordleList(guess, difference, old_list)];
     } else { 
         difference = bot.getAllDifferences(difference);
 
@@ -875,8 +875,10 @@ function createFilteredList(old_list, guess, difference, reduced_filter, split) 
     }
 
     for (let i = 0; i < new_list.length; i++) {
-        if (!bot.isFor(XORDLE))
+        if (!bot.isFor(XORDLE)) {
+            if (!new_list[i]) debugger;
             new_list[i] = new_list[i].filter(a => a != guess);
+        }
     }
 
     if (!split) new_list = uniqueWordsFrom(new_list);
