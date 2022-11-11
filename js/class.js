@@ -90,15 +90,24 @@ class Bot {
         }
     }
 
-    getAllDifferences(difference) {
+    getAllDifferences(difference, guess, reduced_filter) {
+        if (reduced_filter) {
+            return getAntiWordleDiffs(difference, guess);
+        }
+        
         if (this.type == XORDLE) {
             return getXordleDiffs(difference, 0, [difference]);
-        } else if (this.type == FIBBLE) {
+        } 
+        
+        if (this.type == FIBBLE) {
             return getFibbleDiffs(difference);
-        } else if (this.type == HARDLE) {
+        }
+        
+        if (this.type == HARDLE) {
             return getHardleDiffs(difference);
         } 
-        else if (this.getCount() > 1) {
+        
+        if (this.getCount() > 1) {
             return difference;
         }
 
@@ -118,6 +127,16 @@ class Bot {
         if (bot.isFor(QUORDLE)) return 4;
         if (bot.isFor(OCTORDLE)) return 8;
         else return 1;
+    }
+
+    getAllPossibleAnswersFrom(list) {
+        list = filterList(list, 0, 0, bot.getCount() > 1);
+        
+        if (bot.isFor(XORDLE)) {
+            list = xordleFilter(uniqueWordsFrom(list));
+        }
+
+        return list;
     }
 }
 
@@ -506,8 +525,8 @@ function calculateAverageBucketSize(guess, answers, min, future_guess) {
             return;
         }
     }
-    let buckect_data = {word: guess, weighted: weighted, threes: threes, adjusted: adjusted, differences: differences};
-    return buckect_data;
+    let bucket_data = {word: guess, weighted: weighted, threes: threes, adjusted: adjusted, differences: differences};
+    return bucket_data;
 }
 
 function getXordleDiffs(difference, index, diff_list) {
@@ -562,11 +581,86 @@ function getHardleDiffs(diff) {
     return differences;
 }
 
-function getDordleDiffs(diff) {
-    if (diff.length == word_length) return [diff];
+function getAntiWordleDiffs(diff, guess) {
+    let wrong_letters = findWrongSpotLetters(diff, guess);
+    let differences = antiRecursion(guess, diff, wrong_letters, [], 0);
+    
+    includesAllWrongSpots(differences, wrong_letters, guess);
 
-    let left = diff.slice(0, diff.length / 2);
-    let right = diff.slice(diff.length / 2, diff.length);
+    return differences;
+}
 
-    return [left, right];
+function includesAllWrongSpots(differences, wrong_letters, word) {
+    if (!wrong_letters.length) return differences;
+
+    outer:
+    for (let i = 0; i < differences.length; i++) {
+        let check_list = [];
+
+        for (let j = 0; j < word_length; j++) {
+            if (differences[i].charAt(j) != INCORRECT) {
+                let c = word.charAt(j);
+
+                if (!check_list.includes(c)) {
+                    check_list.push(c);
+
+                    if (check_list.length == wrong_letters.length) {
+                        continue outer;
+                    }
+                }
+            }
+        }
+        
+        differences.splice(i, 1);
+        i--;
+    }
+}
+
+function antiRecursion(word, difference, wrong_letters, diff_list, i) {
+    diff_list.push(difference);
+
+    if (i == word_length) {
+        return [...new Set(diff_list)];
+    }
+    
+    if (wrong_letters.includes(word.charAt(i))) {
+        if (difference.charAt(i) != CORRECT) {
+            antiRecursion(word, replaceAt(difference, CORRECT, i), wrong_letters, diff_list, i+1);
+        }
+
+        if (difference.charAt(i) != INCORRECT) {
+            antiRecursion(word, replaceAt(difference, INCORRECT, i), wrong_letters, diff_list, i+1);
+        }
+
+        if (difference.charAt(i) != WRONG_SPOT) {
+            antiRecursion(word, replaceAt(difference, WRONG_SPOT, i), wrong_letters, diff_list, i+1);
+        }
+    }
+
+    return antiRecursion(word, difference, wrong_letters, diff_list, i+1);
+}
+
+function findWrongSpotLetters(diff, guess) {
+    // find index of every Y character in the differences
+    let indices = allInstancesOf(WRONG_SPOT, diff);
+    let c = [];
+
+    // indentify all letters marked as Y
+    for (let i = 0; i < indices.length; i++) {
+        c.push(guess.charAt(indices[i]));
+    }
+
+    c = [...new Set(c)];
+    return c;
+}
+
+function allInstancesOf(c, string) {
+    let indices = [];
+    for (let i = 0; i < string.length; i++) {
+        if (string.charAt(i) == c) {
+            indices.push(i);
+        }
+    }
+
+    return indices;
 }

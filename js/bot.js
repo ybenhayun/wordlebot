@@ -72,7 +72,6 @@ function removeTest(animating) {
         document.getElementById("results").remove();
     } 
 
-    // document.getElementById('hints').innerHTML = "";
     clearGrids();
     document.getElementById("word-entered").disabled = false;
     document.getElementById("word-entered").disabled = false;
@@ -112,7 +111,6 @@ function removeNonBotElements() {
     document.getElementById("word-entered").disabled = true;
     document.getElementsByClassName("info")[0].disabled = true;
     document.getElementsByClassName("test")[0].disabled = true;
-    // document.getElementById('hints').innerHTML = "";
     clearGrids();
 
     document.getElementsByClassName("current")[0].appendChild(
@@ -144,7 +142,6 @@ function resetGuessRows() {
     let rows = document.getElementById('hints')
     let buttons = document.getElementById("next-previous-buttons");
     swapDiv(buttons, rows);
-    // document.getElementById('hints').innerHTML = "";
     clearGrids();
 }
 
@@ -297,11 +294,9 @@ function runBot(guess, difficulty) {
     let final_scores = []
 
     let iv = setInterval(function() {
-        // document.getElementById('hints').innerHTML = "";
         clearGrids();
         let points = wordleBot(guess,  testing_sample[count], difficulty);
         if (points > bot.guessesAllowed(difficulty)) {
-            // clearInterval(iv);
             missed.push(testing_sample[count]);
         }
 
