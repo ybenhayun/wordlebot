@@ -623,10 +623,10 @@ function antiRecursion(word, difference, wrong_letters, diff_list, i) {
         return [...new Set(diff_list)];
     }
     
-    if (wrong_letters.includes(word.charAt(i))) {
-        if (difference.charAt(i) != CORRECT) {
-            antiRecursion(word, replaceAt(difference, CORRECT, i), wrong_letters, diff_list, i+1);
-        }
+    if (wrong_letters.includes(word.charAt(i)) && difference.charAt(i) != CORRECT) {
+        // if (difference.charAt(i) != CORRECT) {
+        antiRecursion(word, replaceAt(difference, CORRECT, i), wrong_letters, diff_list, i+1);
+        // }
 
         if (difference.charAt(i) != INCORRECT) {
             antiRecursion(word, replaceAt(difference, INCORRECT, i), wrong_letters, diff_list, i+1);
@@ -642,7 +642,9 @@ function antiRecursion(word, difference, wrong_letters, diff_list, i) {
 
 function findWrongSpotLetters(diff, guess) {
     // find index of every Y character in the differences
-    let indices = allInstancesOf(WRONG_SPOT, diff);
+    let wrong_spots = allInstancesOf(WRONG_SPOT, diff);
+    let correct = allInstancesOf(CORRECT, diff);
+    let indices = wrong_spots.concat(correct);
     let c = [];
 
     // indentify all letters marked as Y

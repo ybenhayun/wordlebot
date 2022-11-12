@@ -153,7 +153,7 @@ function setupTest(word) {
     if (bot.isFor(XORDLE) || bot.isFor(FIBBLE) || bot.getCount() > 1) {
         return;
     }
-    
+
     TEST_SIZE = Math.min(500, common.length);
     // TEST_SIZE = common.length;
 
@@ -397,7 +397,7 @@ function wordleBot(guess, answer, difficulty) {
         attempts++;
 
         let lists = getPotentialGuessesAndAnswers(difficulty);
-        final_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.pairs);
+        final_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.unique);
         guess = final_guesses[0].word;  
     }
 

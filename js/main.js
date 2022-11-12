@@ -103,14 +103,14 @@ function update() {
     let best_guesses = [];
 
     if (lists.answers.length > 2 || bot.isFor(ANTI)) {
-        best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.pairs);
+        best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.unique);
     }
 
     for (let i = 0; i < guessesSoFar(); i++) {
         best_guesses = best_guesses.filter(function(e) {return e.word !== getWord(i);});
     }
 
-    updateLists(lists.all, lists.pairs, lists.unlikely, best_guesses, lists.reduced);
+    updateLists(lists.all, lists.answers, lists.unlikely, best_guesses);
 }
 
 function uniqueWordsFrom(list) {
@@ -140,12 +140,13 @@ function getPotentialGuessesAndAnswers(difficulty) {
     if (dontNeedToCheck(answer_list, unique_answers)) {
         if (!bot.isFor(XORDLE)) answer_list = unique_answers;
 
-        return {guesses: unique_answers, 
+        return {
+                guesses: unique_answers, 
                 answers: answer_list, 
+                unique: unique_answers,
                 all: all_possible_words, 
                 unlikely: unlikely_answers, 
-                pairs: answer_list, 
-                unique: unique_answers};
+            };
     }
 
     let alphabet = bot.getBestLetters(unique_answers);
@@ -157,13 +158,13 @@ function getPotentialGuessesAndAnswers(difficulty) {
         answer_list = uniqueWordsFrom(answer_list);
     }
     
-    return {guesses: sorted_guess_list, 
-            answers: sorted_answer_list, 
+    return {
+            guesses: sorted_guess_list, 
+            answers: answer_list,
+            unique: sorted_answer_list,
             all: all_possible_words, 
             unlikely: unlikely_answers, 
-            pairs: answer_list,
-            unique: unique_answers,
-            reduced: new_lists.reduced};
+        };
 }
 
 function initialGuesses(answer_list, sorted_answer_list, unique_answers, all_possible_words, alphabet, difficulty) {
@@ -217,9 +218,9 @@ function allCombinations(string, list) {
 // updates the headers to reflect how many words are left
 // adds those suggestions to the respective slides
 // creates a dropdown list showing all possible words
-function updateLists(words_left, likely_answers, unlikely_answers, best_guesses, reduced) {
+function updateLists(words_left, likely_answers, unlikely_answers, best_guesses) {
     let list_length = Math.min(likely_answers.length, TOP_TEN_LENGTH);
-    let guess_list = writeBestGuessList(best_guesses, list_length, reduced);
+    let guess_list = writeBestGuessList(best_guesses, list_length);
 
     if (bot.isFor(XORDLE)) {
         unlikely_answers = xordleFilter(unlikely_answers);
@@ -244,14 +245,14 @@ function updateLists(words_left, likely_answers, unlikely_answers, best_guesses,
 // creates and returns the top 10 list of suggestions
 // suggestions will then be added to the HTLM of either the suggestions
 // for hard mode or normal mode
-function writeBestGuessList(guesses, list_length, reduced) {
+function writeBestGuessList(guesses, list_length) {
     let data, list = "";
 
     for (let i = 0; i < list_length && i < guesses.length; i++) {
         let num_guesses = (guesses[i].average - guessesSoFar()).toFixed(3);
         let num_wrong = ((1-guesses[i].wrong)*100).toFixed(2);
 
-        if (guesses[i].wrong == NOT_YET_TESTED) {
+        if (guesses[i].wrong == NOT_YET_TESTED || bot.getCount() > 1) {
             data = "not fully tested";
         } else if (guesses[i].wrong > 0 && guesses[i].wrong != NOT_YET_TESTED) {
             data = num_wrong + "% solve rate";
@@ -416,7 +417,6 @@ function isDifficulty(mode, check) {
 
 function makeTables(val, c) {
     if (c == null) c = "normal";
-    // if (!words.includes(val) && !bot.isFor(THIRDLE)) return;
 
     if (val) {
         for (let i = 0; i < bot.getCount(); i++) {
@@ -542,7 +542,7 @@ function setBestGuesses(best_guesses, difficulty) {
     seconds[word][hash] = JSON.stringify(best_guesses.slice(0, TOP_TEN_LENGTH));
 }
 
-function getBestGuesses(answer_list, guess_list, difficulty, pairs) {
+function getBestGuesses(answer_list, guess_list, difficulty, unique_answers) {
     let best_guesses = guessesArePrecomputed(difficulty);
     
     if (best_guesses) { 
@@ -550,12 +550,12 @@ function getBestGuesses(answer_list, guess_list, difficulty, pairs) {
     }
 
     if (numberOfGuessesSoFar(0)) return getFirstGuesses(difficulty);
-    // if (answer_list.length > 1000) return getTempList(guess_list, pairs);
+    if (answer_list.length > 1000) return getTempList(guess_list, answer_list);
 
-    if (guessesSoFar() == bot.guessesAllowed()-1) guess_list = answer_list;
+    if (guessesSoFar() == bot.guessesAllowed()-1) guess_list = unique_answers;
 
-    let initial_guesses = bot.reducesListBest(pairs, guess_list);
-    best_guesses = calculateGuessList(answer_list, guess_list, initial_guesses, difficulty);
+    let initial_guesses = bot.reducesListBest(answer_list, guess_list);
+    best_guesses = calculateGuessList(unique_answers, guess_list, initial_guesses, difficulty);
 
     setBestGuesses(best_guesses, difficulty);
     return best_guesses;
@@ -871,64 +871,6 @@ function couldBeAnswer(guess) {
     }
 
     return true;
-}
-
-
-// MILLS --> YBBBB
-// MOONY --> GBBBB
-// QAJAQ --> BYBBB - BGBBB - BGBGB - BGBYB - BYBYB - BBBYB
-function antiwordleList(word, difference, list) {
-    let correct = [];
-    let contains = [];
-    let incorrect = [];
-
-    for (let i = 0; i < difference.length; i++) {
-        if (difference.charAt(i) == CORRECT) {
-            correct.push({letter: word.charAt(i), pos: i});
-        }
-
-        if (difference.charAt(i) == WRONG_SPOT || difference.charAt(i) == CORRECT) {
-            contains.push(word.charAt(i));
-        }
-    }
-
-    for (let i = 0; i < word.length; i++) {
-        if (!contains.includes(word.charAt(i))) {
-            incorrect.push(word.charAt(i));
-        }
-    }
-
-    outer:
-    for (let i = 0; i < list.length; i++) {
-        for (let j = 0; j < correct.length; j++) {
-            let c = correct[j].letter;
-            let index = correct[j].pos;
-
-            if (list[i].charAt(index) != c) {
-                list.splice(i, 1);
-                i--;
-                continue outer;
-            }
-        }
-
-        for (let j = 0; j < contains.length; j++) {
-            if (!list[i].includes(contains[j])) {
-                list.splice(i, 1);
-                i--;
-                continue outer;
-            }
-        }
-
-        for (let j = 0; j < incorrect.length; j++) {
-            if (list[i].includes(incorrect[j])) {
-                list.splice(i, 1);
-                i--;
-                continue outer;
-            }
-        }
-    }
-
-    return list;
 }
 
 function replace(old_string, old_char, new_char) {
