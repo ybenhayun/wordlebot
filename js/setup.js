@@ -177,59 +177,12 @@ function createMaxGuesses(div) {
 }
 
 const EXAMPLE_LIST = 
-// {
     [
-    // "Wordle": [
         {word: 'BLOKE', score: '2.188 guesses left', wrong: '96.77% solve rate'}, 
         {word: 'YOLKS', score: '2.250 guesses left'}, 
         {word: 'KOELS', score: '2.250 guesses left'},
         {word: 'KYLOE', score: '2.250 guesses left'}
-    // ]
-    // , 
-    // "Woodle": [
-    //     {word: 'LEAST', score: '3.652 guesses left', wrong: '96.77% solve rate'}, 
-    //     {word: 'STALE', score: '3.661 guesses left'}, 
-    //     {word: 'SPATE', score: '3.665 guesses left'},
-    //     {word: 'BEARD', score: '3.674 guesses left'}
-    // ], 
-    // "W-Peaks": [
-    //     {word: 'THREE', score: '2.111 guesses left', wrong: '96.77% solve rate'}, 
-    //     {word: 'TIRED', score: '2.222 guesses left'}, 
-    //     {word: 'TOPEE', score: '2.222 guesses left'},
-    //     {word: 'TOPEK', score: '2.222 guesses left'}
-    // ],
-    // "Antiwordle": [
-    //     {word: 'TAZZA', score: '9.000 guesses left', wrong: '96.77% solve rate'},
-    //     {word: 'THUJA', score: '8.813 guesses left'},
-    //     {word: 'TAPPA', score: '8.813 guesses left'},
-    //     {word: 'TAXED', score: '8.500 guesses left'}
-    // ],
-    // "Thirdle": [
-    //     {word: 'LEAST', score: '3.652 guesses left', wrong: '96.77% solve rate'}, 
-    //     {word: 'STALE', score: '3.661 guesses left'}, 
-    //     {word: 'SPATE', score: '3.665 guesses left'},
-    //     {word: 'BEARD', score: '3.674 guesses left'}     
-    // ],
-    // "Xordle": [
-    //     {word: 'SOLDE', score: '3.227 guesses left', wrong: '96.77% solve rate'}, 
-    //     {word: 'POULE', score: '3.228 guesses left'},
-    //     {word: 'SOCLE', score: '3.238 guesses left'},     
-    //     {word: 'SLOPE', score: '3.255 guesses left'}, 
-    // ], 
-    // "Fibble": [
-    //     {word: "PALET", score: '2.932 guesses left', wrong: '96.77% solve rate'}, 
-    //     {word: "SALET", score: "2.935 guesses left"},
-    //     {word: "LACET", score: "2.952 guesses left"},
-    //     {word: "CAPLE", score: "2.952 guesses left"}
-    // ], 
-    // "Hardle": [
-    //     {word: "BEALS", score: '2.500 guesses left', wrong: '96.77% solve rate'}, 
-    //     {word: "BELTS", score: "2.519 guesses left"},
-    //     {word: "SOCLE", score: "2.537 guesses left"},
-    //     {word: "HEALS", score: "2.537 guesses left"}
-    // ]          
-// } 
-]
+    ];
 
 function createExample() {
     let example_row = createRow('TRAIN', 'dummy');

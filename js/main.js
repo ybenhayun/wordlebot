@@ -873,17 +873,6 @@ function couldBeAnswer(guess) {
     return true;
 }
 
-function replace(old_string, old_char, new_char) {
-    let regex = new RegExp(old_char,'g'); // correct way
-    let new_string = old_string.replace(regex, new_char); // it works
-
-    return new_string;
-}
-
-function replaceAt(old_string, char, index) {
-    old_string = old_string.slice(0, index) + char + old_string.slice(index+1);
-    return old_string;
-}
 /* SORT FUNCTIONS */
 
 // sorts the list based on which words have the most common letters

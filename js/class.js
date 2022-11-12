@@ -624,9 +624,7 @@ function antiRecursion(word, difference, wrong_letters, diff_list, i) {
     }
     
     if (wrong_letters.includes(word.charAt(i)) && difference.charAt(i) != CORRECT) {
-        // if (difference.charAt(i) != CORRECT) {
         antiRecursion(word, replaceAt(difference, CORRECT, i), wrong_letters, diff_list, i+1);
-        // }
 
         if (difference.charAt(i) != INCORRECT) {
             antiRecursion(word, replaceAt(difference, INCORRECT, i), wrong_letters, diff_list, i+1);
