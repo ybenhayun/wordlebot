@@ -134,7 +134,7 @@ function dontNeedToCheck(answers, unique_answers) {
 function getPotentialGuessesAndAnswers(difficulty) {
     let answer_list = bot.getAllPossibleAnswersFrom(common.slice());
     let unique_answers = uniqueWordsFrom(answer_list);
-    let all_possible_words = filterList(words.slice(), 0);
+    let all_possible_words = uniqueWordsFrom(filterList(words.slice(), 0, 0, bot.getCount() > 1));
     let unlikely_answers = all_possible_words.filter(a => !unique_answers.some(b => b == a));
 
     if (dontNeedToCheck(answer_list, unique_answers)) {
@@ -416,7 +416,7 @@ function isDifficulty(mode, check) {
 
 function makeTables(val, c) {
     if (c == null) c = "normal";
-    if (!words.includes(val) && !bot.isFor(THIRDLE)) return;
+    // if (!words.includes(val) && !bot.isFor(THIRDLE)) return;
 
     if (val) {
         for (let i = 0; i < bot.getCount(); i++) {
@@ -428,6 +428,8 @@ function makeTables(val, c) {
 
     if (numberOfGuessesSoFar(1) && c == 'normal') {
         addButtons();
+        let full_grid = document.getElementById("hints");
+        full_grid.classList.remove('empty');
     }
 
     document.getElementById("word-entered").value = "";
@@ -466,7 +468,12 @@ function addButtons() {
         for (let i = 0; i < grids.length; i++) {
             let rows = grids[i].getElementsByClassName('row');
             rows[rows.length-1].remove();
-            if (!rows.length) document.getElementById('next-previous-buttons').innerHTML = "";
+            
+            if (!rows.length) {
+                document.getElementById('next-previous-buttons').innerHTML = "";
+                let full_grid = document.getElementById('hints');
+                full_grid.classList.add('empty');
+            }
         }
 
         let difficulty = NORMAL;
@@ -767,20 +774,23 @@ function count(string, char) {
 /* FILTER FUNCTIONS */ 
 
 function filterList(list, letters, reduced_filter, split) {
+    if (numberOfGuessesSoFar(0)) return list;
+
     if (letters) {
         return createFilteredList(list, letters.word, letters.colors, reduced_filter, split);
     }
+
 
     for (let guess = 0; guess < guessesSoFar(); guess++) {
         list = createFilteredList(list, getWord(guess), bot.getRowColor(guess), reduced_filter, split);
     }
 
+    
     return list;
 }
 
 function createFilteredList(old_list, guess, difference, reduced_filter, split) {
-    old_list = uniqueWordsFrom(old_list);
-
+    let temp_list = uniqueWordsFrom(old_list);
     let new_list = new Array(bot.getCount());
     for (let i = 0; i < new_list.length; i++) {
         new_list[i] = [];
@@ -788,13 +798,14 @@ function createFilteredList(old_list, guess, difference, reduced_filter, split) 
 
     difference = bot.getAllDifferences(difference, guess, reduced_filter);
 
-    for (let i = 0; i < old_list.length; i++) {
-        let list_index = differencesMatch(guess, old_list[i], difference);
-        if (list_index != -1) {
+    for (let i = 0; i < temp_list.length; i++) {
+        let list_index = differencesMatch(guess, temp_list[i], difference);
+        if (list_index.length) {
             if (bot.getCount() > 1) {
-                new_list[list_index].push(old_list[i]);
+                addToList(old_list, list_index, temp_list[i], new_list);
+
             } else {
-                new_list[0].push(old_list[i]);
+                new_list[0].push(temp_list[i]);
             }
         }
     }
@@ -809,14 +820,27 @@ function createFilteredList(old_list, guess, difference, reduced_filter, split) 
     return new_list;
 }
 
+function addToList(all_lists, indices, new_word, new_lists) {
+    for (let i = 0; i < indices.length; i++) {
+        let pos = indices[i]
+
+        if (typeof all_lists[0] == 'string' || all_lists[pos].includes(new_word)) {
+            new_lists[pos].push(new_word);
+        }
+    }
+}
+
 function differencesMatch(guess, answer, all_diffs) {
     let correct_diff = bot.getDifference(guess, answer);
+    let indices = [];
 
     for (let i = 0; i < all_diffs.length; i++) {
-        if (correct_diff == all_diffs[i]) return i;
+        if (correct_diff == all_diffs[i]) {
+            indices.push(i);
+        }
     }
 
-    return -1;
+    return indices;
 }
 
 function xordleFilter(list) {
@@ -825,7 +849,7 @@ function xordleFilter(list) {
 
     let doubles = [];
     for (let i = 0; i < list.length; i++) {
-        let rest = list.slice(1, -1).filter(a => bot.getDifference(list[i], a) == INCORRECT.repeat(word_length));
+        let rest = list.slice(i+1, -1).filter(a => bot.getDifference(list[i], a) == INCORRECT.repeat(word_length));
 
         for (let j = 0; j < rest.length; j++) {
             let guess = {word1: list[i], word2: rest[j]};

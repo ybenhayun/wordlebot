@@ -34,7 +34,7 @@ $(document).ready(function() {
     
     $("#word-entered").on('input', function(e) {
         let val = $("#word-entered").val();
-        if (val.length == word_length && (words.includes(val) || bot.isFor(THIRDLE))) {
+        if (val.length == word_length) {// && (words.includes(val) || bot.isFor(THIRDLE))) {
             $("#word-entered").blur();
             
             makeTables(val);
@@ -73,6 +73,9 @@ function clearGrids() {
     for (let i = 0; i < grids.length; i++) {
         grids[i].innerHTML = "";
     }
+
+    let full_grid = document.getElementById('hints');
+    full_grid.classList.add('empty');
 }
 
 function getPreferences() {

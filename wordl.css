@@ -81,18 +81,7 @@ body {
     margin: 0;
 }
 
-/* .row.Dordle {
-    flex: 45%;
-} */
-
-/* .grid:has(.Dordle) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: .5rem;
-} */
-
 .tile {
-    /* flex: 1 1 0px; */
     position: relative;
     flex: 1;
     font-size: 1.5rem;
@@ -868,15 +857,14 @@ input:checked + .slider:before {
     filter: brightness(90%);
 }
 
-.click {
-    /* text-decoration: underline; */
-    /* border: solid 1px var(--off-white); */
-}
-
 #hints {
     width: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+}
+
+#hints.empty {
+    height: 0;
 }
