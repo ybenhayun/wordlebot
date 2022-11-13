@@ -227,8 +227,6 @@ function differencesWithPositions(word1, word2) {
 }
 
 function getDoubleDifference(guess, answers) {
-    // if (bot.isFor(DORDLE)) return dordleDifference(guess, answers);
-
     let diff1 = bot.getDifference(guess, answers.word1);
     let diff2 = bot.getDifference(guess, answers.word2);
 
@@ -467,7 +465,21 @@ function reducesListMost(answers, guesses, future_guess) {
     let min = answers.length;
 
     for (let i = 0; i < guesses.length; i++) {
-        let data = calculateAverageBucketSize(guesses[i], answers, min, future_guess)
+        let data;
+
+        if (bot.getCount() > 1 && typeof answers[0] == 'object') {
+            let data_per_list = [];
+
+            for (let j = 0; j < answers.length; j++) {
+                min = answers[j].length;
+                data_per_list.push(calculateAverageBucketSize(guesses[i], answers[j], min, future_guess));
+            }
+            
+            data = averageBucketSizeFromAllLists(data_per_list);
+        } else {
+            data = calculateAverageBucketSize(guesses[i], answers, min, future_guess);
+        }
+
         if (!data) continue;
   
         min = Math.min(min, data.adjusted);
@@ -479,6 +491,30 @@ function reducesListMost(answers, guesses, future_guess) {
 
     best_words = sortListByAverage(best_words);
     return best_words;
+}
+
+function averageBucketSizeFromAllLists(data) {
+    let differences = {};
+    let average = 0;
+
+    for (let i = 0; i < data.length; i++) {
+        average += data[i].adjusted;
+        let keys = [...new Set([...Object.keys(differences),...Object.keys(data[i].differences)])]
+        let op = {};
+
+        differences = keys.forEach(key=>{
+            op[key] = {
+                ...differences[key],
+                ...data[i].differences[key]
+            }
+        });
+
+        differences = op;
+    }
+
+    average /= bot.getCount();
+
+    return {adjusted: average, differences: differences};
 }
 
 function reducesListLeast(answers, guesses) {
@@ -652,15 +688,4 @@ function findWrongSpotLetters(diff, guess) {
 
     c = [...new Set(c)];
     return c;
-}
-
-function allInstancesOf(c, string) {
-    let indices = [];
-    for (let i = 0; i < string.length; i++) {
-        if (string.charAt(i) == c) {
-            indices.push(i);
-        }
-    }
-
-    return indices;
 }

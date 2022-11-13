@@ -102,7 +102,7 @@ function update() {
     let lists = getPotentialGuessesAndAnswers(difficulty);
     let best_guesses = [];
 
-    if (lists.answers.length > 2 || bot.isFor(ANTI)) {
+    if (lists.unique.length > 2 || bot.isFor(ANTI)) {
         best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.unique);
     }
 
@@ -155,7 +155,7 @@ function getPotentialGuessesAndAnswers(difficulty) {
 
     if (bot.getCount() > 1) {
         sorted_guess_list = answerAlreadyFound(sorted_guess_list, answer_list);
-        answer_list = uniqueWordsFrom(answer_list);
+        // answer_list = uniqueWordsFrom(answer_list);
     }
     
     return {
@@ -172,7 +172,7 @@ function initialGuesses(answer_list, sorted_answer_list, unique_answers, all_pos
 
     if (bot.isFor(THIRDLE)) sorted_guess_list = allCombinations("", []);
     
-    if (answer_list.length <= 2 && !bot.isFor(ANTI)) {
+    if (twoAnswersLeft(answer_list) && !bot.isFor(ANTI)) {
         sorted_guess_list = unique_answers;
     } else if (isDifficulty(HARD, difficulty)){
         sorted_guess_list = all_possible_words.slice();
@@ -190,6 +190,14 @@ function initialGuesses(answer_list, sorted_answer_list, unique_answers, all_pos
     sorted_guess_list = new_lists.guesses;    
 
     return sorted_guess_list;
+}
+
+function twoAnswersLeft(answers) {
+    if (bot.getCount() == 1) {
+        return answers.length <= 2;
+    }
+
+    return uniqueWordsFrom(answers).length <= 2;
 }
 
 function answerAlreadyFound(guesses, answer_lists) {
@@ -219,6 +227,10 @@ function allCombinations(string, list) {
 // adds those suggestions to the respective slides
 // creates a dropdown list showing all possible words
 function updateLists(words_left, likely_answers, unlikely_answers, best_guesses) {
+    if (bot.getCount() > 1) {
+        likely_answers = uniqueWordsFrom(likely_answers);
+    }
+
     let list_length = Math.min(likely_answers.length, TOP_TEN_LENGTH);
     let guess_list = writeBestGuessList(best_guesses, list_length);
 
@@ -555,7 +567,12 @@ function getBestGuesses(answer_list, guess_list, difficulty, unique_answers) {
     if (guessesSoFar() == bot.guessesAllowed()-1) guess_list = unique_answers;
 
     let initial_guesses = bot.reducesListBest(answer_list, guess_list);
-    best_guesses = calculateGuessList(unique_answers, guess_list, initial_guesses, difficulty);
+    
+    if (bot.getCount() > 1) {
+        best_guesses = initial_guesses;
+    } else {
+        best_guesses = calculateGuessList(unique_answers, guess_list, initial_guesses, difficulty);
+    }    
 
     setBestGuesses(best_guesses, difficulty);
     return best_guesses;
@@ -570,10 +587,10 @@ function reduceListSize(guesses, answers, answers_size) {
 
     const MAXIMUM = 100000;
     let reduced = false;
-    if (answers_size * guesses.length > MAXIMUM) {
+    if (answers_size * guesses.length * bot.getCount() > MAXIMUM) {
         guesses = combineLists(answers, guesses);
         
-        let current = answers_size * guesses.length;
+        let current = answers_size * guesses.length * bot.getCount();
         let ratio = current/MAXIMUM;
         
         guesses = guesses.slice(0, guesses.length/ratio);

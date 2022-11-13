@@ -151,7 +151,7 @@ function swapDiv(event, elem) {
 
 function setupTest(word) {
     if (bot.isFor(XORDLE) || bot.isFor(FIBBLE) || bot.getCount() > 1) {
-        return;
+        // return;
     }
 
     TEST_SIZE = Math.min(500, common.length);
@@ -213,12 +213,26 @@ function getTestAnswers(TEST_SIZE, random_answers) {
 
 function getRandomAnswer(random_answers) {
     let index = Math.floor(Math.random()*(common.length-1));
-    if (bot.isFor(DORDLE)) {
-        let index2 = index;
-        while (common[index2] == common[index]) {  
-            index2 = Math.floor(Math.random()*(common.length-1));
+    if (bot.getCount() > 1) {
+        let indices = [index];
+
+        for (let i = 0; i < bot.getCount()-1; i++) {
+            let new_index = indices[0];
+            
+            while (indices.includes(new_index)) {
+                new_index = Math.floor(Math.random()*(common.length-1));
+            }
+
+            indices.push(new_index);
         }
-        return {word1: common[index], word2: common[index2]};
+
+        let answers = [];
+
+        for (let i = 0; i < bot.getCount(); i++) {
+            answers.push(common[indices[i]]);
+        }
+
+        return answers;
     } else if (bot.isFor(XORDLE)) {
         let pair_index = Math.round(Math.random()*(common.length-1));
         if (bot.getDifference(common[index], common[pair_index]) == INCORRECT.repeat(word_length)) {
@@ -375,23 +389,35 @@ function printData(all_words, guess, average, time) {
 
 function wordleBot(guess, answer, difficulty) {
     let attempts = 1;
-    let found = false;
+    let correct = 0;
 
     while (attempts <= bot.guessesAllowed(difficulty)) {
         makeTables(guess, "testing");
 
-        let diff = bot.getDifference(guess, answer);
-        bot.setRowColor(diff, document.getElementsByClassName('row')[(attempts-1)*bot.getCount()]);
+        let diff;
+
+        if (bot.getCount() > 1) {
+            diff = getMultiDifference(guess, answer);
+        } else {
+            diff = [bot.getDifference(guess, answer)];
+        }
+
+        for (let i = 0; i < bot.getCount(); i++) {
+            let grid = document.getElementsByClassName('grid')[i];
+            bot.setRowColor(diff[i], grid.getElementsByClassName('row')[(attempts-1)]);
+        }
+
 
         if (answerFound(guess, answer)) {
             if (bot.isFor(XORDLE)) {
                 makeTables(otherAnswer(guess, answer), "testing");
                 bot.setRowColor(CORRECT.repeat(word_length), document.getElementsByClassName('row')[attempts])
             }
-            if (!bot.isDordle || found) {
+            
+            correct++;
+
+            if (correct == bot.getCount()) {
                 break;
-            } else {
-                found = true;
             }
         } 
         attempts++;
@@ -405,6 +431,17 @@ function wordleBot(guess, answer, difficulty) {
     return attempts;
 }
 
+function getMultiDifference(guess, answers) {
+    let diffs = [];
+
+    for (let i = 0; i < answers.length; i++) {
+        let color = bot.getDifference(guess, answers[i]);
+        diffs.push(color);
+    }
+
+    return diffs;
+}
+
 function otherAnswer(answer, answers) {
     if (answer == answers.word1) return answers.word2;
     return answers.word1;
@@ -413,8 +450,12 @@ function otherAnswer(answer, answers) {
 function answerFound(guess, answer) {
     if (guess == answer) return true;
 
-    if (bot.isFor(XORDLE) || bot.isFor(DORDLE)) {
+    if (bot.isFor(XORDLE)) {
         if (guess == answer.word1 || guess == answer.word2) return true;
+    }
+
+    if (bot.getCount() > 1) {
+        if (answer.includes(guess)) return true;
     }
 
     return false;
