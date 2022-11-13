@@ -873,6 +873,11 @@ function couldBeAnswer(guess) {
     return true;
 }
 
+function replaceAt(old_string, char, index) {
+    old_string = old_string.slice(0, index) + char + old_string.slice(index+1);
+    return old_string;
+}
+
 /* SORT FUNCTIONS */
 
 // sorts the list based on which words have the most common letters
