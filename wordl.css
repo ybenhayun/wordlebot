@@ -855,6 +855,7 @@ input:checked + .slider:before {
 .click:hover {
     cursor: pointer;
     filter: brightness(90%);
+    text-decoration: underline;
 }
 
 #hints {

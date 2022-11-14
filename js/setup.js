@@ -45,6 +45,10 @@ $(document).ready(function() {
         } 
     });
 
+    $(document).on('click', '.click', function() {
+        enterGuess($(this).html());
+    })
+
     $(document).on('click', '.showlist', function() {
         if ($(this).children().hasClass("visible")) {
             ($(this).children().removeClass("visible"));
@@ -63,7 +67,7 @@ function createPage() {
 
 function resetPage() {
     clearGrids();
-    document.getElementById('next-previous-buttons').innerHTML = "";
+    clearHTML(document.getElementById('next-previous-buttons'));
     update();
 }
 
@@ -71,7 +75,7 @@ function clearGrids() {
     let grids = document.getElementsByClassName('grid');
 
     for (let i = 0; i < grids.length; i++) {
-        grids[i].innerHTML = "";
+        clearHTML(grids[i]);
     }
 
     let full_grid = document.getElementById('hints');
@@ -115,11 +119,10 @@ function drawPage() {
 }
 
 function addGrid(hints) {
-    hints.innerHTML = "";
+    clearHTML(hints);
 
     for (let i = 0; i < bot.getCount(); i++) {
-        let grid = document.createElement('div');
-        grid.setAttribute('class', 'grid');
+        let grid = createElement('div', '', 'grid');
         hints.append(grid);
     }
 }
@@ -188,8 +191,7 @@ function createExample() {
     let example_row = createRow('TRAIN', 'dummy');
     bot.setRowColor('GBYBB', example_row);
 
-    let example_list = document.createElement('ul');
-    example_list.setAttribute('class', 'word-list dummy');
+    let example_list = createElement('ul', '', 'word-list dummy');
     
     for (let i = 0; i < EXAMPLE_LIST.length; i++) {
         example_list.innerHTML += createListItem(EXAMPLE_LIST[i].word, EXAMPLE_LIST[i].score, i+1);
@@ -199,43 +201,35 @@ function createExample() {
 }
 
 function createWrongExample() {
-    let example_wrong = document.createElement('ul');
-    example_wrong.setAttribute('class', 'word-list dummy');
+    let example_wrong = createElement('ul', '', 'word-list dummy');
     example_wrong.innerHTML = createListItem(EXAMPLE_LIST[0].word, EXAMPLE_LIST[0].wrong, 1);
 
     return example_wrong;
 }
 
 function makeCloseButton(type) {
-    let close_button = document.createElement('button');
-    close_button.setAttribute('class', type + ' close');
-
+    let close_button = createElement('button', '', type + ' close');
     return close_button;
 }
 
 function createInfoParagraphs() {
-    let p1 = document.createElement('p');
-    p1.innerHTML = `Simply enter in your last guess, click on the tiles until the colors match, hit calculate, 
-                    and the WordleBot will give you the best possible guesses from that point.`
+    let p1 = createElement('p', `Simply enter in your last guess, click on the tiles until the colors match, hit calculate, 
+                                and the WordleBot will give you the best possible guesses from that point.`);
 
-    let p2 = document.createElement('p');
-    p2.innerHTML = `This means the best guess from this point would be ` + EXAMPLE_LIST[0].word + `,
-                    and that you have an average of ` + EXAMPLE_LIST[0].score + `. If you see:`
+    let p2 = createElement('p', `This means the best guess from this point would be ` + EXAMPLE_LIST[0].word + `,
+                                and that you have an average of ` + EXAMPLE_LIST[0].score + `. If you see:`);
 
-    let p3 = document.createElement('p');
-    p3.innerHTML = `That means ` + EXAMPLE_LIST[0].word + ` will only solve 96.77% of the remaining possible answers within ` + bot.guessesAllowed() + ` guesses.
-                    Generally speaking, you should only see this if you're playing on hard mode.`
+    let p3 = createElement('p', `That means ` + EXAMPLE_LIST[0].word + ` will only solve 96.77% of the remaining possible answers within ` + bot.guessesAllowed() + ` guesses.
+                                Generally speaking, you should only see this if you're playing on hard mode.`);
 
-    let p4 = document.createElement('p');
-    p4.innerHTML = `Want to see how good your starting word is? Click the 
-                    <button class = 'test dummy' disabled><i class="gg-bot"></i></button> on the top right to get a good idea.`
+    let p4 = createElement('p', `Want to see how good your starting word is? Click the 
+                                <button class = 'test dummy' disabled><i class="gg-bot"></i></button> on the top right to get a good idea.`);
 
     return [p1, p2, p3, p4]
 }
 
 function explainExample() {
-    let explanation = document.createElement('div');
-    explanation.setAttribute('class', 'description');
+    let explanation = createElement('div', '', 'description');
 
     if (bot.isFor(WORDLE)) {
         explanation.innerHTML = 'T is in the correct position, A is in the word but not in the correct position, and R, I, and N are not in the word.'
@@ -262,13 +256,8 @@ function createInfoPage() {
     let example_wrong = createWrongExample();
     let paragraphs = createInfoParagraphs();
 
-    let main_header = document.createElement('h3');
-    main_header.setAttribute('class' , 'top-header');
-    main_header.innerHTML = 'How does this Work?';
-
-    let sub_header = document.createElement('h3');
-    sub_header.setAttribute('class', 'mini');
-    sub_header.innerHTML = 'After each guess you should see something like this:'
+    let main_header = createElement('h3', 'How does this Work?', 'top-header');
+    let sub_header = createElement('h3', 'After each guess you should see something like this:', 'mini');
 
     info.append(close_button);   // button to close screen
     info.append(main_header);    // 'how does this work' 
@@ -288,7 +277,7 @@ function createInfoPage() {
     close_button.addEventListener('click', function() {
         info.classList.remove("display");
         info.classList.add("back");
-        info.innerHTML = "";
+        clearHTML(info);
     });
 }
 
@@ -342,39 +331,26 @@ function createAnswerLists(div) {
         document.getElementById('answers').remove();
     }
 
-    let answer_lists = document.createElement('div');
-    answer_lists.setAttribute('id', 'answers');
+    let answer_lists = createElement('div', '', '', 'answers');
 
     createOptions(answer_lists);
     div.append(answer_lists);
 }
 
 function createOptions(div) {
-    let class_name = 'best-guesses';
-    let best_guesses = document.createElement('div');
-    best_guesses.setAttribute('class', class_name);
+    let best_guesses = createElement('div', '', 'best-guesses');
+    let word_list = createElement('ul', '', 'word-list');
 
-    let word_list = document.createElement('ul');
-    word_list.setAttribute('class', 'word-list');
-    best_guesses.append(word_list)
-
+    best_guesses.append(word_list);
     div.append(best_guesses);
 }
 
 function createHardModeSwitch(div) {
-    let switch_label = document.createElement('div');
-    switch_label.setAttribute('class', 'hard label');
-    switch_label.innerHTML = "Show me the best guesses for 'Hard Mode': "
-
-    let switch_container = document.createElement('label');
-    switch_container.setAttribute('class', 'hard switch');
-    
-    let switch_checkbox = document.createElement('input');
-    switch_checkbox.setAttribute('id', 'mode');
+    let switch_label = createElement('div', "Show me the best guesses for 'Hard Mode':", 'hard label');
+    let switch_container = createElement('label', '', 'hard switch');
+    let switch_slider = createElement('span', '', 'slider round');
+    let switch_checkbox = createElement('input', '', '', 'mode');
     switch_checkbox.setAttribute('type', 'checkbox');
-
-    let switch_slider = document.createElement('span');
-    switch_slider.setAttribute('class', 'slider round');
 
     switch_container.append(switch_checkbox);
     switch_container.append(switch_slider);

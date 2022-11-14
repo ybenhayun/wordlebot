@@ -40,7 +40,7 @@ function setLength() {
 
     document.getElementById('word-entered').setAttribute('maxlength', word_length); 
     document.getElementById('word-entered').value = "";
-    document.getElementById('next-previous-buttons').innerHTML = "";
+    clearHTML(document.getElementById('next-previous-buttons'));
     
     words = big_list.filter((a) =>  a.length == word_length);
     // words = official_guesses.slice(); // uncomment to use original wordle guess list
@@ -128,7 +128,8 @@ function uniqueWordsFrom(list) {
 
 function dontNeedToCheck(answers, unique_answers) {
     return (answers.length <=2 && !bot.isFor(ANTI) && bot.getCount() == 1)
-            || unique_answers.length <= 2 || numberOfGuessesSoFar(0);
+            || (unique_answers.length <= 2 && !bot.isFor(ANTI))
+            || numberOfGuessesSoFar(0)
 }
 
 function getPotentialGuessesAndAnswers(difficulty) {
@@ -279,9 +280,13 @@ function writeBestGuessList(guesses, list_length) {
 }
 
 function createListItem(word, data, rank) {
-    let name = "<div class = 'suggestion click' onclick='enterGuess("+JSON.stringify(word)+")'>" + rank + ". " + word + ": </div>";
-    let score = "<div class = 'score'>" + data + "</div>";
-    return "<li>" + name + score + "</li>";    
+    let suggestion = createElement('span', word, 'click');
+    let word_with_ranking = createElement('div', rank + ". " + suggestion.outerHTML, 'suggestion');
+    let score = createElement('div', data, 'score');
+
+    
+    let list_item = createElement('li', word_with_ranking.outerHTML + score.outerHTML);
+    return list_item.outerHTML;
 }
 
 function enterGuess(word) {
@@ -322,19 +327,17 @@ function createAnswerDropdown(likely_answers, unlikely_answers) {
     technically_words.innerHTML = "<p>" + unlikely_list + "</p>";
 
     if (likely_answers.length < 1) {
-        potential_answers.innerHTML = "";
+        clearHTML(potential_answers);
     }
 
     if (unlikely_answers.length < 1) {
-        technically_words.innerHTML = "";
+        clearHTML(technically_words);
     }
 }
 
+const NO_WORDS_LEFT_MESSAGE = "it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.";
 function noWordsLeftMessage() {
-    let message = document.createElement('div');
-    message.setAttribute('id', 'nowords');
-    message.innerHTML = "it doesn't look like we have this word. double check to make sure you all the clues you entered are correct.";
-    
+    let message = createElement('div', NO_WORDS_LEFT_MESSAGE, '', 'nowords')
     return message.outerHTML;
 }
 
@@ -373,10 +376,15 @@ function showFinalOptions(sorted, less_likely) {
 }
 
 function printAnswer(answer) {
-    if (typeof answer == 'string') return answer;
-    if (Array.isArray(answer)) return answer[0];
+    if (typeof answer == 'string') {
+        return createElement('span', answer, 'click').outerHTML;
+    }
 
-    return answer.word1 + "/" + answer.word2;
+    if (Array.isArray(answer)) {
+        return printAnswer(array[0]);
+    }
+
+    return printAnswer(answer.word1) + "/" + printAnswer(answer.word2);
 }
 
 // adds the heading, normal suggestsions, and hard suggestions
@@ -448,16 +456,29 @@ function makeTables(val, c) {
 }
 
 function createRow(word, mode) {
-    let row = document.createElement('div'), text = "";
-    row.setAttribute('class', 'row ' + mode + ' ' + bot.type);
+    let row = createElement('div', '', 'row ' + mode + ' ' + bot.type);
+
     for (let i = 0; i < word.length; i++) {
-        text += "<button class = 'B tile " + bot.type + "'>" + word[i] + "</button>";
+        let button = createElement('button', word.charAt(i), 'B tile ' + bot.type);
+        row.append(button);
     }
 
-    if (bot.isFor(WOODLE)) text += TRACKER_BUTTONS;
+    if (bot.isFor(WOODLE)) {
+        row.append(makeWoodleDropdowns())
+    }
 
-    row.innerHTML = text;
     return row;
+}
+
+function makeWoodleDropdowns() {
+    let container = createElement('div', '', 'tracker');
+    let correct_count = createElement('select', '', 'woodle-count ' + CORRECT);
+    let wrong_spot_count = createElement('select', '', 'woodle-count ' + WRONG_SPOT);
+
+    container.append(correct_count);
+    container.append(wrong_spot_count);
+
+    return container;
 }
 
 function addButtons() {
@@ -482,7 +503,7 @@ function addButtons() {
             rows[rows.length-1].remove();
             
             if (!rows.length) {
-                document.getElementById('next-previous-buttons').innerHTML = "";
+                clearHTML(document.getElementById('next-previous-buttons'));
                 let full_grid = document.getElementById('hints');
                 full_grid.classList.add('empty');
             }
@@ -776,16 +797,6 @@ function calculateAverageGuesses(current_word, results) {
     
     avg = avg/sum;
     current_word.average = avg;
-}
-
-function count(string, char) {
-    let count = 0;
-
-    for (let i = 0; i < string.length; i++) {
-        if (string[i] == char) count++;
-    }
-
-    return count;
 }
 
 /* FILTER FUNCTIONS */ 

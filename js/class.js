@@ -323,13 +323,7 @@ function setRowDifferencesWithPositions(coloring, row) {
     }
 }
 
-// Woodle Specific Functions & Constants
-const TRACKER_BUTTONS = `<div class = 'tracker'>
-                            <select name='woodle-count' class = 'woodle-count G'></select>
-                            <select name='woodle-count' class = 'woodle-count Y'></select>
-                        </div>`
-
-
+// Woodle Specific Functions
 function woodleDropdown(row) {
     let selector = row.getElementsByClassName('woodle-count');
     for (let i = 0; i < selector.length; i++) {

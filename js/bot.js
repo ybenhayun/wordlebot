@@ -85,13 +85,20 @@ function createBarGraphs(max_guesses) {
         document.getElementById("results").remove();
     } 
 
-    let test_center = document.createElement("div");
-    test_center.setAttribute("id", "results");
-    test_center.setAttribute("class", "testing");
-    test_center.innerHTML = "<div class = 'average'></div><div class = 'current'></div>";
+    let average = createElement('div', '', 'average');
+    let current = createElement('div', '', 'current');
+    let test_center = createElement('div', '', 'testing', 'results');
+    test_center.append(average);
+    test_center.append(current);
     
     for (let i = 0; i < max_guesses; i++) {
-        test_center.innerHTML += "<div class = 'bar'><span class = 'num-guesses'>" + (i+1) + "</span><span class = 'count'></span></div>";
+        let bar = createElement('div', '', 'bar')
+        let num_guesses = createElement('span', i+1, 'num-guesses');
+        let count = createElement('span', '', 'count');
+
+        bar.append(num_guesses);
+        bar.append(count);
+        test_center.append(bar);
     }
 
     if (!bot.isFor(ANTI)) test_center.innerHTML += "<div class = 'bar x'><span class = 'num-guesses'>X" + "</span><span class = 'count'></span></div>";
@@ -117,12 +124,11 @@ function removeNonBotElements() {
         document.getElementById('hints')
     );
 
-    document.getElementById("next-previous-buttons").innerHTML = "";
+    clearHTML(document.getElementById('next-previous-buttons'));
 }
 
 function createBotMenu() {
-    let menu = document.createElement("div");
-    menu.setAttribute("id", "test-settings");
+    let menu = createElement('div', '', '', 'test-settings');
 
     let hard = "<div class = 'disclaimer'>If the bot starts out slow, don't worry. It will get increasingly faster as it plays more games.</div>";
     let submit_button = "<button class = 'bot'>Start WordleBot</button>";
@@ -150,8 +156,8 @@ function swapDiv(event, elem) {
 }
 
 function setupTest(word) {
-    if (bot.isFor(XORDLE) || bot.isFor(FIBBLE) || bot.getCount() > 1) {
-        // return;
+    if (bot.isFor(XORDLE) || bot.isFor(FIBBLE)) {
+        return;
     }
 
     TEST_SIZE = Math.min(500, common.length);
@@ -199,7 +205,7 @@ function setupTest(word) {
 
 function placeTestRows(word) {
     makeTables(word, 'testing');
-    document.getElementsByClassName("next-previous-buttons").innerHTML = "";
+    clearHTML(document.getElementById('next-previous-buttons'));
 }
 
 function getTestAnswers(TEST_SIZE, random_answers) {
@@ -274,7 +280,7 @@ function extendBarGraphs(current_length, new_max) {
 function showResults(guess, correct, total_tested, average, words_missed) {
     resetGuessRows();
 
-    document.getElementsByClassName("average")[0].innerHTML = "";
+    clearHTML(document.getElementsByClassName('average')[0]);
     let summary = guess + " solved " + correct + "/" + total_tested 
     + " words with an average of " + average + " guesses per solve.";   
 
