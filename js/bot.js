@@ -156,7 +156,7 @@ function swapDiv(event, elem) {
 }
 
 function setupTest(word) {
-    if (bot.isFor(XORDLE) || bot.isFor(FIBBLE)) {
+    if (bot.isFor(XORDLE) || bot.isFor(FIBBLE) || bot.getCount() > 2) {
         return;
     }
 
@@ -319,7 +319,7 @@ function runBot(guess, difficulty) {
     let iv = setInterval(function() {
         clearGrids();
         let points = wordleBot(guess,  testing_sample[count], difficulty);
-        if (points > bot.guessesAllowed(difficulty)) {
+        if (points > bot.guessesAllowed()) {
             missed.push(testing_sample[count]);
         }
 
@@ -371,7 +371,7 @@ function updateWordData(guess, average, wrong, difficulty) {
     if (TEST_SIZE < common.length) return;
 
     if (!newlist.length) {
-        if (isDifficulty(HARD, difficulty) && bot.hasHardMode()) newlist = hard;
+        if (isDifficulty(HARD) && bot.hasHardMode()) newlist = hard;
         else newlist = easy;
     }
 
@@ -397,7 +397,7 @@ function wordleBot(guess, answer, difficulty) {
     let attempts = 1;
     let correct = 0;
 
-    while (attempts <= bot.guessesAllowed(difficulty)) {
+    while (attempts <= bot.guessesAllowed()) {
         makeTables(guess, "testing");
 
         let diff;

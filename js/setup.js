@@ -9,6 +9,12 @@ $(document).ready(function() {
         createPage();
     });
 
+    $(document).on('input', '.warmle-selector', function() {
+        let val = $(this).val();
+        localStorage.setItem('warmle_dist', val);
+        update();
+    });
+
     $("#word-length").on('input', function() {
         localStorage.setItem('word_length' + bot.type, $(this).val());
         createPage();
@@ -97,6 +103,11 @@ function getPreferences() {
         document.getElementById(otherWordbank(bank)).checked = false;
         setWordbank()
     }
+
+    // if (bot.isFor(WARMLE) && localStorage.getItem('warmle_dist')) {
+    //     let dist = localStorage.getItem('warmle_dist');
+    //     document.getElementsByClassName('warmle-selector')[0].value = dist;
+    // }
 }
 
 function otherWordbank(bank) {
@@ -116,6 +127,31 @@ function drawPage() {
 
     createGuessInput(container);
     createAnswerSuggestions(container);
+
+    updateSettings();
+}
+
+function updateSettings() {
+    let extra = document.getElementsByClassName('extra-settings')[0];
+    
+    if (bot.isFor(WARMLE)) {
+        let selector = createElement('select', '', 'warmle-selector');
+
+        for (let i = 3; i >= 1; i--) {
+            let option = createElement('option', i);
+            option.value = i;
+            selector.append(option);            
+        }
+
+        setHTML(extra, 
+                "Yellows are " + selector.outerHTML + " letters away from the correct letter.");
+
+        if (localStorage.getItem('warmle_dist')) {
+            document.getElementsByClassName('warmle-selector')[0].value = localStorage.getItem('warmle_dist');
+        }
+    } else {
+        clearHTML(extra);
+    }
 }
 
 function addGrid(hints) {
@@ -194,7 +230,8 @@ function createExample() {
     let example_list = createElement('ul', '', 'word-list dummy');
     
     for (let i = 0; i < EXAMPLE_LIST.length; i++) {
-        example_list.innerHTML += createListItem(EXAMPLE_LIST[i].word, EXAMPLE_LIST[i].score, i+1);
+        // example_list.innerHTML += createListItem(EXAMPLE_LIST[i].word, EXAMPLE_LIST[i].score, i+1);
+        example_list.append(createListItem(EXAMPLE_LIST[i].word, EXAMPLE_LIST[i].score, i+1));
     }
 
     return {row: example_row, list: example_list};
@@ -202,7 +239,8 @@ function createExample() {
 
 function createWrongExample() {
     let example_wrong = createElement('ul', '', 'word-list dummy');
-    example_wrong.innerHTML = createListItem(EXAMPLE_LIST[0].word, EXAMPLE_LIST[0].wrong, 1);
+    // example_wrong.innerHTML = createListItem(EXAMPLE_LIST[0].word, EXAMPLE_LIST[0].wrong, 1);
+    example_wrong.append(createListItem(EXAMPLE_LIST[0].word, EXAMPLE_LIST[0].wrong, 1));
 
     return example_wrong;
 }

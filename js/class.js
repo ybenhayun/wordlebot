@@ -10,6 +10,7 @@ const HARDLE = 'Hardle';
 const DORDLE = 'Dordle';
 const QUORDLE = 'Quordle';
 const OCTORDLE = 'Octordle';
+const WARMLE = 'Warmle';
 
 
 class Bot {
@@ -22,14 +23,15 @@ class Bot {
     }
 
     hasHardMode() {
-        return this.type == WORDLE || this.type == ANTI;
+        // return this.type == WORDLE || this.type == ANTI;
+        return true;
     }
 
     hasMax() {
         return this.type != ANTI;
     }
 
-    guessesAllowed(difficulty) {
+    guessesAllowed() {
         if (this.type == ANTI) return INFINITY;
         return parseInt(document.getElementById('max-guesses').value);
     }
@@ -45,13 +47,21 @@ class Bot {
     getDifference(word1, word2) {
         if (this.type == WOODLE) {
             return differencesWithoutPositions(word1, word2);
-        } else if (this.type == PEAKS) {
+        } 
+        
+        if (this.type == PEAKS) {
             return getAlphabeticDifferences(word1, word2);
-        } else if (typeof word2 == 'object') {
+        } 
+        
+        if (typeof word2 == 'object') {
             return getDoubleDifference(word1, word2);
-        } else {
-            return differencesWithPositions(word1, word2);
+        } 
+        
+        if (this.type == WARMLE) {
+            return getWarmleDifferences(word1, word2);
         }
+
+        return differencesWithPositions(word1, word2);
     }
 
     getRowColor(row_number) {
@@ -75,11 +85,15 @@ class Bot {
     }
 
     getBestLetters(list) {
-        if (this.type != PEAKS) {
-            return mostCommonLetters(list);
-        } else {
+        if (this.type == PEAKS) {
             return lettersClosestToCenter(list);
-        }   
+        } 
+
+        if (this.type == WARMLE) {
+            return bestWarmleLetters(list);
+        }
+
+        return mostCommonLetters(list);
     }
 
     reducesListBest(answers, guesses, future_guess) {
@@ -137,6 +151,22 @@ class Bot {
         }
 
         return list;
+    }
+
+    getAnswerListLength(answers) {
+        if (bot.getCount() > 1) {
+            return lengthOfAllLists(answers);
+        }   
+        
+        return answers.length;
+    }
+
+    isLikely(answer) {
+        if (this.type == XORDLE && typeof answer == 'object') {
+            return this.isLikely(answer.word1) && this.isLikely(answer.word2);
+        }
+
+        return common.includes(answer);
     }
 }
 
@@ -208,13 +238,11 @@ function differencesWithPositions(word1, word2) {
 
         let word1_c = temp1.charAt(j);
         if (temp2.includes(word1_c)) {
-            // diff = diff.slice(0, pos) + WRONG_SPOT + diff.slice(pos+1);
             diff = replaceAt(diff, WRONG_SPOT, pos);
 
             let index = temp2.indexOf(word1_c);
             temp2 = temp2.slice(0, index) + temp2.slice(index+1);
         } else {
-            // diff = diff.slice(0, pos) + INCORRECT + diff.slice(pos+1);
             diff = replaceAt(diff, INCORRECT, pos);
         }
 
@@ -276,21 +304,6 @@ function rowDifferencesWithPairs(row_number) {
     }
     
     return colors;
-
-    // let row = document.getElementsByClassName("row");
-    // let left = row[row_number*2];
-    // let right = row[row_number*2+1];
-    // let coloring = "";
-
-    // for (let i = 0; i < word_length; i++) {
-    //     coloring += getTileColor(left.getElementsByClassName('tile')[i])
-    // }
-
-    // for (let i = 0; i < word_length; i++) {
-    //     coloring += getTileColor(right.getElementsByClassName('tile')[i])
-    // }
-
-    // return coloring;
 }
 
 function getAlphabeticDifferences(word1, word2) {
@@ -301,9 +314,28 @@ function getAlphabeticDifferences(word1, word2) {
         if (a == b) {
             diff += CORRECT;
         } else if (a > b) {
-            diff += 'B';
+            diff += INCORRECT;
         } else if (a < b) {
-            diff += 'Y';
+            diff += WRONG_SPOT;
+        }
+    }
+
+    return diff;
+}
+
+function getWarmleDifferences(word1, word2) {
+    let diff = "";
+    let distance = document.getElementsByClassName('warmle-selector')[0].value;
+
+    for (let i = 0; i < word_length; i++) {
+        let a = word1.charAt(i).charCodeAt(0), b = word2.charAt(i).charCodeAt(0);
+
+        if (a == b) {
+            diff += CORRECT;
+        } else if (Math.abs(a-b) <= distance ) {
+            diff += WRONG_SPOT;
+        } else {
+            diff += INCORRECT;
         }
     }
 
@@ -413,15 +445,7 @@ function setRowDifferencesWithoutPositions(coloring, row) {
 function mostCommonLetters(list) {
     if (!list.length) return [];
 
-    let letters = [];
-
-    for (let c = 65; c <= 90; c++) {
-        letters[String.fromCharCode(c)] = [];
-        for (let i = 0; i < parseInt(word_length)+1; i++) {
-            letters[String.fromCharCode(c)].push(0);
-        }
-    }
-
+    let letters = makeAlphabetArray(parseInt(word_length)+1);
     let checked;
 
     for (let i = 0; i < list.length; i++) {
@@ -454,6 +478,64 @@ function lettersClosestToCenter() {
     return letters;
 }
 
+function bestWarmleLetters(list) {
+    let letters = makeAlphabetArray(parseInt(word_length)+1);
+
+    list.forEach(function(word) {
+        for (let i = 0; i < word_length; i++) {
+            let c = word.charAt(i);
+            letters[c][i]++;
+            letters[c][word.length]++;
+        }
+    });
+
+    let new_letters = makeAlphabetArray(parseInt(word_length)+1);
+
+    for (let i = 65; i <= 90; i++) {
+        let pos = intToChar(i);
+
+        for (let j = 0; j < word_length; j++) {
+            new_letters[pos][j] = letters[pos][j];
+
+            let distance = document.getElementsByClassName('warmle-selector')[0].value;
+            for (let k = 1; k <= distance; k++) {    
+                let c = charToInt(pos)+k;
+
+                if (c <= 90) {
+                    c = intToChar(c);
+                    new_letters[pos][j] += letters[c][j];
+                }
+                
+                c = charToInt(pos)-k;
+                if (c >= 65) {
+                    c = intToChar(c);
+                    new_letters[pos][j] += letters[c][j];
+                }
+            }
+
+        }
+
+        new_letters[pos][word_length] = letters[pos][word_length];
+    }
+
+    return new_letters;
+}
+
+function makeAlphabetArray(size) {
+    let letters = [];
+    
+    for (let i = 65; i <= 90; i++) {
+        let c = String.fromCharCode(i);
+
+        letters[c] = [];
+        for (let i = 0; i < size; i++) {
+            letters[c].push(0);
+        }
+    }    
+
+    return letters;
+}
+
 function reducesListMost(answers, guesses, future_guess) {
     let best_words = [];
     let min = answers.length;
@@ -465,6 +547,7 @@ function reducesListMost(answers, guesses, future_guess) {
             let data_per_list = [];
 
             for (let j = 0; j < answers.length; j++) {
+                
                 min = answers[j].length;
                 data_per_list.push(calculateAverageBucketSize(guesses[i], answers[j], min, future_guess));
             }
@@ -599,6 +682,10 @@ function getHardleDiffs(diff) {
     let differences = [diff];
     let new_diff = "";
 
+    if (diff == WRONG_SPOT.repeat(word_length)) {
+        return differences;
+    }
+    
     for (let i = 0; i < diff.length; i++) {
         if (diff.charAt(i) == CORRECT) {
             new_diff += WRONG_SPOT;
@@ -672,7 +759,7 @@ function findWrongSpotLetters(diff, guess) {
     // find index of every Y character in the differences
     let wrong_spots = allInstancesOf(WRONG_SPOT, diff);
     let correct = allInstancesOf(CORRECT, diff);
-    let indices = wrong_spots.concat(correct);
+    let indices = combineLists(wrong_spots, correct);
     let c = [];
 
     // indentify all letters marked as Y
@@ -682,4 +769,19 @@ function findWrongSpotLetters(diff, guess) {
 
     c = [...new Set(c)];
     return c;
+}
+
+function lengthOfAllLists(lists) {
+    if (lists.length && typeof lists[0] == 'string') {
+        return lists.length;
+    }
+
+    let new_list = [];
+
+    lists.forEach(function(a) {
+        new_list = combineLists(new_list, a);
+    });
+
+    new_list = uniqueWordsFrom(new_list);
+    return new_list.length;
 }

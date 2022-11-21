@@ -420,6 +420,8 @@ button:hover, .tile:hover, .increment:hover {
     overflow-y: scroll;
     max-height: 350px;
     color: var(--background);
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 .showlist div:not(.showlist div.visible) {
@@ -436,8 +438,9 @@ button:hover, .tile:hover, .increment:hover {
 }
 
 .visible p {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    /* margin-top: .5rem;
+    margin-bottom: .5rem; */
+    margin: 0;
 }
 
 .label {
@@ -868,4 +871,46 @@ input:checked + .slider:before {
 
 #hints.empty {
     height: 0;
+}
+
+.multi-answer {
+    margin-bottom: 1rem;
+    padding: .5rem;
+}
+
+.black > span {
+    color: black;
+}
+
+.green > span {
+    color: green;
+}
+
+.red > span {
+    color: red;
+}
+
+.orange > span {
+    color: orange;
+}
+
+.puple > span {
+    color: purple;
+}
+
+.brown > span {
+    color: brown;
+}
+
+.gray > span {
+    color: gray;
+}
+
+.blue > span {
+    color: blue;
+}
+
+.extra-settings {
+    margin: 0;
+    padding: 0;
 }
