@@ -52,7 +52,7 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '.click', function() {
-        enterGuess($(this).html());
+        makeTables($(this).html());
     })
 
     $(document).on('click', '.showlist', function() {

@@ -43,7 +43,7 @@ function setLength() {
     clearHTML(document.getElementById('next-previous-buttons'));
     
     words = big_list.filter((a) =>  a.length == word_length);
-    words = official_guesses.slice(); // uncomment to use original wordle guess list
+    // words = official_guesses.slice(); // uncomment to use original wordle guess list
     
     clearGrids();
     setWordbank();
@@ -71,7 +71,7 @@ function setWordbank() {
 
     common = common.filter(a => a.length == word_length).sort();
     common = [...new Set(common)];
-    common = officical_answers.slice(); // uncomment to use original wordle answer list 
+    // common = officical_answers.slice(); // uncomment to use original wordle answer list 
 }
 
 function getBestOf(list) {
@@ -93,24 +93,24 @@ function getBestOf(list) {
 // gets the best guesses for normal and hard mode
 // passes the data to update the list of suggestions and letters in the HTML
 function update() {
-    let difficulty = NORMAL;
-
-    if (bot.hasHardMode()) {
-        difficulty = getDifficulty();
-    }
-
+    let difficulty = getDifficulty();
     let lists = getPotentialGuessesAndAnswers(difficulty);
     let best_guesses = [];
 
-    if (lists.unique.length > 2 || bot.isFor(ANTI)) {
+    if (!timeToShowFinalOptions(lists.unique)) {
         best_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.unique);
+        best_guesses = removeUsedGuesses(best_guesses);
     }
 
-    for (let i = 0; i < guessesSoFar(); i++) {
-        best_guesses = best_guesses.filter(function(e) {return e.word !== getWord(i);});
+    updateLists(lists.answers, lists.unlikely, best_guesses);
+}
+
+function removeUsedGuesses(list) {
+    for (let i = 0; i < guessesMadeSoFar(); i++) {
+        list = list.filter(function(a) { return a.word !== getWord(i); });
     }
 
-    updateLists(lists.all, lists.answers, lists.unlikely, best_guesses, lists.unique);
+    return list;
 }
 
 function uniqueWordsFrom(list) {
@@ -129,7 +129,7 @@ function uniqueWordsFrom(list) {
 function dontNeedToCheck(answers, unique_answers) {
     return (answers.length <=2 && !bot.isFor(ANTI) && bot.getCount() == 1)
             || (unique_answers.length <= 2 && !bot.isFor(ANTI))
-            || numberOfGuessesSoFar(0)
+            || numberOfGuessesMadeIs(0)
 }
 
 function separateListByLikelihood(list) {
@@ -155,9 +155,9 @@ function separateListByLikelihood(list) {
     return {likely: likely, unlikely: unlikely};
 }
 
-function getPotentialGuessesAndAnswers(difficulty) {
-    let all_possible_words = bot.getAllPossibleAnswersFrom(words.slice());
-    let separated_lists = separateListByLikelihood(all_possible_words);
+function getPotentialGuessesAndAnswers() {
+    let all_possible_answers = bot.getAllPossibleAnswersFrom(words.slice());
+    let separated_lists = separateListByLikelihood(all_possible_answers);
     let answer_list = separated_lists.likely;
     let unlikely_answers = separated_lists.unlikely;
     let unique_answers= uniqueWordsFrom(answer_list);
@@ -167,20 +167,20 @@ function getPotentialGuessesAndAnswers(difficulty) {
                 guesses: unique_answers, 
                 answers: answer_list, 
                 unique: unique_answers,
-                all: all_possible_words, 
+                all: all_possible_answers, 
                 unlikely: unlikely_answers, 
             };
     }
 
     let alphabet = bot.getBestLetters(unique_answers);
     let sorted_answer_list = sortList(unique_answers, alphabet);
-    let sorted_guess_list = initialGuesses(answer_list, sorted_answer_list, unique_answers, all_possible_words, alphabet);
+    let sorted_guess_list = initialGuesses(answer_list, sorted_answer_list, unique_answers, all_possible_answers, alphabet);
 
     return {
             guesses: sorted_guess_list, 
             answers: answer_list,
             unique: sorted_answer_list,
-            all: all_possible_words, 
+            all: all_possible_answers, 
             unlikely: unlikely_answers, 
         };
 }
@@ -231,7 +231,7 @@ function getUnfoundAnswers(answer_lists) {
     }
 
     
-    for (let i = 0; i < guessesSoFar(); i++) {
+    for (let i = 0; i < guessesMadeSoFar(); i++) {
         let colors = bot.getRowColor(i);
 
         if (colors.includes(CORRECT.repeat(word_length))) {
@@ -263,19 +263,18 @@ function allCombinations(string, list) {
 // updates the headers to reflect how many words are left
 // adds those suggestions to the respective slides
 // creates a dropdown list showing all possible words
-function updateLists(words_left, likely_answers, unlikely_answers, best_guesses, unique_answers) {
-    let list_length = Math.min(bot.getAnswerListLength(likely_answers), TOP_TEN_LENGTH);
-    let guess_list = writeBestGuessList(best_guesses, list_length);
+function updateLists(likely_answers, unlikely_answers, best_guesses) {
+    let guess_list = writeBestGuessList(best_guesses);
 
-    updateHeaders(words_left, likely_answers, unlikely_answers);
+    updateHeaders(bot.getAnswerListLength(likely_answers), bot.getAnswerListLength(unlikely_answers));
     addToSlides("Your best possible guesses are:", guess_list);
     createAnswerDropdown(likely_answers, unlikely_answers);
     
-    if (likely_answers.length == 0 && unlikely_answers.length == 0) {
+    if (isEmpty(likely_answers) && isEmpty(unlikely_answers)) {
         return addToSlides("", noWordsLeftMessage());
     }
 
-    if (bot.getAnswerListLength(likely_answers) <= 2 && !bot.isFor(ANTI)) {
+    if (timeToShowFinalOptions(likely_answers)) {
         // will only show the final two options as suggestions
         // ie: 'its either 'THIS' or 'THAT'
         return showFinalOptions(likely_answers, unlikely_answers);
@@ -287,24 +286,25 @@ function updateLists(words_left, likely_answers, unlikely_answers, best_guesses,
     }
 }
 
+function timeToShowFinalOptions(answers) {
+    return bot.getAnswerListLength(answers) <= 2 && !bot.isFor(ANTI)
+}
+
 // creates and returns the top 10 list of suggestions
 // suggestions will then be added to the HTLM of either the suggestions
 // for hard mode or normal mode
-function writeBestGuessList(guesses, list_length) {
-    let data = "";
+function writeBestGuessList(guesses) {
+    let data = "not fully tested";
     let list = [];
+    let list_length = Math.min(guesses.length, TOP_TEN_LENGTH);
 
-    for (let i = 0; i < list_length && i < guesses.length; i++) {
-        let num_guesses = (guesses[i].average - guessesSoFar()).toFixed(3);
-        let num_wrong = ((1-guesses[i].wrong)*100).toFixed(2);
+    for (let i = 0; i < list_length; i++) {
+        let num_guesses = (guesses[i].average - guessesMadeSoFar()).toFixed(3);
+        let percent_wrong = decimalToPercent(1-guesses[i].wrong);
 
-        if (guesses[i].wrong == NOT_YET_TESTED || bot.getCount() > 1) {
-            data = "not fully tested";
-        } else if (guesses[i].wrong > 0 && guesses[i].wrong != NOT_YET_TESTED) {
-            data = num_wrong + "% solve rate";
-        } else if (!guessesSoFar(0)) {
-            data = num_guesses + " guesses"
-        } else data = num_guesses + " guesses left";
+        if (!notFullyTested(guesses[i])) {
+            data = getDataFor(guesses[i], percent_wrong, num_guesses);
+        }     
 
         let list_item = createListItem(guesses[i].word, data, i+1);
         list.push(list_item);
@@ -313,40 +313,57 @@ function writeBestGuessList(guesses, list_length) {
     return list;
 }
 
+function getDataFor(guess, percent_wrong, num_guesses) {
+    if (guess.wrong > 0) {
+        return percent_wrong + " solve rate";
+    }
+
+    if (!guessesMadeSoFar(0)) {
+        return num_guesses + " guesses";
+    }
+
+    return num_guesses + " guesses left";
+}
+
+function notFullyTested(guess) {
+    return guess.wrong == NOT_YET_TESTED || bot.getCount() > 1;
+}
+
 function createListItem(word, data, rank) {
     let suggestion = createElement('span', word, 'click');
     let word_with_ranking = createElement('div', rank + ". " + suggestion.outerHTML, 'suggestion');
     let score = createElement('div', data, 'score');
-
     
     let list_item = createElement('li', word_with_ranking.outerHTML + score.outerHTML);
     return list_item;
 }
 
-function enterGuess(word) {
-    makeTables(word);
-}
-
-function updateHeaders(words_left, likely_answers, unlikely_answers) {
+// function updateHeaders(likely_answers, unlikely_answers) {
+function updateHeaders(likely_length, unlikely_length) {
     let heading = document.getElementsByClassName("possibilities total")[0];
     let subheading = document.getElementsByClassName("possibilities separated")[0];
-    let likely_length = bot.getAnswerListLength(likely_answers);
-    let unlikely_length = bot.getAnswerListLength(unlikely_answers);
     let total_length = unlikely_length + likely_length;
+    let class_name = numberOfGuessesMadeIs(0) ? '' : 'showlist';
+    
+    let likely_html = likely_length + " probable answer" + pluralOrSingle(likely_length, "", "s");
+    let unlikely_html = unlikely_length + " unlikley possibilit" + pluralOrSingle(unlikely_length, "y", "ies");    
+    let likely_span = createElement('span', likely_html, class_name);
+    let unlikely_span = createElement('span', unlikely_html, class_name);
 
-    let class_name = "class = 'showlist'><div></div>";
-    if (total_length == words.length) class_name = ">";
+    if (guessesMadeSoFar() > 0) {
+        likely_span.prepend(createElement('div', '', ''));
+        unlikely_span.prepend(createElement('div', '', ''));
+    }
 
-    heading.innerHTML = total_length + " possibilit" + ((total_length != 1) ? "ies" : "y");
-    subheading.innerHTML = "<span " + class_name + likely_length + " probable answer" + pluralOrSingle(likely_length, "", "s") + "</span>, " 
-                        + "<span " + class_name + unlikely_length + " unlikely possibilit" + ((unlikely_length != 1) ? "ies" : "y") + "</span>.";
+    heading.innerHTML = total_length + " possibilit" + pluralOrSingle(total_length, "y", "ies");
+    subheading.innerHTML = likely_span.outerHTML + ", " + unlikely_span.outerHTML + ".";
 }
 
 // creates a dropdown of all possible words left
 // dropdown is viewable if you click on the section that lists 
 // how many likely/unlikely answers are remaining
 function createAnswerDropdown(likely_answers, unlikely_answers) {
-    if (numberOfGuessesSoFar(0)) return;
+    if (numberOfGuessesMadeIs(0)) return;
     
     let word_lists = document.getElementsByClassName("showlist");
     let potential_answers = word_lists[0].getElementsByTagName("div")[0];
@@ -483,13 +500,13 @@ function addToSlides(heading_html, suggestions) {
 }
 
 // returns the number of guesses made to far
-function guessesSoFar() {
+function guessesMadeSoFar() {
     return document.getElementsByClassName("row").length/bot.getCount();
 }
 
 // checks if the number of guesses so far equals number
-function numberOfGuessesSoFar(number) {
-    return guessesSoFar() == number;
+function numberOfGuessesMadeIs(number) {
+    return guessesMadeSoFar() == number;
 }
 
 // checks if we're playing on hard mode or normal mode
@@ -498,9 +515,12 @@ function isDifficulty(difficulty) {
 }
 
 function getDifficulty() {
-    if (document.getElementById('results')) return true;
-    
+    if (botIsOn()) return true;
     return Number(document.getElementById("mode")?.checked);
+}
+
+function botIsOn() {
+    return document.getElementById('results');
 }
 
 /* 
@@ -521,7 +541,7 @@ function makeTables(val, c) {
         }
     }
 
-    if (numberOfGuessesSoFar(1) && c == 'normal') {
+    if (numberOfGuessesMadeIs(1) && c == 'normal') {
         addButtons();
         let full_grid = document.getElementById("hints");
         full_grid.classList.remove('empty');
@@ -620,7 +640,7 @@ function getWord(number) {
 function guessesArePrecomputed(difficulty) {
     let diff = "";
     let word = "";
-    for (let i = 0; i < guessesSoFar(); i++) {
+    for (let i = 0; i < guessesMadeSoFar(); i++) {
         diff += bot.getRowColor(i);
         word += getWord(i);
     }
@@ -644,7 +664,7 @@ function makeHash(game, list_type, difficulty, guesses, extras, string) {
 function setBestGuesses(best_guesses, difficulty) {
     let diff = "";
     let word = "";
-    for (let i = 0; i < guessesSoFar(); i++) {
+    for (let i = 0; i < guessesMadeSoFar(); i++) {
         diff += bot.getRowColor(i);
         word += getWord(i);
     }
@@ -659,10 +679,10 @@ function getBestGuesses(answer_list, guess_list, difficulty, unique_answers) {
     let best_guesses = guessesArePrecomputed(difficulty);
     
     if (best_guesses) { 
-        return twoSort(best_guesses);
+        return sortByWrongThenAverage(best_guesses);
     }
 
-    if (numberOfGuessesSoFar(0)) {
+    if (numberOfGuessesMadeIs(0)) {
         return getFirstGuesses(difficulty);
     }
     
@@ -670,7 +690,7 @@ function getBestGuesses(answer_list, guess_list, difficulty, unique_answers) {
         return getTempList(guess_list, answer_list);
     }
 
-    if (guessesSoFar() == bot.guessesAllowed()-1) {
+    if (guessesMadeSoFar() == bot.guessesAllowed()-1) {
         guess_list = unique_answers;
     }
 
@@ -707,7 +727,7 @@ function reduceListSize(guesses, answers, answers_size) {
         // reduced = true;
     }
 
-    for (let guess = 0; guess < guessesSoFar(); guess++) {
+    for (let guess = 0; guess < guessesMadeSoFar(); guess++) {
         guesses = guesses.filter(a => a != getWord(guess));
     }
     
@@ -744,7 +764,7 @@ function getFirstGuesses(difficulty) {
         first_guesses = getTempList(words.slice(), common.slice());
     }
 
-    return twoSort(first_guesses);
+    return sortByWrongThenAverage(first_guesses);
 }
 
 function getTempList(guesses, answers) {
@@ -773,7 +793,7 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
         best_words[i].results = results;
         
         Object.keys(remaining).forEach(function(key) {
-            countResults(best_words[i], remaining[key], guesses, results, guessesSoFar(), difficulty, key);
+            countResults(best_words[i], remaining[key], guesses, results, guessesMadeSoFar(), difficulty, key);
         });
 
         best_words[i].wrong = best_words[i].results['w'].length/answers.length;
@@ -791,7 +811,7 @@ function calculateGuessList(answers, guesses, best_words, difficulty) {
         }
     }
 
-    twoSort(best_words);
+    sortByWrongThenAverage(best_words);
     return best_words.map(a => Object.assign({}, {word: a.word, average: a.average, wrong: a.wrong})).slice(0, TOP_TEN_LENGTH);
 }
 
@@ -847,7 +867,8 @@ function countResults(best, answers, guesses, results, attempt, difficulty, diff
 }
 
 function addToResults(results, answers, attempt, current_answer, max_guesses) {
-    if (answers.length == 0) {
+    // if (answers.length == 0) {
+    if (isEmpty(answers)) {
         addToSpot(results, current_answer, attempt);
 
     } else if (attempt < max_guesses) {
@@ -891,13 +912,13 @@ function calculateAverageGuesses(current_word, results) {
 
 /* FILTER FUNCTIONS */ 
 function filterList(list, letters, reduced_filter, split) {
-    if (numberOfGuessesSoFar(0)) return list;
+    if (numberOfGuessesMadeIs(0)) return list;
 
     if (letters) {
         return createFilteredList(list, letters.word, letters.colors, reduced_filter, split);
     }
 
-    for (let guess = 0; guess < guessesSoFar(); guess++) {
+    for (let guess = 0; guess < guessesMadeSoFar(); guess++) {
         list = createFilteredList(list, getWord(guess), bot.getRowColor(guess), reduced_filter, split);
     }
 
@@ -954,7 +975,7 @@ function differencesMatch(guess, answer, all_diffs) {
 
 function xordleFilter(list) {
     if (list.length > 1000) return list;
-    if (numberOfGuessesSoFar(0)) return list;
+    if (numberOfGuessesMadeIs(0)) return list;
 
     let doubles = [];
     for (let i = 0; i < list.length; i++) {
@@ -973,7 +994,7 @@ function xordleFilter(list) {
 }
 
 function couldBeAnswer(guess) {
-    for (let i = 0; i < guessesSoFar(); i++) {
+    for (let i = 0; i < guessesMadeSoFar(); i++) {
         if (bot.getDifference(getWord(i), guess) != bot.getRowColor(i)) {
             return false;
         }
@@ -1021,7 +1042,7 @@ function sortListByAverage(list) {
     return list.sort((a, b) => (a.average >= b.average) ? 1 : -1);
 }
 
-function twoSort(guesses) {
+function sortByWrongThenAverage(guesses) {
     guesses.sort(function(a,b) {
         if(a.wrong > b.wrong) {return  1;}
         if(a.wrong < b.wrong) {return -1;}
