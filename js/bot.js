@@ -316,8 +316,13 @@ function runBot(guess, difficulty) {
     let testing_sample = getTestAnswers(TEST_SIZE, []);
     let final_scores = []
 
+    // let full_list = words.filter(a => a.length == word_length);
+
     let iv = setInterval(function() {
         clearGrids();
+
+        // guess = randomElementOf(full_list);
+
         let points = wordleBot(guess,  testing_sample[count], difficulty);
         if (points > bot.guessesAllowed()) {
             missed.push(testing_sample[count]);
@@ -429,6 +434,12 @@ function wordleBot(guess, answer, difficulty) {
         attempts++;
 
         let lists = getPotentialGuessesAndAnswers(difficulty);
+        // if (attempts < bot.guessesAllowed()) {
+        //     guess = randomElementOf(lists.all);
+        // } else {
+        //     guess = randomElementOf(lists.answers);
+        // }
+
         final_guesses = getBestGuesses(lists.answers, lists.guesses, difficulty, lists.unique);
         guess = final_guesses[0].word;  
     }

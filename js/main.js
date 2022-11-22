@@ -831,15 +831,15 @@ function getNextGuesses(new_guesses, answers, best, differences, difficulty) {
     }    
 
     if (!bot.isFor(ANTI) && !isDifficulty(HARD)) {
-        list = combineLists(answers, new_guesses);
+        list = combineLists(uniqueWordsFrom(answers), new_guesses);
     }
 
     return list;
 }
 
 function countResults(best, answers, guesses, results, attempt, difficulty, differences) {
-    let new_guesses = combineLists(answers, guesses);
-    new_guesses = getNextGuesses(combineLists(guesses, uniqueWordsFrom(answers)), answers, best, differences, difficulty);
+    let new_guesses = combineLists(uniqueWordsFrom(answers), guesses);
+    new_guesses = getNextGuesses(new_guesses, answers, best, differences, difficulty);
     
     if (answers.length <= 2 && (!bot.isFor(ANTI) || new_guesses.length == answers.length || !answers.length)) {
         addToResults(results, answers, attempt, best.word, bot.guessesAllowed()); 
