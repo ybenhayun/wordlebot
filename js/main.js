@@ -38,6 +38,8 @@ function setMaxGuesses() {
 function setLength() {
     word_length = document.getElementById("word-length").value;
 
+    document.getElementById('word-known-answer').setAttribute('maxlength', word_length);
+    document.getElementById('word-known-answer').value = "";
     document.getElementById('word-entered').setAttribute('maxlength', word_length); 
     document.getElementById('word-entered').value = "";
     clearHTML(document.getElementById('next-previous-buttons'));
@@ -521,6 +523,10 @@ function getDifficulty() {
 
 function botIsOn() {
     return document.getElementById('results');
+}
+
+function setKnownAnswer(knownAnswer) {
+    bot.setAnswer(knownAnswer);
 }
 
 /* 

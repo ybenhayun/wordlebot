@@ -16,6 +16,11 @@ const WARMLE = 'Warmle';
 class Bot {
     constructor(type) {
         this.type = type;
+        this.answer = '';
+    }
+
+    setAnswer(answer) {
+        this.answer = answer;
     }
 
     isFor(type) {
@@ -182,6 +187,18 @@ function isLower(a, b) {
 function tilesChangeColor(row) {
     let tiles = row.getElementsByClassName('tile');
 
+    let colors = [];
+    if (bot.answer && bot.answer.length == tiles.length) {
+        let guess = '';
+        for (let tile of tiles) {
+            guess += tile.textContent;
+        }
+        colors = bot.getDifference(guess, bot.answer);
+        for (let i = 0; i < colors.length; i++) {
+            setTileColor(tiles[i], colors[i]);
+        }
+    }
+
     Array.from(tiles).forEach(function(t) {
       t.addEventListener('click', function() {
         changeTileColor(t);
@@ -189,6 +206,12 @@ function tilesChangeColor(row) {
     });
 }
 
+function setTileColor(tile, new_color) {
+    let old_color = getTileColor(tile);
+    if (old_color != new_color) {
+        tile.classList.replace(old_color, new_color);
+    }
+}
 
 function changeTileColor(tile) {
     let old_color = getTileColor(tile);
