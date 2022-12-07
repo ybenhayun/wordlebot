@@ -975,7 +975,9 @@ function tempXordleList(list) {
                     greens[j] = [];
                 }
                 
-                greens[j].push(words[i].charAt(j));
+                if (!greens[j].includes(words[i].charAt(j))) {
+                    greens[j].push(words[i].charAt(j));
+                }
             }
         }
     }
@@ -1007,7 +1009,7 @@ function xordleFilter(list) {
 
     let doubles = [];
     for (let i = 0; i < list.length; i++) {
-        let rest = list.slice(i+1, -1).filter(a => bot.getDifference(list[i], a) == INCORRECT.repeat(word_length));
+        let rest = list.slice(i+1).filter(a => bot.getDifference(list[i], a) == INCORRECT.repeat(word_length));
 
         for (let j = 0; j < rest.length; j++) {
             let guess = {word1: list[i], word2: rest[j]};
