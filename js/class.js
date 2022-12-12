@@ -168,6 +168,14 @@ class Bot {
 
         return common.includes(answer);
     }
+
+    isValidGuess(guess) {
+        if (guess.length != word_length) return false;
+
+        if (bot.isFor(THIRDLE)) return true;
+
+        return words.includes(guess);
+    }
 }
 
 function isHigher(a, b) {
@@ -675,6 +683,10 @@ function getFibbleDiffs(diff) {
         }
     }
 
+    if (differences.length > 1) {
+        differences = differences.filter(a => a != CORRECT.repeat(word_length));
+    }
+
     return differences;
 }
 
@@ -701,6 +713,10 @@ function getHardleDiffs(diff) {
 function getAntiWordleDiffs(diff, guess) {
     let wrong_letters = findWrongSpotLetters(diff, guess);
     let differences = antiRecursion(guess, diff, wrong_letters, [], 0);
+
+    if (differences.length > 1) {
+        differences = differences.filter(a => a != CORRECT.repeat(word_length));
+    }
     
     includesAllWrongSpots(differences, wrong_letters, guess);
 
@@ -737,7 +753,8 @@ function antiRecursion(word, difference, wrong_letters, diff_list, i) {
     diff_list.push(difference);
 
     if (i == word_length) {
-        return [...new Set(diff_list)];
+        diff_list = [...new Set(diff_list)];
+        return diff_list;
     }
     
     if (wrong_letters.includes(word.charAt(i)) && difference.charAt(i) != CORRECT) {
