@@ -788,6 +788,11 @@ input:checked + .slider:before {
     background: var(--wrong-spot-color);
 }
 
+.X {
+    background: transparent;
+    border: solid 1px lightgray;
+}
+
 .W-Peaks:before { 
     content: "";
     display: inline-block;

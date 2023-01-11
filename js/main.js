@@ -6,7 +6,7 @@ var seconds = {};
 // word length constants
 const SMALLEST_WORD = 3, LARGEST_WORD = 11, DEFAULT_LENGTH = 5;
 // class constants to assign colors to tiles
-const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y", EMPTY = "X"; 
+const CORRECT = "G", INCORRECT = "B", WRONG_SPOT = "Y", EMPTY = "X";
 // difficulty constants
 const NORMAL = 0, HARD = 1;
 // list size constants
@@ -36,16 +36,20 @@ function setMaxGuesses() {
 }
 
 function setLength() {
+    let current = word_length;
     word_length = document.getElementById("word-length").value;
 
     document.getElementById('word-entered').setAttribute('maxlength', word_length); 
     document.getElementById('word-entered').value = "";
-    clearHTML(document.getElementById('next-previous-buttons'));
+    // clearHTML(document.getElementById('next-previous-buttons'));
     
     words = big_list.filter((a) =>  a.length == word_length);
     // words = official_guesses.slice(); // uncomment to use original wordle guess list
     
-    clearGrids();
+    if (current != word_length) {
+        clearGrids();
+    }
+
     setWordbank();
 }
 
@@ -325,7 +329,7 @@ function getDataFor(guess, percent_wrong, num_guesses) {
 }
 
 function notFullyTested(guess) {
-    return guess.wrong == NOT_YET_TESTED || bot.getCount() > 1;
+    return guess.wrong == NOT_YET_TESTED || bot.getCount() > 1 || bot.isFor(SPOTLE);
 }
 
 function createListItem(word, data, rank) {
@@ -500,7 +504,28 @@ function addToSlides(heading_html, suggestions) {
 
 // returns the number of guesses made to far
 function guessesMadeSoFar() {
+    if (bot.isFor(SPOTLE)) {
+        return spotleGuesses();
+    }
+    
     return document.getElementsByClassName("row").length/bot.getCount();
+}
+
+function spotleGuesses() {
+    let rows = document.getElementsByClassName('row');
+    let count = 0;
+
+    for (let i = 0; i < rows.length; i++) {
+        let tiles = rows[i].getElementsByClassName('tile');
+
+        if (tiles[0].innerHTML == " ") {
+            return count;
+        }
+        
+        count++;
+    }
+
+    return count;
 }
 
 // checks if the number of guesses so far equals number
@@ -533,14 +558,18 @@ function makeTables(val, c) {
     let grids = document.getElementsByClassName('grid');
 
     if (val) {
-        for (let i = 0; i < bot.getCount(); i++) {
-            let row = createRow(val, c);
-            grids[i].append(row);
-            bot.setChangeEvents(row);
+        if (bot.isFor(SPOTLE) && numberOfGuessesMadeIs() < 6 && val != " ".repeat(word_length)) {
+            replaceRow(guessesMadeSoFar(), val);
+        } else {
+            for (let i = 0; i < bot.getCount(); i++) {
+                let row = createRow(val, c);
+                grids[i].append(row);
+                bot.setChangeEvents(row);
+            }
         }
     }
 
-    if (numberOfGuessesMadeIs(1) && c == 'normal') {
+    if ((numberOfGuessesMadeIs(1) && c == 'normal') || bot.isFor(SPOTLE)) {
         addButtons();
         let full_grid = document.getElementById("hints");
         full_grid.classList.remove('empty');
@@ -548,6 +577,15 @@ function makeTables(val, c) {
 
     document.getElementById("word-entered").value = "";
     clearValue(document.getElementById('word-entered'));
+}
+
+function replaceRow(num, word) {
+    let row = document.getElementsByClassName('row')[num];
+    let tiles = row.getElementsByClassName('tile');
+
+    for (let i = 0; i < tiles.length; i++) {
+        tiles[i].innerHTML = word.charAt(i);
+    }
 }
 
 function createRow(word, mode) {
@@ -581,6 +619,7 @@ function addButtons() {
     let filter = createElement('button', 'calculate next guess', 'filter');
     let button_container = document.getElementById('next-previous-buttons');
 
+    clearHTML(button_container);
     button_container.append(undo);
     button_container.append(filter);
 
@@ -599,14 +638,42 @@ function removeLastRow() {
 
     for (let i = 0; i < grids.length; i++) {
         let rows = grids[i].getElementsByClassName('row');
-        rows[rows.length-1].remove();
+        remove(rows[guessesMadeSoFar()-1]);
+        // rows[rows.length-1].remove();
         
-        if (!rows.length) {
-            clearHTML(document.getElementById('next-previous-buttons'));
-            let full_grid = document.getElementById('hints');
-            full_grid.classList.add('empty');
+        // if (!rows.length) {
+        if (numberOfGuessesMadeIs(0)) {
+            // clearHTML(document.getElementById('next-previous-buttons'));
+            // let full_grid = document.getElementById('hints');
+            
+            // if (!bot.isFor(SPOTLE)) {
+            //     full_grid.classList.add('empty');
+            // }
+
+            if (!bot.isFor(SPOTLE)) {
+                resetPage();
+            } else {
+                addFinalizeGridButton();
+            }
         }
     }    
+}
+
+function remove(row) {
+    if (bot.isFor(SPOTLE) && guessesMadeSoFar() <= 6) {
+        let tiles = row.getElementsByClassName('tile');
+
+        for (let i = 0; i < tiles.length; i++) {
+            tiles[i].innerHTML = " ";
+
+            let old_color = getTileColor(tiles[i]);
+            if (old_color != EMPTY) {
+                tiles[i].classList.replace(old_color, INCORRECT);
+            }
+        }
+    } 
+
+    else row.remove();
 }
 
 function getWord(number) {
@@ -690,7 +757,7 @@ function getBestGuesses(answer_list, guess_list, unique_answers) {
 
     let initial_guesses = bot.reducesListBest(answer_list, guess_list);
     
-    if (bot.getCount() > 1) {
+    if (bot.getCount() > 1 || bot.isFor(SPOTLE)) {
         best_guesses = initial_guesses;
     } else {
         best_guesses = calculateGuessList(unique_answers, guess_list, initial_guesses);
@@ -902,17 +969,17 @@ function filterList(list, letters, reduced_filter, split) {
     if (numberOfGuessesMadeIs(0)) return list;
 
     if (letters) {
-        return createFilteredList(list, letters.word, letters.colors, reduced_filter, split);
+        return createFilteredList(list, letters.word, letters.colors, reduced_filter);
     }
 
     for (let guess = 0; guess < guessesMadeSoFar(); guess++) {
-        list = createFilteredList(list, getWord(guess), bot.getRowColor(guess), reduced_filter, split);
+        list = createFilteredList(list, getWord(guess), bot.getRowColor(guess), reduced_filter, split, guess);
     }
 
     return list;
 }
 
-function createFilteredList(old_list, guess, difference, reduced_filter, split) {
+function createFilteredList(old_list, guess, difference, reduced_filter, split, turn) {
     let temp_list = uniqueWordsFrom(old_list);
     let new_list = new Array(bot.getCount());
     for (let i = 0; i < new_list.length; i++) {
@@ -922,7 +989,7 @@ function createFilteredList(old_list, guess, difference, reduced_filter, split) 
     difference = bot.getAllDifferences(difference, guess, reduced_filter);
 
     for (let i = 0; i < temp_list.length; i++) {
-        let list_index = differencesMatch(guess, temp_list[i], difference);
+        let list_index = differencesMatch(guess, temp_list[i], difference, turn);
         if (list_index.length) {
             if (bot.getCount() > 1) {
                 addToList(old_list, list_index, temp_list[i], new_list);
@@ -947,8 +1014,8 @@ function addToList(all_lists, indices, new_word, new_lists) {
     }
 }
 
-function differencesMatch(guess, answer, all_diffs) {
-    let correct_diff = bot.getDifference(guess, answer);
+function differencesMatch(guess, answer, all_diffs, turn) {
+    let correct_diff = bot.getDifference(guess, answer, turn);
     let indices = [];
 
     for (let i = 0; i < all_diffs.length; i++) {

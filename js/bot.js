@@ -144,7 +144,7 @@ function getTestSize() {
 }
 
 function setupTest(word) {
-    if (bot.isFor(XORDLE) || bot.isFor(FIBBLE) || bot.getCount() > 1) {
+    if (bot.isFor(XORDLE) || bot.isFor(FIBBLE) || bot.getCount() > 1 || bot.isFor(SPOTLE)) {
         return;
     }
 
@@ -312,8 +312,9 @@ function runBot(guess, difficulty) {
         count++;
 
         document.getElementsByClassName("close")[1].addEventListener('click', function() {
-            resetGuessRows();
-            removeTest(iv);
+            // resetGuessRows();
+            // removeTest(iv);
+            clearInterval(iv);
         });
 
         if (count >= TEST_SIZE) {
@@ -374,7 +375,7 @@ function wordleBot(guess, answer) {
         } 
         
         attempts++;
-        
+
         let lists = getPotentialGuessesAndAnswers();
         final_guesses = getBestGuesses(lists.answers, lists.guesses, lists.unique);
         guess = final_guesses[0].word;  

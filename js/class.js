@@ -11,6 +11,9 @@ const DORDLE = 'Dordle';
 const QUORDLE = 'Quordle';
 const OCTORDLE = 'Octordle';
 const WARMLE = 'Warmle';
+const SPOTLE = 'Spotle';
+
+spotle = false;
 
 
 class Bot {
@@ -44,7 +47,7 @@ class Bot {
         }
     }
 
-    getDifference(word1, word2) {
+    getDifference(word1, word2, turn) {
         if (this.type == WOODLE) {
             return differencesWithoutPositions(word1, word2);
         } 
@@ -61,7 +64,13 @@ class Bot {
             return getWarmleDifferences(word1, word2);
         }
 
-        return differencesWithPositions(word1, word2);
+        let diff = differencesWithPositions(word1, word2);
+        
+        if (this.type == SPOTLE && spotle) {
+            diff = addBlanks(diff, turn);
+        }
+
+        return diff;
     }
 
     getRowColor(row_number) {
@@ -192,7 +201,13 @@ function tilesChangeColor(row) {
 
     Array.from(tiles).forEach(function(t) {
       t.addEventListener('click', function() {
+        if (guessesMadeSoFar() > 0 && t.innerHTML == " ") {
+            return;
+        }
+
         changeTileColor(t);
+
+        spotle = true;
       });
     });
 }
@@ -205,11 +220,36 @@ function changeTileColor(tile) {
 }
 
 function nextColor(color) {
+    if (bot.isFor(SPOTLE)) {
+        if (guessesMadeSoFar() == 0) {
+            return color == EMPTY ? INCORRECT : EMPTY;
+        }
+
+        if (color == EMPTY) return EMPTY;
+    }
+
     return color == CORRECT ? WRONG_SPOT : (color == WRONG_SPOT ? INCORRECT : CORRECT)
 }
 
 function getTileColor(tile) {
-    return Array.from(tile.classList).filter(a => a == CORRECT || a == INCORRECT || a == WRONG_SPOT);
+    return Array.from(tile.classList).filter(a => a == CORRECT || a == INCORRECT 
+                                            || a == WRONG_SPOT || a == EMPTY);
+}
+
+function addBlanks(difference, turn) {
+    if (turn == null) {
+        turn = guessesMadeSoFar();
+    }
+
+    let current = bot.getRowColor(turn);
+
+    for (let i = 0; i < word_length; i++) {
+        if (current.charAt(i) == EMPTY) {
+            difference = replaceAt(difference, EMPTY, i);
+        }
+    }
+
+    return difference;
 }
 
 function differencesWithPositions(word1, word2) {
@@ -622,7 +662,7 @@ function calculateAverageBucketSize(guess, answers, min, future_guess) {
     let threes = 1;
 
     for (let i = 0; i < list_size; i++) {
-        let diff = bot.getDifference(guess, answers[i]); 
+        let diff = bot.getDifference(guess, answers[i], future_guess); 
 
         if (differences[diff] == null) {
             differences[diff] = [];
@@ -642,7 +682,7 @@ function calculateAverageBucketSize(guess, answers, min, future_guess) {
         }
 
         adjusted = (1-threes)*weighted;
-        if (!bot.isFor(ANTI) && (adjusted >= min && future_guess || adjusted > min*SIZE_FACTOR)) {
+        if (!bot.isFor(ANTI) && (adjusted > min && future_guess || adjusted > min*SIZE_FACTOR)) {
             return;
         }
     }

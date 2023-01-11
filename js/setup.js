@@ -6,7 +6,8 @@ $(document).ready(function() {
         let val = $(this).val();
         localStorage.setItem('bot_type', val);
         setBotMode(val);
-        createPage();
+        resetPage();
+        // createPage();
     });
 
     $(document).on('input', '.warmle-selector', function() {
@@ -41,6 +42,10 @@ $(document).ready(function() {
     $("#word-entered").on('input', function(e) {
         let val = $("#word-entered").val();
         if (val.length == word_length) {
+            if (!words.includes(val) && guessesMadeSoFar() > 0) {
+                return;
+            }
+
             $("#word-entered").blur();
             
             makeTables(val);
@@ -72,8 +77,11 @@ function createPage() {
 }
 
 function resetPage() {
+    spotle = false;
+
     clearGrids();
     clearHTML(document.getElementById('next-previous-buttons'));
+    drawPage();
     update();
 }
 
@@ -83,9 +91,12 @@ function clearGrids() {
     for (let i = 0; i < grids.length; i++) {
         clearHTML(grids[i]);
     }
-
+    
     let full_grid = document.getElementById('hints');
     full_grid.classList.add('empty');
+
+    drawPage();
+    update();
 }
 
 function getPreferences() {
@@ -121,13 +132,13 @@ function drawPage() {
     let hints = document.getElementById('hints');
 
     addGrid(hints);
-
+    
     createMainHeader(header);
     createWordLengthSelector();
-
+    
     createGuessInput(container);
     createAnswerSuggestions(container);
-
+    
     updateSettings();
 }
 
@@ -161,6 +172,33 @@ function addGrid(hints) {
         let grid = createElement('div', '', 'grid');
         hints.append(grid);
     }
+
+    if (bot.isFor(SPOTLE)) {
+        setUpBlankGrid();
+    }
+}
+
+function setUpBlankGrid() {
+    let grid_size = 6;
+
+    for (let i = 0; i < grid_size; i++) {
+        makeTables(" ".repeat(word_length));
+    }
+
+    addFinalizeGridButton();
+}
+
+function addFinalizeGridButton() {
+    clearHTML(document.getElementById('next-previous-buttons'));
+
+    let finalize = createElement('button', 'finalize grid', 'finalize');
+    let button_container = document.getElementById('next-previous-buttons');
+
+    finalize.addEventListener('click', function () {
+        update();
+    });
+
+    button_container.append(finalize);
 }
 
 function createMainHeader(div) {
@@ -186,6 +224,11 @@ function createWordLengthSelector() {
         options = "<option value ='3' selected = 'selected'>3</option>";
     }
 
+    if (bot.isFor(SPOTLE)) {
+        localStorage.setItem('word_length' + bot.type, 5);
+        options = "<option value ='5' selected = 'selected'>5</option>";
+    }
+
     select_length.innerHTML = options;
     
     if (localStorage.getItem('word_length'+ bot.type) && (localStorage.getItem('word_length'+ bot.type) >= SMALLEST_WORD || bot.isFor(THIRDLE))) {
@@ -206,6 +249,11 @@ function createMaxGuesses(div) {
     if (bot.isFor(THIRDLE)) {
         localStorage.setItem('guesses' + bot.type, 3);
         options = "<option value ='3' selected = 'selected'>3</option>";
+    }
+
+    if (bot.isFor(SPOTLE)) {
+        localStorage.setItem('guesses' + bot.type, 6);
+        options = "<option value ='6' selected = 'selected'>6</option>";
     }
 
     max_input.innerHTML = options;
