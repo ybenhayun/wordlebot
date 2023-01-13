@@ -46,11 +46,11 @@ function setLength() {
     words = big_list.filter((a) =>  a.length == word_length);
     // words = official_guesses.slice(); // uncomment to use original wordle guess list
     
+    setWordbank();
+    
     if (current != word_length) {
         clearGrids();
     }
-
-    setWordbank();
 }
 
 function setWordbank() {
