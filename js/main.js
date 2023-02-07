@@ -160,11 +160,14 @@ function separateListByLikelihood(list) {
 
 function getPotentialGuessesAndAnswers() {
     let all_possible_answers = bot.getAllPossibleAnswersFrom(words.slice());
+    if (bot.isFor(POLYGONLE)) {
+        all_possible_answers = polygonleFilter(all_possible_answers)
+    }
     let separated_lists = separateListByLikelihood(all_possible_answers);
     let answer_list = separated_lists.likely;
     let unlikely_answers = separated_lists.unlikely;
     let unique_answers= uniqueWordsFrom(answer_list);
-    
+
     if (dontNeedToCheck(answer_list, unique_answers)) {
         return {
                 guesses: unique_answers, 
@@ -198,6 +201,9 @@ function initialGuesses(answer_list, sorted_answer_list, unique_answers, all_pos
         sorted_guess_list = sorted_answer_list;
     } else if (isDifficulty(HARD)){
         sorted_guess_list = uniqueWordsFrom(all_possible_words.slice());
+        if (bot.isFor(POLYGONLE)) {
+            sorted_guess_list = polygonleFilter(sorted_guess_list)
+        }
         // sorted_guess_list = unique_answers.slice();
     } else if (bot.isFor(ANTI)) {
         sorted_guess_list = filterList(sorted_guess_list, 0, true);
@@ -209,11 +215,57 @@ function initialGuesses(answer_list, sorted_answer_list, unique_answers, all_pos
         sorted_guess_list = combineLists(sorted_answer_list, sorted_guess_list);
     }
     
+    
     sorted_guess_list = reduceListSize(sorted_guess_list, sorted_answer_list, bot.getAnswerListLength(answer_list));
     // new_lists = reduceListSize(sorted_guess_list, sorted_answer_list, bot.getAnswerListLength(answer_list));
     // sorted_guess_list = new_lists.guesses;    
 
     return sorted_guess_list;
+}
+
+function polygonleFilter(sorted_guess_list) {
+    let new_list = [];
+    let pattern = [];
+    let pattern_matches = [];
+    $('.polygonle-tile').each(function(i, el) {
+        pattern[i] = el.classList[1];
+        if (pattern_matches[el.classList[1]] !== undefined) {
+            pattern_matches[el.classList[1]].push(i);
+        } else {
+            pattern_matches[el.classList[1]] = [i];
+        }
+    })
+    for (let i = 0; i < sorted_guess_list.length; i++) {
+        let this_word = sorted_guess_list[i];
+        let matched = true;
+        for (let j = 0; j < this_word.length; j++ ) {
+            pattern_key = pattern[j];
+            pattern_val = pattern_matches[pattern_key];
+            for (let k = 0; k < pattern_val.length; k++) {
+                if (this_word[j] != this_word[pattern_val[k]]) {
+                    matched = false;
+                    break;
+                }
+            }
+            if (!matched) {
+                break;
+            } else {
+                let current_char = this_word[j];
+                for (let k = 0; k < this_word.length; k++) {
+                    if (!pattern_val.includes(k) && j != k) {
+                        if (current_char == this_word[k]) {
+                            matched = false;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        if (matched) {
+            new_list.push(this_word);
+        }
+    }
+    return new_list;
 }
 
 function twoAnswersLeft(answers) {
@@ -824,6 +876,10 @@ function getFirstGuesses() {
 function getTempList(guesses, answers) {
     let letters = bot.getBestLetters(uniqueWordsFrom(answers.slice()));
     guesses = sortList(guesses.slice(), letters);
+
+    if (isDifficulty(HARD) && bot.isFor(POLYGONLE)) {
+        guesses = polygonleFilter(guesses);
+    }
     
     guesses = bot.reducesListBest(answers.slice(), guesses.slice(0, 100));
     guesses = guesses.map(a => Object.assign ({}, {word: a.word, average: a.adjusted, wrong: NOT_YET_TESTED}));
