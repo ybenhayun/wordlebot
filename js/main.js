@@ -508,7 +508,7 @@ function guessesMadeSoFar() {
         return spotleGuesses();
     }
     
-    return document.getElementsByClassName("row").length/bot.getCount();
+    return Math.ceil(document.getElementsByClassName("row").length/bot.getCount());
 }
 
 function spotleGuesses() {
