@@ -54,4 +54,4 @@ Note-- the first metric is only used to reduce the testing size to 50 (as suppos
 The largest thing I'm currently working on, other than minor polishes and bug fixes to the site, is increasing the efficiency of the bot without sacrificing overall average.
 
 # Site
-You can play around with the bot yourself [here](https://ybenhayun.github.io/wordlebot/)
+You can play around with the bot yourself [here](https://yuvalbht.github.io/wordlebot/)
