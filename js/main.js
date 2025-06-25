@@ -349,7 +349,7 @@ function updateHeaders(likely_length, unlikely_length) {
     let class_name = numberOfGuessesMadeIs(0) ? '' : 'showlist';
     
     let likely_html = likely_length + " probable answer" + pluralOrSingle(likely_length, "", "s");
-    let unlikely_html = unlikely_length + " unlikley possibilit" + pluralOrSingle(unlikely_length, "y", "ies");    
+    let unlikely_html = unlikely_length + " unlikely possibilit" + pluralOrSingle(unlikely_length, "y", "ies");    
     let likely_span = createElement('span', likely_html, class_name);
     let unlikely_span = createElement('span', unlikely_html, class_name);
 
