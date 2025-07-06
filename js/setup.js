@@ -67,6 +67,43 @@ $(document).ready(function() {
             $(this).children().addClass("visible");
         }
     });
+
+    $(document).on('click', '.polygonle-tile', function() {
+        let changeTable = [
+            ["A", "B"],
+            ["B", "C"],
+            ["C", "D"],
+            ["D", "E"],
+            ["E", "F"],
+            ["F", "G"],
+            ["G", "A"]
+        ];
+        let tiles = [
+            ["A", '<div aria-label="yellow bottom-right triangle" tabindex="0" role="listitem" class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mx-0.5 text-5xl text-center font-bold font-mono rounded dark:brightness-150"><svg width="2.25rem" height="2.25rem" viewBox="0 0 59.8 59.8" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#FEC04F" stroke-width="0.25mm" fill="#FEC04F" style="stroke: rgb(254, 192, 79); stroke-width: 0.25mm; fill: rgb(254, 192, 79);"><path d="M 59.8 59.8 L 0 59.8 L 59.8 0 L 59.8 59.8 Z" vector-effect="non-scaling-stroke"></path></g><text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" dominant-baseline="central" font-size="9rem" fill-opacity="0">◢</text></svg></div>'],
+            ["B", '<div aria-label="magenta bottom-left triangle" tabindex="0" role="listitem" class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mx-0.5 text-5xl text-center font-bold font-mono rounded dark:brightness-200"><svg width="2.25rem" height="2.25rem" viewBox="0 0 59.8 59.8" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#3F1F56" stroke-width="0.25mm" fill="#3F1F56" style="stroke: rgb(63, 31, 86); stroke-width: 0.25mm; fill: rgb(63, 31, 86);"><path d="M 0 59.8 L 0 0 L 59.8 59.8 L 0 59.8 Z" vector-effect="non-scaling-stroke"></path></g><text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" dominant-baseline="central" font-size="9rem" fill-opacity="0">◣</text></svg></div>'],
+            ["C", '<div aria-label="cyan diamond" tabindex="0" role="listitem" class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mx-0.5 text-5xl text-center font-bold font-mono rounded dark:brightness-150"><svg width="2.25rem" height="2.25rem" viewBox="0 0 100.7 100.7" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#2DA4A8" stroke-width="0.25mm" fill="#2DA4A8" style="stroke: rgb(45, 164, 168); stroke-width: 0.25mm; fill: rgb(45, 164, 168);"><path d="M 100.7 50.4 L 50.4 100.7 L 0 50.4 L 50.4 0 L 100.7 50.4 Z" vector-effect="non-scaling-stroke"></path></g><text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" dominant-baseline="central" font-size="9rem" fill-opacity="0">◆</text></svg></div>'],
+            ["D", '<div aria-label="red upper-left triangle" tabindex="0" role="listitem" class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mx-0.5 text-5xl text-center font-bold font-mono rounded dark:brightness-150"><svg width="2.25rem" height="2.25rem" viewBox="0 0 59.8 59.8" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#CF2B52" stroke-width="0.25mm" fill="#CF2B52" style="stroke: rgb(207, 43, 82); stroke-width: 0.25mm; fill: rgb(207, 43, 82);"><path d="M 0 0 L 59.8 0 L 0 59.8 L 0 0 Z" vector-effect="non-scaling-stroke"></path></g><text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" dominant-baseline="central" font-size="9rem" fill-opacity="0">◤</text></svg></div>'],
+            ["E", '<div aria-label="blue upper-right triangle" tabindex="0" role="listitem" class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mx-0.5 text-5xl text-center font-bold font-mono rounded dark:brightness-150"><svg width="2.25rem" height="2.25rem" viewBox="0 0 59.8 59.8" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#296094" stroke-width="0.25mm" fill="#296094" style="stroke: rgb(41, 96, 148); stroke-width: 0.25mm; fill: rgb(41, 96, 148);"><path d="M 59.8 0 L 59.8 59.8 L 0 0 L 59.8 0 Z" vector-effect="non-scaling-stroke"></path></g><text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" dominant-baseline="central" font-size="9rem" fill-opacity="0">◥</text></svg></div>'],
+            ["F", '<div aria-label="magenta diamond" tabindex="0" role="listitem" class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mx-0.5 text-5xl text-center font-bold font-mono rounded dark:brightness-200"><svg width="2.25rem" height="2.25rem" viewBox="0 0 100.7 100.7" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#3F1F56" stroke-width="0.25mm" fill="#3F1F56" style="stroke: rgb(63, 31, 86); stroke-width: 0.25mm; fill: rgb(63, 31, 86);"><path d="M 100.7 50.4 L 50.4 100.7 L 0 50.4 L 50.4 0 L 100.7 50.4 Z" vector-effect="non-scaling-stroke"></path></g><text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" dominant-baseline="central" font-size="9rem" fill-opacity="0">◆</text></svg></div>'],
+            ["G", '<div aria-label="cyan square" tabindex="0" role="listitem" class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mx-0.5 text-5xl text-center font-bold font-mono rounded dark:brightness-150"><svg width="2.25rem" height="2.25rem" viewBox="0 0 60.8 60.8" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#2DA4A8" stroke-width="0.25mm" fill="#2DA4A8" style="stroke: rgb(45, 164, 168); stroke-width: 0.25mm; fill: rgb(45, 164, 168);"><path d="M 60.8 60.8 L 0 60.8 L 0 0 L 60.8 0 L 60.8 60.8 Z" vector-effect="non-scaling-stroke"></path></g><text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" dominant-baseline="central" font-size="9rem" fill-opacity="0">◼</text></svg></div>'],
+        ];
+        let next = "A";
+        let current = this.classList[1];
+        for (let i of changeTable) {
+            if (i[0] == current) {
+                next = i[1];
+                break;
+            }
+        }
+        this.classList.replace(current, next);
+        for (let i of tiles) {
+            if (i[0] == next) {
+                $(this).html(i[1]);
+                break;
+            }
+        }
+    });
+
 });
 
 function createPage() {
@@ -79,6 +116,7 @@ function createPage() {
 function resetPage() {
     spotle = false;
 
+    clearPolygonle();
     clearGrids();
     clearHTML(document.getElementById('next-previous-buttons'));
     drawPage();
@@ -140,6 +178,31 @@ function drawPage() {
     createAnswerSuggestions(container);
     
     updateSettings();
+
+    if (bot.isFor(POLYGONLE)) {
+        createPolygonleInput();
+    }
+}
+
+function createPolygonleInput() {
+    $(".polygonle-grid").remove();
+    let ele = createElement('div', '', 'polygonle-grid');
+    let grid = $(ele).insertAfter("#word-entered");
+    for (let i = 0; i < word_length; i++) {
+        ele = createElement('button', '<div aria-label="yellow bottom-right triangle" tabindex="0" role="listitem" class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mx-0.5 text-5xl text-center font-bold font-mono rounded dark:brightness-150"><svg width="2.25rem" height="2.25rem" viewBox="0 0 59.8 59.8" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#FEC04F" stroke-width="0.25mm" fill="#FEC04F" style="stroke: rgb(254, 192, 79); stroke-width: 0.25mm; fill: rgb(254, 192, 79);"><path d="M 59.8 59.8 L 0 59.8 L 59.8 0 L 59.8 59.8 Z" vector-effect="non-scaling-stroke"></path></g><text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" dominant-baseline="central" font-size="9rem" fill-opacity="0">◢</text></svg></div>', 'polygonle-tile A');
+        $(grid).append(ele);
+    }
+    $(".polygonle-filter").remove();
+    let filter = createElement('button', 'set polygonle options', 'polygonle-filter');
+    filter.addEventListener('click', function() {
+        update();
+    });
+    $(filter).insertAfter(".polygonle-grid");
+}
+
+function clearPolygonle() {
+    $(".polygonle-grid").remove();
+    $(".polygonle-filter").remove();
 }
 
 function updateSettings() {

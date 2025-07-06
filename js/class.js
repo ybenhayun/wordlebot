@@ -12,6 +12,7 @@ const QUORDLE = 'Quordle';
 const OCTORDLE = 'Octordle';
 const WARMLE = 'Warmle';
 const SPOTLE = 'Spotle';
+const POLYGONLE = 'Polygonle';
 
 spotle = false;
 
